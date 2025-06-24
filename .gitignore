@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+*.sqlite3
+node_modules/
+staticfiles/
+db.sqlite3
+.DS_Store
