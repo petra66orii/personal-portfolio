@@ -1,34 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+
+type Project = {
+  id: number
+  title: string
+  description: string
+  tech_stack: string
+  repo_link?: string
+  live_link?: string
+  featured: boolean
+}
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [projects, setProjects] = useState<Project[]>([])
+
+  useEffect(() => {
+    fetch('http://localhost:8000/api/projects/')
+      .then(res => res.json())
+      .then(data => setProjects(data))
+      .catch(err => console.error(err))
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">My Projects</h1>
+      <ul className="space-y-4">
+        {projects.map(p => (
+          <li key={p.id} className="p-4 border rounded shadow">
+            <h2 className="text-xl font-semibold">{p.title}</h2>
+            <p>{p.description}</p>
+            <p className="text-sm text-gray-500">{p.tech_stack}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
