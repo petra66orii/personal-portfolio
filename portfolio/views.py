@@ -1,6 +1,6 @@
-from rest_framework import viewsets
-from .models import Project, Skill
-from .serializers import ProjectSerializer, SkillSerializer
+from rest_framework import viewsets, generics
+from .models import Project, Skill, ContactMessage
+from .serializers import ProjectSerializer, SkillSerializer, ContactMessageSerializer
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
@@ -11,3 +11,9 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 class SkillViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Skill.objects.all()
     serializer_class = SkillSerializer
+
+
+class ContactMessageCreateView(generics.CreateAPIView):
+    queryset = ContactMessage.objects.all()
+    serializer_class = ContactMessageSerializer
+    permission_classes = []
