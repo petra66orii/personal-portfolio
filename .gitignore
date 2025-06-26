@@ -6,3 +6,4 @@ node_modules/
 staticfiles/
 db.sqlite3
 .DS_Store
+.venv/
