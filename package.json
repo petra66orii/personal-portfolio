@@ -1,6 +1,8 @@
 {
   "dependencies": {
+    "@lucide/lab": "^0.1.2",
     "framer-motion": "^12.19.1",
+    "lucide": "^0.523.0",
     "lucide-react": "^0.523.0",
     "react-router-dom": "^7.6.2"
   }

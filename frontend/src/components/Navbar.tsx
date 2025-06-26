@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import NavItem from "./NavItem";
+import UnicornIcon from "./UnicornIcon";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false);
@@ -33,9 +34,12 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           <Link
             to="/"
-            className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r dark:from-pink-500 dark:via-yellow-500 dark:to-green-500 from-indigo-700 via-violet-800 to-rose-600"
+            className="flex items-center gap-2 text-2xl font-bold text-gray-900 dark:text-white"
           >
-            Petra.dev
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-violet-800 to-rose-600 dark:from-pink-500 dark:via-yellow-500 dark:to-green-500">
+              Petra.dev
+            </span>
+            <UnicornIcon />
           </Link>
 
           {/* Desktop links */}
