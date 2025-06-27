@@ -1,4 +1,224 @@
 @import "tailwindcss";
 
+/* Custom colors as CSS variables */
+:root {
+  --leaf-light: #e8f5e9;
+  --leaf: #81c784;
+  --leaf-dark: #388e3c;
+  
+  --golden-light: #fff8e1;
+  --golden: #ffb300;
+  --golden-dark: #ff8f00;
+  
+  --earth-light: #f5f5f4;
+  --earth: #a1887f;
+  --earth-dark: #4e342e;
+  
+  --sky-light: #e3f2fd;
+  --sky: #64b5f6;
+  --sky-dark: #1565c0;
+  
+  --dusk-light: #ede7f6;
+  --dusk: #9575cd;
+  --dusk-dark: #512da8;
+  
+  --stone-light: #f8fafc;
+  --stone: #94a3b8;
+  --stone-dark: #1e293b;
+}
 
-@custom-variant dark (&:where(.dark, .dark *));
+/* Custom utility classes */
+.text-leaf-light { color: var(--leaf-light); }
+.text-leaf { color: var(--leaf); }
+.text-leaf-dark { color: var(--leaf-dark); }
+
+.text-golden-light { color: var(--golden-light); }
+.text-golden { color: var(--golden); }
+.text-golden-dark { color: var(--golden-dark); }
+
+.text-earth-light { color: var(--earth-light); }
+.text-earth { color: var(--earth); }
+.text-earth-dark { color: var(--earth-dark); }
+
+.text-sky-light { color: var(--sky-light); }
+.text-sky { color: var(--sky); }
+.text-sky-dark { color: var(--sky-dark); }
+
+.text-dusk-light { color: var(--dusk-light); }
+.text-dusk { color: var(--dusk); }
+.text-dusk-dark { color: var(--dusk-dark); }
+
+.text-stone-light { color: var(--stone-light); }
+.text-stone { color: var(--stone); }
+.text-stone-dark { color: var(--stone-dark); }
+
+.bg-leaf-light { background-color: var(--leaf-light); }
+.bg-leaf { background-color: var(--leaf); }
+.bg-leaf-dark { background-color: var(--leaf-dark); }
+
+.bg-golden-light { background-color: var(--golden-light); }
+.bg-golden { background-color: var(--golden); }
+.bg-golden-dark { background-color: var(--golden-dark); }
+
+.bg-earth-light { background-color: var(--earth-light); }
+.bg-earth { background-color: var(--earth); }
+.bg-earth-dark { background-color: var(--earth-dark); }
+
+.bg-sky-light { background-color: var(--sky-light); }
+.bg-sky { background-color: var(--sky); }
+.bg-sky-dark { background-color: var(--sky-dark); }
+
+.bg-dusk-light { background-color: var(--dusk-light); }
+.bg-dusk { background-color: var(--dusk); }
+.bg-dusk-dark { background-color: var(--dusk-dark); }
+
+.bg-stone-light { background-color: var(--stone-light); }
+.bg-stone { background-color: var(--stone); }
+.bg-stone-dark { background-color: var(--stone-dark); }
+
+/* Custom dark mode navigation styles */
+.nav-text {
+  color: #d97706; /* amber-600 for light mode */
+  transition: color 0.2s ease;
+}
+
+.nav-text-active {
+  color: #b45309; /* amber-700 for light mode */
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-text:hover {
+  color: #b45309; /* amber-700 for hover in light mode */
+}
+
+.dark .nav-text {
+  color: #bef264; /* lime-300 for dark mode */
+}
+
+.dark .nav-text-active {
+  color: #a3e635; /* lime-400 for dark mode */
+}
+
+.dark .nav-text:hover {
+  color: #a3e635; /* lime-400 for hover in dark mode */
+}
+
+/* Fixed background styling for the entire site */
+body {
+  min-height: 100vh;
+  background-image: url('/website-background.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Light mode overlay for better contrast */
+body {
+  background-image: linear-gradient(rgba(248, 250, 252, 0.1), rgba(248, 250, 252, 0.1)), url('/website-background.png');
+}
+
+/* Dark mode - remove heavy overlay, use subtle earth tone */
+.dark body {
+  background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3)), url('/website-background.png');
+}
+
+/* Custom project card styles */
+.project-title {
+  color: #4e342e; /* earth-dark for light mode */
+  transition: color 0.2s ease;
+}
+
+.project-text {
+  color: #86726b; /* earth for light mode */
+  transition: color 0.2s ease;
+}
+
+.project-link {
+  color: #ff8f00; /* golden-dark for light mode */
+  font-weight: 700;
+  transition: color 0.2s ease;
+}
+
+.project-link:hover {
+  color: #ffb300; /* golden for hover in light mode */
+  text-decoration: underline;
+}
+
+.project-bg {
+  background-color: rgba(212, 215, 221, 0.95); /* stone-light/95 for light mode */
+  border-color: rgba(232, 245, 233, 0.2); /* leaf-light/20 for light mode */
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dark .project-title {
+  color: #f8fafc; /* stone-light for dark mode */
+}
+
+.dark .project-text {
+  color: #94a3b8; /* stone for dark mode */
+}
+
+.dark .project-link {
+  color: #e8f5e9; /* leaf-light for dark mode */
+}
+
+.dark .project-link:hover {
+  color: #81c784; /* leaf for hover in dark mode */
+}
+
+.dark .project-bg {
+  background-color: rgba(78, 52, 46, 0.95); /* earth-dark/95 for dark mode */
+  border-color: rgba(161, 136, 127, 0.2); /* earth/20 for dark mode */
+}
+
+/* Custom home page styles */
+.home-title {
+  color: #ff8f00; /* golden-dark for light mode */
+  transition: color 0.2s ease;
+}
+
+.home-subtitle {
+  color: #4e342e; /* earth-dark for light mode */
+  transition: color 0.2s ease;
+}
+
+.home-text {
+  color: #86726b; /* earth for light mode */
+  transition: color 0.2s ease;
+}
+
+.dark .home-title {
+  color: #e8f5e9; /* leaf-light for dark mode */
+}
+
+.dark .home-subtitle {
+  color: #f8fafc; /* stone-light for dark mode */
+}
+
+.dark .home-text {
+  color: #94a3b8; /* stone for dark mode */
+}
+
+/* Custom button styles */
+.btn-outline {
+  border: 1px solid #d97706; /* amber-600 border for light mode */
+  color: #b45309; /* amber-700 text for light mode */
+  background-color: transparent;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-outline:hover {
+  background-color: #fcd34d; /* amber-300 background on hover in light mode */
+}
+
+.dark .btn-outline {
+  border-color: #bef264; /* lime-300 border for dark mode */
+  color: #bef264; /* lime-300 text for dark mode */
+}
+
+.dark .btn-outline:hover {
+  background-color: #365314; /* lime-800 background on hover in dark mode */
+}
