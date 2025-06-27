@@ -29,14 +29,14 @@ const Navbar = () => {
   }, [isDark]);
 
   return (
-    <nav className="bg-white dark:bg-gray-900 shadow sticky top-0 z-50">
+    <nav className="bg-stone-light/98 dark:bg-stone-dark/98 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-golden-light/20 dark:border-leaf-dark/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link
             to="/"
-            className="flex items-center gap-2 text-2xl font-bold text-gray-900 dark:text-white"
+            className="flex items-center gap-2 text-2xl font-bold text-golden-dark dark:text-leaf-light"
           >
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 via-violet-800 to-rose-600 dark:from-pink-500 dark:via-yellow-500 dark:to-green-500">
+            <span className="bg-gradient-to-r from-amber-700 via-amber-500 to-lime-500 bg-clip-text text-transparent">
               Petra.dev
             </span>
             <UnicornIcon />
@@ -57,9 +57,10 @@ const Navbar = () => {
             />
             <button
               onClick={() => setIsDark((prev) => !prev)}
-              className="ml-2 px-2 py-1 text-sm border border-gray-400 rounded hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
+              className="ml-2 px-3 py-2 text-sm border border-amber-300 dark:border-lime-600 rounded-lg bg-amber-100 dark:bg-lime-900 hover:bg-amber-200 dark:hover:bg-lime-800 text-amber-700 dark:text-lime-300 transition-all duration-200"
+              title={`Switch to ${isDark ? "light" : "dark"} mode`}
             >
-              {isDark ? "☀️" : "🌙"}
+              {isDark ? "☀️ Light" : "🌙 Dark"}
             </button>
           </div>
 
@@ -67,13 +68,13 @@ const Navbar = () => {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={() => setIsDark((prev) => !prev)}
-              className="px-2 py-1 text-sm border border-gray-400 rounded hover:bg-gray-100 dark:hover:bg-gray-800 dark:text-white"
+              className="px-2 py-1 text-sm border border-amber-300 dark:border-orange-600 rounded-lg bg-amber-100 dark:bg-orange-900 hover:bg-amber-200 dark:hover:bg-orange-800 text-amber-700 dark:text-lime-300 transition-all duration-200"
             >
               {isDark ? "☀️" : "🌙"}
             </button>
             <button
               onClick={() => setIsOpen((prev) => !prev)}
-              className="text-gray-700 dark:text-gray-200"
+              className="text-amber-700 dark:text-lime-400 hover:text-amber-600 dark:hover:text-lime-300 transition-colors duration-200"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
