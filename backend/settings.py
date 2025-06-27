@@ -137,4 +137,9 @@ MEDIA_ROOT = BASE_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+CORS_ALLOWED_ORIGINS = [
+    "https://personal-portfolio-delta-olive.vercel.app",
+]
+
 CORS_ALLOW_ALL_ORIGINS = True
