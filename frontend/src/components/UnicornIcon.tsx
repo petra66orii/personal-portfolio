@@ -62,14 +62,14 @@ const UnicornIcon = () => (
     >
       <defs>
         <linearGradient id="gradient-light" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#6366f1" />
-          <stop offset="50%" stopColor="#d946ef" />
-          <stop offset="100%" stopColor="#f43f5e" />
+          <stop offset="0%" stopColor="#965E14" />
+          <stop offset="50%" stopColor="#EE9B0C" />
+          <stop offset="100%" stopColor="#AFDC0F" />
         </linearGradient>
         <linearGradient id="gradient-dark" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#f472b6" />
-          <stop offset="50%" stopColor="#facc15" />
-          <stop offset="100%" stopColor="#4ade80" />
+          <stop offset="0%" stopColor="#965E14" />
+          <stop offset="50%" stopColor="#EE9B0C" />
+          <stop offset="100%" stopColor="#AFDC0F" />
         </linearGradient>
       </defs>
 
