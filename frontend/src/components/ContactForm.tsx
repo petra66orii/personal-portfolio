@@ -17,7 +17,9 @@ const ContactForm = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:8000/api/contact/", {
+    const baseUrl =
+      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+    const res = await fetch(`${baseUrl}/api/contact/`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),
@@ -30,26 +32,30 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="p-6">
+    <section className="min-h-screen p-6">
       <motion.section
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: true }}
-        className="p-6"
+        className="bg-stone-light/90 dark:bg-earth-dark/90 backdrop-blur-sm rounded-lg shadow-xl max-w-2xl mx-auto px-6 py-12 border border-golden-light/20 dark:border-earth/20"
       >
-        <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
+        <h2 className="text-3xl font-bold mb-8 text-golden-dark dark:text-leaf-light">
+          Contact Me
+        </h2>
         {submitted ? (
-          <p className="text-green-600">Thanks! Your message has been sent.</p>
+          <p className="text-golden-dark dark:text-leaf-light text-lg">
+            Thanks! Your message has been sent.
+          </p>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <input
               type="text"
               name="name"
               value={formData.name}
               placeholder="Your Name"
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-leaf-light/30 dark:border-earth/30 rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 text-earth-dark dark:text-stone-light focus:outline-none focus:ring-2 focus:ring-leaf focus:border-transparent transition-all duration-200"
               required
             />
             <input
@@ -58,7 +64,7 @@ const ContactForm = () => {
               value={formData.email}
               placeholder="Your Email"
               onChange={handleChange}
-              className="w-full p-2 border rounded"
+              className="w-full p-3 border border-leaf-light/30 dark:border-earth/30 rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 text-earth-dark dark:text-stone-light focus:outline-none focus:ring-2 focus:ring-leaf focus:border-transparent transition-all duration-200"
               required
             />
             <textarea
@@ -66,15 +72,15 @@ const ContactForm = () => {
               value={formData.message}
               placeholder="Your Message"
               onChange={handleChange}
-              className="w-full p-2 border rounded"
-              rows={4}
+              className="w-full p-3 border border-leaf-light/30 dark:border-earth/30 rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 text-earth-dark dark:text-stone-light focus:outline-none focus:ring-2 focus:ring-leaf focus:border-transparent transition-all duration-200"
+              rows={6}
               required
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="w-full px-6 py-3 bg-leaf hover:bg-leaf-dark dark:bg-leaf-dark dark:hover:bg-leaf text-white rounded-lg font-semibold transition-colors duration-200"
             >
-              Send
+              Send Message
             </button>
           </form>
         )}
