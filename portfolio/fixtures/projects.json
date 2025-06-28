@@ -9,7 +9,7 @@
       "repo_link": "https://github.com/petra66orii/honeypot",
       "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
       "featured": true,
-      "image": "default-project.png"
+      "image": "project5.png"
     }
   },
   {
@@ -22,7 +22,7 @@
       "repo_link": "https://github.com/petra66orii/timeless-travel",
       "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
       "featured": true,
-      "image": "default-project.png"
+      "image": "project4.png"
     }
   },
   {
@@ -35,7 +35,7 @@
       "repo_link": "https://github.com/petra66orii/astrology-app",
       "live_link": "https://astrology-app-8b0fad7f55e1.herokuapp.com/",
       "featured": false,
-      "image": "default-project.png"
+      "image": "project3.png"
     }
   },
   {
@@ -48,7 +48,7 @@
       "repo_link": "https://github.com/petra66orii/blackjack",
       "live_link": "https://petra66orii.github.io/blackjack/",
       "featured": true,
-      "image": "default-project.png"
+      "image": "project2.png"
     }
   },
   {
@@ -61,7 +61,7 @@
       "repo_link": "https://github.com/petra66orii/meowmatch",
       "live_link": "https://petra66orii.github.io/meowmatch/",
       "featured": false,
-      "image": "default-project.png"
+      "image": "project1.png"
     }
   }
 ]
