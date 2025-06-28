@@ -44,7 +44,7 @@ const Navbar = () => {
 
           {/* Desktop links */}
           <div className="hidden md:flex space-x-6 items-center">
-            <NavItem to="/" label="Home" onClick={() => setIsOpen(false)} />
+            <NavItem to="/" label="About Me" onClick={() => setIsOpen(false)} />
             <NavItem
               to="/skills"
               label="Skills"
@@ -104,7 +104,7 @@ const Navbar = () => {
         {/* Mobile dropdown */}
         {isOpen && (
           <div className="md:hidden mt-2 pb-4 space-y-2 flex flex-col">
-            <NavItem to="/" label="Home" onClick={() => setIsOpen(false)} />
+            <NavItem to="/" label="About Me" onClick={() => setIsOpen(false)} />
             <NavItem
               to="/skills"
               label="Skills"
