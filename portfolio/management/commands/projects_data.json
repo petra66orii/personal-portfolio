@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Honeypot",
+    "description": "This is an e-commerce website that sells honey and honey-based products. Users can browse products through sorting and filtering, add them to cart and purchase them, as this website is integrated with Stripe. Users are required to create an account if they want to leave a review, although they can purchase products as guests as well. Users can also sign up for a newsletter, read and leave comments on blog posts. This was the final project (no. 5) for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
+    "tech_stack": "Django, PostgreSQL, HTML/CSS/JS, Bootstrap",
+    "repo_link": "https://github.com/petra66orii/honeypot",
+    "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
+    "featured": true,
+    "image": "media/default-project.png"
+  },
+  {
+    "title": "Time[less] Travel",
+    "description": "This is a simple travel & organizer website where a user signs up and can create checklists with tasks for their dream holiday. They can also create, edit and delete blog posts related to travelling. This was project no. 4 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
+    "tech_stack": "Django, PostgreSQL, HTML/CSS/JS, Bootstrap",
+    "repo_link": "https://github.com/petra66orii/timeless-travel",
+    "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
+    "featured": true,
+    "image": "default-project.png"
+  },
+  {
+    "title": "Astrology App",
+    "description": "This is a simple terminal-based Python app that uses BeautifulSoup4 for scraping daily, weekly, monthly and yearly horoscopes, and also scrapes compatibility between two signs. It also uses Kerykeion's Python package to calculate and display birth charts. This was project no. 3 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
+    "tech_stack": "Python, BeautifulSoup4",
+    "repo_link": "https://github.com/petra66orii/astrology-app",
+    "live_link": "https://astrology-app-8b0fad7f55e1.herokuapp.com/",
+    "featured": false,
+    "image": "/default-project.png"
+  },
+  {
+    "title": "Blackjack",
+    "description": "This is a static web page using HTML/CSS and Vanilla JS which showcases a simple game of Blackjack. The player is the user, and the dealer is the computer. I used Deck of Cards API to display the cards and make extensive use of JavaScript's flexibility to automate the dealer's hits, calculate the result and have a specific outcome for each scenario. This was project no. 2 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
+    "tech_stack": "HTML/CSS/JS",
+    "repo_link": "https://github.com/petra66orii/blackjack",
+    "live_link": "https://petra66orii.github.io/blackjack/",
+    "featured": true,
+    "image": "/default-project.png"
+  },
+  {
+    "title": "MeowMatch",
+    "description": "This is a static web page showcasing a cat adoption service which includes veterinary services. User can input their contact details for inquiries, although no backend has been setup for this project (the backend was beyond the scope of the project). This was the first project (no. 1) for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
+    "tech_stack": "HTML/CSS",
+    "repo_link": "https://github.com/petra66orii/meowmatch",
+    "live_link": "https://petra66orii.github.io/meowmatch/",
+    "featured": false,
+    "image": "/default-project.png"
+  }
+]
