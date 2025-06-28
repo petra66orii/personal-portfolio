@@ -1,0 +1,170 @@
+[
+  {
+    "model": "portfolio.skill",
+    "pk": 1,
+    "fields": {
+      "name": "JavaScript",
+      "level": "Intermediate"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 2,
+    "fields": {
+      "name": "TypeScript",
+      "level": "Intermediate"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 3,
+    "fields": {
+      "name": "React",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 4,
+    "fields": {
+      "name": "Python",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 5,
+    "fields": {
+      "name": "Django",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 6,
+    "fields": {
+      "name": "HTML5",
+      "level": "Expert"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 7,
+    "fields": {
+      "name": "CSS3",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 8,
+    "fields": {
+      "name": "TailwindCSS",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 9,
+    "fields": {
+      "name": "Bootstrap",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 10,
+    "fields": {
+      "name": "PostgreSQL",
+      "level": "Intermediate"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 11,
+    "fields": {
+      "name": "Git",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 12,
+    "fields": {
+      "name": "GitHub",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 13,
+    "fields": {
+      "name": "Vite",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 14,
+    "fields": {
+      "name": "AWS",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 15,
+    "fields": {
+      "name": "Heroku",
+      "level": "Intermediate"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 16,
+    "fields": {
+      "name": "Vercel",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 17,
+    "fields": {
+      "name": "VSCode",
+      "level": "Advanced"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 18,
+    "fields": {
+      "name": "Figma",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 19,
+    "fields": {
+      "name": "Linux",
+      "level": "Beginner"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 20,
+    "fields": {
+      "name": "Windows",
+      "level": "Expert"
+    }
+  },
+  {
+    "model": "portfolio.skill",
+    "pk": 21,
+    "fields": {
+      "name": "jQuery",
+      "level": "Beginner"
+    }
+  }
+]

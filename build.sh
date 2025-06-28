@@ -12,5 +12,8 @@ python manage.py migrate
 # load project data from fixture
 python manage.py loaddata projects.json
 
+# load project data from fixture
+python manage.py loaddata skills.json
+
 # create superuser if not exists
 python manage.py createsu
