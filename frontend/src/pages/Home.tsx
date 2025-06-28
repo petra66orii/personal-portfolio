@@ -16,27 +16,6 @@ const Home = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    // Add test projects for debugging
-    const testProjects: Project[] = [
-      {
-        id: 999,
-        title: "Featured Test Project",
-        description:
-          "This is a featured test project to verify the component works",
-        tech_stack: "React, TypeScript, Tailwind",
-        image: "/default-project.png",
-        featured: true,
-      },
-      {
-        id: 998,
-        title: "Regular Test Project",
-        description: "This is a regular (non-featured) test project",
-        tech_stack: "JavaScript, CSS, HTML",
-        image: "/default-project.png",
-        featured: false,
-      },
-    ];
-
     const baseUrl =
       import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
     console.log("Fetching projects from:", `${baseUrl}/api/projects/`);
@@ -47,14 +26,11 @@ const Home = () => {
       })
       .then((data) => {
         console.log("Projects data:", data);
-        // Add test projects if no projects found
-        const projectsToShow = data.length > 0 ? data : testProjects;
-        setProjects(projectsToShow);
+        setProjects(data);
       })
       .catch((err) => {
         console.error("Error fetching projects:", err);
-        // Show test projects on error
-        setProjects(testProjects);
+        setProjects([]);
       });
   }, []);
 
