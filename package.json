@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "build": "cd frontend && npm run build",
+    "install-frontend": "cd frontend && npm install"
+  },
   "dependencies": {
     "@lucide/lab": "^0.1.2",
     "framer-motion": "^12.19.1",

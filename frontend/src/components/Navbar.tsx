@@ -57,7 +57,15 @@ const Navbar = () => {
             />
             <button
               onClick={() => setIsDark((prev) => !prev)}
-              className="ml-2 px-3 py-2 text-sm border border-amber-300 dark:border-lime-600 rounded-lg bg-amber-100 dark:bg-lime-900 hover:bg-amber-200 dark:hover:bg-lime-800 text-amber-700 dark:text-lime-300 transition-all duration-200"
+              className={`ml-2 px-3 py-2 text-sm rounded-lg transition-all duration-200 ${
+                isDark
+                  ? "border-lime-500 bg-lime-800 hover:bg-lime-700 text-lime-200"
+                  : "border-amber-500 bg-amber-800 hover:bg-amber-700 text-amber-200"
+              }`}
+              style={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+              }}
               title={`Switch to ${isDark ? "light" : "dark"} mode`}
             >
               {isDark ? "☀️ Light" : "🌙 Dark"}
@@ -68,13 +76,25 @@ const Navbar = () => {
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={() => setIsDark((prev) => !prev)}
-              className="px-2 py-1 text-sm border border-amber-300 dark:border-orange-600 rounded-lg bg-amber-100 dark:bg-orange-900 hover:bg-amber-200 dark:hover:bg-orange-800 text-amber-700 dark:text-lime-300 transition-all duration-200"
+              className={`px-2 py-1 text-sm rounded-lg transition-all duration-200 ${
+                isDark
+                  ? "border-lime-500 bg-lime-800 hover:bg-lime-700 text-lime-200"
+                  : "border-amber-500 bg-amber-800 hover:bg-amber-700 text-amber-200"
+              }`}
+              style={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+              }}
             >
               {isDark ? "☀️" : "🌙"}
             </button>
             <button
               onClick={() => setIsOpen((prev) => !prev)}
-              className="text-amber-700 dark:text-lime-400 hover:text-amber-600 dark:hover:text-lime-300 transition-colors duration-200"
+              className={`transition-colors duration-200 ${
+                isDark
+                  ? "text-lime-400 hover:text-lime-300"
+                  : "text-amber-700 hover:text-amber-600"
+              }`}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
