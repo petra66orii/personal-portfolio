@@ -1,5 +1,12 @@
 from django.db import models
 
+LEVEL = [
+    ('Beginner', 'Beginner'),
+    ('Intermediate', 'Intermediate'),
+    ('Advanced', 'Advanced'),
+    ('Expert', 'Expert'),
+]
+
 
 # Create your models here.
 class Project(models.Model):
@@ -20,8 +27,7 @@ class Project(models.Model):
 
 class Skill(models.Model):
     name = models.CharField(max_length=50)
-    # Level: Beginner, Intermediate, Expert
-    level = models.CharField(max_length=50)
+    level = models.CharField(max_length=50, choices=LEVEL, default='Beginner')
 
     def __str__(self):
         return self.name
