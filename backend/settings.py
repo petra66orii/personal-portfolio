@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'portfolio',
     'corsheaders',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -142,8 +143,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR
+# AWS S3 Configuration
+if os.getenv("RENDER", "") == "true":
+    # Production S3 settings
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.getenv('AWS_S3_REGION_NAME')
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
+    AWS_DEFAULT_ACL = 'public-read'
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',
+    }
+    
+    # S3 Media settings
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+else:
+    # Local development settings
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

@@ -3,6 +3,9 @@
 # install dependencies
 pip install -r requirements.txt
 
+# setup media files
+python manage.py setup_media
+
 # collect static files
 python manage.py collectstatic --noinput
 
@@ -12,7 +15,7 @@ python manage.py migrate
 # load project data from fixture
 python manage.py loaddata projects.json
 
-# load project data from fixture
+# load skills data from fixture
 python manage.py loaddata skills.json
 
 # create superuser if not exists

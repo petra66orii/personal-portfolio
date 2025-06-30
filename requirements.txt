@@ -1,4 +1,6 @@
 asgiref==3.8.1
+boto3==1.35.85
+django-storages==1.14.4
 dj-database-url==3.0.0
 Django==5.2.3
 django-cors-headers==4.7.0

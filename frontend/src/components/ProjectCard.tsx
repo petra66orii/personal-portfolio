@@ -15,22 +15,16 @@ type Project = {
 const ProjectCard = ({ project }: { project: Project }) => {
   // Helper function to get the correct image URL
   const getImageUrl = (imageUrl?: string) => {
-    console.log("🖼️ Original image URL:", imageUrl);
-
     if (!imageUrl) {
-      console.log("🖼️ No image URL, using default");
       return "/default-project.png";
     }
 
     // If it's already a full URL (from Django API), use it as is
     if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
-      console.log("🖼️ Full URL detected:", imageUrl);
       return imageUrl;
     }
 
-    const baseUrl =
-      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-    console.log("🖼️ Base URL:", baseUrl);
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
 
     let finalUrl = "";
 
@@ -51,7 +45,6 @@ const ProjectCard = ({ project }: { project: Project }) => {
       finalUrl = `${baseUrl}/media${imageUrl}`;
     }
 
-    console.log("🖼️ Final image URL:", finalUrl);
     return finalUrl;
   };
 
@@ -66,12 +59,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         alt={project.title}
         className="w-full h-48 object-cover"
         onError={(e) => {
-          console.error("🚨 Image failed to load:", e.currentTarget.src);
-          console.log("🔄 Falling back to default image");
           e.currentTarget.src = "/default-project.png";
-        }}
-        onLoad={(e) => {
-          console.log("✅ Image loaded successfully:", e.currentTarget.src);
         }}
       />
       <div className="p-4">
