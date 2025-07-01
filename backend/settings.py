@@ -175,4 +175,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://personal-portfolio-delta-olive.vercel.app",
 ]
 
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = False
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ["*"]
