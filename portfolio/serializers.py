@@ -9,15 +9,16 @@ class ProjectSerializer(serializers.ModelSerializer):
         model = Project
         fields = '__all__'
 
-        def get_image(self, obj):
-            if obj.image:
-                url = obj.image.url
-                if url.startswith('http'):
-                    return url
-                request = self.context.get('request')
-                if request:
-                    return request.build_absolute_uri(url)
+    def get_image(self, obj):
+        try:
+            url = obj.image.url
+            if url.startswith('http'):
                 return url
+            request = self.context.get('request')
+            if request:
+                return request.build_absolute_uri(url)
+            return url
+        except Exception:
             return None
 
 
