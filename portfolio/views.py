@@ -1,6 +1,12 @@
-from rest_framework import viewsets, generics
+from rest_framework import viewsets, generics, status
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Project, Skill, ContactMessage
-from .serializers import ProjectSerializer, SkillSerializer, ContactMessageSerializer
+from .serializers import (
+    ProjectSerializer,
+    SkillSerializer,
+    ContactMessageSerializer
+)
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
@@ -17,3 +23,38 @@ class ContactMessageCreateView(generics.CreateAPIView):
     queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
     permission_classes = []
+
+    def create(self, request, *args, **kwargs):
+        # Create the contact message in the database
+        response = super().create(request, *args, **kwargs)
+        
+        if response.status_code == status.HTTP_201_CREATED:
+            # Get the created contact message data
+            message_data = response.data
+            
+            # Send email notification
+            try:
+                subject = f"New Contact Message from {message_data['name']}"
+                message_body = f"""
+You have received a new contact message through your portfolio:
+
+Name: {message_data['name']}
+Email: {message_data['email']}
+Message:
+{message_data['message']}
+
+Sent on: {message_data['sent_at']}
+                """
+                
+                send_mail(
+                    subject=subject,
+                    message=message_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    recipient_list=[settings.ADMIN_EMAIL],
+                    fail_silently=False,
+                )
+            except Exception as e:
+                # Log the error but don't fail the request
+                print(f"Failed to send email notification: {e}")
+        
+        return response
