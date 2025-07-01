@@ -16,16 +16,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
   // Simplified image URL handler
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/default-project.png";
-
-    // If it's already a full URL, use it
-    if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
-      return imageUrl;
-    }
-
-    // Fallback: assume it's from backend /media/
-    const baseUrl =
-      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-    return `${baseUrl}/media/${imageUrl}`;
+    return imageUrl;
   };
 
   return (
