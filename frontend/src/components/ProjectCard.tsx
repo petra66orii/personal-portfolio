@@ -13,39 +13,19 @@ type Project = {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  // Helper function to get the correct image URL
+  // Simplified image URL handler
   const getImageUrl = (imageUrl?: string) => {
-    if (!imageUrl) {
-      return "/default-project.png";
-    }
+    if (!imageUrl) return "/default-project.png";
 
-    // If it's already a full URL (from Django API), use it as is
+    // If it's already a full URL, use it
     if (imageUrl.startsWith("http://") || imageUrl.startsWith("https://")) {
       return imageUrl;
     }
 
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-
-    let finalUrl = "";
-
-    // If it starts with "media/" (without slash), add the base URL and leading slash
-    if (imageUrl.startsWith("media/")) {
-      finalUrl = `${baseUrl}/${imageUrl}`;
-    }
-    // If it's a relative path from Django, prefix with backend URL
-    else if (imageUrl.startsWith("/media/")) {
-      finalUrl = `${baseUrl}${imageUrl}`;
-    }
-    // If it's just the filename, add the full path
-    else if (!imageUrl.startsWith("/")) {
-      finalUrl = `${baseUrl}/media/${imageUrl}`;
-    }
-    // Fallback for other cases - assume it needs /media/ prefix
-    else {
-      finalUrl = `${baseUrl}/media${imageUrl}`;
-    }
-
-    return finalUrl;
+    // Fallback: assume it's from backend /media/
+    const baseUrl =
+      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
+    return `${baseUrl}/media/${imageUrl}`;
   };
 
   return (

@@ -3,9 +3,6 @@
 # install dependencies
 pip install -r requirements.txt
 
-# setup media files
-python manage.py setup_media
-
 # collect static files
 python manage.py collectstatic --noinput
 
