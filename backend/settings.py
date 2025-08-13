@@ -35,6 +35,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.render.com',  # For Render deployment
+    'https://www.missbott.online',
+    'https://missbott.online',
     os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
 ]
 
@@ -183,6 +185,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     "https://personal-portfolio-delta-olive.vercel.app",
+    "https://www.missbott.online",
+    "https://missbott.online",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
