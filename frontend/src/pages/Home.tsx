@@ -43,7 +43,7 @@ const Home = () => {
       <div className="project-bg backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border">
         <div className="mb-20">
           <h1 className="text-3xl sm:text-5xl font-bold mb-4 home-title">
-            Petra Bot - Junior Full Stack Software Developer
+            Hi, I'm Miss Bott - Django + React Fullstack Developer
           </h1>
           <p className="text-lg home-text max-w-[790px] my-6">
             Full-stack developer with a strong focus on writing clean,
@@ -55,10 +55,9 @@ const Home = () => {
             Institute with a Merit grade.
           </p>
           <p className="text-lg home-text max-w-[790px] mb-6">
-            I enjoy designing systems that not only look good but feel good to
-            use. Whether it's building frontend components from scratch or
-            setting up RESTful APIs, I care about the details and the bigger
-            picture.
+            I love building projects that solve real-world problems and make a
+            difference in people's lives. I'm always looking for new challenges
+            and opportunities to learn.
           </p>
           <div className="flex gap-4 mt-6">
             <a

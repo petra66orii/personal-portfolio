@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import NavItem from "./NavItem";
-import UnicornIcon from "./UnicornIcon";
 
 const Navbar = () => {
   const [isDark, setIsDark] = useState(false);
@@ -37,9 +36,8 @@ const Navbar = () => {
             className="flex items-center gap-2 text-2xl font-bold text-golden-dark dark:text-leaf-light"
           >
             <span className="bg-gradient-to-r from-amber-700 via-amber-500 to-lime-500 bg-clip-text text-transparent">
-              Petra.dev
+              Miss Bott
             </span>
-            <UnicornIcon />
           </Link>
 
           {/* Desktop links */}
