@@ -1,19 +1,25 @@
 #!/usr/bin/env bash
 
-# install dependencies
+# Install Python dependencies
 pip install -r requirements.txt
 
-# collect static files
+# Build the frontend
+npm --prefix frontend install
+npm --prefix frontend run build
+
+# Copy index.html to Django templates folder
+mkdir -p templates
+cp frontend/dist/index.html templates/
+
+# Collect static files from Django + React
 python manage.py collectstatic --noinput
 
-# run database migrations
+# Run migrations
 python manage.py migrate
 
-# load project data from fixture
+# Load data
 python manage.py loaddata projects.json
-
-# load skills data from fixture
 python manage.py loaddata skills.json
 
-# create superuser if not exists
+# Create superuser if not exists
 python manage.py createsu
