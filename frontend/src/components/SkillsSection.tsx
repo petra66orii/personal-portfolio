@@ -68,10 +68,8 @@ const SkillsSection = () => {
   }, []);
 
   useEffect(() => {
-    const baseUrl =
-      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-    console.log("Fetching skills from:", `${baseUrl}/api/skills/`);
-    fetch(`${baseUrl}/api/skills/`)
+    const baseUrl = "/api";
+    fetch(`${baseUrl}/skills/`)
       .then((res) => {
         console.log("Skills API response status:", res.status);
         if (!res.ok) {

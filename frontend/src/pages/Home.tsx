@@ -16,10 +16,8 @@ const Home = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const baseUrl =
-      import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-    console.log("Fetching projects from:", `${baseUrl}/api/projects/`);
-    fetch(`${baseUrl}/api/projects/`)
+    const baseUrl = "/api";
+    fetch(`${baseUrl}/projects/`)
       .then((res) => {
         console.log("Response status:", res.status);
         return res.json();

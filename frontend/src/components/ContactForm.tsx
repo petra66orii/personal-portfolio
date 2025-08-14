@@ -96,9 +96,8 @@ const ContactForm = () => {
     setErrors({});
 
     try {
-      const baseUrl =
-        import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
-      const res = await fetch(`${baseUrl}/api/contact/`, {
+      const baseUrl = "/api";
+      const res = await fetch(`${baseUrl}/contact/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
