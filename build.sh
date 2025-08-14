@@ -3,23 +3,27 @@
 # Install Python dependencies
 pip install -r requirements.txt
 
-# Build frontend
+# Build the frontend
 npm --prefix frontend install
 npm --prefix frontend run build
 
-# Copy index.html to Django templates
+# Ensure dist/assets exists and copy media files into it so collectstatic picks them up on Render
+mkdir -p frontend/dist/assets
+cp -R media/* frontend/dist/assets/ || true
+
+# Copy index.html to Django templates folder
 mkdir -p templates
 cp frontend/dist/index.html templates/
 
-# Copy assets into Django staticfiles
-mkdir -p staticfiles
-cp -r frontend/dist/assets staticfiles/
-
-# Collect static
+# Collect static files from Django + React
 python manage.py collectstatic --noinput
 
-# Database setup
+# Run migrations
 python manage.py migrate
+
+# Load data
 python manage.py loaddata projects.json
 python manage.py loaddata skills.json
+
+# Create superuser if not exists
 python manage.py createsu
