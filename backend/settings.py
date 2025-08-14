@@ -37,6 +37,7 @@ ALLOWED_HOSTS = [
     '.render.com',  # For Render deployment
     'https://www.missbott.online',
     'https://missbott.online',
+    'personal-portfolio-k5mk.onrender.com',
     os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
 ]
 
