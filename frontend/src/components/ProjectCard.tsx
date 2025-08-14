@@ -13,10 +13,17 @@ type Project = {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  // Simplified image URL handler
+  // Improved image URL handler
   const getImageUrl = (imageUrl?: string) => {
-    if (!imageUrl) return "/default-project.png";
-    return imageUrl;
+    // No image provided -> use local default in media
+    if (!imageUrl) return "/media/default-project.png";
+
+    // If it's a full URL or absolute path, return as-is
+    if (imageUrl.startsWith("http") || imageUrl.startsWith("/"))
+      return imageUrl;
+
+    // Otherwise assume it's a filename stored in MEDIA_ROOT
+    return `/media/${imageUrl}`;
   };
 
   return (
@@ -30,7 +37,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
         alt={project.title}
         className="w-full h-48 object-cover"
         onError={(e) => {
-          e.currentTarget.src = "/default-project.png";
+          e.currentTarget.src = "/media/default-project.png";
         }}
       />
       <div className="p-4">

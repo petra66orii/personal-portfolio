@@ -20,11 +20,19 @@ class ProjectSerializer(serializers.ModelSerializer):
             if image_value.startswith('http'):
                 return image_value
 
-            # Otherwise, build the full URL for relative paths
+            # Normalize paths to avoid doubling `/media/`
+            # image_value may already include 'media/' or start with '/media/' or be just a filename
+            if image_value.startswith('/media/'):
+                path = image_value
+            elif image_value.startswith('media/'):
+                path = f'/{image_value.lstrip("/")}'
+            else:
+                path = f'/media/{image_value}'
+
             request = self.context.get('request')
             if request:
-                return request.build_absolute_uri(f'/media/{image_value}')
-            return f'/media/{image_value}'
+                return request.build_absolute_uri(path)
+            return path
         except Exception:
             return None
 

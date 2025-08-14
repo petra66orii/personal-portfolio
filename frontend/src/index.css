@@ -107,7 +107,7 @@
 /* Fixed background styling for the entire site */
 body {
   min-height: 100vh;
-  background-image: url('/website-background.png');
+  background-image: url('/media/website-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -116,12 +116,12 @@ body {
 
 /* Light mode overlay for better contrast */
 body {
-  background-image: linear-gradient(rgba(248, 250, 252, 0.1), rgba(248, 250, 252, 0.1)), url('/website-background.png');
+  background-image: linear-gradient(rgba(248, 250, 252, 0.1), rgba(248, 250, 252, 0.1)), url('/media/website-background.png');
 }
 
 /* Dark mode - remove heavy overlay, use subtle earth tone */
 .dark body {
-  background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3)), url('/website-background.png');
+  background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3)), url('/media/website-background.png');
 }
 
 /* Custom project card styles */

@@ -7,10 +7,9 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('portfolio.urls')),
-    # Serve static files
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-# Redirect all other paths to index.html
+# Redirect all other paths to index.html, but exclude static/ and assets/ so those are served normally
 urlpatterns += [
-    re_path(r'^(?!static/).*$', TemplateView.as_view(template_name="index.html")),
+    re_path(r'^(?!static/|assets/).*$', TemplateView.as_view(template_name="index.html")),
 ]
