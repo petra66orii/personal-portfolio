@@ -68,19 +68,15 @@ const SkillsSection = () => {
   }, []);
 
   useEffect(() => {
-    const baseUrl = "/api";
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
     fetch(`${baseUrl}/skills/`)
       .then((res) => {
-        console.log("Skills API response status:", res.status);
         if (!res.ok) {
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
       })
-      .then((data) => {
-        console.log("Skills data received:", data);
-        setSkills(data);
-      })
+      .then((data) => setSkills(data))
       .catch((err) => {
         console.error("Error fetching skills:", err);
         setSkills([]);

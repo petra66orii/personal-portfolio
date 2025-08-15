@@ -16,16 +16,10 @@ const Home = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const baseUrl = "/api";
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
     fetch(`${baseUrl}/projects/`)
-      .then((res) => {
-        console.log("Response status:", res.status);
-        return res.json();
-      })
-      .then((data) => {
-        console.log("Projects data:", data);
-        setProjects(data);
-      })
+      .then((res) => res.json())
+      .then((data) => setProjects(data))
       .catch((err) => {
         console.error("Error fetching projects:", err);
         setProjects([]);

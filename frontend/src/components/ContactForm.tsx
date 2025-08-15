@@ -96,7 +96,7 @@ const ContactForm = () => {
     setErrors({});
 
     try {
-      const baseUrl = "/api";
+      const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
       const res = await fetch(`${baseUrl}/contact/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

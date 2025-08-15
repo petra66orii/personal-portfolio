@@ -15,7 +15,7 @@ const ProjectList = () => {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const baseUrl = "/api";
+    const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
     fetch(`${baseUrl}/projects/`)
       .then((res) => res.json())
       .then(setProjects);

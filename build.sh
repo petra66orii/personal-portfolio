@@ -45,4 +45,4 @@ python manage.py loaddata projects.json
 python manage.py loaddata skills.json
 
 # Create superuser if not exists
-python manage.py createsu
+
