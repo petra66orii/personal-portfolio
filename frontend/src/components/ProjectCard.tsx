@@ -15,8 +15,8 @@ type Project = {
 const ProjectCard = ({ project }: { project: Project }) => {
   // Improved image URL handler
   const getImageUrl = (imageUrl?: string) => {
-    // No image provided -> use local default in media
-    if (!imageUrl) return "/media/default-project.png";
+    // No image provided -> prefer default bundled with the frontend (served from /assets/)
+    if (!imageUrl) return "/assets/default-project.png";
 
     // If it's a full URL or absolute path, return as-is
     if (imageUrl.startsWith("http") || imageUrl.startsWith("/"))
@@ -37,7 +37,22 @@ const ProjectCard = ({ project }: { project: Project }) => {
         alt={project.title}
         className="w-full h-48 object-cover"
         onError={(e) => {
-          e.currentTarget.src = "/media/default-project.png";
+          // Prevent an endless retry loop: if the image is already the fallback,
+          // disable further onError handling and stop.
+          const img = e.currentTarget as HTMLImageElement;
+          const fallbackAssets = "/assets/default-project.png";
+          const fallbackMedia = "/media/default-project.png";
+          if (
+            img.src &&
+            (img.src.endsWith(fallbackAssets) ||
+              img.src.endsWith(fallbackMedia))
+          ) {
+            img.onerror = null;
+            return;
+          }
+          img.onerror = null; // clear handler so setting src won't re-trigger this
+          // Try the asset-bundled default first (should exist when collectstatic included frontend assets)
+          img.src = fallbackAssets;
         }}
       />
       <div className="p-4">

@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from .models import Project, Skill, ContactMessage
+from django.conf import settings
+import os
 
 
 class ProjectSerializer(serializers.ModelSerializer):
@@ -19,9 +21,24 @@ class ProjectSerializer(serializers.ModelSerializer):
             # If it's already a full URL, return it as-is
             if image_value.startswith('http'):
                 return image_value
+            # Prefer serving the image from STATIC (collected assets) when available.
+            # Use the filename only and check STATIC_ROOT for the file (collectstatic should have placed it there).
+            filename = os.path.basename(image_value)
+
+            # Check common locations inside STATIC_ROOT (direct or inside assets/)
+            static_candidate_1 = os.path.join(settings.STATIC_ROOT or '', filename)
+            static_candidate_2 = os.path.join(settings.STATIC_ROOT or '', 'assets', filename)
+
+            request = self.context.get('request')
+
+            if settings.STATIC_ROOT and (os.path.exists(static_candidate_1) or os.path.exists(static_candidate_2)):
+                # Serve from STATIC_URL
+                static_path = settings.STATIC_URL + filename
+                if request:
+                    return request.build_absolute_uri(static_path)
+                return static_path
 
             # Normalize paths to avoid doubling `/media/`
-            # image_value may already include 'media/' or start with '/media/' or be just a filename
             if image_value.startswith('/media/'):
                 path = image_value
             elif image_value.startswith('media/'):
@@ -29,7 +46,6 @@ class ProjectSerializer(serializers.ModelSerializer):
             else:
                 path = f'/media/{image_value}'
 
-            request = self.context.get('request')
             if request:
                 return request.build_absolute_uri(path)
             return path
