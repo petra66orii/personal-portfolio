@@ -35,16 +35,15 @@ const Home = () => {
       <div className="project-bg backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border">
         <div className="mb-20">
           <h1 className="text-3xl sm:text-5xl font-bold mb-4 home-title">
-            Hi, I'm Miss Bott - Django + React Fullstack Developer
+            Miss Bott - Django + React Fullstack Developer
           </h1>
           <p className="text-lg home-text max-w-[790px] my-6">
-            Full-stack developer with a strong focus on writing clean,
-            maintainable code and crafting responsive, accessible user
-            experiences. Proficient in modern tools like <strong>React</strong>,{" "}
-            <strong>TypeScript</strong>, <strong>Tailwind CSS</strong>,{" "}
-            <strong>Django</strong>, and <strong>PostgreSQL</strong>. I recently
-            earned a Diploma in Full Stack Software Development from Code
-            Institute with a Merit grade.
+            Full-stack developer proficient in modern tools like{" "}
+            <strong>React</strong>, <strong>TypeScript</strong>,{" "}
+            <strong>Tailwind CSS</strong>, <strong>Django</strong>, and{" "}
+            <strong>PostgreSQL</strong>. I recently earned a Diploma in Full
+            Stack Software Development from Code Institute with a Merit grade.
+            Let's connect and build something great together!
           </p>
           <p className="text-lg home-text max-w-[790px] mb-6">
             I love building projects that solve real-world problems and make a
@@ -70,9 +69,8 @@ const Home = () => {
             </a>
           </div>
           <p className="text-lg home-text max-w-[790px] my-3">
-            🛠️ Currently working on: building this portfolio site using React,
-            Tailwind CSS, and Django — experimenting with motion, dark mode,
-            golden ratio layout, and a natural-inspired design.
+            🛠️ Currently working on: QR generator website, learning more about
+            AI integrations, and exploring new technologies.
           </p>
         </div>
 
