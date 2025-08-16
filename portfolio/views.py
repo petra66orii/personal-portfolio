@@ -1,11 +1,12 @@
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Project, Skill, ContactMessage
+from .models import Project, Skill, ContactMessage, BlogPost
 from .serializers import (
     ProjectSerializer,
     SkillSerializer,
-    ContactMessageSerializer
+    ContactMessageSerializer,
+    BlogPostSerializer
 )
 
 
@@ -67,3 +68,14 @@ Sent on: {message_data['sent_at']}
                 print(f"Full traceback: {traceback.format_exc()}")
 
         return response
+
+
+class BlogPostViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    ViewSet for blog posts. Only returns published posts.
+    """
+    serializer_class = BlogPostSerializer
+    
+    def get_queryset(self):
+        # Only return published blog posts
+        return BlogPost.objects.filter(published=True)
