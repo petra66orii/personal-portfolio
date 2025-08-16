@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.text import slugify
 
 LEVEL = [
     ('Beginner', 'Beginner'),
@@ -41,3 +42,33 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message from {self.name}"
+
+
+class BlogPost(models.Model):
+    title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=200, unique=True, blank=True)
+    excerpt = models.TextField(max_length=300, help_text="Brief description of the post")
+    content = models.TextField()
+    author = models.CharField(max_length=100, default="Miss Bott")
+    featured_image = models.ImageField(upload_to='blog/', blank=True, null=True)
+    tags = models.CharField(max_length=255, help_text="Comma-separated tags")
+    published = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    published_date = models.DateTimeField(blank=True, null=True)
+    read_time = models.IntegerField(blank=True, null=True, help_text="Estimated read time in minutes")
+    
+    class Meta:
+        ordering = ['-published_date', '-created_at']
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+    
+    def get_tags_list(self):
+        """Return tags as a list"""
+        return [tag.strip() for tag in self.tags.split(',') if tag.strip()]
+    
+    def __str__(self):
+        return self.title
