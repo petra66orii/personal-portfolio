@@ -34,11 +34,8 @@ PY
 mkdir -p templates
 cp frontend/dist/index.html templates/
 
-# Create staticfiles directory to ensure collectstatic works
-mkdir -p staticfiles
-
 # Collect static files from Django + React
-python manage.py collectstatic --noinput --clear
+python manage.py collectstatic --noinput
 
 # Run migrations
 python manage.py migrate

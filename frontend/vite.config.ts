@@ -8,5 +8,4 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
-  base: '/assets/',  // This tells Vite to expect assets to be served from /assets/
 })

@@ -155,10 +155,6 @@ STATICFILES_DIRS = [
 # WhiteNoise configuration for serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Enable static file finding in production
-WHITENOISE_USE_FINDERS = True
-WHITENOISE_AUTOREFRESH = True
-
 # Media files configuration
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
