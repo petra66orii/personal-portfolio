@@ -34,7 +34,7 @@ DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.render.com',  # For Render deployment
+    '.render.com',
     'www.missbott.online',
     'missbott.online',
     'personal-portfolio-k5mk.onrender.com',
@@ -176,6 +176,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "https://www.missbott.online",
     "https://missbott.online",
+    "http://localhost:5173",
+    "http://localhost:5174",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:5174",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = False
