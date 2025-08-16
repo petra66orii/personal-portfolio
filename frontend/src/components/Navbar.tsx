@@ -48,6 +48,7 @@ const Navbar = () => {
               label="Skills"
               onClick={() => setIsOpen(false)}
             />
+            <NavItem to="/blog" label="Blog" onClick={() => setIsOpen(false)} />
             <NavItem
               to="/contact"
               label="Contact"
@@ -108,6 +109,7 @@ const Navbar = () => {
               label="Skills"
               onClick={() => setIsOpen(false)}
             />
+            <NavItem to="/blog" label="Blog" onClick={() => setIsOpen(false)} />
             <NavItem
               to="/contact"
               label="Contact"
