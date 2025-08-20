@@ -14,7 +14,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(
-        upload_to='public/',
+        upload_to='',
         default='/default-project.png'
         )
     repo_link = models.URLField(blank=True)
