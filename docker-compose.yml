@@ -13,10 +13,10 @@ services:
     ports:
       - "5432:5432"
 
-  backend:
+  web:
     build:
       context: .
-      dockerfile: backend.Dockerfile
+      dockerfile: Dockerfile
     volumes:
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles
@@ -34,16 +34,6 @@ services:
       - POSTGRES_PORT=5432
     depends_on:
       - db
-      - frontend
-
-  frontend:
-    build:
-      context: .
-      dockerfile: frontend.Dockerfile
-    ports:
-      - "5173:5173"
-    environment:
-      - NODE_ENV=production
 
 volumes:
   postgres_data:

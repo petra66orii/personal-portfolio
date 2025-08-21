@@ -7,6 +7,9 @@ RUN npm install
 COPY frontend ./
 RUN npm run build
 
+# Debugging: List contents of the dist directory
+RUN ls -R /app/frontend/dist
+
 # Step 2: Set up the backend
 FROM python:3.12-slim AS backend
 
@@ -21,6 +24,7 @@ RUN pip install --upgrade pip && pip install -r ./backend/requirements.txt
 
 # Copy backend code
 COPY backend ./backend
+COPY portfolio ./portfolio
 COPY manage.py ./
 COPY db.sqlite3 ./
 COPY media ./media
@@ -28,6 +32,16 @@ COPY templates ./templates
 
 # Copy built frontend into backend's static files
 COPY --from=frontend /app/frontend/dist ./staticfiles
+
+# Ensure staticfiles directory exists and is writable
+RUN mkdir -p /app/staticfiles && chmod -R 755 /app/staticfiles
+
+# Debugging: List contents of the root directory
+RUN ls -R /app
+
+# Set environment variables for Django
+ENV DJANGO_SETTINGS_MODULE=backend.settings
+ENV PYTHONPATH=/app
 
 # Collect static files
 RUN python manage.py collectstatic --noinput

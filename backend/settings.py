@@ -141,13 +141,9 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.2/howto/static-files/
-
-# Serve Vite's generated assets at /assets/ so paths in `dist/index.html` match.
+# Ensure static files are correctly configured
 STATIC_URL = '/assets/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Collect Vite assets into STATIC_ROOT; media files remain in MEDIA_ROOT and served at /media/
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'frontend', 'dist', 'assets'),
 ]
