@@ -142,12 +142,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # Ensure static files are correctly configured
-STATIC_URL = '/assets/'
+STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/static'
-# Frontend files are already copied to staticfiles during Docker build
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'frontend', 'dist', 'assets'),
-# ]
+
+# Include staticfiles directory where frontend build files are copied (only in production)
+if os.getenv("RENDER", "") == "true":
+    STATICFILES_DIRS = ['/app/staticfiles']
+# For local development, no additional staticfiles dirs needed
 
 # WhiteNoise configuration for serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

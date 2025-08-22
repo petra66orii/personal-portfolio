@@ -34,6 +34,9 @@ PY
 mkdir -p templates
 cp frontend/dist/index.html templates/
 
+# Fix asset paths in template to match Django STATIC_URL
+sed -i 's|/assets/|/static/assets/|g' templates/index.html
+
 # Collect static files from Django + React
 python manage.py collectstatic --noinput
 
