@@ -85,6 +85,63 @@ const Home = () => {
             </p>
           </header>
 
+          {/* Services Preview Section */}
+          <section className="mb-16 bg-gradient-to-br from-amber-50 to-orange-50 -mx-4 px-4 py-12 rounded-2xl">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold mb-4 home-title">
+                Professional Services
+              </h2>
+              <p className="text-lg home-text max-w-3xl mx-auto">
+                Ready to bring your ideas to life? I offer comprehensive web development 
+                and maintenance services to help your business succeed online.
+              </p>
+            </div>
+            
+            <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
+              <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
+                  <span className="text-white text-xl">💻</span>
+                </div>
+                <h3 className="font-bold mb-2">Web Development</h3>
+                <p className="text-sm text-gray-600">Custom websites with React & Django</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
+                  <span className="text-white text-xl">🔧</span>
+                </div>
+                <h3 className="font-bold mb-2">Maintenance</h3>
+                <p className="text-sm text-gray-600">Keep your site secure & updated</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
+                  <span className="text-white text-xl">⚡</span>
+                </div>
+                <h3 className="font-bold mb-2">Optimization</h3>
+                <p className="text-sm text-gray-600">Speed up your website performance</p>
+              </div>
+              
+              <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mb-4">
+                  <span className="text-white text-xl">💡</span>
+                </div>
+                <h3 className="font-bold mb-2">Consultation</h3>
+                <p className="text-sm text-gray-600">Expert technical guidance</p>
+              </div>
+            </div>
+            
+            <div className="text-center">
+              <a 
+                href="/services"
+                className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                View All Services
+                <span className="ml-2">→</span>
+              </a>
+            </div>
+          </section>
+
           {/* Featured Projects Section */}
           {featuredProjects.length > 0 && (
             <section className="mb-16">
