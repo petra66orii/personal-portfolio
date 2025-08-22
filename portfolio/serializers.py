@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Skill, ContactMessage, BlogPost
+from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry
 from django.conf import settings
 import os
 
@@ -111,3 +111,20 @@ class BlogPostSerializer(serializers.ModelSerializer):
             return path
         except Exception:
             return None
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    features_list = serializers.ReadOnlyField(source='get_features_list')
+    
+    class Meta:
+        model = Service
+        fields = '__all__'
+
+
+class ServiceInquirySerializer(serializers.ModelSerializer):
+    service_name = serializers.CharField(source='service.name', read_only=True)
+    
+    class Meta:
+        model = ServiceInquiry
+        fields = '__all__'
+        read_only_fields = ['created_at']
