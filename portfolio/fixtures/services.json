@@ -1,0 +1,74 @@
+[
+  {
+    "model": "portfolio.service",
+    "pk": 1,
+    "fields": {
+      "name": "Custom Web Development",
+      "slug": "custom-web-development",
+      "service_type": "web_development",
+      "short_description": "Modern, responsive websites built with cutting-edge technologies like React, Django, and TypeScript.",
+      "description": "I create custom websites tailored to your business needs using modern technologies. From simple landing pages to complex web applications, I ensure your site is fast, secure, and user-friendly.",
+      "features": "Custom responsive design\nReact & TypeScript frontend\nDjango REST API backend\nDatabase design & integration\nSEO optimization\nPerformance optimization\nCross-browser compatibility\nMobile-first approach",
+      "starting_price": "From £1,500",
+      "delivery_time": "2-4 weeks",
+      "icon": "code",
+      "featured": true,
+      "active": true,
+      "order": 1
+    }
+  },
+  {
+    "model": "portfolio.service",
+    "pk": 2,
+    "fields": {
+      "name": "Website Maintenance",
+      "slug": "website-maintenance",
+      "service_type": "maintenance",
+      "short_description": "Keep your website running smoothly with regular updates, security patches, and performance monitoring.",
+      "description": "Ongoing maintenance ensures your website stays secure, fast, and up-to-date. I provide comprehensive maintenance packages to keep your site running at peak performance.",
+      "features": "Security updates & patches\nRegular backups\nPerformance monitoring\nContent updates\nBug fixes & troubleshooting\nUptime monitoring\nTechnical support\nMonthly reports",
+      "starting_price": "From £150/month",
+      "delivery_time": "Ongoing",
+      "icon": "wrench",
+      "featured": false,
+      "active": true,
+      "order": 2
+    }
+  },
+  {
+    "model": "portfolio.service",
+    "pk": 3,
+    "fields": {
+      "name": "Performance Optimization",
+      "slug": "performance-optimization",
+      "service_type": "optimization",
+      "short_description": "Speed up your existing website with advanced optimization techniques and modern best practices.",
+      "description": "Slow websites lose customers. I analyze and optimize your existing site to improve loading times, user experience, and search engine rankings.",
+      "features": "Speed analysis & audit\nImage optimization\nCode minification\nDatabase optimization\nCaching implementation\nCDN setup\nCore Web Vitals improvement\nGoogle PageSpeed optimization",
+      "starting_price": "From £800",
+      "delivery_time": "1-2 weeks",
+      "icon": "zap",
+      "featured": false,
+      "active": true,
+      "order": 3
+    }
+  },
+  {
+    "model": "portfolio.service",
+    "pk": 4,
+    "fields": {
+      "name": "Technical Consultation",
+      "slug": "technical-consultation",
+      "service_type": "consultation",
+      "short_description": "Expert advice on technology stack, architecture decisions, and development best practices.",
+      "description": "Get professional guidance on your web development projects. I help you make informed decisions about technology choices, project planning, and implementation strategies.",
+      "features": "Technology stack recommendations\nArchitecture planning\nCode review & audit\nProject planning & estimation\nBest practices guidance\nSecurity assessment\nScalability planning\nOngoing mentorship",
+      "starting_price": "£100/hour",
+      "delivery_time": "Flexible",
+      "icon": "users",
+      "featured": false,
+      "active": true,
+      "order": 4
+    }
+  }
+]
