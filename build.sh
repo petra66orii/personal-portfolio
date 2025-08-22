@@ -40,10 +40,15 @@ python manage.py collectstatic --noinput
 # Run migrations
 python manage.py migrate
 
-# Load data
-python manage.py loaddata projects.json
-python manage.py loaddata skills.json
+# Load data only if LOAD_FIXTURES is set to true
+if [ "$LOAD_FIXTURES" = "true" ]; then
+    python manage.py loaddata projects.json
+    python manage.py loaddata skills.json
+    echo "Fixtures loaded"
+else
+    echo "Skipping fixtures (set LOAD_FIXTURES=true to load)"
+fi
 
-# Create superuser if not exists
-python manage.py createsuperuser --noinput
+# Create superuser if not exists (using custom command)
+python manage.py createsu
 
