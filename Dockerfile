@@ -36,7 +36,7 @@ COPY --from=frontend /app/frontend/dist ./staticfiles
 # Copy frontend index.html to templates directory for Django to serve
 COPY --from=frontend /app/frontend/dist/index.html ./templates/index.html
 
-# Fix asset paths in the template to match Django's STATIC_URL
+# Fix asset paths in the template to match Django's STATIC_URL - handle any filename
 RUN sed -i 's|/assets/|/static/assets/|g' /app/templates/index.html
 
 # Debug: Show what files we actually have
@@ -45,10 +45,10 @@ RUN echo "=== Template index.html content ===" && cat /app/templates/index.html 
 
 # Ensure staticfiles directory exists and is writable
 RUN mkdir -p /app/staticfiles && chmod -R 755 /app/staticfiles
+RUN mkdir -p /app/collected_static && chmod -R 755 /app/collected_static
 
-# Ensure media directories exist for both local and production
+# Ensure media directories exist
 RUN mkdir -p /app/media && chmod -R 755 /app/media
-RUN mkdir -p /var/www/static/media && chmod -R 755 /var/www/static/media
 
 # Debugging: List contents of the root directory
 RUN ls -R /app

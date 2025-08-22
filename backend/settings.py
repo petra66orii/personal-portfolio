@@ -143,23 +143,31 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # Ensure static files are correctly configured
 STATIC_URL = '/static/'
-STATIC_ROOT = '/var/www/static'
 
-# Include staticfiles directory where frontend build files are copied (only in production)
+# Use different STATIC_ROOT for production vs development
 if os.getenv("RENDER", "") == "true":
+    # On Render, use a writable directory within the app
+    STATIC_ROOT = '/app/collected_static'
     STATICFILES_DIRS = ['/app/staticfiles']
-# For local development, no additional staticfiles dirs needed
+else:
+    # Local development
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    # For local development, no additional staticfiles dirs needed
 
 # WhiteNoise configuration for serving static files
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# Additional WhiteNoise settings for better file serving
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_MANIFEST_STRICT = False
+
 # Media files configuration
 MEDIA_URL = '/media/'
 
-# Use persistent disk on Render for media files
+# Use writable directories for media files
 if os.getenv("RENDER", "") == "true":
-    # In production on Render, use the persistent disk
-    MEDIA_ROOT = '/var/www/static/media'
+    # In production on Render, use a writable directory within the app
+    MEDIA_ROOT = '/app/media'
 else:
     # Local development
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
