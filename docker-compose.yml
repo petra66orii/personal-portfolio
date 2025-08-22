@@ -20,6 +20,7 @@ services:
     volumes:
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles
+      - static_volume:/var/www/static
     ports:
       - "8000:8000"
     environment:
@@ -39,4 +40,6 @@ volumes:
   postgres_data:
     driver: local
   media:
+    driver: local
+  static_volume:
     driver: local

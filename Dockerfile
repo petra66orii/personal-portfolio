@@ -7,8 +7,8 @@ RUN npm install
 COPY frontend ./
 RUN npm run build
 
-# Debugging: List contents of the dist directory
-RUN ls -R /app/frontend/dist
+# Debugging: Verify the dist directory exists
+RUN ls -R /app/frontend/dist || echo "dist directory not found"
 
 # Step 2: Set up the backend
 FROM python:3.12-slim AS backend
@@ -33,8 +33,15 @@ COPY templates ./templates
 # Copy built frontend into backend's static files
 COPY --from=frontend /app/frontend/dist ./staticfiles
 
+# Copy frontend index.html to templates directory for Django to serve
+COPY --from=frontend /app/frontend/dist/index.html ./templates/index.html
+
 # Ensure staticfiles directory exists and is writable
 RUN mkdir -p /app/staticfiles && chmod -R 755 /app/staticfiles
+
+# Ensure media directories exist for both local and production
+RUN mkdir -p /app/media && chmod -R 755 /app/media
+RUN mkdir -p /var/www/static/media && chmod -R 755 /var/www/static/media
 
 # Debugging: List contents of the root directory
 RUN ls -R /app
