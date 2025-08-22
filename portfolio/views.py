@@ -1,12 +1,14 @@
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Project, Skill, ContactMessage, BlogPost
+from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry
 from .serializers import (
     ProjectSerializer,
     SkillSerializer,
     ContactMessageSerializer,
-    BlogPostSerializer
+    BlogPostSerializer,
+    ServiceSerializer,
+    ServiceInquirySerializer
 )
 
 
@@ -79,3 +81,62 @@ class BlogPostViewSet(viewsets.ReadOnlyModelViewSet):
     def get_queryset(self):
         # Only return published blog posts
         return BlogPost.objects.filter(published=True)
+
+
+class ServiceViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    ViewSet for services. Only returns active services.
+    """
+    serializer_class = ServiceSerializer
+    
+    def get_queryset(self):
+        return Service.objects.filter(active=True)
+
+
+class ServiceInquiryCreateView(generics.CreateAPIView):
+    """
+    Create a new service inquiry and send email notification.
+    """
+    queryset = ServiceInquiry.objects.all()
+    serializer_class = ServiceInquirySerializer
+    permission_classes = []
+
+    def create(self, request, *args, **kwargs):
+        # Create the service inquiry in the database
+        response = super().create(request, *args, **kwargs)
+        
+        if response.status_code == status.HTTP_201_CREATED:
+            inquiry_data = response.data
+            service_name = inquiry_data.get('service_name', 'General Inquiry')
+            
+            try:
+                # Send email notification to admin
+                subject = f"New Service Inquiry: {service_name}"
+                message = f"""
+                New service inquiry received:
+                
+                Name: {inquiry_data.get('name')}
+                Email: {inquiry_data.get('email')}
+                Company: {inquiry_data.get('company', 'Not provided')}
+                Service: {service_name}
+                Budget Range: {inquiry_data.get('budget_range', 'Not specified')}
+                Timeline: {inquiry_data.get('timeline', 'Not specified')}
+                Phone: {inquiry_data.get('phone', 'Not provided')}
+                Website: {inquiry_data.get('website_url', 'Not provided')}
+                
+                Project Details:
+                {inquiry_data.get('project_details')}
+                """
+                
+                send_mail(
+                    subject,
+                    message,
+                    settings.DEFAULT_FROM_EMAIL,
+                    [settings.ADMIN_EMAIL],
+                    fail_silently=False,
+                )
+                
+            except Exception as e:
+                print(f"Error sending service inquiry email: {e}")
+        
+        return response
