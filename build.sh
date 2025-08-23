@@ -57,5 +57,6 @@ else
 fi
 
 # Create superuser if not exists (using custom command)
-python manage.py createsu
+# This is now handled by Render's one-off jobs, so we can remove it from the build script.
+# python manage.py createsu
 

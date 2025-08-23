@@ -92,15 +92,19 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-if os.getenv("RENDER", "") == "true":
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if DATABASE_URL:
+    # We are in a deployed environment (like Render)
     DATABASES = {
         'default': dj_database_url.config(
-            default=os.getenv("DATABASE_URL"),
+            default=DATABASE_URL,
             conn_max_age=600,
             ssl_require=True
         )
     }
 else:
+    # We are in a local development environment
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
