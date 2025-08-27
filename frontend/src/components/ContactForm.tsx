@@ -10,6 +10,30 @@ import {
   FaConciergeBell,
 } from "react-icons/fa";
 
+// --- ADD THE CSRF HELPER FUNCTION ---
+// This function reads the CSRF token from the browser's cookies.
+function getCookie(name: string): string | null {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== "") {
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+      const cookie = cookies[i].trim();
+      if (cookie.substring(0, name.length + 1) === name + "=") {
+        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+        break;
+      }
+    }
+  }
+  return cookieValue;
+}
+
+interface FormData {
+  name: string;
+  email: string;
+  service: string;
+  message: string;
+}
+
 interface FormErrors {
   name?: string;
   email?: string;
@@ -17,45 +41,49 @@ interface FormErrors {
   general?: string;
 }
 
+interface Service {
+  id: number;
+  name: string;
+}
+
 const ContactForm = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
     service: "",
   });
+  const [services, setServices] = useState<Service[]>([]); // State for services
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isDark, setIsDark] = useState(false);
 
-  // Define services array
-  const services = [
-    { id: 1, name: "Web Development" },
-    { id: 2, name: "Mobile App Development" },
-    { id: 3, name: "UI/UX Design" },
-    { id: 4, name: "SEO Optimization" },
-  ];
-
   // Theme detection effect
   useEffect(() => {
     const html = document.documentElement;
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      setIsDark(true);
-    }
-
-    // Listen for theme changes
     const observer = new MutationObserver(() => {
       setIsDark(html.classList.contains("dark"));
     });
-
-    observer.observe(html, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
+    setIsDark(html.classList.contains("dark"));
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
+  }, []);
+
+  // Effect to fetch services for the dropdown
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const res = await fetch("/api/services/");
+        if (res.ok) {
+          const data = await res.json();
+          setServices(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch services:", error);
+      }
+    };
+    fetchServices();
   }, []);
 
   const validateForm = (): boolean => {
@@ -91,27 +119,29 @@ const ContactForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Clear error for this field when user starts typing
     if (errors[name as keyof FormErrors]) {
       setErrors({ ...errors, [name]: undefined });
     }
   };
 
+  // --- UPDATE THE SUBMIT HANDLER ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
     setErrors({});
 
     try {
       const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
+      const csrfToken = getCookie("csrftoken"); // Get the token
+
       const res = await fetch(`${baseUrl}/contact/`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": csrfToken || "", // Add token to headers
+        },
         body: JSON.stringify(formData),
       });
 
@@ -165,8 +195,8 @@ const ContactForm = () => {
             transition={{ duration: 0.5 }}
             className="text-center py-8"
           >
-            <div className="w-20 h-20 bg-leaf/20 dark:bg-leaf-dark/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <FaCheck className="text-3xl text-leaf dark:text-leaf-light" />
+            <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+              <FaCheck className="text-3xl text-green-500" />
             </div>
             <h3 className="text-2xl font-semibold home-subtitle mb-4">
               Message Sent Successfully!
@@ -186,21 +216,17 @@ const ContactForm = () => {
           </motion.div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6">
-            {/* General Error Message */}
             {errors.general && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 flex items-center gap-3"
+                className="bg-red-500/10 border border-red-500/30 rounded-lg p-4 flex items-center gap-3 text-red-500"
               >
-                <FaExclamationTriangle className="text-red-500 flex-shrink-0" />
-                <span className="text-red-700 dark:text-red-300">
-                  {errors.general}
-                </span>
+                <FaExclamationTriangle className="flex-shrink-0" />
+                <span>{errors.general}</span>
               </motion.div>
             )}
 
-            {/* Name Field */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -238,7 +264,6 @@ const ContactForm = () => {
               )}
             </motion.div>
 
-            {/* Email Field */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -306,7 +331,6 @@ const ContactForm = () => {
               </select>
             </motion.div>
 
-            {/* Message Field */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -344,7 +368,6 @@ const ContactForm = () => {
               )}
             </motion.div>
 
-            {/* Submit Button */}
             <motion.button
               type="submit"
               disabled={loading}
