@@ -2,113 +2,62 @@
 
 /* Custom colors as CSS variables */
 :root {
-  --leaf-light: #e8f5e9;
-  --leaf: #81c784;
-  --leaf-dark: #388e3c;
-  
-  --golden-light: #fff8e1;
-  --golden: #ffb300;
-  --golden-dark: #ff8f00;
-  
-  --earth-light: #f5f5f4;
-  --earth: #a1887f;
-  --earth-dark: #4e342e;
-  
-  --sky-light: #e3f2fd;
-  --sky: #64b5f6;
-  --sky-dark: #1565c0;
-  
-  --dusk-light: #ede7f6;
-  --dusk: #9575cd;
-  --dusk-dark: #512da8;
-  
-  --stone-light: #f8fafc;
-  --stone: #94a3b8;
-  --stone-dark: #1e293b;
+  --primary-dark: #9B5DE5;
+  --secondary-dark: #F15BB5;
+  --background-dark: #0A0A0F;
+  --surface-dark: #1C1C24;
+  --text-dark-primary: #FFFFFF;
+  --text-dark-secondary: #B3B3C9;
+
+  --primary-light: #AAF0D1;
+  --secondary-light: #6C63FF;
+  --background-light: #FFFFFF;
+  --surface-light: #F5F7FA;
+  --text-light-primary: #0A0A0F;
+  --text-light-secondary: #4B4B5A;
 }
 
 /* Custom utility classes */
-.text-leaf-light { color: var(--leaf-light); }
-.text-leaf { color: var(--leaf); }
-.text-leaf-dark { color: var(--leaf-dark); }
+.text-primary { color: var(--text-light-primary); }
+.dark .text-primary { color: var(--text-dark-primary); }
 
-.text-golden-light { color: var(--golden-light); }
-.text-golden { color: var(--golden); }
-.text-golden-dark { color: var(--golden-dark); }
+.text-secondary { color: var(--text-light-secondary); }
+.dark .text-secondary { color: var(--text-dark-secondary); }
 
-.text-earth-light { color: var(--earth-light); }
-.text-earth { color: var(--earth); }
-.text-earth-dark { color: var(--earth-dark); }
+.text-navbar { color: var(--secondary-light); }
+.dark .text-navbar { color: var(--secondary-dark); }
 
-.text-sky-light { color: var(--sky-light); }
-.text-sky { color: var(--sky); }
-.text-sky-dark { color: var(--sky-dark); }
+.bg-primary { background-color: var(--primary-light); }
+.dark .bg-primary { background-color: var(--primary-dark); }
 
-.text-dusk-light { color: var(--dusk-light); }
-.text-dusk { color: var(--dusk); }
-.text-dusk-dark { color: var(--dusk-dark); }
+.bg-secondary { background-color: var(--secondary-light); }
+.dark .bg-secondary { background-color: var(--secondary-dark); }
 
-.text-stone-light { color: var(--stone-light); }
-.text-stone { color: var(--stone); }
-.text-stone-dark { color: var(--stone-dark); }
+.secondary { color: var(--secondary-light); }
+.dark .secondary { color: var(--secondary-dark); }
 
-.bg-leaf-light { background-color: var(--leaf-light); }
-.bg-leaf { background-color: var(--leaf); }
-.bg-leaf-dark { background-color: var(--leaf-dark); }
+.bg-surface { background-color: var(--surface-light); }
+.dark .bg-surface { background-color: var(--surface-dark); }
 
-.bg-golden-light { background-color: var(--golden-light); }
-.bg-golden { background-color: var(--golden); }
-.bg-golden-dark { background-color: var(--golden-dark); }
-
-.bg-earth-light { background-color: var(--earth-light); }
-.bg-earth { background-color: var(--earth); }
-.bg-earth-dark { background-color: var(--earth-dark); }
-
-.bg-sky-light { background-color: var(--sky-light); }
-.bg-sky { background-color: var(--sky); }
-.bg-sky-dark { background-color: var(--sky-dark); }
-
-.bg-dusk-light { background-color: var(--dusk-light); }
-.bg-dusk { background-color: var(--dusk); }
-.bg-dusk-dark { background-color: var(--dusk-dark); }
-
-.bg-stone-light { background-color: var(--stone-light); }
-.bg-stone { background-color: var(--stone); }
-.bg-stone-dark { background-color: var(--stone-dark); }
-
-/* Custom dark mode navigation styles */
-.nav-text {
-  color: #d97706; /* amber-600 for light mode */
-  transition: color 0.2s ease;
+/* Default (light mode) glassmorphism style */
+.glassmorphism {
+  background: rgba(245, 247, 250, 0.7); 
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(108, 99, 255, 0.2);
 }
 
-.nav-text-active {
-  color: #b45309; /* amber-700 for light mode */
-  font-weight: 600;
-  transition: color 0.2s ease;
+/* Dark mode override */
+.dark .glassmorphism {
+  background: rgba(28, 28, 36, 0.5);
+  border: 1px solid rgba(179, 179, 201, 0.2);
 }
 
-.nav-text:hover {
-  color: #b45309; /* amber-700 for hover in light mode */
-}
-
-.dark .nav-text {
-  color: #bef264; /* lime-300 for dark mode */
-}
-
-.dark .nav-text-active {
-  color: #a3e635; /* lime-400 for dark mode */
-}
-
-.dark .nav-text:hover {
-  color: #a3e635; /* lime-400 for hover in dark mode */
-}
-
-/* Fixed background styling for the entire site */
+/* Update body background for light and dark modes */
 body {
+  background-color: var(--background-light);
+  color: var(--text-light-primary);
   min-height: 100vh;
-  /* Use asset-bundled background so it's available after collectstatic */
-  background-image: url('/assets/website-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -117,109 +66,150 @@ body {
 
 /* Light mode overlay for better contrast */
 body {
-  background-image: linear-gradient(rgba(248, 250, 252, 0.1), rgba(248, 250, 252, 0.1)), url('/assets/website-background.png');
+  background-image: linear-gradient(rgba(248, 250, 252, 0.1), rgba(248, 250, 252, 0.1));
 }
 
-/* Dark mode - remove heavy overlay, use subtle earth tone */
+/* Dark mode */
 .dark body {
-  background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3)), url('/assets/website-background.png');
+  background-color: var(--background-dark);
+  color: var(--text-dark-primary);
+  background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3));
 }
 
-/* Custom project card styles */
-.project-title {
-  color: #4e342e; /* earth-dark for light mode */
-  transition: color 0.2s ease;
+#background-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Update highlight gradients */
+.logo-gradient {
+  background-image: linear-gradient(to right, var(--primary-light), var(--secondary-light));
+}
+
+.dark .logo-gradient {
+  background-image: linear-gradient(to right, var(--primary-dark), var(--secondary-dark));
+}
+
+.button-gradient {
+  background-image: linear-gradient(to right, var(--primary-light), var(--secondary-light));
+}
+
+.button-gradient:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark .button-gradient {
+  background-image: linear-gradient(to right, var(--primary-dark), var(--secondary-dark));
+}
+
+.dark .button-gradient:hover {
+  opacity: 0.9;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.button-simple {
+  background-color: var(--primary-light);
+}
+
+.button-simple:hover {
+  background-color: var(--secondary-light);
+  color: var(--text-light-primary);
+}
+
+.dark .button-simple {
+  background-color: var(--primary-dark);
+}
+
+.dark .button-simple:hover {
+  background-color: var(--secondary-dark);
+  color: var(--text-dark-primary);
+}
+
+.border-secondary {
+  border-color: var(--secondary-light);
+}
+
+.border-secondary:hover {
+  border-color: var(--secondary-dark);
+  background-color: var(--secondary-dark);
+  color: var(--text-dark-primary);
+}
+
+.dark .border-secondary {
+  border-color: var(--secondary-dark);
+}
+
+.dark .border-secondary:hover {
+  border-color: var(--secondary-light);
+  background-color: var(--secondary-light);
+  color: var(--text-light-primary);
+}
+
+.title-text-primary {
+  color: var(--text-light-primary);
+}
+
+.dark .title-text-primary {
+  color: var(--text-dark-primary);
+}
+
+.title-text-primary:hover {
+  color: var(--primary-light);
+}
+
+.dark .title-text-primary:hover {
+  color: var(--primary-dark);
 }
 
 .project-text {
-  color: #86726b; /* earth for light mode */
-  transition: color 0.2s ease;
-}
-
-.project-link {
-  color: #ff8f00; /* golden-dark for light mode */
-  font-weight: 700;
-  transition: color 0.2s ease;
-}
-
-.project-link:hover {
-  color: #ffb300; /* golden for hover in light mode */
-  text-decoration: underline;
-}
-
-.project-bg {
-  background-color: rgba(212, 215, 221, 0.95); /* stone-light/95 for light mode */
-  border-color: rgba(232, 245, 233, 0.2); /* leaf-light/20 for light mode */
-  transition: background-color 0.2s ease, border-color 0.2s ease;
-}
-
-.dark .project-title {
-  color: #f8fafc; /* stone-light for dark mode */
+  color: var(--text-light-primary);
 }
 
 .dark .project-text {
-  color: #94a3b8; /* stone for dark mode */
+  color: var(--text-dark-primary);
+}
+
+.project-link {
+  color: var(--text-light-primary);
 }
 
 .dark .project-link {
-  color: #e8f5e9; /* leaf-light for dark mode */
+  color: var(--text-dark-primary);
+}
+
+.project-link:hover {
+  color: var(--primary-dark);
 }
 
 .dark .project-link:hover {
-  color: #81c784; /* leaf for hover in dark mode */
+  color: var(--primary-light);
 }
 
-.dark .project-bg {
-  background-color: rgba(78, 52, 46, 0.95); /* earth-dark/95 for dark mode */
-  border-color: rgba(161, 136, 127, 0.2); /* earth/20 for dark mode */
+.ring-color {
+  color: var(--primary-light)
 }
 
-/* Custom home page styles */
-.home-title {
-  color: #ff8f00; /* golden-dark for light mode */
-  transition: color 0.2s ease;
+.dark .ring-color {
+  color: var(--primary-dark)
 }
 
-.home-subtitle {
-  color: #4e342e; /* earth-dark for light mode */
-  transition: color 0.2s ease;
+.services-icon {
+  background-image: linear-gradient(to right, var(--color-emerald-100), var(--color-teal-100));
 }
 
-.home-text {
-  color: #86726b; /* earth for light mode */
-  transition: color 0.2s ease;
+.dark .services-icon {
+  background-image: linear-gradient(to right, var(--color-purple-100), var(--color-rose-100));
 }
 
-.dark .home-title {
-  color: #e8f5e9; /* leaf-light for dark mode */
+.text-icon {
+  color: var(--color-emerald-300);
 }
 
-.dark .home-subtitle {
-  color: #f8fafc; /* stone-light for dark mode */
-}
-
-.dark .home-text {
-  color: #94a3b8; /* stone for dark mode */
-}
-
-/* Custom button styles */
-.btn-outline {
-  border: 1px solid #d97706; /* amber-600 border for light mode */
-  color: #b45309; /* amber-700 text for light mode */
-  background-color: transparent;
-  font-weight: 600;
-  transition: all 0.2s ease;
-}
-
-.btn-outline:hover {
-  background-color: #fcd34d; /* amber-300 background on hover in light mode */
-}
-
-.dark .btn-outline {
-  border-color: #bef264; /* lime-300 border for dark mode */
-  color: #bef264; /* lime-300 text for dark mode */
-}
-
-.dark .btn-outline:hover {
-  background-color: #365314; /* lime-800 background on hover in dark mode */
+.dark .text-icon {
+  color: var(--color-purple-600);
 }
