@@ -21,7 +21,7 @@ const NavItem = ({ to, label, onClick }: Props) => (
         >
           {label}
         </span>
-        <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-gradient-to-r from-amber-700 via-amber-500 to-lime-500 transition-all duration-300 group-hover:w-full z-0"></span>
+        <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 logo-gradient transition-all duration-300 group-hover:w-full z-0"></span>
       </span>
     )}
   </NavLink>
