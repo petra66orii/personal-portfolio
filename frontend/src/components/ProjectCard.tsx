@@ -1,5 +1,5 @@
-// src/components/ProjectCard.tsx
 import { motion } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 
 type Project = {
   id: number;
@@ -55,39 +55,49 @@ const ProjectCard = ({ project }: { project: Project }) => {
           img.src = fallbackAssets;
         }}
       />
-      <div className="p-4">
-        <h2 className="text-xl font-semibold project-title mb-2">
-          {project.title}
-        </h2>
-        <p className="project-text mb-4">
-          {Array.isArray(project.tech_stack)
-            ? project.tech_stack.join(", ")
-            : project.tech_stack}
-        </p>
-        <p className="project-text mb-4">{project.description}</p>
-        <div className="flex gap-4">
-          {project.live_link && (
-            <a
-              href={project.live_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg project-link transition-colors duration-200"
-            >
-              Live Link
-            </a>
-          )}
-          {project.repo_link && (
-            <a
-              href={project.repo_link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-lg project-link transition-colors duration-200"
-            >
-              Link to Repository
-            </a>
-          )}
+      <Tilt
+        glareEnable={true}
+        glareMaxOpacity={0.3}
+        glareColor="#AAF0D1"
+        glarePosition="all"
+        tiltMaxAngleX={10}
+        tiltMaxAngleY={10}
+        scale={1.02}
+      >
+        <div className="p-4">
+          <h2 className="text-xl font-semibold project-title mb-2">
+            {project.title}
+          </h2>
+          <p className="project-text mb-4">
+            {Array.isArray(project.tech_stack)
+              ? project.tech_stack.join(", ")
+              : project.tech_stack}
+          </p>
+          <p className="project-text mb-1 font-bold">{project.description}</p>
+          <div className="flex gap-4">
+            {project.live_link && (
+              <a
+                href={project.live_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg project-link transition-colors duration-200"
+              >
+                Live Link
+              </a>
+            )}
+            {project.repo_link && (
+              <a
+                href={project.repo_link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-lg project-link transition-colors duration-200"
+              >
+                Link to Repository
+              </a>
+            )}
+          </div>
         </div>
-      </div>
+      </Tilt>
     </motion.div>
   );
 };
