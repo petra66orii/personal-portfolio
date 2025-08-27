@@ -25,7 +25,7 @@ const Footer = () => {
   }, [isDark]);
 
   return (
-    <footer className="bg-stone-light/98 dark:bg-stone-dark/98 backdrop-blur-sm border-t border-golden-light/20 dark:border-leaf-dark/20">
+    <footer className="text-primary backdrop-blur-sm border-t border-golden-light/20 dark:border-leaf-dark/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-3 flex items-center justify-between">
           <p className="text-xs text-stone-50-dark dark:text-stone-100-light">
@@ -33,7 +33,7 @@ const Footer = () => {
           </p>
           <div className="flex items-center space-x-3">
             <a
-              className="text-stone-50-dark dark:text-stone-100-light hover:text-golden-light transition-colors duration-200"
+              className="text-primary transition-colors duration-200"
               href="https://github.com/petra66orii"
               target="_blank"
               rel="noopener noreferrer"
@@ -41,7 +41,7 @@ const Footer = () => {
               <SiGithub className="w-4 h-4" />
             </a>
             <a
-              className="text-stone-50-dark dark:text-stone-100-light hover:text-golden-light transition-colors duration-200"
+              className="text-primary transition-colors duration-200"
               href="https://www.linkedin.com/in/petra-bot-a552601a4/"
               target="_blank"
               rel="noopener noreferrer"
