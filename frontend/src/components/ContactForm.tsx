@@ -7,6 +7,7 @@ import {
   FaPaperPlane,
   FaCheck,
   FaExclamationTriangle,
+  FaConciergeBell,
 } from "react-icons/fa";
 
 interface FormErrors {
@@ -21,11 +22,20 @@ const ContactForm = () => {
     name: "",
     email: "",
     message: "",
+    service: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isDark, setIsDark] = useState(false);
+
+  // Define services array
+  const services = [
+    { id: 1, name: "Web Development" },
+    { id: 2, name: "Mobile App Development" },
+    { id: 3, name: "UI/UX Design" },
+    { id: 4, name: "SEO Optimization" },
+  ];
 
   // Theme detection effect
   useEffect(() => {
@@ -74,7 +84,9 @@ const ContactForm = () => {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -105,7 +117,7 @@ const ContactForm = () => {
 
       if (res.ok) {
         setSubmitted(true);
-        setFormData({ name: "", email: "", message: "" });
+        setFormData({ name: "", email: "", message: "", service: "" });
       } else {
         const errorData = await res.json().catch(() => ({}));
         setErrors({
@@ -135,10 +147,10 @@ const ContactForm = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.2 }}
         viewport={{ once: true }}
-        className="project-bg backdrop-blur-sm rounded-2xl shadow-xl max-w-2xl mx-auto px-8 py-12 border"
+        className="glassmorphism backdrop-blur-sm rounded-2xl shadow-xl max-w-2xl mx-auto px-8 py-12 border"
       >
         <motion.h2
-          className="text-4xl font-bold mb-8 home-title text-center"
+          className="text-4xl font-bold mb-8 text-primary text-center"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -167,11 +179,7 @@ const ContactForm = () => {
               onClick={handleSendAnother}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className={
-                isDark
-                  ? "px-6 py-3 bg-lime-500 hover:bg-lime-600 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
-                  : "px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
-              }
+              className="px-6 py-3 button-simple text-secondary rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               Send Another Message
             </motion.button>
@@ -199,7 +207,7 @@ const ContactForm = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
               className="space-y-2"
             >
-              <label className="block text-sm font-medium home-subtitle">
+              <label className="block text-sm font-medium">
                 <FaUser className="inline mr-2" />
                 Your Name
               </label>
@@ -209,8 +217,8 @@ const ContactForm = () => {
                 value={formData.name}
                 placeholder="Enter your full name"
                 onChange={handleChange}
-                className={`w-full p-4 border rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 home-text focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
-                  isDark ? "placeholder-gray-300" : "placeholder-amber-950"
+                className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                  isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
                 } ${
                   errors.name
                     ? "border-red-400 dark:border-red-600 focus:ring-red-500"
@@ -247,8 +255,8 @@ const ContactForm = () => {
                 value={formData.email}
                 placeholder="Enter your email address"
                 onChange={handleChange}
-                className={`w-full p-4 border rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 home-text focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
-                  isDark ? "placeholder-gray-300" : "placeholder-amber-950"
+                className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                  isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
                 } ${
                   errors.email
                     ? "border-red-400 dark:border-red-600 focus:ring-red-500"
@@ -268,6 +276,36 @@ const ContactForm = () => {
               )}
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="space-y-2"
+            >
+              <label className="block text-sm font-medium home-subtitle">
+                <FaConciergeBell className="inline mr-2" />
+                Service of Interest
+              </label>
+              <select
+                name="service"
+                value={formData.service}
+                onChange={handleChange}
+                className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
+                  isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
+                } border-leaf-light/30 dark:border-earth/30 focus:ring-leaf dark:focus:ring-leaf-dark`}
+              >
+                <option value="" disabled>
+                  Select a service...
+                </option>
+                {services.map((service) => (
+                  <option key={service.id} value={service.name}>
+                    {service.name}
+                  </option>
+                ))}
+                <option value="Other">Other / General Inquiry</option>
+              </select>
+            </motion.div>
+
             {/* Message Field */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -284,8 +322,8 @@ const ContactForm = () => {
                 value={formData.message}
                 placeholder="Tell me about your project or question you might have"
                 onChange={handleChange}
-                className={`w-full p-4 border rounded-lg bg-stone-light/50 dark:bg-earth-dark/50 home-text focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 resize-vertical ${
-                  isDark ? "placeholder-gray-300" : "placeholder-amber-950"
+                className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 resize-vertical ${
+                  isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
                 } ${
                   errors.message
                     ? "border-red-400 dark:border-red-600 focus:ring-red-500"
@@ -319,8 +357,8 @@ const ContactForm = () => {
                 loading
                   ? "bg-stone dark:bg-stone-dark text-stone-light cursor-not-allowed"
                   : isDark
-                  ? "bg-lime-500 hover:bg-lime-600 text-white hover:shadow-xl"
-                  : "bg-amber-500 hover:bg-amber-600 text-white hover:shadow-xl"
+                  ? "button-simple text-primary hover:shadow-xl"
+                  : "button-simple text-primary hover:shadow-xl"
               }`}
             >
               {loading ? (
