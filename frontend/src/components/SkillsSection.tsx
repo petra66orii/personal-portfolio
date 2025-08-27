@@ -32,8 +32,8 @@ import {
   SiGithub,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
-import { FaWindows } from "react-icons/fa";
-import { FaCode } from "react-icons/fa";
+import { FaWindows, FaCode } from "react-icons/fa";
+import Tilt from "react-parallax-tilt";
 
 type Skill = {
   id: number;
@@ -46,41 +46,44 @@ const SkillsSection = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [isDark, setIsDark] = useState(false);
 
-  // Theme detection effect
+  // This effect correctly observes theme changes for standalone use.
   useEffect(() => {
     const html = document.documentElement;
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      setIsDark(true);
-    }
-
-    // Listen for theme changes
     const observer = new MutationObserver(() => {
       setIsDark(html.classList.contains("dark"));
     });
-
-    observer.observe(html, {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
-
+    // Set initial state on mount
+    setIsDark(html.classList.contains("dark"));
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
     return () => observer.disconnect();
   }, []);
 
+  // This useEffect hook is now updated with the robust async/await logic
   useEffect(() => {
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
-    fetch(`${baseUrl}/skills/`)
-      .then((res) => {
-        if (!res.ok) {
-          throw new Error(`HTTP error! status: ${res.status}`);
+    const fetchSkills = async () => {
+      try {
+        const response = await fetch("/api/skills/");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return res.json();
-      })
-      .then((data) => setSkills(data))
-      .catch((err) => {
+
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+          throw new TypeError(
+            "Server did not send JSON. Check the /api/skills/ endpoint in your Django backend."
+          );
+        }
+
+        const data: Skill[] = await response.json();
+        setSkills(data);
+      } catch (err) {
         console.error("Error fetching skills:", err);
         setSkills([]);
-      });
+      }
+    };
+
+    fetchSkills();
   }, []);
 
   // Function to get progress percentage from level
@@ -94,7 +97,7 @@ const SkillsSection = () => {
     return levelMap[level] || 50;
   };
 
-  // Function to get skill icon based on name (official icons)
+  // Function to get skill icon based on name
   const getSkillIcon = (skillName: string): JSX.Element => {
     const iconProps = { size: 32, className: "text-current" };
 
@@ -117,9 +120,7 @@ const SkillsSection = () => {
       Docker: <SiDocker {...iconProps} className="text-blue-500" />,
       AWS: <SiAmazonwebservices {...iconProps} className="text-orange-500" />,
       Heroku: <SiHeroku {...iconProps} className="text-purple-600" />,
-      Vercel: (
-        <SiVercel {...iconProps} className="text-black dark:text-white" />
-      ),
+      Vercel: <SiVercel {...iconProps} className="text-primary" />,
       Vite: <SiVite {...iconProps} className="text-purple-500" />,
       Webpack: <SiWebpack {...iconProps} className="text-blue-400" />,
       Figma: <SiFigma {...iconProps} className="text-purple-500" />,
@@ -128,7 +129,7 @@ const SkillsSection = () => {
       Windows: <FaWindows {...iconProps} className="text-blue-500" />,
       macOS: <SiMacos {...iconProps} className="text-gray-600" />,
       jQuery: <SiJquery {...iconProps} className="text-blue-600" />,
-      GitHub: <SiGithub {...iconProps} className="text-white" />,
+      GitHub: <SiGithub {...iconProps} className="text-primary" />,
     };
 
     return (
@@ -136,18 +137,19 @@ const SkillsSection = () => {
     );
   };
 
-  // Function to categorize skills (expanded categories)
+  // Function to categorize skills
   const getSkillCategory = (skillName: string): string => {
     const categoryMap: { [key: string]: string } = {
       JavaScript: "Frontend",
       TypeScript: "Frontend",
       React: "Frontend",
-      HTML: "Frontend",
-      CSS: "Frontend",
+      HTML5: "Frontend",
+      CSS3: "Frontend",
       TailwindCSS: "Frontend",
       Bootstrap: "Frontend",
       Vite: "Frontend",
       Webpack: "Frontend",
+      jQuery: "Frontend",
       Python: "Backend",
       Django: "Backend",
       "Node.js": "Backend",
@@ -157,11 +159,12 @@ const SkillsSection = () => {
       MySQL: "Database",
       Git: "Tools",
       Docker: "Tools",
-      "VS Code": "Tools",
+      VSCode: "Tools",
       Figma: "Tools",
       Linux: "Tools",
       Windows: "Tools",
       macOS: "Tools",
+      GitHub: "Tools",
       AWS: "Cloud",
       Heroku: "Cloud",
       Vercel: "Cloud",
@@ -169,13 +172,13 @@ const SkillsSection = () => {
     return categoryMap[skillName] || "Other";
   };
 
-  // Get unique categories
+  // Get unique categories from the fetched skills
   const categories = [
     "All",
-    ...new Set(skills.map((skill) => getSkillCategory(skill.name))),
+    ...Array.from(new Set(skills.map((skill) => getSkillCategory(skill.name)))),
   ];
 
-  // Filter skills by category
+  // Filter skills by the selected category
   const filteredSkills =
     selectedCategory === "All"
       ? skills
@@ -191,7 +194,7 @@ const SkillsSection = () => {
       viewport={{ once: true }}
       className="min-h-screen p-6"
     >
-      <div className="project-bg backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border">
+      <div className="backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border glassmorphism">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -210,11 +213,11 @@ const SkillsSection = () => {
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                 selectedCategory === category
                   ? isDark
-                    ? "bg-lime-600 text-white hover:bg-lime-700"
-                    : "bg-amber-500 text-white hover:bg-amber-600"
+                    ? "bg-primary text-primary" // Using theme colors
+                    : "bg-primary text-primary"
                   : isDark
-                  ? "bg-lime-900 text-lime-200 hover:bg-lime-800"
-                  : "bg-amber-100 text-amber-800 hover:bg-amber-200"
+                  ? "bg-surface text-secondary hover:bg-opacity-80"
+                  : "bg-surface text-secondary hover:bg-opacity-80"
               }`}
             >
               {category}
@@ -223,93 +226,79 @@ const SkillsSection = () => {
         </div>
 
         {/* Skills Grid */}
+
         <motion.div
           layout
           className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
         >
           {filteredSkills.map((skill, index) => (
-            <motion.div
-              key={skill.id}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
-              }}
-              transition={{
-                duration: 0.3,
-                delay: index * 0.1,
-              }}
-              className="project-bg p-6 rounded-lg shadow-md border cursor-pointer group relative overflow-hidden"
+            <Tilt
+              glareEnable={true}
+              glareMaxOpacity={0.3}
+              glareColor="#AAF0D1"
+              glarePosition="all"
+              tiltMaxAngleX={10}
+              tiltMaxAngleY={10}
+              scale={1.02}
             >
-              {/* Skill Icon & Name */}
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm">
-                  {getSkillIcon(skill.name)}
+              <motion.div
+                key={skill.id}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)",
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.05, // Slightly faster stagger
+                }}
+                className="p-6 rounded-lg shadow-md border cursor-pointer group relative overflow-hidden glassmorphism"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-surface rounded-lg shadow-lg">
+                    {getSkillIcon(skill.name)}
+                  </div>
+                  <h3 className="text-lg font-semibold transition-colors title-text-primary">
+                    {skill.name}
+                  </h3>
                 </div>
-                <h3
-                  className={`text-lg font-semibold home-title transition-colors ${
-                    isDark
-                      ? "group-hover:text-lime-400"
-                      : "group-hover:text-amber-600"
-                  }`}
-                >
-                  {skill.name}
-                </h3>
-              </div>
 
-              {/* Level & Progress Bar */}
-              <div className="mb-3">
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium home-text">
-                    {skill.level}
+                <div className="mb-3">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-sm font-medium home-text">
+                      {skill.level}
+                    </span>
+                    <span className="text-sm home-text opacity-75">
+                      {getProgressPercentage(skill.level)}%
+                    </span>
+                  </div>
+                  <div className="w-full rounded-full h-2 bg-surface">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{
+                        width: `${getProgressPercentage(skill.level)}%`,
+                      }}
+                      transition={{ duration: 1, delay: index * 0.1 }}
+                      className="h-2 rounded-full bg-secondary"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex justify-end">
+                  <span className="px-2 py-1 text-xs font-medium rounded-full bg-surface text-secondary">
+                    {getSkillCategory(skill.name)}
                   </span>
-                  <span className="text-sm home-text opacity-75">
-                    {getProgressPercentage(skill.level)}%
-                  </span>
                 </div>
 
-                {/* Progress Bar */}
-                <div
-                  className={`w-full rounded-full h-2 ${
-                    isDark ? "bg-lime-900" : "bg-amber-200"
-                  }`}
-                >
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{
-                      width: `${getProgressPercentage(skill.level)}%`,
-                    }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                    className={`h-2 rounded-full ${
-                      isDark ? "bg-lime-500" : "bg-amber-500"
-                    }`}
-                  />
-                </div>
-              </div>
-
-              {/* Category Badge */}
-              <div className="flex justify-end">
-                <span
-                  className={`px-2 py-1 text-xs font-medium rounded-full ${
-                    isDark
-                      ? "bg-lime-800 text-lime-200"
-                      : "bg-amber-100 text-amber-700"
-                  }`}
-                >
-                  {getSkillCategory(skill.name)}
-                </span>
-              </div>
-
-              {/* Hover Effect Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-lime-500/10 dark:from-lime-500/10 dark:to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
-            </motion.div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-light/10 to-secondary-light/10 dark:from-primary-dark/10 dark:to-secondary-dark/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg" />
+              </motion.div>
+            </Tilt>
           ))}
         </motion.div>
 
-        {/* Empty State */}
-        {filteredSkills.length === 0 && (
+        {filteredSkills.length === 0 && skills.length > 0 && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
