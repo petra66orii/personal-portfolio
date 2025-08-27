@@ -74,10 +74,11 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [BASE_DIR / "frontend/dist"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -156,6 +157,9 @@ if os.getenv("RENDER", "") == "true":
 else:
     # Local development
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'frontend/dist'),
+]
     # For local development, no additional staticfiles dirs needed
 
 # WhiteNoise configuration for serving static files
