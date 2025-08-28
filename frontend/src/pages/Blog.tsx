@@ -110,7 +110,7 @@ const Blog = () => {
       <SEO
         title="Tech Blog - Web Development Insights"
         description="Read the latest insights, tutorials, and experiences from a full-stack developer. Covering React, Django, TypeScript, and modern web development practices with practical examples."
-        keywords="tech blog, web development blog, React tutorials, Django guides, TypeScript tips, full stack development, programming blog"
+        keywords="React tutorials, Django best practices, full stack development blog Ireland, web development insights, TypeScript React, modern web development"
         type="website"
       />
       <main className="min-h-screen p-6">

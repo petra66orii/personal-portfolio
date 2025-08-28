@@ -56,7 +56,7 @@ const Home = () => {
       <SEO
         title="Miss Bott - Full Stack Developer Portfolio"
         description="Full-stack developer specializing in React, TypeScript, Django, and PostgreSQL. Building modern web applications with clean code and user-focused design. Recent Code Institute graduate with Merit distinction."
-        keywords="full stack developer, React developer, Django developer, TypeScript, portfolio, web development, Python, JavaScript, Code Institute, Merit graduate"
+        keywords="full stack developer Ireland, React developer Dublin, freelance Django developer, hire full stack developer Ireland, React and Django portfolio, TypeScript developer Ireland, web developer Ireland, Miss Bott portfolio"
         type="website"
         image="/website-background.png"
       />
