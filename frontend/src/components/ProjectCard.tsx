@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
 
@@ -13,22 +14,29 @@ type Project = {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
+  // --- 1. ADD STATE TO MANAGE EXPANSION ---
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  // Define the character limit for the description
+  const charLimit = 150;
+  const isLongDescription = project.description.length > charLimit;
+
+  // Function to toggle the expanded state
+  const toggleIsExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   // Improved image URL handler
   const getImageUrl = (imageUrl?: string) => {
-    // No image provided -> prefer default bundled with the frontend (served from /assets/)
     if (!imageUrl) return "/assets/default-project.png";
-
-    // If it's a full URL or absolute path, return as-is
     if (imageUrl.startsWith("http") || imageUrl.startsWith("/"))
       return imageUrl;
-
-    // Otherwise assume it's a filename stored in MEDIA_ROOT
     return `/media/${imageUrl}`;
   };
 
   return (
     <motion.div
-      className="project-bg backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border"
+      className="project-bg backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border flex flex-col" // Added flex flex-col
       whileHover={{ y: -5, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -37,22 +45,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
         alt={project.title}
         className="w-full h-48 object-cover"
         onError={(e) => {
-          // Prevent an endless retry loop: if the image is already the fallback,
-          // disable further onError handling and stop.
           const img = e.currentTarget as HTMLImageElement;
-          const fallbackAssets = "/assets/default-project.png";
-          const fallbackMedia = "/media/default-project.png";
-          if (
-            img.src &&
-            (img.src.endsWith(fallbackAssets) ||
-              img.src.endsWith(fallbackMedia))
-          ) {
-            img.onerror = null;
-            return;
-          }
-          img.onerror = null; // clear handler so setting src won't re-trigger this
-          // Try the asset-bundled default first (should exist when collectstatic included frontend assets)
-          img.src = fallbackAssets;
+          img.onerror = null;
+          img.src = "/assets/default-project.png";
         }}
       />
       <Tilt
@@ -63,18 +58,40 @@ const ProjectCard = ({ project }: { project: Project }) => {
         tiltMaxAngleX={10}
         tiltMaxAngleY={10}
         scale={1.02}
+        className="flex flex-col flex-grow" // Added flex properties
       >
-        <div className="p-4">
+        <div className="p-4 flex flex-col flex-grow">
+          {" "}
+          {/* Added flex properties */}
           <h2 className="text-xl font-semibold project-title mb-2">
             {project.title}
           </h2>
-          <p className="project-text mb-4">
+          <p className="project-text text-sm mb-4">
             {Array.isArray(project.tech_stack)
               ? project.tech_stack.join(", ")
               : project.tech_stack}
           </p>
-          <p className="project-text mb-1 font-bold">{project.description}</p>
-          <div className="flex gap-4">
+          {/* --- 2. CONDITIONALLY RENDER DESCRIPTION --- */}
+          <div className="project-text mb-4 flex-grow">
+            {" "}
+            {/* Added flex-grow */}
+            <p>
+              {isLongDescription && !isExpanded
+                ? `${project.description.substring(0, charLimit)}...`
+                : project.description}
+            </p>
+            {isLongDescription && (
+              <button
+                onClick={toggleIsExpanded}
+                className="font-bold text-primary-light dark:text-primary-dark hover:underline mt-2"
+              >
+                {isExpanded ? "Read Less" : "Read More"}
+              </button>
+            )}
+          </div>
+          <div className="flex gap-4 mt-auto">
+            {" "}
+            {/* Added mt-auto */}
             {project.live_link && (
               <a
                 href={project.live_link}
