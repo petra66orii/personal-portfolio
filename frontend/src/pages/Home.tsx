@@ -92,7 +92,12 @@ const Home = () => {
 
           {/* Services Preview Section */}
           <ScrollAnimator>
-            <section className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl">
+            <section
+              className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl"
+              style={{
+                transform: `translateY(-${scrollY * 0.1}px)`,
+              }}
+            >
               <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl text-primary font-bold mb-4 home-title">
                   Professional Services
@@ -105,12 +110,7 @@ const Home = () => {
               </div>
 
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
-                <div
-                  className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-                  style={{
-                    transform: `translateY(-${scrollY * 0.1}px)`,
-                  }}
-                >
+                <div className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mb-4">
                     <span className="text-white text-xl">💻</span>
                   </div>
@@ -120,12 +120,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div
-                  className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-                  style={{
-                    transform: `translateY(-${scrollY * 0.1}px)`,
-                  }}
-                >
+                <div className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-lg flex items-center justify-center mb-4">
                     <span className="text-white text-xl">🔧</span>
                   </div>
@@ -135,12 +130,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div
-                  className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-                  style={{
-                    transform: `translateY(-${scrollY * 0.1}px)`,
-                  }}
-                >
+                <div className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mb-4">
                     <span className="text-white text-xl">⚡</span>
                   </div>
@@ -150,12 +140,7 @@ const Home = () => {
                   </p>
                 </div>
 
-                <div
-                  className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-                  style={{
-                    transform: `translateY(-${scrollY * 0.1}px)`,
-                  }}
-                >
+                <div className="glassmorphism p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
                   <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center mb-4">
                     <span className="text-white text-xl">💡</span>
                   </div>
