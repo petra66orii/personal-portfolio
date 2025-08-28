@@ -21,7 +21,9 @@ const SEO = ({
 }: SEOProps) => {
   const fullTitle = title.includes("Miss Bott")
     ? title
-    : `${title} | Miss Bott - Portfolio`;
+    : `${title} | Miss Bott - Fullstack Developer Ireland`;
+
+  const fullUrl = `https://missbott.online${window.location.pathname}`;
 
   return (
     <Helmet>
@@ -31,14 +33,12 @@ const SEO = ({
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
       <meta name="robots" content="index, follow" />
-      <meta name="language" content="English" />
-      <meta name="revisit-after" content="7 days" />
 
       {/* Open Graph Meta Tags */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={fullUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Miss Bott Portfolio" />
 
@@ -47,13 +47,11 @@ const SEO = ({
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta name="twitter:creator" content="@your_twitter" />
+      <meta name="twitter:creator" content="@missbott_dev" />
 
-      {/* Additional SEO Meta Tags */}
-      <link rel="canonical" href={url} />
-      <meta name="theme-color" content="#8B5A2B" />
+      <link rel="canonical" href={fullUrl} />
 
-      {/* Structured Data - JSON-LD */}
+      {/* --- UPDATED: Structured Data with Location and Education --- */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -65,16 +63,31 @@ const SEO = ({
           sameAs: [
             "https://github.com/petra66orii",
             "https://www.linkedin.com/in/petra-bot-a552601a4/",
+            "https://www.instagram.com/missbott_dev/",
           ],
+          // NEW: Adds location for local SEO
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Galway",
+            addressCountry: "IE",
+          },
+          // NEW: Formalizes your education
+          alumniOf: {
+            "@type": "CollegeOrUniversity",
+            name: "Code Institute",
+          },
           knowsAbout: [
-            "Web Development",
-            "React",
+            "React.js",
             "TypeScript",
             "Python",
-            "Django",
-            "Full Stack Development",
+            "Django REST framework",
+            "PostgreSQL",
+            "Full Stack Web Development",
+            "API Development",
+            "Tailwind CSS",
           ],
-          description: description,
+          description:
+            "Full-stack developer based in Galway, Ireland, specializing in building modern web applications with React and Django.",
         })}
       </script>
     </Helmet>
