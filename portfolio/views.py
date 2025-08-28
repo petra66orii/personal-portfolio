@@ -1,14 +1,15 @@
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry
+from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
 from .serializers import (
     ProjectSerializer,
     SkillSerializer,
     ContactMessageSerializer,
     BlogPostSerializer,
     ServiceSerializer,
-    ServiceInquirySerializer
+    ServiceInquirySerializer,
+    CredentialSerializer,
 )
 
 
@@ -140,3 +141,7 @@ class ServiceInquiryCreateView(generics.CreateAPIView):
                 print(f"Error sending service inquiry email: {e}")
         
         return response
+
+class CredentialViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Credential.objects.all()
+    serializer_class = CredentialSerializer
