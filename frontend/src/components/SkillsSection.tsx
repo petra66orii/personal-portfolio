@@ -30,6 +30,7 @@ import {
   SiMacos,
   SiJquery,
   SiGithub,
+  SiRender,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaWindows, FaCode } from "react-icons/fa";
@@ -130,6 +131,7 @@ const SkillsSection = () => {
       macOS: <SiMacos {...iconProps} className="text-gray-600" />,
       jQuery: <SiJquery {...iconProps} className="text-blue-600" />,
       GitHub: <SiGithub {...iconProps} className="text-primary" />,
+      Render: <SiRender {...iconProps} className="text-primary" />,
     };
 
     return (
@@ -168,6 +170,7 @@ const SkillsSection = () => {
       AWS: "Cloud",
       Heroku: "Cloud",
       Vercel: "Cloud",
+      Render: "Cloud",
     };
     return categoryMap[skillName] || "Other";
   };
@@ -229,7 +232,7 @@ const SkillsSection = () => {
 
         <motion.div
           layout
-          className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          className="grid gap-6 grid-cols-1 md:grid-cols-3 lg:grid-cols-4"
         >
           {filteredSkills.map((skill, index) => (
             <Tilt

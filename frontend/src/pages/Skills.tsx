@@ -7,7 +7,7 @@ const Skills = () => {
       <SEO
         title="Technical Skills & Expertise"
         description="Explore my technical skills in full-stack development including React, TypeScript, Django, Python, PostgreSQL, and modern web technologies. Proficiency levels from beginner to expert."
-        keywords="React skills, TypeScript expertise, Django developer, Python programming, PostgreSQL database, full stack skills, web development expertise"
+        keywords="React skills, TypeScript expertise, Django REST framework, Python web development, PostgreSQL Ireland, full stack developer skills, web development technologies, software engineering"
         type="website"
       />
       <SkillsSection />
