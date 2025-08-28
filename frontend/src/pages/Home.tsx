@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import SEO from "../components/SEO";
 import ScrollAnimator from "../components/ScrollAnimator";
-import { useScrollPosition } from "../hooks/useScrollPosition";
+import Credentials from "../components/Credentials";
 
 type Project = {
   id: number;
@@ -17,7 +17,6 @@ type Project = {
 
 const Home = () => {
   const [projects, setProjects] = useState<Project[]>([]);
-  const scrollY = useScrollPosition();
 
   // This useEffect hook is updated with the robust async/await logic
   useEffect(() => {
@@ -92,12 +91,7 @@ const Home = () => {
 
           {/* Services Preview Section */}
           <ScrollAnimator>
-            <section
-              className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl"
-              style={{
-                transform: `translateY(-${scrollY * 0.1}px)`,
-              }}
-            >
+            <section className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl">
               <div className="text-center mb-12">
                 <h2 className="text-3xl sm:text-4xl text-primary font-bold mb-4 home-title">
                   Professional Services
@@ -162,6 +156,8 @@ const Home = () => {
               </div>
             </section>
           </ScrollAnimator>
+
+          <Credentials />
 
           {/* Featured Projects Section */}
           <ScrollAnimator>
