@@ -83,26 +83,6 @@ const Home = () => {
                 a difference in people's lives. I'm always looking for new
                 challenges and opportunities to learn and grow as a developer.
               </p>
-              <nav className="flex gap-4 mt-6" aria-label="Resume actions">
-                <a
-                  href="/CV.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="px-4 py-2 border-2 rounded border-secondary text-secondary font-bold hover:opacity-90 transition"
-                  aria-label="View Miss Bott's CV in a new tab"
-                >
-                  📄 View CV
-                </a>
-
-                <a
-                  href="/CV.pdf"
-                  download
-                  className="px-4 py-2 rounded border-2 border-secondary text-secondary font-bold hover:opacity-90 transition"
-                  aria-label="Download Miss Bott's CV as PDF"
-                >
-                  Download CV
-                </a>
-              </nav>
               <p className="text-lg text-secondary max-w-[790px] my-3">
                 🛠️ Currently working on: QR generator website, learning more
                 about AI integrations, and exploring new technologies.
