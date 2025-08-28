@@ -93,6 +93,7 @@ class ServiceInquiry(models.Model):
     
     class Meta:
         ordering = ['-created_at']
+        verbose_name_plural = "Service Inquiries"
     
     def __str__(self):
         service_name = self.service.name if self.service else "General Inquiry"
@@ -145,3 +146,16 @@ class BlogPost(models.Model):
     
     def __str__(self):
         return self.title
+
+
+class Credential(models.Model):
+    name = models.CharField(max_length=100)
+    issuing_organization = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='', blank=True, null=True)
+    issue_date = models.DateField()
+    expiration_date = models.DateField(blank=True, null=True)
+    credential_id = models.CharField(max_length=100, blank=True)
+    credential_url = models.URLField(blank=True)
+
+    def __str__(self):
+        return self.name
