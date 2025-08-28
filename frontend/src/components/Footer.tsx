@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGithub, SiLinkedin, SiInstagram, SiX } from "react-icons/si";
 
 const Footer = () => {
   const [isDark, setIsDark] = useState(false);
@@ -47,6 +47,22 @@ const Footer = () => {
               rel="noopener noreferrer"
             >
               <SiLinkedin className="w-4 h-4" />
+            </a>
+            <a
+              className="text-primary transition-colors duration-200"
+              href="https://www.instagram.com/missbott_dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiInstagram className="w-4 h-4" />
+            </a>
+            <a
+              className="text-primary transition-colors duration-200"
+              href="https://twitter.com/missbott_dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiX className="w-4 h-4" />
             </a>
           </div>
         </div>
