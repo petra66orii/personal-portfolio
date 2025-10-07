@@ -1,13 +1,9 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import Project, Skill, Service, BlogPost
+from .models import Project, Service, BlogPost
 
 @register(Project)
 class ProjectTranslationOptions(TranslationOptions):
     fields = ('description', 'tech_stack')
-
-@register(Skill)
-class SkillTranslationOptions(TranslationOptions):
-    fields = ('level', )
 
 @register(Service)
 class ServiceTranslationOptions(TranslationOptions):

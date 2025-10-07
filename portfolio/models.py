@@ -1,14 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 
-LEVEL = [
-    ('Beginner', 'Beginner'),
-    ('Intermediate', 'Intermediate'),
-    ('Advanced', 'Advanced'),
-    ('Expert', 'Expert'),
-]
-
-
 # Create your models here.
 class Project(models.Model):
     title = models.CharField(max_length=100)
@@ -98,14 +90,6 @@ class ServiceInquiry(models.Model):
     def __str__(self):
         service_name = self.service.name if self.service else "General Inquiry"
         return f"{self.name} - {service_name}"
-
-
-class Skill(models.Model):
-    name = models.CharField(max_length=50)
-    level = models.CharField(max_length=50, choices=LEVEL, default='Beginner')
-
-    def __str__(self):
-        return self.name
 
 
 class ContactMessage(models.Model):

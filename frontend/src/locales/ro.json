@@ -53,27 +53,6 @@
     "error_fallback": "Nu s-au putut încărca acreditările."
   },
 
-
-  "skills": {
-    "title": "Competențe & Tehnologii",
-    "no_skills_in_category": "Nicio competență găsită în această categorie.",
-    "categories": {
-      "all": "Toate",
-      "frontend": "Frontend",
-      "backend": "Backend",
-      "database": "Baze de Date",
-      "tools": "Unelte",
-      "cloud": "Cloud",
-      "other": "Altele"
-    },
-    "levels": {
-      "beginner": "Începător",
-      "intermediate": "Intermediar",
-      "advanced": "Avansat",
-      "expert": "Expert"
-    }
-  },
-
   "services2": {
     "header_professional": "Servicii Profesionale",
     "header_web_services": "Web",

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
+from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
 from django.conf import settings
 import os
 
@@ -51,12 +51,6 @@ class ProjectSerializer(serializers.ModelSerializer):
             return path
         except Exception:
             return None
-
-
-class SkillSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Skill
-        fields = '__all__'
 
 
 class ContactMessageSerializer(serializers.ModelSerializer):

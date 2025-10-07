@@ -50,13 +50,9 @@ python manage.py migrate
 # Load data only if LOAD_FIXTURES is set to true
 if [ "$LOAD_FIXTURES" = "true" ]; then
     python manage.py loaddata projects.json
-    python manage.py loaddata skills.json
     echo "Fixtures loaded"
 else
     echo "Skipping fixtures (set LOAD_FIXTURES=true to load)"
 fi
 
-# Create superuser if not exists (using custom command)
-# This is now handled by Render's one-off jobs, so we can remove it from the build script.
-# python manage.py createsu
 

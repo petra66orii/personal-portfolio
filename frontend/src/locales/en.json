@@ -52,26 +52,6 @@
     "view_cert": "View Certificate",
     "error_fallback": "Failed to load credentials."
   },
-  
-  "skills": {
-  "title": "Skills & Technologies",
-  "no_skills_in_category": "No skills found in this category.",
-  "categories": {
-    "all": "All",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Database",
-    "tools": "Tools",
-    "cloud": "Cloud",
-    "other": "Other"
-  },
-  "levels": {
-    "beginner": "Beginner",
-    "intermediate": "Intermediate",
-    "advanced": "Advanced",
-    "expert": "Expert"
-  }
-},
 
 "services2": {
   "header_professional": "Professional",

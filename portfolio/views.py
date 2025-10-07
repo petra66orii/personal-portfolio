@@ -2,10 +2,9 @@ import threading
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Project, Skill, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
+from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
 from .serializers import (
     ProjectSerializer,
-    SkillSerializer,
     ContactMessageSerializer,
     BlogPostSerializer,
     ServiceSerializer,
@@ -17,11 +16,6 @@ from .serializers import (
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
-
-
-class SkillViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Skill.objects.all()
-    serializer_class = SkillSerializer
 
 
 class ContactMessageCreateView(generics.CreateAPIView):

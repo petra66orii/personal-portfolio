@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Skills from "./pages/Skills";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Services from "./pages/Services";
@@ -48,7 +47,6 @@ function App() {
       <main className="min-h-screen relative z-10">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/skills" element={<Skills />} />
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
