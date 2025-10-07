@@ -86,7 +86,10 @@ const ServiceDetailPage = () => {
           <p className="text-secondary">
             {error || t("service_detail.error_not_exist")}
           </p>
-          <Link to="/services" className="button-gradient mt-6 inline-block">
+          <Link
+            to="/services"
+            className="inline-flex items-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+          >
             {t("service_detail.back_button")}
           </Link>
         </div>
@@ -151,7 +154,10 @@ const ServiceDetailPage = () => {
                   </p>
                   <p className="text-secondary">{service.delivery_time}</p>
                 </div>
-                <Link to="/quote" className="button-gradient mt-4 md:mt-0">
+                <Link
+                  to="/quote"
+                  className="inline-flex items-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                >
                   {t("service_detail.get_quote_button")}{" "}
                   <ArrowRight className="inline ml-2" />
                 </Link>
