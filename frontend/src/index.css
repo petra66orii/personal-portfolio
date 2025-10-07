@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/effect-coverflow';
+@import 'swiper/css/pagination';
 
 /* Custom colors as CSS variables */
 :root {
@@ -38,6 +41,14 @@
 
 .bg-surface { background-color: var(--surface-light); }
 .dark .bg-surface { background-color: var(--surface-dark); }
+
+.swiper-pagination-bullet-active {
+  background-color: var(--primary-light) !important;
+}
+
+.dark .swiper-pagination-bullet-active {
+  background-color: var(--primary-dark) !important;
+}
 
 /* Default (light mode) glassmorphism style */
 .glassmorphism {
