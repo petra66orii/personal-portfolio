@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import NavItem from "./NavItem";
 import ThemeToggleButton from "./ThemeToggleButton";
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
   isDark: boolean;
@@ -11,6 +13,7 @@ interface NavbarProps {
 
 const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   return (
     <nav className="glassmorphism backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-secondary/20">
@@ -24,25 +27,36 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
 
           {/* Desktop links */}
           <div className="hidden md:flex space-x-6 items-center text-navbar">
-            <NavItem to="/" label="About Me" onClick={() => setIsOpen(false)} />
+            <NavItem
+              to="/"
+              label={t("navbar.about")}
+              onClick={() => setIsOpen(false)}
+            />
             <NavItem
               to="/skills"
-              label="Skills"
+              label={t("navbar.skills")}
               onClick={() => setIsOpen(false)}
             />
             <NavItem
               to="/services"
-              label="Services"
+              label={t("navbar.services")}
               onClick={() => setIsOpen(false)}
             />
-            <NavItem to="/blog" label="Blog" onClick={() => setIsOpen(false)} />
+            <NavItem
+              to="/blog"
+              label={t("navbar.blog")}
+              onClick={() => setIsOpen(false)}
+            />
             <NavItem
               to="/contact"
-              label="Contact"
+              label={t("navbar.contact")}
               onClick={() => setIsOpen(false)}
             />
             <div className="ml-4">
               <ThemeToggleButton isDark={isDark} setIsDark={setIsDark} />
+            </div>
+            <div className="ml-4">
+              <LanguageSwitcher />
             </div>
           </div>
 

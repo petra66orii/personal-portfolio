@@ -1,66 +1,42 @@
-import { useEffect, useState } from "react";
-import { SiGithub, SiLinkedin, SiInstagram, SiX } from "react-icons/si";
+import { useTranslation } from "react-i18next";
+import { SiLinkedin, SiInstagram, SiX } from "react-icons/si";
 
 const Footer = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    const html = document.documentElement;
-    const stored = localStorage.getItem("theme");
-    if (stored === "dark") {
-      html.classList.add("dark");
-      setIsDark(true);
-    }
-  }, []);
-
-  useEffect(() => {
-    const html = document.documentElement;
-    if (isDark) {
-      html.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      html.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
-  }, [isDark]);
+  const { t } = useTranslation();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="text-primary backdrop-blur-sm border-t border-golden-light/20 dark:border-leaf-dark/20">
+    <footer className="text-primary backdrop-blur-sm border-t border-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="py-3 flex items-center justify-between">
-          <p className="text-xs text-stone-50-dark dark:text-stone-100-light">
-            &copy; {new Date().getFullYear()} Miss Bott. All rights reserved.
+          <p className="text-xs text-secondary">
+            {t("footer.copyright", { year: currentYear })}
           </p>
           <div className="flex items-center space-x-3">
             <a
-              className="text-primary transition-colors duration-200"
-              href="https://github.com/petra66orii"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <SiGithub className="w-4 h-4" />
-            </a>
-            <a
-              className="text-primary transition-colors duration-200"
+              className="text-primary transition-colors duration-200 hover:text-secondary"
               href="https://www.linkedin.com/in/petra-bot-a552601a4/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
             >
               <SiLinkedin className="w-4 h-4" />
             </a>
             <a
-              className="text-primary transition-colors duration-200"
+              className="text-primary transition-colors duration-200 hover:text-secondary"
               href="https://www.instagram.com/missbott_dev/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Instagram Profile"
             >
               <SiInstagram className="w-4 h-4" />
             </a>
             <a
-              className="text-primary transition-colors duration-200"
+              className="text-primary transition-colors duration-200 hover:text-secondary"
               href="https://twitter.com/missbott_dev"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="X (formerly Twitter) Profile"
             >
               <SiX className="w-4 h-4" />
             </a>

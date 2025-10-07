@@ -9,9 +9,9 @@ import {
   FaExclamationTriangle,
   FaConciergeBell,
 } from "react-icons/fa";
+import { useTranslation } from "react-i18next"; // 1. Import hook
 
-// --- ADD THE CSRF HELPER FUNCTION ---
-// This function reads the CSRF token from the browser's cookies.
+// --- CSRF HELPER FUNCTION ---
 function getCookie(name: string): string | null {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -47,13 +47,14 @@ interface Service {
 }
 
 const ContactForm = () => {
+  const { t, i18n } = useTranslation(); // 2. Get translation function and i18n instance
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     message: "",
     service: "",
   });
-  const [services, setServices] = useState<Service[]>([]); // State for services
+  const [services, setServices] = useState<Service[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -70,11 +71,15 @@ const ContactForm = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Effect to fetch services for the dropdown
+  // 3. Update fetch to be language-aware
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const res = await fetch("/api/services/");
+        const res = await fetch("/api/services/", {
+          headers: {
+            "Accept-Language": i18n.language,
+          },
+        });
         if (res.ok) {
           const data = await res.json();
           setServices(data);
@@ -84,27 +89,28 @@ const ContactForm = () => {
       }
     };
     fetchServices();
-  }, []);
+  }, [i18n.language]); // Re-fetch when language changes
 
+  // 4. Translate validation messages
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+      newErrors.name = t("contact.validation.name_required");
     } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters";
+      newErrors.name = t("contact.validation.name_min");
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
+      newErrors.email = t("contact.validation.email_required");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Please enter a valid email address";
+      newErrors.email = t("contact.validation.email_invalid");
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "Message is required";
+      newErrors.message = t("contact.validation.message_required");
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "Message must be at least 10 characters";
+      newErrors.message = t("contact.validation.message_min");
     }
 
     setErrors(newErrors);
@@ -124,7 +130,6 @@ const ContactForm = () => {
     }
   };
 
-  // --- UPDATE THE SUBMIT HANDLER ---
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
@@ -134,13 +139,13 @@ const ContactForm = () => {
 
     try {
       const baseUrl = import.meta.env.VITE_API_BASE_URL || "/api";
-      const csrfToken = getCookie("csrftoken"); // Get the token
+      const csrfToken = getCookie("csrftoken");
 
       const res = await fetch(`${baseUrl}/contact/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-CSRFToken": csrfToken || "", // Add token to headers
+          "X-CSRFToken": csrfToken || "",
         },
         body: JSON.stringify(formData),
       });
@@ -151,14 +156,13 @@ const ContactForm = () => {
       } else {
         const errorData = await res.json().catch(() => ({}));
         setErrors({
-          general:
-            errorData.detail || "Failed to send message. Please try again.",
+          general: errorData.detail || t("contact.error.general_submit"),
         });
       }
     } catch (error) {
       console.error("Contact form error:", error);
       setErrors({
-        general: "Network error. Please check your connection and try again.",
+        general: t("contact.error.network"),
       });
     } finally {
       setLoading(false);
@@ -185,7 +189,7 @@ const ContactForm = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Get In Touch
+          {t("contact.title")}
         </motion.h2>
 
         {submitted ? (
@@ -199,11 +203,10 @@ const ContactForm = () => {
               <FaCheck className="text-3xl text-green-500" />
             </div>
             <h3 className="text-2xl font-semibold home-subtitle mb-4">
-              Message Sent Successfully!
+              {t("contact.success.title")}
             </h3>
             <p className="home-text text-lg mb-6">
-              Thank you for reaching out. I'll get back to you as soon as
-              possible.
+              {t("contact.success.message")}
             </p>
             <motion.button
               onClick={handleSendAnother}
@@ -211,7 +214,7 @@ const ContactForm = () => {
               whileTap={{ scale: 0.95 }}
               className="px-6 py-3 button-simple text-secondary rounded-lg font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              Send Another Message
+              {t("contact.success.button_send_another")}
             </motion.button>
           </motion.div>
         ) : (
@@ -235,13 +238,13 @@ const ContactForm = () => {
             >
               <label className="block text-sm font-medium">
                 <FaUser className="inline mr-2" />
-                Your Name
+                {t("contact.form.label_name")}
               </label>
               <input
                 type="text"
                 name="name"
                 value={formData.name}
-                placeholder="Enter your full name"
+                placeholder={t("contact.form.placeholder_name")}
                 onChange={handleChange}
                 className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
                   isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
@@ -272,13 +275,13 @@ const ContactForm = () => {
             >
               <label className="block text-sm font-medium home-subtitle">
                 <FaEnvelope className="inline mr-2" />
-                Your Email
+                {t("contact.form.label_email")}
               </label>
               <input
                 type="email"
                 name="email"
                 value={formData.email}
-                placeholder="Enter your email address"
+                placeholder={t("contact.form.placeholder_email")}
                 onChange={handleChange}
                 className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 ${
                   isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
@@ -309,7 +312,7 @@ const ContactForm = () => {
             >
               <label className="block text-sm font-medium home-subtitle">
                 <FaConciergeBell className="inline mr-2" />
-                Service of Interest
+                {t("contact.form.label_service")}
               </label>
               <select
                 name="service"
@@ -320,14 +323,14 @@ const ContactForm = () => {
                 } border-leaf-light/30 dark:border-earth/30 focus:ring-leaf dark:focus:ring-leaf-dark`}
               >
                 <option value="" disabled>
-                  Select a service...
+                  {t("contact.form.placeholder_service")}
                 </option>
                 {services.map((service) => (
                   <option key={service.id} value={service.name}>
                     {service.name}
                   </option>
                 ))}
-                <option value="Other">Other / General Inquiry</option>
+                <option value="Other">{t("contact.form.service_other")}</option>
               </select>
             </motion.div>
 
@@ -339,12 +342,12 @@ const ContactForm = () => {
             >
               <label className="block text-sm font-medium home-subtitle">
                 <FaComment className="inline mr-2" />
-                Your Message
+                {t("contact.form.label_message")}
               </label>
               <textarea
                 name="message"
                 value={formData.message}
-                placeholder="Tell me about your project or question you might have"
+                placeholder={t("contact.form.placeholder_message")}
                 onChange={handleChange}
                 className={`w-full p-4 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent transition-all duration-200 resize-vertical ${
                   isDark ? "placeholder-gray-300" : "placeholder-emerald-950"
@@ -387,12 +390,12 @@ const ContactForm = () => {
               {loading ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                  Sending...
+                  {t("contact.form.button_sending")}
                 </>
               ) : (
                 <>
                   <FaPaperPlane />
-                  Send Message
+                  {t("contact.form.button_send")}
                 </>
               )}
             </motion.button>

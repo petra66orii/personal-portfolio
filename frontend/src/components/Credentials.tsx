@@ -1,24 +1,25 @@
-// src/components/CredentialsSection.tsx
+// src/components/Credentials.tsx
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Award, ExternalLink, AlertTriangle } from "lucide-react";
 import ScrollAnimator from "./ScrollAnimator";
+import { useTranslation } from "react-i18next";
 
-// 1. UPDATED: Interface now matches your Django model's field names
 interface Credential {
   id: number;
-  name: string; // Was 'title'
+  name: string;
   issuing_organization: string;
-  issue_date: string; // Was 'date_issued'
+  issue_date: string;
   credential_url: string;
-  image: string; // Assumes you have an 'image' field in your model/serializer
+  image: string;
 }
 
 const Credentials: React.FC = () => {
   const [credentials, setCredentials] = useState<Credential[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchCredentials = async () => {
@@ -40,7 +41,7 @@ const Credentials: React.FC = () => {
       } catch (err: unknown) {
         console.error("Error fetching credentials:", err);
         const message =
-          err instanceof Error ? err.message : "Failed to load credentials.";
+          err instanceof Error ? err.message : t("credentials.error_fallback"); // Use translation for error
         setError(message);
       } finally {
         setLoading(false);
@@ -48,17 +49,13 @@ const Credentials: React.FC = () => {
     };
 
     fetchCredentials();
-  }, []);
+  }, [t]); // Add t to dependency array as it's used in the effect
 
-  // --- THE FIX: This helper function is now more robust ---
-  // It checks if the image URL is already a full path before adding a prefix.
   const getImageUrl = (imageUrl?: string) => {
-    if (!imageUrl) return "/assets/default-project.png"; // Fallback if no image
-    // If it's already a full URL (from backend) or an absolute path, use it directly
+    if (!imageUrl) return "/assets/default-project.png";
     if (imageUrl.startsWith("http") || imageUrl.startsWith("/")) {
       return imageUrl;
     }
-    // Otherwise, assume it's just a filename and prepend the media path
     return `/media/${imageUrl}`;
   };
 
@@ -85,7 +82,7 @@ const Credentials: React.FC = () => {
     <ScrollAnimator>
       <section className="mb-16">
         <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-primary text-center">
-          Credentials & Certifications
+          {t("credentials.title")}
         </h2>
         <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {credentials.map((cred, index) => (
@@ -107,7 +104,7 @@ const Credentials: React.FC = () => {
                   onError={(e) => {
                     const img = e.currentTarget as HTMLImageElement;
                     img.onerror = null;
-                    img.src = "/assets/default-project.png"; // Fallback image
+                    img.src = "/assets/default-project.png";
                   }}
                 />
                 <div className="p-6 flex flex-col flex-grow">
@@ -120,10 +117,11 @@ const Credentials: React.FC = () => {
                   </h3>
                   <div className="mt-auto text-xs text-secondary flex justify-between items-center">
                     <span>
-                      Issued: {new Date(cred.issue_date).toLocaleDateString()}
+                      {t("credentials.issued")}:{" "}
+                      {new Date(cred.issue_date).toLocaleDateString()}
                     </span>
                     <span className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                      View Certificate <ExternalLink size={12} />
+                      {t("credentials.view_cert")} <ExternalLink size={12} />
                     </span>
                   </div>
                 </div>

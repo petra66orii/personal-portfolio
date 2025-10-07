@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import { useTranslation } from "react-i18next"; // 1. Import the hook
 
 type Project = {
   id: number;
@@ -14,19 +15,16 @@ type Project = {
 };
 
 const ProjectCard = ({ project }: { project: Project }) => {
-  // --- 1. ADD STATE TO MANAGE EXPANSION ---
   const [isExpanded, setIsExpanded] = useState(false);
+  const { t } = useTranslation(); // 2. Get the translation function
 
-  // Define the character limit for the description
   const charLimit = 150;
   const isLongDescription = project.description.length > charLimit;
 
-  // Function to toggle the expanded state
   const toggleIsExpanded = () => {
     setIsExpanded(!isExpanded);
   };
 
-  // Improved image URL handler
   const getImageUrl = (imageUrl?: string) => {
     if (!imageUrl) return "/assets/default-project.png";
     if (imageUrl.startsWith("http") || imageUrl.startsWith("/"))
@@ -36,7 +34,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
 
   return (
     <motion.div
-      className="project-bg backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border flex flex-col" // Added flex flex-col
+      className="project-bg backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border flex flex-col h-full" // Added h-full
       whileHover={{ y: -5, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
@@ -58,11 +56,9 @@ const ProjectCard = ({ project }: { project: Project }) => {
         tiltMaxAngleX={10}
         tiltMaxAngleY={10}
         scale={1.02}
-        className="flex flex-col flex-grow" // Added flex properties
+        className="flex flex-col flex-grow"
       >
         <div className="p-4 flex flex-col flex-grow">
-          {" "}
-          {/* Added flex properties */}
           <h2 className="text-xl font-semibold project-title mb-2">
             {project.title}
           </h2>
@@ -71,10 +67,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
               ? project.tech_stack.join(", ")
               : project.tech_stack}
           </p>
-          {/* --- 2. CONDITIONALLY RENDER DESCRIPTION --- */}
           <div className="project-text mb-4 flex-grow">
-            {" "}
-            {/* Added flex-grow */}
             <p>
               {isLongDescription && !isExpanded
                 ? `${project.description.substring(0, charLimit)}...`
@@ -85,13 +78,12 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 onClick={toggleIsExpanded}
                 className="font-bold text-primary-light dark:text-primary-dark hover:underline mt-2"
               >
-                {isExpanded ? "Read Less" : "Read More"}
+                {/* 3. Replace static text */}
+                {isExpanded ? t("projects.read_less") : t("projects.read_more")}
               </button>
             )}
           </div>
           <div className="flex gap-4 mt-auto">
-            {" "}
-            {/* Added mt-auto */}
             {project.live_link && (
               <a
                 href={project.live_link}
@@ -99,7 +91,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 rel="noopener noreferrer"
                 className="text-lg project-link transition-colors duration-200"
               >
-                Live Link
+                {t("projects.live_link")}
               </a>
             )}
             {project.repo_link && (
@@ -109,7 +101,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
                 rel="noopener noreferrer"
                 className="text-lg project-link transition-colors duration-200"
               >
-                Link to Repository
+                {t("projects.repo_link")}
               </a>
             )}
           </div>

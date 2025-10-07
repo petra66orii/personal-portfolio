@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Code, Wrench, Zap, Users, ArrowRight, Check } from "lucide-react";
 import ScrollAnimator from "../components/ScrollAnimator";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface Service {
   id: number;
@@ -30,37 +31,32 @@ const ServicesSection: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
+  const { t, i18n } = useTranslation();
 
+  // Update fetch to be language-aware
   useEffect(() => {
     const fetchServices = async () => {
+      setLoading(true);
       try {
-        const response = await fetch("/api/services/");
-
-        // Check for HTTP errors (like 404 Not Found)
+        const response = await fetch("/api/services/", {
+          headers: {
+            "Accept-Language": i18n.language,
+          },
+        });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-
-        // Check if the server sent JSON
-        const contentType = response.headers.get("content-type");
-        if (!contentType || !contentType.includes("application/json")) {
-          throw new TypeError(
-            "Server did not send JSON. Check the /api/services/ endpoint in your Django backend."
-          );
-        }
-
         const data = await response.json();
         setServices(data);
       } catch (error) {
         console.error("Error fetching services:", error);
-        setServices([]); // Clear services on error
       } finally {
         setLoading(false);
       }
     };
 
     fetchServices();
-  }, []);
+  }, [i18n.language]); // Re-fetch when language changes
 
   const getIcon = (iconName: string) => {
     const IconComponent = iconMap[iconName as keyof typeof iconMap] || Code;
@@ -82,15 +78,13 @@ const ServicesSection: React.FC = () => {
           {/* Header */}
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-              Professional
+              {t("services2.header_professional")}
               <span className="text-transparent bg-clip-text bg-gradient-to-r logo-gradient ml-3">
-                Web Services
+                {t("services2.header_web_services")}
               </span>
             </h2>
             <p className="text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
-              From custom web development to ongoing maintenance, I deliver
-              modern, high-performance solutions tailored to your business
-              needs.
+              {t("services2.header_description")}
             </p>
           </div>
 
@@ -113,7 +107,7 @@ const ServicesSection: React.FC = () => {
                   {service.featured && (
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
                       <span className="bg-gradient-to-r logo-gradient text-primary px-4 py-1 rounded-full text-sm font-semibold">
-                        Most Popular
+                        {t("services2.most_popular_badge")}
                       </span>
                     </div>
                   )}
@@ -133,7 +127,6 @@ const ServicesSection: React.FC = () => {
                   <h3 className="text-2xl font-bold title-text-primary mb-4 transition-colors">
                     {service.name}
                   </h3>
-
                   <p className="text-secondary mb-6 leading-relaxed">
                     {service.short_description}
                   </p>
@@ -154,7 +147,9 @@ const ServicesSection: React.FC = () => {
                     ))}
                     {service.features_list.length > 3 && (
                       <li className="secondary text-sm font-medium">
-                        +{service.features_list.length - 3} more features
+                        {t("services2.more_features", {
+                          count: service.features_list.length - 3,
+                        })}
                       </li>
                     )}
                   </ul>
@@ -164,7 +159,8 @@ const ServicesSection: React.FC = () => {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <p className="text-2xl font-bold text-primary">
-                          {service.starting_price || "Custom Quote"}
+                          {service.starting_price ||
+                            t("services2.custom_quote")}
                         </p>
                         {service.delivery_time && (
                           <p className="text-sm text-secondary">
@@ -173,7 +169,6 @@ const ServicesSection: React.FC = () => {
                         )}
                       </div>
                     </div>
-
                     <button
                       className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
                         service.featured
@@ -181,7 +176,9 @@ const ServicesSection: React.FC = () => {
                           : "button-simple"
                       }`}
                     >
-                      <span>Get Quote</span>
+                      <Link to={`/services/${service.slug}`}>
+                        {t("services2.get_quote_button")}
+                      </Link>
                       <ArrowRight
                         className={`w-4 h-4 transition-transform ${
                           isHovered ? "translate-x-1" : ""
@@ -199,17 +196,16 @@ const ServicesSection: React.FC = () => {
             <div className="text-center glassmorphism">
               <div className="glassmorphism rounded-2xl p-8 md:p-12">
                 <h3 className="text-3xl font-bold text-primary mb-4">
-                  Ready to Start Your Project?
+                  {t("services2.cta_title")}
                 </h3>
                 <p className="text-secondary mb-8 max-w-2xl mx-auto">
-                  Let's discuss your requirements and create something amazing
-                  together. Get a free consultation and personalized quote.
+                  {t("services2.cta_description")}
                 </p>
                 <Link
-                  to="/contact"
+                  to="/quote"
                   className="bg-gradient-to-r button-gradient text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
-                  Schedule Free Consultation
+                  {t("services2.cta_button")}
                 </Link>
               </div>
             </div>
