@@ -7,6 +7,8 @@ import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import Services from "./pages/Services";
 import Footer from "./components/Footer";
+import ProjectInquiry from "./components/ProjectInquiry";
+import ServiceDetailPage from "./pages/ServiceDetailPage";
 import AnimatedBackground from "./components/AnimatedBackground";
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/quote" element={<ProjectInquiry />} />
+          <Route path="/services/:slug" element={<ServiceDetailPage />} />
         </Routes>
       </main>
       <Footer />
