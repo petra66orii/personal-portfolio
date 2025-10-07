@@ -1,0 +1,199 @@
+{
+  "common": {
+    "and": "și"
+  },
+  "navbar": {
+    "about": "Despre Mine",
+    "skills": "Competențe",
+    "services": "Servicii",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Miss Bott - Full Stack Developer React + Django",
+    "description_p1": "Full stack developer competent în unelte moderne precum",
+    "description_p2": "Am obținut recent o Diplomă în Full Stack Software Development de la Code Institute cu calificativul Merit.",
+    "description_p3": "Îmi place să construiesc proiecte care rezolvă probleme reale și fac o diferență în viața oamenilor. Caut mereu noi provocări și oportunități de a învăța și de a crește ca developer.",
+    "currently_working": "🛠️ Lucrez în prezent la: un website care generează coduri QR, sumarizator conversații AI.",
+    "currently_learning": "🌱 Învaț: modele avansate React, bazele AI/ML și modele 3D în Three.js.",
+    "call_to_action": "Hai să ne conectăm și să construim ceva grozav împreună!"
+  },
+  "services1": {
+    "title": "Servicii Profesionale",
+    "description": "Sunteți gata să vă aduceți ideile la viață? Ofer servicii complete de dezvoltare și întreținere web pentru a ajuta afacerea dvs. să aibă succes online.",
+    "web_dev_title": "Dezvoltare Web",
+    "web_dev_desc": "Site-uri web personalizate cu React & Django",
+    "maintenance_title": "Întreținere",
+    "maintenance_desc": "Păstrați-vă site-ul securizat și actualizat",
+    "optimization_title": "Optimizare",
+    "optimization_desc": "Îmbunătățiți performanța site-ului dvs.",
+    "consultation_title": "Consultanță",
+    "consultation_desc": "Îndrumare tehnică de specialitate",
+    "view_all": "Vezi Toate Serviciile"
+  },
+  "projects": {
+    "featured_title": "Proiecte Recomandate",
+    "other_title": "Alte Proiecte",
+    "none_found": "Niciun proiect găsit. Asigurați-vă că serverul backend rulează.",
+    "read_more": "Citește mai mult",
+    "read_less": "Citește mai puțin",
+    "live_link": "Link Live",
+    "repo_link": "Link către Repozitoriu"
+  },
+  "seo": {
+    "home_title": "Miss Bott - Portofoliu Dezvoltator Full Stack",
+    "home_description": "Dezvoltator full-stack specializat în React, TypeScript, Django și PostgreSQL. Construiesc aplicații web moderne cu cod curat și design orientat spre utilizator.",
+    "home_keywords": "dezvoltator full stack Irlanda, dezvoltator React Dublin, freelancer Django, angajează dezvoltator full stack Irlanda, portofoliu React și Django, dezvoltator TypeScript Irlanda, dezvoltator web Irlanda, portofoliu Miss Bott"
+  },
+
+  "credentials": {
+    "title": "Acreditări și Certificări",
+    "issued": "Emis",
+    "view_cert": "Vezi Certificatul",
+    "error_fallback": "Nu s-au putut încărca acreditările."
+  },
+
+
+  "skills": {
+    "title": "Competențe & Tehnologii",
+    "no_skills_in_category": "Nicio competență găsită în această categorie.",
+    "categories": {
+      "all": "Toate",
+      "frontend": "Frontend",
+      "backend": "Backend",
+      "database": "Baze de Date",
+      "tools": "Unelte",
+      "cloud": "Cloud",
+      "other": "Altele"
+    },
+    "levels": {
+      "beginner": "Începător",
+      "intermediate": "Intermediar",
+      "advanced": "Avansat",
+      "expert": "Expert"
+    }
+  },
+
+  "services2": {
+    "header_professional": "Servicii Profesionale",
+    "header_web_services": "Web",
+    "header_description": "De la dezvoltare web personalizată la mentenanță continuă, livrez soluții moderne și performante, adaptate nevoilor afacerii dumneavoastră.",
+    "most_popular_badge": "Cel mai Popular",
+    "more_features": "+ încă {{count}} caracteristici",
+    "custom_quote": "Ofertă Personalizată",
+    "get_quote_button": "Obține Ofertă",
+    "cta_title": "Sunteți gata să începeți proiectul?",
+    "cta_description": "Haideți să discutăm despre proiectul dumneavoastră și să creăm ceva uimitor împreună. Obțineți o consultație gratuită și o ofertă personalizată.",
+    "cta_button": "Programează o Consultație Gratuită"
+},
+
+"project_inquiry": {
+    "seo_title": "Cerere Proiect | Miss Bott",
+    "seo_description": "Începeți noul dumneavoastră proiect prin furnizarea a câtorva detalii. Obțineți o ofertă personalizată pentru servicii de dezvoltare web.",
+    "main_title": "Planificator Proiect",
+    "main_subtitle": "Haideți să construim ceva uimitor. Spuneți-mi despre proiectul dvs.",
+    "step1_title": "Despre Tine",
+    "placeholder_name": "Numele Tău",
+    "placeholder_email": "Adresa Ta de Email",
+    "placeholder_company": "Nume Companie (Opțional)",
+    "placeholder_phone": "Număr de Telefon (Opțional)",
+    "button_next": "Următoarea Pagină",
+    "step2_title": "Despre Proiect",
+    "select_service": "Selectează un serviciu...",
+    "other_inquiry": "Alta / Întrebare Generală",
+    "placeholder_details": "Spune-mi despre proiectul tău...",
+    "placeholder_website": "URL-ul site-ului actual (Opțional)",
+    "button_previous": "Pagina Anterioară",
+    "step3_title": "Buget & Cronologie",
+    "label_budget": "Buget estimat",
+    "select_budget": "Selectează un interval pentru buget...",
+    "label_timeline": "Cronologia Proiectului",
+    "select_timeline": "Selectează intervalul de timp...",
+    "button_submitting": "Se trimite...",
+    "button_submit": "Trimite Cererea",
+    "success_title": "Cerere Trimisă!",
+    "success_message": "Vă mulțumesc pentru interes. Am primit detaliile proiectului dumneavoastră și voi reveni în 1-2 zile lucrătoare pentru a programa o consultație.",
+    "error_submit": "Trimiterea a eșuat. Vă rugăm să încercați din nou.",
+    "error_unexpected": "A apărut o eroare neașteptată.",
+    "budgets": {
+        "under_1k": "Sub 1.000 €",
+        "1k_5k": "1.000 € - 5.000 €",
+        "5k_10k": "5.000 € - 10.000 €",
+        "10k_plus": "Peste 10.000 €",
+        "not_sure": "Nu sunt sigur(ă) încă"
+    },
+    "timelines": {
+        "asap": "Cât mai curând posibil",
+        "1_month": "În decurs de o lună",
+        "2_3_months": "2-3 luni",
+        "flexible": "Flexibil"
+    }
+},
+
+"contact": {
+    "title": "Contactează-mă",
+    "success": {
+        "title": "Mesaj Trimis cu Succes!",
+        "message": "Vă mulțumesc pentru mesaj. Voi reveni cu un răspuns în cel mai scurt timp posibil.",
+        "button_send_another": "Trimite un Alt Mesaj"
+    },
+    "form": {
+        "label_name": "Numele Tău",
+        "placeholder_name": "Introduceți numele complet",
+        "label_email": "Email-ul Tău",
+        "placeholder_email": "Introduceți adresa de email",
+        "label_service": "Serviciul de Interes",
+        "placeholder_service": "Selectează un serviciu...",
+        "service_other": "Alta / Întrebare Generală",
+        "label_message": "Mesajul Tău",
+        "placeholder_message": "Spune-mi despre proiectul tău sau întrebarea pe care o ai",
+        "button_sending": "Se trimite...",
+        "button_send": "Trimite Mesajul"
+    },
+    "validation": {
+        "name_required": "Numele este obligatoriu",
+        "name_min": "Numele trebuie să aibă cel puțin 2 caractere",
+        "email_required": "Email-ul este obligatoriu",
+        "email_invalid": "Vă rugăm să introduceți o adresă de email validă",
+        "message_required": "Mesajul este obligatoriu",
+        "message_min": "Mesajul trebuie să aibă cel puțin 10 caractere"
+    },
+    "error": {
+        "general_submit": "Trimiterea mesajului a eșuat. Vă rugăm să încercați din nou.",
+        "network": "Eroare de rețea. Vă rugăm să verificați conexiunea și să încercați din nou."
+    }
+},
+
+"footer": {
+    "copyright": "© {{year}} Miss Bott. Toate drepturile rezervate."
+},
+
+"blog": {
+    "title": "Blog Tech",
+    "description": "Împărtășesc idei, tutoriale și experiențe din călătoria mea ca dezvoltator full-stack. Acopăr React, Django, TypeScript și practici moderne de dezvoltare web.",
+    "author_prefix": "De",
+    "read_time": "{{time}} min citire",
+    "read_more": "Citește mai mult",
+    "coming_soon": {
+        "title": "În Curând!",
+        "message": "Lucrez la câteva articole de blog interesante despre dezvoltare web. Reveniți în curând!"
+    },
+    "seo": {
+        "title": "Blog Tech - Perspective Dezvoltare Web | Miss Bott",
+        "description": "Citiți cele mai recente perspective, tutoriale și experiențe de la un dezvoltator full-stack. Acopăr React, Django, TypeScript și practici moderne de dezvoltare web.",
+        "keywords": "blog tehnologic, blog dezvoltare web, tutoriale React, ghiduri Django, sfaturi TypeScript, dezvoltare full stack, blog programare România"
+    }
+},
+
+ "service_detail": {
+    "error_load": "Detaliile serviciului nu au putut fi încărcate. Vă rugăm să încercați din nou mai târziu.",
+    "error_title": "Serviciu Indisponibil",
+    "error_not_exist": "Serviciul pe care îl căutați nu există.",
+    "back_button": "Înapoi la Servicii",
+    "seo_title": "Servicii Profesionale",
+    "seo_keywords": "servicii dezvoltare web, web design, software personalizat",
+    "whats_included": "Ce este Inclus",
+    "starting_from": "Începând de la",
+    "get_quote_button": "Obține o Ofertă Gratuită"
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "common": {
+    "and": "and"
+  },
+  "navbar": {
+    "about": "About Me",
+    "skills": "Skills",
+    "services": "Services",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "home": {
+    "title": "Miss Bott - Django + React Fullstack Developer",
+    "description_p1": "Full-stack developer proficient in modern tools like",
+    "description_p2": "I recently earned a Diploma in Full Stack Software Development from Code Institute with a Merit grade.",
+    "description_p3": "I love building projects that solve real-world problems and make a difference in people's lives. I'm always looking for new challenges and opportunities to learn and grow as a developer.",
+    "currently_working": "🛠️ Currently working on: QR generator website, AI conversation summarizer.",
+    "currently_learning": "🌱 Learning: Advanced React patterns, AI/ML basics, and cloud deployment.",
+    "call_to_action": "Let's connect and build something great together!"
+  },
+  "services1": {
+    "title": "Professional Services",
+    "description": "Ready to bring your ideas to life? I offer comprehensive web development and maintenance services to help your business succeed online.",
+    "web_dev_title": "Web Development",
+    "web_dev_desc": "Custom websites with React & Django",
+    "maintenance_title": "Maintenance",
+    "maintenance_desc": "Keep your site secure & updated",
+    "optimization_title": "Optimization",
+    "optimization_desc": "Speed up your website performance",
+    "consultation_title": "Consultation",
+    "consultation_desc": "Expert technical guidance",
+    "view_all": "View All Services"
+  },
+  "projects": {
+    "featured_title": "Featured Projects",
+    "other_title": "Other Projects",
+    "none_found": "No projects found. Make sure the backend server is running.",
+    "read_more": "Read More",
+    "read_less": "Read Less",
+    "live_link": "Live Link",
+    "repo_link": "Link to Repository"
+  },
+  "seo": {
+    "home_title": "Miss Bott - Full Stack Developer Portfolio",
+    "home_description": "Full-stack developer specializing in React, TypeScript, Django, and PostgreSQL. Building modern web applications with clean code and user-focused design.",
+    "home_keywords": "full stack developer Ireland, React developer Dublin, freelance Django developer, hire full stack developer Ireland, React and Django portfolio, TypeScript developer Ireland, web developer Ireland, Miss Bott portfolio"
+  },
+
+  "credentials": {
+    "title": "Credentials & Certifications",
+    "issued": "Issued",
+    "view_cert": "View Certificate",
+    "error_fallback": "Failed to load credentials."
+  },
+  
+  "skills": {
+  "title": "Skills & Technologies",
+  "no_skills_in_category": "No skills found in this category.",
+  "categories": {
+    "all": "All",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "database": "Database",
+    "tools": "Tools",
+    "cloud": "Cloud",
+    "other": "Other"
+  },
+  "levels": {
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  }
+},
+
+"services2": {
+  "header_professional": "Professional",
+  "header_web_services": "Web Services",
+  "header_description": "From custom web development to ongoing maintenance, I deliver modern, high-performance solutions tailored to your business needs.",
+  "most_popular_badge": "Most Popular",
+  "more_features": "+{{count}} more features",
+  "custom_quote": "Custom Quote",
+  "get_quote_button": "Get Quote",
+  "cta_title": "Ready to Start Your Project?",
+  "cta_description": "Let's discuss your requirements and create something amazing together. Get a free consultation and personalized quote.",
+  "cta_button": "Schedule Free Consultation"
+},
+
+"project_inquiry": {
+    "seo_title": "Project Inquiry | Miss Bott",
+    "seo_description": "Start your new project by providing some details. Get a personalized quote for web development services.",
+    "main_title": "Project Planner",
+    "main_subtitle": "Let's build something amazing. Tell me about your project.",
+    "step1_title": "About You",
+    "placeholder_name": "Your Name",
+    "placeholder_email": "Your Email",
+    "placeholder_company": "Company Name (Optional)",
+    "placeholder_phone": "Phone Number (Optional)",
+    "button_next": "Next",
+    "step2_title": "About The Project",
+    "select_service": "Select a service...",
+    "other_inquiry": "Other / General Inquiry",
+    "placeholder_details": "Tell me about your project...",
+    "placeholder_website": "Current Website URL (Optional)",
+    "button_previous": "Previous",
+    "step3_title": "Budget & Timeline",
+    "label_budget": "Estimated Budget",
+    "select_budget": "Select a budget range...",
+    "label_timeline": "Project Timeline",
+    "select_timeline": "Select a timeline...",
+    "button_submitting": "Submitting...",
+    "button_submit": "Submit Inquiry",
+    "success_title": "Inquiry Sent!",
+    "success_message": "Thank you for your interest. I've received your project details and will get back to you within 1-2 business days to schedule a consultation.",
+    "error_submit": "Submission failed. Please try again.",
+    "error_unexpected": "An unexpected error occurred.",
+    "budgets": {
+        "under_1k": "Under €1,000",
+        "1k_5k": "€1,000 - €5,000",
+        "5k_10k": "€5,000 - €10,000",
+        "10k_plus": "€10,000+",
+        "not_sure": "Not sure yet"
+    },
+    "timelines": {
+        "asap": "ASAP",
+        "1_month": "Within 1 month",
+        "2_3_months": "2-3 months",
+        "flexible": "Flexible"
+    }
+},
+
+"contact": {
+    "title": "Get In Touch",
+    "success": {
+        "title": "Message Sent Successfully!",
+        "message": "Thank you for reaching out. I'll get back to you as soon as possible.",
+        "button_send_another": "Send Another Message"
+    },
+    "form": {
+        "label_name": "Your Name",
+        "placeholder_name": "Enter your full name",
+        "label_email": "Your Email",
+        "placeholder_email": "Enter your email address",
+        "label_service": "Service of Interest",
+        "placeholder_service": "Select a service...",
+        "service_other": "Other / General Inquiry",
+        "label_message": "Your Message",
+        "placeholder_message": "Tell me about your project or question you might have",
+        "button_sending": "Sending...",
+        "button_send": "Send Message"
+    },
+    "validation": {
+        "name_required": "Name is required",
+        "name_min": "Name must be at least 2 characters",
+        "email_required": "Email is required",
+        "email_invalid": "Please enter a valid email address",
+        "message_required": "Message is required",
+        "message_min": "Message must be at least 10 characters"
+    },
+    "error": {
+        "general_submit": "Failed to send message. Please try again.",
+        "network": "Network error. Please check your connection and try again."
+    }
+},
+
+"footer": {
+    "copyright": "© {{year}} Miss Bott. All rights reserved."
+},
+
+"blog": {
+    "title": "Tech Blog",
+    "description": "Sharing insights, tutorials, and experiences from my journey as a full-stack developer. Covering React, Django, TypeScript, and modern web development practices.",
+    "author_prefix": "By",
+    "read_time": "{{time}} min read",
+    "read_more": "Read more",
+    "coming_soon": {
+        "title": "Coming Soon!",
+        "message": "I'm working on some exciting blog posts about web development. Check back soon!"
+    },
+    "seo": {
+        "title": "Tech Blog - Web Development Insights | Miss Bott",
+        "description": "Read the latest insights, tutorials, and experiences from a full-stack developer. Covering React, Django, TypeScript, and modern web development practices.",
+        "keywords": "tech blog, web development blog, React tutorials, Django guides, TypeScript tips, full stack development, programming blog Ireland"
+    }
+},
+
+"service_detail": {
+    "error_load": "Could not load the service details. Please try again later.",
+    "error_title": "Service Not Found",
+    "error_not_exist": "The service you are looking for does not exist.",
+    "back_button": "Back to Services",
+    "seo_title": "Professional Services",
+    "seo_keywords": "web development services, web design, custom software",
+    "whats_included": "What's Included",
+    "starting_from": "Starting from",
+    "get_quote_button": "Get a Free Quote"
+  }
+
+}
