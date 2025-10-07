@@ -7,7 +7,8 @@ from .views import (
     BlogPostViewSet,
     ServiceViewSet,
     ServiceInquiryCreateView,
-    CredentialViewSet
+    CredentialViewSet,
+    ServiceDetailView
 )
 
 router = DefaultRouter()
@@ -21,4 +22,5 @@ urlpatterns = [
     path('contact/', ContactMessageCreateView.as_view(), name='contact'),
     path('service-inquiry/', ServiceInquiryCreateView.as_view(), name='service-inquiry'),
     path('credentials/', CredentialViewSet.as_view({'get': 'list'}), name='credentials'),
+    path('services/<slug:slug>/', ServiceDetailView.as_view(), name='service-detail'),
 ]
