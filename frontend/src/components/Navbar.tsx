@@ -33,11 +33,6 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
               onClick={() => setIsOpen(false)}
             />
             <NavItem
-              to="/skills"
-              label={t("navbar.skills")}
-              onClick={() => setIsOpen(false)}
-            />
-            <NavItem
               to="/services"
               label={t("navbar.services")}
               onClick={() => setIsOpen(false)}
