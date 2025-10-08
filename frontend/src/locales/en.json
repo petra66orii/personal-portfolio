@@ -3,33 +3,29 @@
     "and": "and"
   },
   "navbar": {
-    "about": "About Me",
-    "skills": "Skills",
-    "services": "Services",
-    "blog": "Blog",
+    "about": "Home",
+    "services": "Solutions",
+    "blog": "Insights",
     "contact": "Contact"
   },
   "home": {
-    "title": "Miss Bott - Django + React Fullstack Developer",
-    "description_p1": "Full-stack developer proficient in modern tools like",
-    "description_p2": "I recently earned a Diploma in Full Stack Software Development from Code Institute with a Merit grade.",
-    "description_p3": "I love building projects that solve real-world problems and make a difference in people's lives. I'm always looking for new challenges and opportunities to learn and grow as a developer.",
-    "currently_working": "🛠️ Currently working on: QR generator website, AI conversation summarizer.",
-    "currently_learning": "🌱 Learning: Advanced React patterns, AI/ML basics, and cloud deployment.",
-    "call_to_action": "Let's connect and build something great together!"
+    "title": "You Have the Vision. I Build the Digital Reality.",
+    "description_p1": "I'm a technical partner for artists, photographers, and artisans who are ready to elevate their online presence. ",
+    "description_p2": "You create stunning work. I build the world-class website that showcases it, turning your passion into a thriving online business.",
+    "call_to_action": "Book a Free Discovery Call"
   },
   "services1": {
-    "title": "Professional Services",
-    "description": "Ready to bring your ideas to life? I offer comprehensive web development and maintenance services to help your business succeed online.",
-    "web_dev_title": "Web Development",
-    "web_dev_desc": "Custom websites with React & Django",
-    "maintenance_title": "Maintenance",
-    "maintenance_desc": "Keep your site secure & updated",
-    "optimization_title": "Optimization",
-    "optimization_desc": "Speed up your website performance",
-    "consultation_title": "Consultation",
-    "consultation_desc": "Expert technical guidance",
-    "view_all": "View All Services"
+    "title": "Solutions for Creative Professionals",
+    "description": "Your craft deserves a beautiful, high-performance website. Discover the packages designed to help your creative business succeed.",
+    "web_dev_title": "The Digital Gallery",
+    "web_dev_desc": "A stunning portfolio to showcase your work and attract high-value clients.",
+    "maintenance_title": "The Artisan's E-Commerce Hub",
+    "maintenance_desc": "A beautiful online store to sell your products, prints, or digital goods.",
+    "optimization_title": "Peace of Mind Retainer",
+    "optimization_desc": "Ongoing support to keep your site secure, updated, and running smoothly.",
+    "consultation_title": "Strategic Consultation",
+    "consultation_desc": "Expert guidance to map out your digital strategy and achieve your goals.",
+    "view_all": "Explore Solutions"
   },
   "projects": {
     "featured_title": "Featured Projects",
@@ -41,30 +37,23 @@
     "repo_link": "Link to Repository"
   },
   "seo": {
-    "home_title": "Miss Bott - Full Stack Developer Portfolio",
-    "home_description": "Full-stack developer specializing in React, TypeScript, Django, and PostgreSQL. Building modern web applications with clean code and user-focused design.",
-    "home_keywords": "full stack developer Ireland, React developer Dublin, freelance Django developer, hire full stack developer Ireland, React and Django portfolio, TypeScript developer Ireland, web developer Ireland, Miss Bott portfolio"
+    "home_title": "Web Design for Artists & Creatives | Miss Bott",
+    "home_description": "I build beautiful, high-performance websites for artists, photographers, and creative professionals. Let's translate your vision into a stunning online presence.",
+    "home_keywords": "web design for artists, photographer portfolio website, web developer for creatives, e-commerce for artists, custom websites Ireland, portfolio websites for designers, Miss Bott"
   },
 
-  "credentials": {
-    "title": "Credentials & Certifications",
-    "issued": "Issued",
-    "view_cert": "View Certificate",
-    "error_fallback": "Failed to load credentials."
+  "services2": {
+    "header_professional": "Our",
+    "header_web_services": "Solutions",
+    "header_description": "From stunning digital portfolios to robust online stores, I deliver modern, high-performance solutions tailored to the needs of creative professionals.",
+    "most_popular_badge": "Most Popular",
+    "more_features": "+{{count}} more features",
+    "custom_quote": "Custom Quote",
+    "get_quote_button": "Get Quote",
+    "cta_title": "Ready to Elevate Your Online Presence?",
+    "cta_description": "Let's discuss your vision and create something extraordinary together. Get a free, no-obligation discovery call and a personalized proposal.",
+    "cta_button": "Book Your Free Discovery Call"
   },
-
-"services2": {
-  "header_professional": "Professional",
-  "header_web_services": "Web Services",
-  "header_description": "From custom web development to ongoing maintenance, I deliver modern, high-performance solutions tailored to your business needs.",
-  "most_popular_badge": "Most Popular",
-  "more_features": "+{{count}} more features",
-  "custom_quote": "Custom Quote",
-  "get_quote_button": "Get Quote",
-  "cta_title": "Ready to Start Your Project?",
-  "cta_description": "Let's discuss your requirements and create something amazing together. Get a free consultation and personalized quote.",
-  "cta_button": "Schedule Free Consultation"
-},
 
 "project_inquiry": {
     "seo_title": "Project Inquiry | Miss Bott",
@@ -148,15 +137,17 @@
 },
 
 "blog": {
-    "title": "Tech Blog",
-    "description": "Sharing insights, tutorials, and experiences from my journey as a full-stack developer. Covering React, Django, TypeScript, and modern web development practices.",
-    "author_prefix": "By",
-    "read_time": "{{time}} min read",
-    "read_more": "Read more",
-    "coming_soon": {
-        "title": "Coming Soon!",
-        "message": "I'm working on some exciting blog posts about web development. Check back soon!"
-    },
+  "title": "Insights for Creatives",
+  "description": "A resource hub with tips, insights, and inspiration to help creative professionals build their brand and thrive online.",
+  "author_prefix": "By",
+  "read_time": "{{time}} min read",
+  "read_more": "Read more",
+"coming_soon": {
+  "title": "Coming Soon!",
+  "message": "I'm working on some exciting blog posts about web development. Check back soon!",
+  "headline": "Your Creative Business, Amplified.",
+  "description": "The Insights Hub is coming soon. I'll be sharing practical tips on web design, online marketing, and technology to help you build your brand and thrive online."
+},
     "seo": {
         "title": "Tech Blog - Web Development Insights | Miss Bott",
         "description": "Read the latest insights, tutorials, and experiences from a full-stack developer. Covering React, Django, TypeScript, and modern web development practices.",
@@ -164,16 +155,24 @@
     }
 },
 
-"service_detail": {
-    "error_load": "Could not load the service details. Please try again later.",
-    "error_title": "Service Not Found",
-    "error_not_exist": "The service you are looking for does not exist.",
-    "back_button": "Back to Services",
-    "seo_title": "Professional Services",
-    "seo_keywords": "web development services, web design, custom software",
-    "whats_included": "What's Included",
-    "starting_from": "Starting from",
-    "get_quote_button": "Get a Free Quote"
+"service_detail_page": {
+  "back_button": "Back to All Solutions",
+  "whats_included": "What's Included",
+  "our_process": "Our Process",
+  "who_is_it_for": "Who Is This For?",
+  "cta_button": "Book a Free Call",
+  "process_step1_title": "Discovery & Strategy:",
+  "process_step1_desc": "We'll discuss your vision and goals to create a clear plan.",
+  "process_step2_title": "Design & Development:",
+  "process_step2_desc": "I'll bring the vision to life with clean code and beautiful design.",
+  "process_step3_title": "Review & Launch:",
+  "process_step3_desc": "We'll refine the site together before launching it to the world.",
+  "who_is_it_for_map": {
+    "digital-gallery": ["Artists", "Photographers", "Illustrators", "Designers"],
+    "artisan-ecommerce": ["Makers", "Artisans", "Sellers of goods"],
+    "peace-of-mind-retainer": ["Established Creatives", "Busy Business Owners"],
+    "strategic-discovery": ["New Ventures", "Businesses planning a redesign"]
   }
+}
 
 }

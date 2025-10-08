@@ -7,7 +7,8 @@ class ProjectTranslationOptions(TranslationOptions):
 
 @register(Service)
 class ServiceTranslationOptions(TranslationOptions):
-    fields = ('name', 'short_description', 'description', 'starting_price', 'delivery_time')
+    fields = ('name', 'short_description', 'description', 'features', 'starting_price', 'delivery_time')
+
 
 @register(BlogPost)
 class BlogPostTranslationOptions(TranslationOptions):

@@ -3,176 +3,169 @@
     "and": "și"
   },
   "navbar": {
-    "about": "Despre Mine",
-    "skills": "Competențe",
-    "services": "Servicii",
-    "blog": "Blog",
+    "about": "Acasă",
+    "services": "Soluții",
+    "blog": "Resurse",
     "contact": "Contact"
   },
   "home": {
-    "title": "Miss Bott - Full Stack Developer React + Django",
-    "description_p1": "Full stack developer competent în unelte moderne precum",
-    "description_p2": "Am obținut recent o Diplomă în Full Stack Software Development de la Code Institute cu calificativul Merit.",
-    "description_p3": "Îmi place să construiesc proiecte care rezolvă probleme reale și fac o diferență în viața oamenilor. Caut mereu noi provocări și oportunități de a învăța și de a crește ca developer.",
-    "currently_working": "🛠️ Lucrez în prezent la: un website care generează coduri QR, sumarizator conversații AI.",
-    "currently_learning": "🌱 Învaț: modele avansate React, bazele AI/ML și modele 3D în Three.js.",
-    "call_to_action": "Hai să ne conectăm și să construim ceva grozav împreună!"
+    "title": "Tu ai viziunea. Eu construiesc realitatea digitală.",
+    "description_p1": "Sunt un partener tehnic pentru artiști, fotografi și artizani care sunt gata să-și eleveze prezența online.",
+    "description_p2": "Tu creezi opere uimitoare. Eu construiesc website-ul de clasă mondială care le pune în valoare, transformându-ți pasiunea într-o afacere online de succes.",
+    "call_to_action": "Programează o consultație gratuită"
   },
   "services1": {
-    "title": "Servicii Profesionale",
-    "description": "Sunteți gata să vă aduceți ideile la viață? Ofer servicii complete de dezvoltare și întreținere web pentru a ajuta afacerea dvs. să aibă succes online.",
-    "web_dev_title": "Dezvoltare Web",
-    "web_dev_desc": "Site-uri web personalizate cu React & Django",
-    "maintenance_title": "Întreținere",
-    "maintenance_desc": "Păstrați-vă site-ul securizat și actualizat",
-    "optimization_title": "Optimizare",
-    "optimization_desc": "Îmbunătățiți performanța site-ului dvs.",
-    "consultation_title": "Consultanță",
-    "consultation_desc": "Îndrumare tehnică de specialitate",
-    "view_all": "Vezi Toate Serviciile"
+    "title": "Soluții pentru profesioniști creativi",
+    "description": "Măiestria ta merită un website frumos și performant. Descoperă pachetele concepute pentru a ajuta afacerea ta creativă să aibă succes.",
+    "web_dev_title": "Galeria Digitală",
+    "web_dev_desc": "Un portofoliu uimitor pentru a-ți prezenta lucrările și a atrage clienți valoroși.",
+    "maintenance_title": "Hub-ul E-Commerce al Artizanului",
+    "maintenance_desc": "Un magazin online elegant pentru a vinde produsele, printurile sau bunurile tale digitale.",
+    "optimization_title": "Abonament pentru Liniște Sufletească",
+    "optimization_desc": "Suport continuu pentru a menține site-ul tău securizat, actualizat și funcționând perfect.",
+    "consultation_title": "Consultanță Strategică",
+    "consultation_desc": "Ghidare expertă pentru a contura strategia ta digitală și a-ți atinge obiectivele.",
+    "view_all": "Explorează Soluțiile"
   },
   "projects": {
     "featured_title": "Proiecte Recomandate",
     "other_title": "Alte Proiecte",
-    "none_found": "Niciun proiect găsit. Asigurați-vă că serverul backend rulează.",
+    "none_found": "Niciun proiect găsit. Asigură-te că serverul backend rulează.",
     "read_more": "Citește mai mult",
     "read_less": "Citește mai puțin",
     "live_link": "Link Live",
-    "repo_link": "Link către Repozitoriu"
+    "repo_link": "Link către Repository"
   },
   "seo": {
-    "home_title": "Miss Bott - Portofoliu Dezvoltator Full Stack",
-    "home_description": "Dezvoltator full-stack specializat în React, TypeScript, Django și PostgreSQL. Construiesc aplicații web moderne cu cod curat și design orientat spre utilizator.",
-    "home_keywords": "dezvoltator full stack Irlanda, dezvoltator React Dublin, freelancer Django, angajează dezvoltator full stack Irlanda, portofoliu React și Django, dezvoltator TypeScript Irlanda, dezvoltator web Irlanda, portofoliu Miss Bott"
+    "home_title": "Web Design pentru Artiști și Creativi | Miss Bott",
+    "home_description": "Construiesc website-uri frumoase și performante pentru artiști, fotografi și profesioniști creativi. Hai să traducem viziunea ta într-o prezență online uimitoare.",
+    "home_keywords": "web design pentru artiști, website portofoliu fotograf, dezvoltator web pentru creativi, e-commerce pentru artiști, website-uri personalizate România, portofolii pentru designeri, Miss Bott"
   },
-
-  "credentials": {
-    "title": "Acreditări și Certificări",
-    "issued": "Emis",
-    "view_cert": "Vezi Certificatul",
-    "error_fallback": "Nu s-au putut încărca acreditările."
-  },
-
   "services2": {
-    "header_professional": "Servicii Profesionale",
-    "header_web_services": "Web",
-    "header_description": "De la dezvoltare web personalizată la mentenanță continuă, livrez soluții moderne și performante, adaptate nevoilor afacerii dumneavoastră.",
-    "most_popular_badge": "Cel mai Popular",
-    "more_features": "+ încă {{count}} caracteristici",
+    "header_professional": "Soluțiile",
+    "header_web_services": "Noastre",
+    "header_description": "De la portofolii digitale uimitoare la magazine online robuste, livrez soluții moderne și performante, adaptate nevoilor profesioniștilor creativi.",
+    "most_popular_badge": "Cel mai popular",
+    "more_features": "+ încă {{count}}",
     "custom_quote": "Ofertă Personalizată",
-    "get_quote_button": "Obține Ofertă",
-    "cta_title": "Sunteți gata să începeți proiectul?",
-    "cta_description": "Haideți să discutăm despre proiectul dumneavoastră și să creăm ceva uimitor împreună. Obțineți o consultație gratuită și o ofertă personalizată.",
+    "get_quote_button": "Obține o Ofertă",
+    "cta_title": "Gata să-ți elevezi prezența online?",
+    "cta_description": "Hai să discutăm viziunea ta și să creăm ceva extraordinar împreună. Obține o consultație gratuită și o propunere personalizată.",
     "cta_button": "Programează o Consultație Gratuită"
-},
-
-"project_inquiry": {
-    "seo_title": "Cerere Proiect | Miss Bott",
-    "seo_description": "Începeți noul dumneavoastră proiect prin furnizarea a câtorva detalii. Obțineți o ofertă personalizată pentru servicii de dezvoltare web.",
-    "main_title": "Planificator Proiect",
-    "main_subtitle": "Haideți să construim ceva uimitor. Spuneți-mi despre proiectul dvs.",
+  },
+  "project_inquiry": {
+    "seo_title": "Cere Ofertă Proiect | Miss Bott",
+    "seo_description": "Începe noul tău proiect oferind câteva detalii. Obține o ofertă personalizată pentru servicii de web development.",
+    "main_title": "Planificator de Proiect",
+    "main_subtitle": "Hai să construim ceva uimitor. Spune-mi despre proiectul tău.",
     "step1_title": "Despre Tine",
     "placeholder_name": "Numele Tău",
-    "placeholder_email": "Adresa Ta de Email",
+    "placeholder_email": "Emailul Tău",
     "placeholder_company": "Nume Companie (Opțional)",
     "placeholder_phone": "Număr de Telefon (Opțional)",
-    "button_next": "Următoarea Pagină",
+    "button_next": "Următorul",
     "step2_title": "Despre Proiect",
     "select_service": "Selectează un serviciu...",
-    "other_inquiry": "Alta / Întrebare Generală",
+    "other_inquiry": "Altă solicitare / Întrebare generală",
     "placeholder_details": "Spune-mi despre proiectul tău...",
-    "placeholder_website": "URL-ul site-ului actual (Opțional)",
-    "button_previous": "Pagina Anterioară",
-    "step3_title": "Buget & Cronologie",
+    "placeholder_website": "URL Website Actual (Opțional)",
+    "button_previous": "Anteriorul",
+    "step3_title": "Buget și Termen Limită",
     "label_budget": "Buget estimat",
-    "select_budget": "Selectează un interval pentru buget...",
-    "label_timeline": "Cronologia Proiectului",
-    "select_timeline": "Selectează intervalul de timp...",
+    "select_budget": "Selectează un interval de buget...",
+    "label_timeline": "Termen limită proiect",
+    "select_timeline": "Selectează un termen...",
     "button_submitting": "Se trimite...",
     "button_submit": "Trimite Cererea",
     "success_title": "Cerere Trimisă!",
-    "success_message": "Vă mulțumesc pentru interes. Am primit detaliile proiectului dumneavoastră și voi reveni în 1-2 zile lucrătoare pentru a programa o consultație.",
-    "error_submit": "Trimiterea a eșuat. Vă rugăm să încercați din nou.",
+    "success_message": "Mulțumesc pentru interes. Am primit detaliile proiectului tău și te voi contacta în 1-2 zile lucrătoare pentru a programa o consultație.",
+    "error_submit": "Trimiterea a eșuat. Te rog, încearcă din nou.",
     "error_unexpected": "A apărut o eroare neașteptată.",
     "budgets": {
-        "under_1k": "Sub 1.000 €",
-        "1k_5k": "1.000 € - 5.000 €",
-        "5k_10k": "5.000 € - 10.000 €",
-        "10k_plus": "Peste 10.000 €",
-        "not_sure": "Nu sunt sigur(ă) încă"
+      "under_1k": "Sub 1.000 €",
+      "1k_5k": "1.000 € - 5.000 €",
+      "5k_10k": "5.000 € - 10.000 €",
+      "10k_plus": "Peste 10.000 €",
+      "not_sure": "Nu sunt sigur(ă) încă"
     },
     "timelines": {
-        "asap": "Cât mai curând posibil",
-        "1_month": "În decurs de o lună",
-        "2_3_months": "2-3 luni",
-        "flexible": "Flexibil"
+      "asap": "Cât mai curând posibil",
+      "1_month": "În decurs de o lună",
+      "2_3_months": "2-3 luni",
+      "flexible": "Flexibil"
     }
-},
-
-"contact": {
+  },
+  "contact": {
     "title": "Contactează-mă",
     "success": {
-        "title": "Mesaj Trimis cu Succes!",
-        "message": "Vă mulțumesc pentru mesaj. Voi reveni cu un răspuns în cel mai scurt timp posibil.",
-        "button_send_another": "Trimite un Alt Mesaj"
+      "title": "Mesaj Trimis cu Succes!",
+      "message": "Mulțumesc că m-ai contactat. Îți voi răspunde cât mai curând posibil.",
+      "button_send_another": "Trimite un alt mesaj"
     },
     "form": {
-        "label_name": "Numele Tău",
-        "placeholder_name": "Introduceți numele complet",
-        "label_email": "Email-ul Tău",
-        "placeholder_email": "Introduceți adresa de email",
-        "label_service": "Serviciul de Interes",
-        "placeholder_service": "Selectează un serviciu...",
-        "service_other": "Alta / Întrebare Generală",
-        "label_message": "Mesajul Tău",
-        "placeholder_message": "Spune-mi despre proiectul tău sau întrebarea pe care o ai",
-        "button_sending": "Se trimite...",
-        "button_send": "Trimite Mesajul"
+      "label_name": "Numele Tău",
+      "placeholder_name": "Introdu numele tău complet",
+      "label_email": "Emailul Tău",
+      "placeholder_email": "Introdu adresa ta de email",
+      "label_service": "Serviciu de Interes",
+      "placeholder_service": "Selectează un serviciu...",
+      "service_other": "Alt serviciu / Întrebare generală",
+      "label_message": "Mesajul Tău",
+      "placeholder_message": "Spune-mi despre proiectul tău sau orice întrebare ai avea",
+      "button_sending": "Se trimite...",
+      "button_send": "Trimite Mesajul"
     },
     "validation": {
-        "name_required": "Numele este obligatoriu",
-        "name_min": "Numele trebuie să aibă cel puțin 2 caractere",
-        "email_required": "Email-ul este obligatoriu",
-        "email_invalid": "Vă rugăm să introduceți o adresă de email validă",
-        "message_required": "Mesajul este obligatoriu",
-        "message_min": "Mesajul trebuie să aibă cel puțin 10 caractere"
+      "name_required": "Numele este obligatoriu",
+      "name_min": "Numele trebuie să aibă cel puțin 2 caractere",
+      "email_required": "Emailul este obligatoriu",
+      "email_invalid": "Te rog, introdu o adresă de email validă",
+      "message_required": "Mesajul este obligatoriu",
+      "message_min": "Mesajul trebuie să aibă cel puțin 10 caractere"
     },
     "error": {
-        "general_submit": "Trimiterea mesajului a eșuat. Vă rugăm să încercați din nou.",
-        "network": "Eroare de rețea. Vă rugăm să verificați conexiunea și să încercați din nou."
+      "general_submit": "Trimiterea mesajului a eșuat. Te rog, încearcă din nou.",
+      "network": "Eroare de rețea. Verifică conexiunea și încearcă din nou."
     }
-},
-
-"footer": {
+  },
+  "footer": {
     "copyright": "© {{year}} Miss Bott. Toate drepturile rezervate."
-},
-
-"blog": {
-    "title": "Blog Tech",
-    "description": "Împărtășesc idei, tutoriale și experiențe din călătoria mea ca dezvoltator full-stack. Acopăr React, Django, TypeScript și practici moderne de dezvoltare web.",
+  },
+  "blog": {
+    "title": "Resurse pentru Creativi",
+    "description": "Un centru de resurse cu sfaturi, idei și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
     "author_prefix": "De",
-    "read_time": "{{time}} min citire",
+    "read_time": "{{time}} min citit",
     "read_more": "Citește mai mult",
     "coming_soon": {
-        "title": "În Curând!",
-        "message": "Lucrez la câteva articole de blog interesante despre dezvoltare web. Reveniți în curând!"
+      "title": "În curând!",
+      "message": "Lucrez la câteva articole interesante despre web development. Revino în curând!",
+      "headline": "Afacerea ta creativă, amplificată.",
+      "description": "Hub-ul de Resurse va fi lansat în curând. Voi împărtăși sfaturi practice despre web design, marketing online și tehnologie pentru a te ajuta să-ți construiești brandul și să ai succes online."
     },
     "seo": {
-        "title": "Blog Tech - Perspective Dezvoltare Web | Miss Bott",
-        "description": "Citiți cele mai recente perspective, tutoriale și experiențe de la un dezvoltator full-stack. Acopăr React, Django, TypeScript și practici moderne de dezvoltare web.",
-        "keywords": "blog tehnologic, blog dezvoltare web, tutoriale React, ghiduri Django, sfaturi TypeScript, dezvoltare full stack, blog programare România"
+      "title": "Blog Tehnologic - Idei Web Development | Miss Bott",
+      "description": "Citește cele mai noi idei, tutoriale și experiențe de la un dezvoltator full-stack. Subiecte: React, Django, TypeScript și practici moderne de web development.",
+      "keywords": "blog tehnologie, blog web development, tutoriale React, ghiduri Django, sfaturi TypeScript, dezvoltare full stack, blog programare România"
     }
-},
-
- "service_detail": {
-    "error_load": "Detaliile serviciului nu au putut fi încărcate. Vă rugăm să încercați din nou mai târziu.",
-    "error_title": "Serviciu Indisponibil",
-    "error_not_exist": "Serviciul pe care îl căutați nu există.",
-    "back_button": "Înapoi la Servicii",
-    "seo_title": "Servicii Profesionale",
-    "seo_keywords": "servicii dezvoltare web, web design, software personalizat",
-    "whats_included": "Ce este Inclus",
-    "starting_from": "Începând de la",
-    "get_quote_button": "Obține o Ofertă Gratuită"
+  },
+  "service_detail_page": {
+    "back_button": "Înapoi la toate soluțiile",
+    "whats_included": "Ce este inclus",
+    "our_process": "Procesul Nostru",
+    "who_is_it_for": "Pentru cine este?",
+    "cta_button": "Programează o Consultație",
+    "process_step1_title": "Descoperire și Strategie:",
+    "process_step1_desc": "Vom discuta viziunea și obiectivele tale pentru a crea un plan clar.",
+    "process_step2_title": "Design și Dezvoltare:",
+    "process_step2_desc": "Voi aduce viziunea la viață cu cod curat și un design elegant.",
+    "process_step3_title": "Revizuire și Lansare:",
+    "process_step3_desc": "Vom perfecționa site-ul împreună înainte de a-l lansa lumii întregi.",
+    "who_is_it_for_map": {
+      "digital-gallery": ["Artiști", "Fotografi", "Ilustratori", "Designeri"],
+      "artisan-ecommerce": ["Creatori", "Artizani", "Vânzători de bunuri"],
+      "peace-of-mind-retainer": ["Creativi consacrați", "Antreprenori ocupați"],
+      "strategic-discovery": ["Proiecte noi", "Afaceri care plănuiesc un redesign"]
+    }
   }
 }
