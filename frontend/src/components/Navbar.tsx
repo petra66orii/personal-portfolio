@@ -5,6 +5,8 @@ import NavItem from "./NavItem";
 import ThemeToggleButton from "./ThemeToggleButton";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useTranslation } from "react-i18next";
+import logoDark from "../assets/logos/mb-logo-dark.png";
+import logoLight from "../assets/logos/mb-logo-light.png";
 
 interface NavbarProps {
   isDark: boolean;
@@ -15,14 +17,20 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
 
+  // --- SELECT LOGO BASED ON THEME ---
+  const currentLogo = isDark ? logoDark : logoLight;
+
   return (
     <nav className="glassmorphism backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center gap-2 text-2xl font-bold">
-            <span className="logo-gradient bg-clip-text text-transparent">
-              Miss Bott
-            </span>
+          {/* --- REPLACED THE TEXT SPAN WITH THE IMAGE TAG --- */}
+          <Link to="/" className="flex items-center">
+            <img
+              src={currentLogo}
+              alt="Miss Bott Logo"
+              className="h-16 w-auto"
+            />
           </Link>
 
           {/* Desktop links */}
@@ -57,7 +65,6 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center gap-4">
-            {/* --- REPLACED THE OLD BUTTON WITH THE NEW COMPONENT --- */}
             <ThemeToggleButton isDark={isDark} setIsDark={setIsDark} />
             <button
               onClick={() => setIsOpen((prev) => !prev)}
