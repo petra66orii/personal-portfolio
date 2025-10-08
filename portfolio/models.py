@@ -13,6 +13,9 @@ class Project(models.Model):
     live_link = models.URLField(blank=True)
     tech_stack = models.CharField(max_length=255)
     featured = models.BooleanField(default=False)
+    client_challenge = models.TextField(blank=True, null=True, help_text="What was the client's problem?")
+    my_solution = models.TextField(blank=True, null=True, help_text="What did you build for them?")
+    the_result = models.TextField(blank=True, null=True, help_text="What was the positive outcome?")
 
     def __str__(self):
         return self.title
