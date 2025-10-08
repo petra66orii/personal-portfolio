@@ -1,170 +1,193 @@
+// src/pages/ServiceDetailPage.tsx
+
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import {
-  Check,
-  ArrowRight,
-  Code,
-  Wrench,
-  Zap,
-  Users,
-  AlertTriangle,
-} from "lucide-react";
 import SEO from "../components/SEO";
-import ScrollAnimator from "../components/ScrollAnimator";
+import {
+  ArrowLeft,
+  CheckCircle,
+  AlertTriangle,
+  UserCheck,
+  Package,
+  Rocket,
+} from "lucide-react";
+import { useTranslation } from "react-i18next";
 
-interface Service {
+// The full service type
+type Service = {
   id: number;
   name: string;
   slug: string;
   short_description: string;
   description: string;
   features_list: string[];
-  starting_price: string;
-  delivery_time: string;
   icon: string;
-}
-
-const iconMap: { [key: string]: React.ElementType } = {
-  code: Code,
-  wrench: Wrench,
-  zap: Zap,
-  users: Users,
 };
 
-const ServiceDetailPage = () => {
+const ServiceDetailPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
-  const { t, i18n } = useTranslation(); // 1. Get translation functions
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    const fetchServiceDetail = async () => {
+    const fetchService = async () => {
       try {
-        setLoading(true);
-        const response = await fetch(`/api/services/${slug}/`, {
-          // 2. Send current language to the backend
-          headers: { "Accept-Language": i18n.language },
-        });
-
+        const response = await fetch(`/api/services/${slug}/`);
         if (!response.ok) {
           throw new Error(`Service not found. Status: ${response.status}`);
         }
-
         const data: Service = await response.json();
         setService(data);
       } catch (err) {
-        console.error("Error fetching service details:", err);
-        setError(t("service_detail.error_load"));
+        setError("Failed to fetch service details. Please try again later.");
+        console.error(err);
       } finally {
         setLoading(false);
       }
     };
-
-    if (slug) {
-      fetchServiceDetail();
-    }
-  }, [slug, i18n.language, t]); // Add 't' to dependency array
+    fetchService();
+  }, [slug]);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-primary"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   if (error || !service) {
     return (
-      <div className="min-h-screen p-6 flex items-center justify-center">
-        <div className="glassmorphism text-center p-8 rounded-lg">
-          <AlertTriangle className="mx-auto h-12 w-12 text-red-500 mb-4" />
-          <h2 className="text-2xl font-bold text-primary mb-2">
-            {t("service_detail.error_title")}
-          </h2>
-          <p className="text-secondary">
-            {error || t("service_detail.error_not_exist")}
-          </p>
-          <Link
-            to="/services"
-            className="inline-flex items-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
-          >
-            {t("service_detail.back_button")}
-          </Link>
-        </div>
+      <div className="text-center py-20">
+        <AlertTriangle className="mx-auto h-12 w-12 text-red-500" />
+        <h2 className="mt-4 text-2xl font-bold text-primary">Error</h2>
+        <p className="mt-2 text-secondary">
+          {error || "The service could not be found."}
+        </p>
+        <Link
+          to="/services"
+          className="mt-6 inline-block text-primary hover:underline"
+        >
+          &larr; Back to Solutions
+        </Link>
       </div>
     );
   }
 
-  const IconComponent = iconMap[service.icon] || Code;
+  const whoIsItForList =
+    t(`service_detail_page.who_is_it_for_map.${service.slug}`, {
+      returnObjects: true,
+    }) || [];
 
   return (
     <>
       <SEO
-        title={`${service.name} | ${t("service_detail.seo_title")}`}
+        title={`${service.name} | Miss Bott`}
         description={service.short_description}
-        keywords={`${service.name}, ${t("service_detail.seo_keywords")}`}
       />
       <main className="min-h-screen p-6">
-        <ScrollAnimator>
-          <div className="glassmorphism max-w-5xl mx-auto rounded-2xl shadow-xl overflow-hidden">
-            <div className="p-8 md:p-12">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-xl flex items-center justify-center">
-                  <IconComponent className="w-8 h-8 text-primary" />
-                </div>
-                <div>
-                  <h1 className="text-4xl md:text-5xl font-bold text-primary">
-                    {service.name}
-                  </h1>
-                  <p className="text-lg text-secondary mt-1">
-                    {service.short_description}
-                  </p>
-                </div>
-              </div>
+        <div className="max-w-5xl mx-auto">
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 text-secondary hover:text-primary mb-8"
+          >
+            <ArrowLeft size={16} /> {t("service_detail_page.back_button")}
+          </Link>
 
-              {/* Use dangerouslySetInnerHTML for rich text from backend */}
-              <div
-                className="prose prose-lg text-secondary max-w-none mb-8"
-                dangerouslySetInnerHTML={{ __html: service.description }}
-              />
+          {/* --- Hero Section --- */}
+          <section className="text-center mb-20">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
+              {service.name}
+            </h1>
+            <p className="text-xl text-secondary max-w-3xl mx-auto leading-relaxed">
+              {service.description}
+            </p>
+          </section>
 
-              <div className="bg-surface/50 rounded-lg p-6 mb-8">
-                <h3 className="text-2xl font-semibold text-primary mb-4">
-                  {t("service_detail.whats_included")}
-                </h3>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="md:col-span-2">
+              {/* --- What's Included Section --- */}
+              <section className="mb-16">
+                <h2 className="text-3xl font-bold text-primary mb-6 flex items-center gap-3">
+                  <Package /> {t("service_detail_page.whats_included")}
+                </h2>
+                <ul className="grid sm:grid-cols-2 gap-4">
                   {service.features_list.map((feature, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <Check className="w-6 h-6 mt-1 flex-shrink-0 text-green-500" />
-                      <span>{feature}</span>
+                      <CheckCircle className="w-5 h-5 mt-1 flex-shrink-0 text-green-500" />
+                      <span className="text-secondary">{feature}</span>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </section>
 
-              <div className="flex flex-col md:flex-row justify-between items-center bg-primary/10 p-6 rounded-lg">
-                <div>
-                  <p className="text-secondary">
-                    {t("service_detail.starting_from")}
-                  </p>
-                  <p className="text-4xl font-bold text-primary">
-                    {service.starting_price}
-                  </p>
-                  <p className="text-secondary">{service.delivery_time}</p>
-                </div>
+              {/* --- Our Process Section --- */}
+              <section>
+                <h2 className="text-3xl font-bold text-primary mb-6 flex items-center gap-3">
+                  <Rocket /> {t("service_detail_page.our_process")}
+                </h2>
+                <ol className="space-y-4">
+                  <li className="flex items-center gap-4">
+                    <strong className="text-primary text-2xl">1.</strong>
+                    <span className="text-secondary">
+                      <strong>
+                        {t("service_detail_page.process_step1_title")}
+                      </strong>{" "}
+                      {t("service_detail_page.process_step1_desc")}
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <strong className="text-primary text-2xl">2.</strong>
+                    <span className="text-secondary">
+                      <strong>
+                        {t("service_detail_page.process_step2_title")}
+                      </strong>{" "}
+                      {t("service_detail_page.process_step2_desc")}
+                    </span>
+                  </li>
+                  <li className="flex items-center gap-4">
+                    <strong className="text-primary text-2xl">3.</strong>
+                    <span className="text-secondary">
+                      <strong>
+                        {t("service_detail_page.process_step3_title")}
+                      </strong>{" "}
+                      {t("service_detail_page.process_step3_desc")}
+                    </span>
+                  </li>
+                </ol>
+              </section>
+            </div>
+
+            {/* --- Sidebar --- */}
+            <div className="md:col-span-1">
+              <div className="glassmorphism p-6 rounded-xl border sticky top-24">
+                <h3 className="text-xl font-semibold mb-4 text-primary flex items-center gap-2">
+                  <UserCheck /> {t("service_detail_page.who_is_it_for")}
+                </h3>
+                <ul className="space-y-2 mb-8">
+                  {Array.isArray(whoIsItForList) &&
+                    whoIsItForList.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-start space-x-2 text-secondary text-sm"
+                      >
+                        <span>✓</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                </ul>
                 <Link
                   to="/quote"
-                  className="inline-flex items-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="w-full inline-block text-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  {t("service_detail.get_quote_button")}{" "}
-                  <ArrowRight className="inline ml-2" />
+                  {t("service_detail_page.cta_button")}
                 </Link>
               </div>
             </div>
           </div>
-        </ScrollAnimator>
+        </div>
       </main>
     </>
   );

@@ -6,9 +6,9 @@ const Services: React.FC = () => {
   return (
     <>
       <SEO
-        title="Professional Web Development Services | Miss Bott"
-        description="Expert web development and maintenance services. Custom websites, performance optimization, and ongoing support for your business."
-        keywords="web development services Ireland, custom React websites, Django backend development, website maintenance Dublin, SEO optimization services, web performance tuning, professional web developer Ireland"
+        title="Solutions for Creatives: Web Design & E-Commerce | Miss Bott"
+        description="Specialized web design and development solutions for artists, photographers, and creative professionals. Discover packages for digital portfolios, e-commerce, and more."
+        keywords="web design for artists, photographer portfolio websites, e-commerce for creatives, custom websites Ireland, portfolio websites for designers, web developer for artists"
       />
       <div className="min-h-screen">
         <ServicesSection />

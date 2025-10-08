@@ -155,36 +155,22 @@ const ServicesSection: React.FC = () => {
                   </ul>
 
                   {/* Pricing and CTA */}
-                  <div className="border-t border-gray-100 pt-6">
-                    <div className="flex items-center justify-between mb-4">
-                      <div>
-                        <p className="text-2xl font-bold text-primary">
-                          {service.starting_price ||
-                            t("services2.custom_quote")}
-                        </p>
-                        {service.delivery_time && (
-                          <p className="text-sm text-secondary">
-                            {service.delivery_time}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                    <button
+                  <div className="mt-auto border-t border-secondary/20 pt-6">
+                    <Link
+                      to={`/services/${service.slug}`}
                       className={`w-full py-3 px-6 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center space-x-2 ${
                         service.featured
-                          ? "bg-gradient-to-r button-gradient text-primary shadow-lg hover:shadow-xl"
+                          ? "bg-gradient-to-r button-gradient text-white shadow-lg hover:shadow-xl"
                           : "button-simple"
                       }`}
                     >
-                      <Link to={`/services/${service.slug}`}>
-                        {t("services2.get_quote_button")}
-                      </Link>
+                      <span>Learn More</span>
                       <ArrowRight
                         className={`w-4 h-4 transition-transform ${
                           isHovered ? "translate-x-1" : ""
                         }`}
                       />
-                    </button>
+                    </Link>
                   </div>
                 </div>
               );
