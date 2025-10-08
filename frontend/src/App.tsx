@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import ProjectInquiry from "./components/ProjectInquiry";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import AnimatedBackground from "./components/AnimatedBackground";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
 
 function App() {
   // 1. Theme state is now managed here in the main App component
@@ -52,6 +53,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/quote" element={<ProjectInquiry />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
+          <Route path="/projects/:id" element={<ProjectDetailPage />} />
         </Routes>
       </main>
       <Footer />
