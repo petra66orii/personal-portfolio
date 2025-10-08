@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import ProjectCard from "../components/ProjectCard";
 import SEO from "../components/SEO";
 import ScrollAnimator from "../components/ScrollAnimator";
-import Credentials from "../components/Credentials";
+import Testimonials from "../components/Testimonials";
 import { useTranslation } from "react-i18next";
 import useMediaQuery from "../hooks/useMediaQuery";
+import { Link } from "react-router-dom";
 
 // --- IMPORT SWIPER COMPONENTS AND STYLES ---
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -24,7 +25,7 @@ type Project = {
 const Home = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const { t, i18n } = useTranslation();
-  const isMobile = useMediaQuery("(max-width: 767px)"); // Check for mobile screen size
+  const isMobile = useMediaQuery("(max-width: 767px)");
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -72,32 +73,20 @@ const Home = () => {
       <main className="min-h-screen p-6">
         <div className="glassmorphism backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border">
           <ScrollAnimator>
-            <header className="mb-20">
+            <header className="mb-20 text-center">
               <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-primary">
                 {t("home.title")}
               </h1>
-              <p className="text-lg text-secondary max-w-[790px] my-6">
-                {t("home.description_p1")}{" "}
-                <strong className="text-primary">React</strong>,{" "}
-                <strong className="text-primary">TypeScript</strong>,{" "}
-                <strong className="text-primary">Tailwind CSS</strong>,{" "}
-                <strong className="text-primary">Django</strong>,{" "}
-                {t("common.and")}{" "}
-                <strong className="text-primary">PostgreSQL</strong>.{" "}
-                {t("home.description_p2")}
+              <p className="text-lg text-secondary max-w-[790px] my-6 mx-auto">
+                {t("home.description_p1")} {t("home.description_p2")}
               </p>
-              <p className="text-lg text-secondary max-w-[790px] mb-6">
-                {t("home.description_p3")}
-              </p>
-              <p className="text-lg text-secondary max-w-[790px] my-3">
-                {t("home.currently_working")}
-              </p>
-              <p className="text-lg text-secondary max-w-[790px] mb-6">
-                {t("home.currently_learning")}
-              </p>
-              <p className="text-lg text-secondary max-w-[790px] mb-6">
+
+              <Link
+                to="/quote"
+                className="inline-block px-8 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
                 {t("home.call_to_action")}
-              </p>
+              </Link>
             </header>
           </ScrollAnimator>
 
@@ -169,7 +158,7 @@ const Home = () => {
             </section>
           </ScrollAnimator>
 
-          <Credentials />
+          <Testimonials />
 
           {featuredProjects.length > 0 && (
             <ScrollAnimator>

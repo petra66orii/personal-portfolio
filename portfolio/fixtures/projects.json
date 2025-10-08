@@ -3,65 +3,32 @@
     "model": "portfolio.project",
     "pk": 1,
     "fields": {
-      "title": "Honeypot",
-      "description": "This is an e-commerce website that sells honey and honey-based products. Users can browse products through sorting and filtering, add them to cart and purchase them, as this website is integrated with Stripe. Users are required to create an account if they want to leave a review, although they can purchase products as guests as well. Users can also sign up for a newsletter, read and leave comments on blog posts. This was the final project (no. 5) for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
-      "tech_stack": "Django, PostgreSQL, HTML/CSS/JS, Bootstrap",
-      "repo_link": "https://github.com/petra66orii/honeypot",
+      "title": "Honeypot E-Commerce",
+      "description": "A full-featured e-commerce platform for an artisan cosmetics brand, built with Django.",
+      "tech_stack": "Django, PostgreSQL, JavaScript, Stripe, Bootstrap",
+      "repo_link": "https://github.com/petra6forii/honeypot",
       "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
       "featured": true,
-      "image": "project5.png"
+      "image": "project5.png",
+      "client_challenge": "The goal for 'Honeypot' was to design and build a complete e-commerce solution for a fictional artisan cosmetics brand. The key challenge was to create a secure, user-friendly online store that reflects the brand's premium quality and provides a seamless path from product discovery to purchase.",
+      "my_solution": "I built a full-stack web application from the ground up using Django. It features a complete shopping cart system, secure user authentication, product management, and an admin panel for order tracking. The design is clean, responsive, and focused on showcasing the products beautifully.",
+      "the_result": "The result is a production-ready e-commerce platform designed to drive sales. Key features include Stripe integration for secure payments, a product review system to build social proof, and an intuitive checkout process designed to maximize conversions for a small business."
     }
   },
   {
     "model": "portfolio.project",
     "pk": 2,
     "fields": {
-      "title": "Time[less] Travel",
-      "description": "This is a simple travel & organizer website where a user signs up and can create checklists with tasks for their dream holiday. They can also create, edit and delete blog posts related to travelling. This was project no. 4 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
-      "tech_stack": "Django, PostgreSQL, HTML/CSS/JS, Bootstrap",
-      "repo_link": "https://github.com/petra66orii/timeless-travel",
+      "title": "Time[less] Travel Blog",
+      "description": "An elegant and engaging blog platform and content management system for a travel writer.",
+      "tech_stack": "Django, PostgreSQL, JavaScript, Bootstrap",
+      "repo_link": "https://github.com/petra6forii/timeless-travel",
       "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
       "featured": true,
-      "image": "project4.png"
-    }
-  },
-  {
-    "model": "portfolio.project",
-    "pk": 3,
-    "fields": {
-      "title": "Astrology App",
-      "description": "This is a simple terminal-based Python app that uses BeautifulSoup4 for scraping daily, weekly, monthly and yearly horoscopes, and also scrapes compatibility between two signs. It also uses Kerykeion's Python package to calculate and display birth charts. This was project no. 3 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
-      "tech_stack": "Python, BeautifulSoup4",
-      "repo_link": "https://github.com/petra66orii/astrology-app",
-      "live_link": "https://astrology-app-8b0fad7f55e1.herokuapp.com/",
-      "featured": false,
-      "image": "project3.png"
-    }
-  },
-  {
-    "model": "portfolio.project",
-    "pk": 4,
-    "fields": {
-      "title": "Blackjack",
-      "description": "This is a static web page using HTML/CSS and Vanilla JS which showcases a simple game of Blackjack. The player is the user, and the dealer is the computer. I used Deck of Cards API to display the cards and make extensive use of JavaScript's flexibility to automate the dealer's hits, calculate the result and have a specific outcome for each scenario. This was project no. 2 for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
-      "tech_stack": "HTML/CSS/JS",
-      "repo_link": "https://github.com/petra66orii/blackjack",
-      "live_link": "https://petra66orii.github.io/blackjack/",
-      "featured": true,
-      "image": "project2.png"
-    }
-  },
-  {
-    "model": "portfolio.project",
-    "pk": 5,
-    "fields": {
-      "title": "MeowMatch",
-      "description": "This is a static web page showcasing a cat adoption service which includes veterinary services. User can input their contact details for inquiries, although no backend has been setup for this project (the backend was beyond the scope of the project). This was the first project (no. 1) for the Diploma in Full Stack Software Development course within Code Institute, and it was awarded a Merit grade.",
-      "tech_stack": "HTML/CSS",
-      "repo_link": "https://github.com/petra66orii/meowmatch",
-      "live_link": "https://petra66orii.github.io/meowmatch/",
-      "featured": false,
-      "image": "project1.png"
+      "image": "project4.png",
+      "client_challenge": "The objective for 'Timeless Travel' was to create an elegant and engaging blog platform for a fictional travel writer. The goal was to build a content-focused site that empowers the author to easily share stories and photos, while providing a smooth and enjoyable reading experience for their audience.",
+      "my_solution": "This is a robust Content Management System (CMS) built with Django. It allows the site administrator to perform full CRUD (Create, Read, Update, Delete) operations on blog posts without needing to touch any code. I focused on a clean, legible design that prioritizes the content and imagery.",
+      "the_result": "The platform empowers a writer to manage their own content and build a community. Key outcomes include an easy-to-use post editor, a comment system for reader engagement, and a paginated, organized layout that encourages visitors to explore more content—all essential features for a professional blogger looking to grow their audience."
     }
   }
 ]

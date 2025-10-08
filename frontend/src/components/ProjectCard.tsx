@@ -33,15 +33,13 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
           {project.title}
         </h3>
 
-        {/* We now show the challenge instead of a generic description */}
         <p className="text-secondary mb-6 flex-grow">
           {project.client_challenge ||
             "A featured project showcasing modern web development."}
         </p>
 
-        {/* This button links to the full case study page */}
         <Link
-          to={`/projects/${project.id}`} // Or a slug if you have one
+          to={`/projects/${project.id}`}
           className="mt-auto inline-flex items-center text-primary font-semibold"
         >
           View Case Study
