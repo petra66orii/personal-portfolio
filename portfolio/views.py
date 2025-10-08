@@ -1,4 +1,8 @@
+import requests
+import json
 import threading
+from rest_framework.views import APIView
+from rest_framework.response import Response
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
@@ -198,3 +202,41 @@ class ServiceInquiryCreateView(generics.CreateAPIView):
         
         # Return the successful response to the user IMMEDIATELY
         return response
+
+
+class NewsletterSignupView(APIView):
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        if not email:
+            return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # It's best practice to store these in your settings.py
+        MAILCHIMP_API_KEY = getattr(settings, "MAILCHIMP_API_KEY", None)
+        MAILCHIMP_DATA_CENTER = getattr(settings, "MAILCHIMP_DATA_CENTER", None) # e.g., 'us1'
+        MAILCHIMP_AUDIENCE_ID = getattr(settings, "MAILCHIMP_AUDIENCE_ID", None)
+
+        if not all([MAILCHIMP_API_KEY, MAILCHIMP_DATA_CENTER, MAILCHIMP_AUDIENCE_ID]):
+             return Response({'error': 'Mailchimp settings not configured.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        api_url = f'https://{MAILCHIMP_DATA_CENTER}.api.mailchimp.com/3.0/lists/{MAILCHIMP_AUDIENCE_ID}/members'
+        
+        headers = {
+            'Authorization': f'apikey {MAILCHIMP_API_KEY}',
+            'Content-Type': 'application/json',
+        }
+        
+        data = {
+            'email_address': email,
+            'status': 'subscribed',
+        }
+
+        try:
+            r = requests.post(api_url, headers=headers, data=json.dumps(data))
+            r.raise_for_status() # Raises an HTTPError for bad responses (4xx or 5xx)
+            return Response({'message': 'Successfully subscribed!'}, status=status.HTTP_201_CREATED)
+        except requests.exceptions.HTTPError as err:
+            error_json = err.response.json()
+            error_detail = error_json.get('detail', 'An error occurred.')
+            return Response({'error': error_detail}, status=err.response.status_code)
+        except Exception as e:
+            return Response({'error': 'An unexpected error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

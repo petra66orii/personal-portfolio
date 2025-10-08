@@ -6,7 +6,8 @@ from .views import (
     BlogPostViewSet,
     ServiceViewSet,
     ServiceInquiryCreateView,
-    ServiceDetailView
+    ServiceDetailView,
+    NewsletterSignupView
 )
 
 router = DefaultRouter()
@@ -19,4 +20,5 @@ urlpatterns = [
     path('service-inquiry/', ServiceInquiryCreateView.as_view(), name='service-inquiry'),
     path('services/', ServiceViewSet.as_view({'get': 'list'}), name='service-list'),
     path('services/<slug:slug>/', ServiceDetailView.as_view(), name='service-detail'),
+    path('newsletter-signup/', NewsletterSignupView.as_view(), name='newsletter-signup'),
 ]
