@@ -6,7 +6,6 @@ from .views import (
     BlogPostViewSet,
     ServiceViewSet,
     ServiceInquiryCreateView,
-    CredentialViewSet,
     ServiceDetailView
 )
 
@@ -18,7 +17,6 @@ urlpatterns = [
     path('', include(router.urls)),
     path('contact/', ContactMessageCreateView.as_view(), name='contact'),
     path('service-inquiry/', ServiceInquiryCreateView.as_view(), name='service-inquiry'),
-    path('credentials/', CredentialViewSet.as_view({'get': 'list'}), name='credentials'),
     path('services/', ServiceViewSet.as_view({'get': 'list'}), name='service-list'),
     path('services/<slug:slug>/', ServiceDetailView.as_view(), name='service-detail'),
 ]

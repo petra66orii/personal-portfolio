@@ -2,14 +2,13 @@ import threading
 from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
+from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry
 from .serializers import (
     ProjectSerializer,
     ContactMessageSerializer,
     BlogPostSerializer,
     ServiceSerializer,
     ServiceInquirySerializer,
-    CredentialSerializer,
 )
 
 
@@ -199,7 +198,3 @@ class ServiceInquiryCreateView(generics.CreateAPIView):
         
         # Return the successful response to the user IMMEDIATELY
         return response
-
-class CredentialViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = Credential.objects.all()
-    serializer_class = CredentialSerializer

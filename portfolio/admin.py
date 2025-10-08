@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry, Credential
+from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry
 
 # Register your models here.
 admin.site.register(Project)
@@ -47,9 +47,3 @@ class BlogPostAdmin(admin.ModelAdmin):
             'fields': ('published', 'published_date')
         }),
     )
-
-@admin.register(Credential)
-class CredentialAdmin(admin.ModelAdmin):
-    list_display = ['name', 'issuing_organization', 'issue_date', 'expiration_date']
-    search_fields = ['name', 'issuing_organization', 'credential_id']
-    list_filter = ['issuing_organization', 'issue_date', 'expiration_date']
