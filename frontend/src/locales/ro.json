@@ -27,6 +27,24 @@
     "consultation_desc": "Ghidare expertă pentru a contura strategia ta digitală și a-ți atinge obiectivele.",
     "view_all": "Explorează Soluțiile"
   },
+  "testimonials": {
+  "title": "Ce Spun Clienții Mei",
+  "subtitle": "Sunt mândră să colaborez cu profesioniști creativi pentru a construi o prezență digitală pe care o iubesc.",
+  "list": [
+    {
+      "id": 1,
+      "quote": "Miss Bott a transpus viziunea noastră artistică într-un website mai frumos și mai funcțional decât ne-am imaginat vreodată. Întregul proces a fost impecabil.",
+      "name": "OpenEire Studios",
+      "company": "Afacere de Videografie cu Drone"
+    },
+    {
+      "id": 2,
+      "quote": "Colaborarea cu Miss Bott a schimbat totul. Noul nostru portofoliu online a generat deja două contracte majore. Un partener cu adevărat profesionist și intuitiv.",
+      "name": "CMD Artistry",
+      "company": "Pictor Muralist"
+    }
+  ]
+},
   "projects": {
     "featured_title": "Proiecte Recomandate",
     "other_title": "Alte Proiecte",
@@ -36,6 +54,25 @@
     "live_link": "Link Live",
     "repo_link": "Link către Repository"
   },
+  "project_card": {
+  "alt_text": "Captură de ecran {{title}}",
+  "fallback_description": "Un proiect recomandat ce demonstrează dezvoltare web modernă.",
+  "link_text": "Vezi Studiul de Caz"
+},
+  "project_detail_page": {
+  "back_button": "Înapoi Acasă",
+  "case_study_title": "Studiu de Caz",
+  "challenge_title": "Provocarea",
+  "solution_title": "Soluția Mea",
+  "result_title": "Rezultatul",
+  "tech_stack_title": "Tehnologii Folosite",
+  "links_title": "Linkuri Proiect",
+  "live_link": "Vezi Site-ul Live",
+  "repo_link": "Vezi pe GitHub",
+  "error_title": "Eroare",
+  "error_message": "Nu s-au putut prelua detaliile proiectului. Te rog, încearcă din nou.",
+  "not_found": "Proiectul nu a putut fi găsit."
+},
   "seo": {
     "home_title": "Web Design pentru Artiști și Creativi | Miss Bott",
     "home_description": "Construiesc website-uri frumoase și performante pentru artiști, fotografi și profesioniști creativi. Hai să traducem viziunea ta într-o prezență online uimitoare.",

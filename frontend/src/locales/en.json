@@ -27,6 +27,24 @@
     "consultation_desc": "Expert guidance to map out your digital strategy and achieve your goals.",
     "view_all": "Explore Solutions"
   },
+  "testimonials": {
+  "title": "What My Clients Say",
+  "subtitle": "I'm proud to partner with creatives to build a digital presence they love.",
+  "list": [
+    {
+      "id": 1,
+      "quote": "Miss Bott translated our artistic vision into a website that was more beautiful and functional than we ever imagined. The entire process was seamless.",
+      "name": "OpenEire Studios",
+      "company": "Drone Videography Business"
+    },
+    {
+      "id": 2,
+      "quote": "Working with Miss Bott was a game-changer. Our new portfolio site has already led to two major commissions. Truly a professional and intuitive partner.",
+      "name": "CMD Artistry",
+      "company": "Mural Painter"
+    }
+  ]
+},
   "projects": {
     "featured_title": "Featured Projects",
     "other_title": "Other Projects",
@@ -36,6 +54,25 @@
     "live_link": "Live Link",
     "repo_link": "Link to Repository"
   },
+  "project_card": {
+  "alt_text": "{{title}} screenshot",
+  "fallback_description": "A featured project showcasing modern web development.",
+  "link_text": "View Case Study"
+},
+  "project_detail_page": {
+  "back_button": "Back to Home",
+  "case_study_title": "Case Study",
+  "challenge_title": "The Challenge",
+  "solution_title": "My Solution",
+  "result_title": "The Result",
+  "tech_stack_title": "Tech Stack",
+  "links_title": "Project Links",
+  "live_link": "View Live Site",
+  "repo_link": "View on GitHub",
+  "error_title": "Error",
+  "error_message": "Failed to fetch project details. Please try again later.",
+  "not_found": "The project could not be found."
+},
   "seo": {
     "home_title": "Web Design for Artists & Creatives | Miss Bott",
     "home_description": "I build beautiful, high-performance websites for artists, photographers, and creative professionals. Let's translate your vision into a stunning online presence.",
