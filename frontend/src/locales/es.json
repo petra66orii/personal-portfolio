@@ -1,0 +1,215 @@
+{
+  "common": {
+    "and": "y"
+  },
+  "navbar": {
+    "about": "Inicio",
+    "services": "Soluciones",
+    "blog": "Artículos",
+    "contact": "Contacto"
+  },
+  "home": {
+    "title": "Tú tienes la visión. Yo construyo la realidad digital.",
+    "description_p1": "Soy un socio técnico para artistas, fotógrafos y artesanos que están listos para elevar su presencia en línea.",
+    "description_p2": "Tú creas obras asombrosas. Yo construyo el sitio web de clase mundial que las exhibe, convirtiendo tu pasión en un próspero negocio en línea.",
+    "call_to_action": "Reservar una llamada gratuita"
+  },
+  "services1": {
+    "title": "Soluciones para Profesionales Creativos",
+    "description": "Tu arte merece un sitio web hermoso y de alto rendimiento. Descubre los paquetes diseñados para ayudar a tu negocio creativo a tener éxito.",
+    "web_dev_title": "La Galería Digital",
+    "web_dev_desc": "Un portafolio impresionante para exhibir tu trabajo y atraer clientes de alto valor.",
+    "maintenance_title": "El Centro E-Commerce del Artesano",
+    "maintenance_desc": "Una hermosa tienda en línea para vender tus productos, impresiones o bienes digitales.",
+    "optimization_title": "Retainer de Tranquilidad",
+    "optimization_desc": "Soporte continuo para mantener tu sitio seguro, actualizado y funcionando sin problemas.",
+    "consultation_title": "Consulta Estratégica",
+    "consultation_desc": "Asesoramiento experto para trazar tu estrategia digital y alcanzar tus metas.",
+    "view_all": "Explorar Soluciones"
+  },
+  "testimonials": {
+    "title": "Lo que dicen mis clientes",
+    "subtitle": "Me enorgullece asociarme con creativos para construir una presencia digital que aman.",
+    "list": [
+      {
+        "id": 1,
+        "quote": "Miss Bott tradujo nuestra visión artística en un sitio web que fue más hermoso y funcional de lo que imaginamos. Todo el proceso fue impecable.",
+        "name": "OpenEire Studios",
+        "company": "Negocio de Videografía con Drones"
+      },
+      {
+        "id": 2,
+        "quote": "Trabajar con Miss Bott fue un cambio radical. Nuestro nuevo portafolio ya ha generado dos comisiones importantes. Un socio verdaderamente profesional e intuitivo.",
+        "name": "CMD Artistry",
+        "company": "Pintor Muralista"
+      }
+    ]
+  },
+  "projects": {
+    "featured_title": "Proyectos Destacados",
+    "other_title": "Otros Proyectos",
+    "none_found": "No se encontraron proyectos. Asegúrate de que el servidor backend esté funcionando.",
+    "read_more": "Leer Más",
+    "read_less": "Leer Menos",
+    "live_link": "Enlace en Vivo",
+    "repo_link": "Enlace al Repositorio"
+  },
+  "project_card": {
+    "alt_text": "Captura de pantalla de {{title}}",
+    "fallback_description": "Un proyecto destacado que muestra el desarrollo web moderno.",
+    "link_text": "Ver Caso de Estudio"
+  },
+  "project_detail_page": {
+    "back_button": "Volver al Inicio",
+    "case_study_title": "Caso de Estudio",
+    "challenge_title": "El Desafío",
+    "solution_title": "Mi Solución",
+    "result_title": "El Resultado",
+    "tech_stack_title": "Tecnologías Utilizadas",
+    "links_title": "Enlaces del Proyecto",
+    "live_link": "Ver Sitio en Vivo",
+    "repo_link": "Ver en GitHub",
+    "error_title": "Error",
+    "error_message": "No se pudieron cargar los detalles del proyecto. Por favor, inténtalo de nuevo.",
+    "not_found": "El proyecto no pudo ser encontrado."
+  },
+  "seo": {
+    "home_title": "Diseño Web para Artistas y Creativos | Miss Bott",
+    "home_description": "Construyo sitios web hermosos y de alto rendimiento para artistas, fotógrafos y profesionales creativos. Traduzcamos tu visión en una presencia en línea impresionante.",
+    "home_keywords": "diseño web para artistas, sitio web portafolio fotógrafo, desarrollador web para creativos, e-commerce para artistas, sitios web personalizados, portafolios para diseñadores, Miss Bott"
+  },
+  "services2": {
+    "header_professional": "Nuestras",
+    "header_web_services": "Soluciones",
+    "header_description": "Desde impresionantes portafolios digitales hasta robustas tiendas en línea, ofrezco soluciones modernas y de alto rendimiento adaptadas a las necesidades de los profesionales creativos.",
+    "most_popular_badge": "Más Popular",
+    "more_features": "+{{count}} más características",
+    "custom_quote": "Presupuesto Personalizado",
+    "get_quote_button": "Obtener Presupuesto",
+    "cta_title": "¿Listo para Elevar Tu Presencia en Línea?",
+    "cta_description": "Discutamos tu visión y creemos algo extraordinario juntos. Obtén una llamada de descubrimiento gratuita y sin compromiso, y una propuesta personalizada.",
+    "cta_button": "Reserva Tu Llamada Gratuita",
+    "learn_more": "Saber Más"
+  },
+  "service_detail_page": {
+    "back_button": "Volver a Todas las Soluciones",
+    "whats_included": "Qué está incluido",
+    "our_process": "Nuestro Proceso",
+    "who_is_it_for": "¿Para quién es?",
+    "cta_button": "Reservar una llamada",
+    "process_step1_title": "Descubrimiento y Estrategia:",
+    "process_step1_desc": "Discutiremos tu visión y objetivos para crear un plan claro.",
+    "process_step2_title": "Diseño y Desarrollo:",
+    "process_step2_desc": "Daré vida a la visión con código limpio y un diseño hermoso.",
+    "process_step3_title": "Revisión y Lanzamiento:",
+    "process_step3_desc": "Perfeccionaremos el sitio juntos antes de lanzarlo al mundo.",
+    "who_is_it_for_map": {
+      "digital-gallery": ["Artistas", "Fotógrafos", "Ilustradores", "Diseñadores"],
+      "artisan-ecommerce": ["Creadores", "Artesanos", "Vendedores de bienes"],
+      "peace-of-mind-retainer": ["Creativos establecidos", "Empresarios ocupados"],
+      "strategic-discovery": ["Nuevos proyectos", "Negocios planeando un rediseño"]
+    }
+  },
+  "project_inquiry": {
+    "seo_title": "Solicitud de Proyecto | Miss Bott",
+    "seo_description": "Comienza tu nuevo proyecto proporcionando algunos detalles. Obtén un presupuesto personalizado para servicios de desarrollo web.",
+    "main_title": "Planificador de Proyectos",
+    "main_subtitle": "Construyamos algo asombroso. Cuéntame sobre tu proyecto.",
+    "step1_title": "Sobre Ti",
+    "placeholder_name": "Tu Nombre",
+    "placeholder_email": "Tu Email",
+    "placeholder_company": "Nombre de la Empresa (Opcional)",
+    "placeholder_phone": "Número de Teléfono (Opcional)",
+    "button_next": "Siguiente",
+    "step2_title": "Sobre El Proyecto",
+    "select_service": "Selecciona un servicio...",
+    "other_inquiry": "Otra consulta / General",
+    "placeholder_details": "Cuéntame sobre tu proyecto...",
+    "placeholder_website": "URL del Sitio Web Actual (Opcional)",
+    "button_previous": "Anterior",
+    "step3_title": "Presupuesto y Plazo",
+    "label_budget": "Presupuesto Estimado",
+    "select_budget": "Selecciona un rango de presupuesto...",
+    "label_timeline": "Plazo del Proyecto",
+    "select_timeline": "Selecciona un plazo...",
+    "button_submitting": "Enviando...",
+    "button_submit": "Enviar Solicitud",
+    "success_title": "¡Solicitud Enviada!",
+    "success_message": "Gracias por tu interés. He recibido los detalles de tu proyecto y me pondré en contacto contigo en 1-2 días hábiles para programar una consulta.",
+    "error_submit": "El envío falló. Por favor, inténtalo de nuevo.",
+    "error_unexpected": "Ocurrió un error inesperado.",
+    "budgets": {
+      "under_1k": "Menos de 1.000 €",
+      "1k_5k": "1.000 € - 5.000 €",
+      "5k_10k": "5.000 € - 10.000 €",
+      "10k_plus": "Más de 10.000 €",
+      "not_sure": "No estoy seguro/a todavía"
+    },
+    "timelines": {
+      "asap": "Lo antes posible",
+      "1_month": "Dentro de 1 mes",
+      "2_3_months": "2-3 meses",
+      "flexible": "Flexible"
+    }
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "success": {
+      "title": "¡Mensaje Enviado con Éxito!",
+      "message": "Gracias por contactarme. Te responderé lo antes posible.",
+      "button_send_another": "Enviar Otro Mensaje"
+    },
+    "form": {
+      "label_name": "Tu Nombre",
+      "placeholder_name": "Ingresa tu nombre completo",
+      "label_email": "Tu Email",
+      "placeholder_email": "Ingresa tu dirección de email",
+      "label_service": "Servicio de Interés",
+      "placeholder_service": "Selecciona un servicio...",
+      "service_other": "Otro / Consulta General",
+      "label_message": "Tu Mensaje",
+      "placeholder_message": "Cuéntame sobre tu proyecto o cualquier pregunta que tengas",
+      "button_sending": "Enviando...",
+      "button_send": "Enviar Mensaje"
+    },
+    "validation": {
+      "name_required": "El nombre es obligatorio",
+      "name_min": "El nombre debe tener al menos 2 caracteres",
+      "email_required": "El email es obligatorio",
+      "email_invalid": "Por favor, ingresa una dirección de email válida",
+      "message_required": "El mensaje es obligatorio",
+      "message_min": "El mensaje debe tener al menos 10 caracteres"
+    },
+    "error": {
+      "general_submit": "No se pudo enviar el mensaje. Por favor, inténtalo de nuevo.",
+      "network": "Error de red. Por favor, verifica tu conexión e inténtalo de nuevo."
+    }
+  },
+  "footer": {
+    "copyright": "© {{year}} Miss Bott. Todos los derechos reservados."
+  },
+  "blog": {
+    "title": "Artículos para Creativos",
+    "description": "Un centro de recursos con consejos, ideas e inspiración para ayudar a los profesionales creativos a construir su marca y prosperar en línea.",
+    "author_prefix": "Por",
+    "read_time": "{{time}} min de lectura",
+    "read_more": "Leer más",
+    "coming_soon": {
+      "headline": "Tu Negocio Creativo, Amplificado.",
+      "description": "El centro de artículos llegará pronto. Compartiré consejos prácticos sobre diseño web, marketing y tecnología para ayudarte a construir tu marca y prosperar en línea.",
+      "placeholder": "Ingresa tu email para ser notificado",
+      "button_text": "Notificar"
+    },
+    "newsletter": {
+      "subscribing": "Suscribiendo...",
+      "success": "¡Gracias por suscribirte!",
+      "error_generic": "Algo salió mal.",
+      "error_unexpected": "Ocurrió un error inesperado."
+    },
+    "seo": {
+      "title": "Artículos para Creativos | Miss Bott",
+      "description": "Un centro de recursos con consejos e inspiración para ayudar a los profesionales creativos a construir su marca y prosperar en línea.",
+      "keywords": "consejos para artistas, marketing para fotógrafos, branding creativo, sitios web para creativos, redes sociales para artistas, blog Miss Bott"
+    }
+  }
+}

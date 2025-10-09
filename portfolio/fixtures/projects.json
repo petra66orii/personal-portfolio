@@ -6,6 +6,7 @@
       "title": "Honeypot E-Commerce",
       "description_en": "A full-featured e-commerce platform for an artisan cosmetics brand, built with Django.",
       "description_ro": "O platformă e-commerce completă pentru un brand artizanal de cosmetice, construită cu Django.",
+      "description_es": "Una plataforma de e-commerce con todas las funciones para una marca de cosméticos artesanales, construida con Django.",
       "tech_stack": "Django, PostgreSQL, JavaScript, Stripe, Bootstrap",
       "repo_link": "https://github.com/petra6forii/honeypot",
       "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
@@ -13,10 +14,13 @@
       "image": "project5.png",
       "client_challenge_en": "The goal for 'Honeypot' was to design and build a complete e-commerce solution for a fictional artisan cosmetics brand. The key challenge was to create a secure, user-friendly online store that reflects the brand's premium quality and provides a seamless path from product discovery to purchase.",
       "client_challenge_ro": "Scopul pentru 'Honeypot' a fost proiectarea și construirea unei soluții e-commerce complete pentru un brand artizanal fictiv de cosmetice. Provocarea principală a fost crearea unui magazin online securizat și ușor de utilizat, care să reflecte calitatea premium a brandului și să ofere un parcurs fluid de la descoperirea produsului la finalizarea comenzii.",
+      "client_challenge_es": "El objetivo de 'Honeypot' era diseñar y construir una solución de e-commerce completa para una marca ficticia de cosméticos artesanales. El desafío clave fue crear una tienda en línea segura y fácil de usar que refleje la calidad premium de la marca y ofrezca un camino fluido desde el descubrimiento del producto hasta la compra.",
       "my_solution_en": "I built a full-stack web application from the ground up using Django. It features a complete shopping cart system, secure user authentication, product management, and an admin panel for order tracking. The design is clean, responsive, and focused on showcasing the products beautifully.",
       "my_solution_ro": "Am construit o aplicație web full-stack de la zero folosind Django. Aceasta include un sistem complet de coș de cumpărături, autentificare securizată a utilizatorilor, management de produse și un panou de administrare pentru urmărirea comenzilor. Designul este curat, responsiv și axat pe prezentarea elegantă a produselor.",
+      "my_solution_es": "Construí una aplicación web full-stack desde cero usando Django. Incluye un sistema completo de carrito de compras, autenticación segura de usuarios, gestión de productos y un panel de administración para el seguimiento de pedidos. El diseño es limpio, adaptable y enfocado en exhibir los productos de manera atractiva.",
       "the_result_en": "The result is a production-ready e-commerce platform designed to drive sales. Key features include Stripe integration for secure payments, a product review system to build social proof, and an intuitive checkout process designed to maximize conversions for a small business.",
-      "the_result_ro": "Rezultatul este o platformă e-commerce pregătită pentru producție, concepută pentru a crește vânzările. Caracteristicile cheie includ integrarea cu Stripe pentru plăți sigure, un sistem de recenzii pentru a construi încredere și un proces de finalizare a comenzii intuitiv, menit să maximizeze conversiile pentru o afacere mică."
+      "the_result_ro": "Rezultatul este o platformă e-commerce pregătită pentru producție, concepută pentru a crește vânzările. Caracteristicile cheie includ integrarea cu Stripe pentru plăți sigure, un sistem de recenzii pentru a construi încredere și un proces de finalizare a comenzii intuitiv, menit să maximizeze conversiile pentru o afacere mică.",
+      "the_result_es": "El resultado es una plataforma de e-commerce lista para producción, diseñada para impulsar las ventas. Las características clave incluyen la integración de Stripe para pagos seguros, un sistema de reseñas para construir prueba social y un proceso de pago intuitivo diseñado para maximizar las conversiones para un pequeño negocio."
     }
   },
   {
@@ -26,6 +30,7 @@
       "title": "Time[less] Travel Blog",
       "description_en": "An elegant and engaging blog platform and content management system for a travel writer.",
       "description_ro": "O platformă de blog elegantă și un sistem de management al conținutului pentru un scriitor de călătorii.",
+      "description_es": "Una plataforma de blog elegante y atractiva y un sistema de gestión de contenidos para un escritor de viajes.",
       "tech_stack": "Django, PostgreSQL, JavaScript, Bootstrap",
       "repo_link": "https://github.com/petra6forii/timeless-travel",
       "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
@@ -33,10 +38,13 @@
       "image": "project4.png",
       "client_challenge_en": "The objective for 'Timeless Travel' was to create an elegant and engaging blog platform for a fictional travel writer. The goal was to build a content-focused site that empowers the author to easily share stories and photos, while providing a smooth and enjoyable reading experience for their audience.",
       "client_challenge_ro": "Obiectivul pentru 'Timeless Travel' a fost crearea unei platforme de blog elegante și atractive pentru un scriitor de călătorii fictiv. Scopul a fost construirea unui site axat pe conținut, care să permită autorului să împărtășească cu ușurință povești și fotografii, oferind în același timp o experiență de lectură plăcută pentru public.",
+      "client_challenge_es": "El objetivo de 'Timeless Travel' era crear una plataforma de blog elegante y atractiva para un escritor de viajes ficticio. El objetivo era construir un sitio centrado en el contenido que permitiera al autor compartir fácilmente historias y fotos, al tiempo que proporcionaba una experiencia de lectura fluida y agradable para su audiencia.",
       "my_solution_en": "This is a robust Content Management System (CMS) built with Django. It allows the site administrator to perform full CRUD (Create, Read, Update, Delete) operations on blog posts without needing to touch any code. I focused on a clean, legible design that prioritizes the content and imagery.",
       "my_solution_ro": "Acesta este un sistem robust de management al conținutului (CMS) construit cu Django. Permite administratorului site-ului să efectueze operațiuni CRUD complete (Creare, Citire, Actualizare, Ștergere) pe articolele de blog fără a atinge codul. M-am concentrat pe un design curat și lizibil, care prioritizează conținutul și imaginile.",
+      "my_solution_es": "Este es un robusto Sistema de Gestión de Contenidos (CMS) construido con Django. Permite al administrador del sitio realizar operaciones CRUD completas (Crear, Leer, Actualizar, Borrar) en las entradas del blog sin necesidad de tocar código. Me centré en un diseño limpio y legible que prioriza el contenido y las imágenes.",
       "the_result_en": "The platform empowers a writer to manage their own content and build a community. Key outcomes include an easy-to-use post editor, a comment system for reader engagement, and a paginated, organized layout that encourages visitors to explore more content—all essential features for a professional blogger looking to grow their audience.",
-      "the_result_ro": "Platforma îi permite unui scriitor să-și gestioneze propriul conținut și să construiască o comunitate. Rezultatele cheie includ un editor de articole ușor de utilizat, un sistem de comentarii pentru interacțiunea cu cititorii și un layout paginat și organizat care încurajează vizitatorii să exploreze mai mult conținut - toate fiind caracteristici esențiale pentru un blogger profesionist care dorește să-și crească publicul."
+      "the_result_ro": "Platforma îi permite unui scriitor să-și gestioneze propriul conținut și să construiască o comunitate. Rezultatele cheie includ un editor de articole ușor de utilizat, un sistem de comentarii pentru interacțiunea cu cititorii și un layout paginat și organizat care încurajează vizitatorii să exploreze mai mult conținut - toate fiind caracteristici esențiale pentru un blogger profesionist care dorește să-și crească publicul.",
+      "the_result_es": "La plataforma permite a un escritor gestionar su propio contenido y construir una comunidad. Los resultados clave incluyen un editor de entradas fácil de usar, un sistema de comentarios para la interacción de los lectores y un diseño paginado y organizado que anima a los visitantes a explorar más contenido, todas características esenciales para que un blogger profesional haga crecer su audiencia."
     }
   }
 ]

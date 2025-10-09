@@ -3,17 +3,17 @@
     "model": "portfolio.service",
     "pk": 1,
     "fields": {
-      "name_en": "The Digital Gallery",
-      "name_ro": "Galeria Digitală",
+      "name_en": "The Digital Gallery", "name_ro": "Galeria Digitală", "name_es": "La Galería Digital",
       "slug": "digital-gallery",
       "short_description_en": "A stunning, lightning-fast portfolio website designed to showcase your work and attract high-value clients.",
       "short_description_ro": "Un portofoliu web uimitor, extrem de rapid, conceput pentru a-ți expune lucrările și a atrage clienți valoroși.",
+      "short_description_es": "Un portafolio web impresionante y ultrarrápido, diseñado para exhibir tu trabajo y atraer clientes de alto valor.",
       "description_en": "Your art deserves a world-class online presence. I build visually-driven portfolio websites that are as beautiful and professional as your work. Every site is optimized for performance and designed to look breathtaking on any device.",
       "description_ro": "Arta ta merită o prezență online de clasă mondială. Construiesc site-uri de portofoliu cu un puternic accent vizual, la fel de frumoase și profesionale ca lucrările tale. Fiecare site este optimizat pentru performanță și conceput pentru a arăta spectaculos pe orice dispozitiv.",
+      "description_es": "Tu arte merece una presencia online de clase mundial. Construyo sitios web de portafolio con un fuerte enfoque visual, tan hermosos y profesionales como tu trabajo. Cada sitio está optimizado para el rendimiento y diseñado para verse espectacular en cualquier dispositivo.",
       "features_en": "Visually-driven, custom design\nMobile-first and responsive layout\nOptimized for fast loading speeds\nBasic SEO to help clients find you\nClear call-to-actions for inquiries",
       "features_ro": "Design personalizat, cu accent vizual\nLayout responsive, mobile-first\nOptimizat pentru viteze rapide de încărcare\nSEO de bază pentru a te ajuta clienții să te găsească\nÎndemnuri la acțiune clare pentru cereri de ofertă",
-      "starting_price": null,
-      "delivery_time": null,
+      "features_es": "Diseño personalizado y visual\nDiseño adaptable y mobile-first\nOptimizado para cargas rápidas\nSEO básico para ayudar a los clientes a encontrarte\nLlamadas a la acción claras para consultas",
       "icon": "code", "featured": true, "active": true, "order": 1
     }
   },
@@ -21,17 +21,17 @@
     "model": "portfolio.service",
     "pk": 2,
     "fields": {
-      "name_en": "The Artisan's E-Commerce Hub",
-      "name_ro": "Hub-ul E-Commerce al Artizanului",
+      "name_en": "The Artisan's E-Commerce Hub", "name_ro": "Hub-ul E-Commerce al Artizanului", "name_es": "El Centro E-Commerce del Artesano",
       "slug": "artisan-ecommerce",
       "short_description_en": "Turn your passion into profit with a beautiful and seamless online store to sell your products, prints, or digital goods.",
       "short_description_ro": "Transformă-ți pasiunea în profit cu un magazin online elegant și fluid pentru a-ți vinde produsele, printurile sau bunurile digitale.",
+      "short_description_es": "Convierte tu pasión en ganancias con una tienda en línea hermosa y fluida para vender tus productos, impresiones o bienes digitales.",
       "description_en": "Ready to sell your work online? I create robust and elegant e-commerce websites that make it easy for you to manage products and for your customers to make purchases. Secure, reliable, and tailored to your brand.",
       "description_ro": "Ești gata să-ți vinzi lucrările online? Creez site-uri de e-commerce robuste și elegante, care îți permit să gestionezi cu ușurință produsele și le oferă clienților o experiență de cumpărare plăcută. Securizat, fiabil și personalizat pentru brandul tău.",
+      "description_es": "¿Listo para vender tu trabajo en línea? Creo sitios web de e-commerce robustos y elegantes que te facilitan la gestión de productos y ofrecen a tus clientes una experiencia de compra agradable. Seguro, confiable y adaptado a tu marca.",
       "features_en": "Secure Stripe & PayPal integration\nEasy product & inventory management\nCustomer accounts and order history\nBeautiful product pages\nOptimized checkout experience",
       "features_ro": "Integrare securizată Stripe & PayPal\nManagement facil al produselor și stocurilor\nConturi de client și istoric comenzi\nPagini de produs elegante\nExperiență de plată optimizată",
-      "starting_price": null,
-      "delivery_time": null,
+      "features_es": "Integración segura con Stripe y PayPal\nGestión fácil de productos e inventario\nCuentas de cliente e historial de pedidos\nPáginas de producto atractivas\nExperiencia de pago optimizada",
       "icon": "wrench", "featured": false, "active": true, "order": 2
     }
   },
@@ -39,17 +39,17 @@
     "model": "portfolio.service",
     "pk": 3,
     "fields": {
-      "name_en": "Peace of Mind Retainer",
-      "name_ro": "Abonament pentru Liniște",
+      "name_en": "Peace of Mind Retainer", "name_ro": "Abonament pentru Liniște", "name_es": "Retainer de Tranquilidad",
       "slug": "peace-of-mind-retainer",
       "short_description_en": "Ongoing support to keep your website secure, updated, and running smoothly so you can focus on your craft.",
       "short_description_ro": "Suport continuu pentru a-ți menține site-ul securizat, actualizat și funcționând perfect, astfel încât tu să te poți concentra pe creația ta.",
+      "short_description_es": "Soporte continuo para mantener tu sitio web seguro, actualizado y funcionando sin problemas, para que puedas concentrarte en tu arte.",
       "description_en": "Your website is a critical business asset. My retainer service ensures it stays in peak condition with regular security checks, performance monitoring, software updates, and dedicated support when you need it.",
       "description_ro": "Site-ul tău este un activ critic al afacerii. Serviciul meu de abonament asigură menținerea sa în condiții optime prin verificări regulate de securitate, monitorizarea performanței, actualizări software și suport dedicat atunci când ai nevoie.",
+      "description_es": "Tu sitio web es un activo crítico para tu negocio. Mi servicio de retainer asegura que se mantenga en óptimas condiciones con revisiones de seguridad, monitoreo de rendimiento, actualizaciones de software y soporte dedicado cuando lo necesites.",
       "features_en": "Weekly security scans & updates\nRegular cloud backups\nPerformance monitoring\nContent update assistance\nPriority technical support",
       "features_ro": "Scanări și actualizări de securitate săptămânale\nBackup-uri regulate în cloud\nMonitorizarea performanței\nAsistență pentru actualizarea conținutului\nSuport tehnic prioritar",
-      "starting_price": null,
-      "delivery_time": null,
+      "features_es": "Escaneos y actualizaciones de seguridad semanales\nCopias de seguridad regulares en la nube\nMonitoreo de rendimiento\nAsistencia para actualización de contenido\nSoporte técnico prioritario",
       "icon": "zap", "featured": false, "active": true, "order": 3
     }
   },
@@ -57,17 +57,17 @@
     "model": "portfolio.service",
     "pk": 4,
     "fields": {
-      "name_en": "Strategic Discovery Session",
-      "name_ro": "Sesiune de Descoperire Strategică",
+      "name_en": "Strategic Discovery Session", "name_ro": "Sesiune de Descoperire Strategică", "name_es": "Sesión de Descubrimiento Estratégico",
       "slug": "strategic-discovery",
       "short_description_en": "Expert guidance to map out your digital strategy, define your project goals, and make informed technology decisions.",
       "short_description_ro": "Ghidare expertă pentru a-ți contura strategia digitală, a defini obiectivele proiectului și a lua decizii tehnologice informate.",
+      "short_description_es": "Asesoramiento experto para trazar tu estrategia digital, definir los objetivos de tu proyecto y tomar decisiones tecnológicas informadas.",
       "description_en": "Have a big idea but not sure where to start? In this focused session, we'll dive deep into your goals and create a clear, actionable plan for your web project, ensuring we build the right solution from day one.",
       "description_ro": "Ai o idee grozavă, dar nu știi de unde să începi? În această sesiune concentrată, vom analiza în profunzime obiectivele tale și vom crea un plan clar și concret pentru proiectul tău web, asigurându-ne că construim soluția potrivită încă din prima zi.",
+      "description_es": "¿Tienes una gran idea pero no sabes por dónde empezar? En esta sesión enfocada, profundizaremos en tus objetivos y crearemos un plan de acción claro para tu proyecto web, asegurando que construyamos la solución correcta desde el primer día.",
       "features_en": "In-depth goal analysis\nTechnical recommendations\nProject roadmap creation\nUser experience planning\nClear budget & timeline estimates",
       "features_ro": "Analiză aprofundată a obiectivelor\nRecomandări tehnice\nCrearea unui plan de proiect (roadmap)\nPlanificarea experienței utilizatorului\nEstimări clare de buget și timp",
-      "starting_price": null,
-      "delivery_time": null,
+      "features_es": "Análisis profundo de objetivos\nRecomendaciones técnicas\nCreación de una hoja de ruta del proyecto\nPlanificación de la experiencia de usuario\nEstimaciones claras de presupuesto y plazos",
       "icon": "users", "featured": false, "active": true, "order": 4
     }
   }
