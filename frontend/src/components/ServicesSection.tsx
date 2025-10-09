@@ -164,7 +164,7 @@ const ServicesSection: React.FC = () => {
                           : "button-simple"
                       }`}
                     >
-                      <span>Learn More</span>
+                      <span>{t("services2.learn_more")}</span>
                       <ArrowRight
                         className={`w-4 h-4 transition-transform ${
                           isHovered ? "translate-x-1" : ""

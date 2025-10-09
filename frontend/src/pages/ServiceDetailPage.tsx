@@ -1,5 +1,3 @@
-// src/pages/ServiceDetailPage.tsx
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEO from "../components/SEO";
@@ -29,26 +27,32 @@ const ServiceDetailPage: React.FC = () => {
   const [service, setService] = useState<Service | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { i18n } = useTranslation();
   const { t } = useTranslation();
 
   useEffect(() => {
     const fetchService = async () => {
+      setLoading(true); // Ensure loading is reset on language change
       try {
-        const response = await fetch(`/api/services/${slug}/`);
+        const response = await fetch(`/api/services/${slug}/`, {
+          headers: {
+            "Accept-Language": i18n.language,
+          },
+        });
         if (!response.ok) {
           throw new Error(`Service not found. Status: ${response.status}`);
         }
         const data: Service = await response.json();
         setService(data);
       } catch (err) {
-        setError("Failed to fetch service details. Please try again later.");
+        setError(t("service_detail_page.error_message"));
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
     fetchService();
-  }, [slug]);
+  }, [slug, i18n.language, t]);
 
   if (loading) {
     return (
@@ -62,15 +66,17 @@ const ServiceDetailPage: React.FC = () => {
     return (
       <div className="text-center py-20">
         <AlertTriangle className="mx-auto h-12 w-12 text-red-500" />
-        <h2 className="mt-4 text-2xl font-bold text-primary">Error</h2>
+        <h2 className="mt-4 text-2xl font-bold text-primary">
+          {t("service_detail_page.error_title")}
+        </h2>
         <p className="mt-2 text-secondary">
-          {error || "The service could not be found."}
+          {error || t("service_detail_page.not_found")}
         </p>
         <Link
           to="/services"
           className="mt-6 inline-block text-primary hover:underline"
         >
-          &larr; Back to Solutions
+          &larr; {t("service_detail_page.back_button")}
         </Link>
       </div>
     );
