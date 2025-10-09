@@ -217,6 +217,27 @@
     "description": "A resource hub with tips and inspiration to help creative professionals build their brand and thrive online.",
     "keywords": "online tips for artists, marketing for photographers, building a creative brand, websites for creatives, social media for artists, Miss Bott blog"
   }
+},
+"error_page": {
+  "go_home_button": "Go Back Home",
+  "404": {
+    "title": "Page Not Found",
+    "message": "Oops! The page you're looking for doesn't exist. It might have been moved or deleted.",
+    "seo_title": "Page Not Found | Miss Bott",
+    "seo_desc": "The page you are looking for could not be found on missbott.online."
+  },
+  "403": {
+    "title": "Access Denied",
+    "message": "Sorry, you don't have permission to access this page.",
+    "seo_title": "Access Denied | Miss Bott",
+    "seo_desc": "You do not have permission to view this page."
+  },
+  "500": {
+    "title": "Internal Server Error",
+    "message": "Something went wrong on our end. We're working on getting it fixed as soon as possible.",
+    "seo_title": "Server Error | Miss Bott",
+    "seo_desc": "We are currently experiencing server issues. Please try again later."
+  }
 }
 
 }

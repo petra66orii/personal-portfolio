@@ -211,6 +211,27 @@
     "description": "Un centru de resurse cu sfaturi și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
     "keywords": "sfaturi online pentru artiști, marketing pentru fotografi, branding creativ, website-uri pentru creativi, social media pentru artiști, blog Miss Bott"
   }
+},
+"error_page": {
+  "go_home_button": "Înapoi Acasă",
+  "404": {
+    "title": "Pagină Inexistentă",
+    "message": "Oops! Pagina pe care o cauți nu există. Este posibil să fi fost mutată sau ștearsă.",
+    "seo_title": "Pagină Inexistentă | Miss Bott",
+    "seo_desc": "Pagina pe care o cauți nu a putut fi găsită pe missbott.online."
+  },
+  "403": {
+    "title": "Acces Interzis",
+    "message": "Ne pare rău, nu ai permisiunea de a accesa această pagină.",
+    "seo_title": "Acces Interzis | Miss Bott",
+    "seo_desc": "Nu ai permisiunea de a vizualiza această pagină."
+  },
+  "500": {
+    "title": "Eroare de Server",
+    "message": "Ceva nu a funcționat corect. Lucrăm pentru a remedia problema cât mai curând posibil.",
+    "seo_title": "Eroare de Server | Miss Bott",
+    "seo_desc": "Momentan întâmpinăm probleme cu serverul. Te rog, încearcă din nou mai târziu."
+  }
 }
 
 }

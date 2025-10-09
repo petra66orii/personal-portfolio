@@ -211,5 +211,26 @@
       "description": "Un centro de recursos con consejos e inspiración para ayudar a los profesionales creativos a construir su marca y prosperar en línea.",
       "keywords": "consejos para artistas, marketing para fotógrafos, branding creativo, sitios web para creativos, redes sociales para artistas, blog Miss Bott"
     }
+  },
+  "error_page": {
+  "go_home_button": "Volver al Inicio",
+  "404": {
+    "title": "Página No Encontrada",
+    "message": "¡Ups! La página que buscas no existe. Es posible que haya sido movida o eliminada.",
+    "seo_title": "Página No Encontrada | Miss Bott",
+    "seo_desc": "La página que buscas no se ha podido encontrar en missbott.online."
+  },
+  "403": {
+    "title": "Acceso Denegado",
+    "message": "Lo sentimos, no tienes permiso para acceder a esta página.",
+    "seo_title": "Acceso Denegado | Miss Bott",
+    "seo_desc": "No tienes permiso para ver esta página."
+  },
+  "500": {
+    "title": "Error Interno del Servidor",
+    "message": "Algo salió mal de nuestro lado. Estamos trabajando para solucionarlo lo antes posible.",
+    "seo_title": "Error del Servidor | Miss Bott",
+    "seo_desc": "Actualmente estamos experimentando problemas con el servidor. Por favor, inténtalo de nuevo más tarde."
   }
+}
 }

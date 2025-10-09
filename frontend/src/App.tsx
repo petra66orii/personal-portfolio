@@ -10,6 +10,7 @@ import ProjectInquiry from "./components/ProjectInquiry";
 import ServiceDetailPage from "./pages/ServiceDetailPage";
 import AnimatedBackground from "./components/AnimatedBackground";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   // 1. Theme state is now managed here in the main App component
@@ -54,6 +55,7 @@ function App() {
           <Route path="/quote" element={<ProjectInquiry />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/projects/:id" element={<ProjectDetailPage />} />
+          <Route path="*" element={<ErrorPage code={404} />} />
         </Routes>
       </main>
       <Footer />

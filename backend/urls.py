@@ -1,11 +1,15 @@
+import os
 from django.contrib import admin
 from django.urls import path, include, re_path
 from django.conf import settings
 from django.views.static import serve
 from django.views.generic import TemplateView
+from .views import permission_denied_view
+
+handler403 = permission_denied_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(os.environ.get('DJANGO_ADMIN_URL', 'admin/'), admin.site.urls),
     path('api/', include('portfolio.urls')),
 ]
 
