@@ -3,7 +3,7 @@ from .models import Project, Service, BlogPost
 
 @register(Project)
 class ProjectTranslationOptions(TranslationOptions):
-    fields = ('description', 'tech_stack')
+    fields = ('description', 'client_challenge', 'my_solution', 'the_result')
 
 @register(Service)
 class ServiceTranslationOptions(TranslationOptions):
