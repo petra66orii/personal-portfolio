@@ -92,6 +92,26 @@
     "cta_button": "Book Your Free Discovery Call",
     "learn_more": "Learn More"
   },
+  
+"service_detail_page": {
+  "back_button": "Back to All Solutions",
+  "whats_included": "What's Included",
+  "our_process": "Our Process",
+  "who_is_it_for": "Who Is This For?",
+  "cta_button": "Book a Free Call",
+  "process_step1_title": "Discovery & Strategy:",
+  "process_step1_desc": "We'll discuss your vision and goals to create a clear plan.",
+  "process_step2_title": "Design & Development:",
+  "process_step2_desc": "I'll bring the vision to life with clean code and beautiful design.",
+  "process_step3_title": "Review & Launch:",
+  "process_step3_desc": "We'll refine the site together before launching it to the world.",
+  "who_is_it_for_map": {
+    "digital-gallery": ["Artists", "Photographers", "Illustrators", "Designers"],
+    "artisan-ecommerce": ["Makers", "Artisans", "Sellers of goods"],
+    "peace-of-mind-retainer": ["Established Creatives", "Busy Business Owners"],
+    "strategic-discovery": ["New Ventures", "Businesses planning a redesign"]
+  }
+},
 
 "project_inquiry": {
     "seo_title": "Project Inquiry | Miss Bott",
@@ -180,36 +200,22 @@
   "author_prefix": "By",
   "read_time": "{{time}} min read",
   "read_more": "Read more",
-"coming_soon": {
-  "title": "Coming Soon!",
-  "message": "I'm working on some exciting blog posts about web development. Check back soon!",
-  "headline": "Your Creative Business, Amplified.",
-  "description": "The Insights Hub is coming soon. I'll be sharing practical tips on web design, online marketing, and technology to help you build your brand and thrive online."
-},
-    "seo": {
-        "title": "Tech Blog - Web Development Insights | Miss Bott",
-        "description": "Read the latest insights, tutorials, and experiences from a full-stack developer. Covering React, Django, TypeScript, and modern web development practices.",
-        "keywords": "tech blog, web development blog, React tutorials, Django guides, TypeScript tips, full stack development, programming blog Ireland"
-    }
-},
-
-"service_detail_page": {
-  "back_button": "Back to All Solutions",
-  "whats_included": "What's Included",
-  "our_process": "Our Process",
-  "who_is_it_for": "Who Is This For?",
-  "cta_button": "Book a Free Call",
-  "process_step1_title": "Discovery & Strategy:",
-  "process_step1_desc": "We'll discuss your vision and goals to create a clear plan.",
-  "process_step2_title": "Design & Development:",
-  "process_step2_desc": "I'll bring the vision to life with clean code and beautiful design.",
-  "process_step3_title": "Review & Launch:",
-  "process_step3_desc": "We'll refine the site together before launching it to the world.",
-  "who_is_it_for_map": {
-    "digital-gallery": ["Artists", "Photographers", "Illustrators", "Designers"],
-    "artisan-ecommerce": ["Makers", "Artisans", "Sellers of goods"],
-    "peace-of-mind-retainer": ["Established Creatives", "Busy Business Owners"],
-    "strategic-discovery": ["New Ventures", "Businesses planning a redesign"]
+  "coming_soon": {
+    "headline": "Your Creative Business, Amplified.",
+    "description": "The Insights Hub is coming soon. I'll be sharing practical tips on web design, online marketing, and technology to help you build your brand and thrive online.",
+    "placeholder": "Enter your email to be notified",
+    "button_text": "Notify Me"
+  },
+  "newsletter": {
+    "subscribing": "Subscribing...",
+    "success": "Thank you for subscribing!",
+    "error_generic": "Something went wrong.",
+    "error_unexpected": "An unexpected error occurred."
+  },
+  "seo": {
+    "title": "Insights for Creatives | Miss Bott",
+    "description": "A resource hub with tips and inspiration to help creative professionals build their brand and thrive online.",
+    "keywords": "online tips for artists, marketing for photographers, building a creative brand, websites for creatives, social media for artists, Miss Bott blog"
   }
 }
 

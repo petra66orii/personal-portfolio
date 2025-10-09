@@ -38,14 +38,13 @@ const Blog = () => {
   const [message, setMessage] = useState("");
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setMessage("Subscribing...");
+    setMessage(t("blog.newsletter.subscribing"));
 
     try {
       const response = await fetch("/api/newsletter-signup/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          // If you use CSRF tokens, you'll need to include the header here
         },
         body: JSON.stringify({ email }),
       });
@@ -53,17 +52,16 @@ const Blog = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        // Use the error message from the backend if available
-        throw new Error(data.error || "Something went wrong.");
+        throw new Error(data.error || t("blog.newsletter.error_generic"));
       }
 
-      setMessage("Thank you for subscribing!");
-      setEmail(""); // Clear the input on success
+      setMessage(t("blog.newsletter.success"));
+      setEmail("");
     } catch (err) {
       if (err instanceof Error) {
         setMessage(err.message);
       } else {
-        setMessage("An unexpected error occurred.");
+        setMessage(t("blog.newsletter.error_unexpected"));
       }
     }
   };
@@ -153,12 +151,10 @@ const Blog = () => {
             <div className="text-center py-20 glassmorphism rounded-2xl border border-secondary/20">
               <Feather className="mx-auto h-12 w-12 text-primary mb-4" />
               <h2 className="text-3xl font-bold mb-4 text-primary">
-                Your Creative Business, Amplified.
+                {t("blog.coming_soon.headline")}
               </h2>
               <p className="text-secondary max-w-xl mx-auto mb-8">
-                The Insights Hub is coming soon. I'll be sharing practical tips
-                on web design, online marketing, and technology to help you
-                build your brand and thrive online.
+                {t("blog.coming_soon.description")}
               </p>
               <form
                 onSubmit={handleNewsletterSubmit}
@@ -171,7 +167,7 @@ const Blog = () => {
                   />
                   <input
                     type="email"
-                    placeholder="Enter your email to be notified"
+                    placeholder={t("blog.coming_soon.placeholder")}
                     className="w-full pl-10 pr-32 py-3 rounded-xl border-2 border-primary/20 bg-surface focus:ring-2 focus:ring-primary focus:outline-none"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -181,11 +177,10 @@ const Blog = () => {
                     type="submit"
                     className="absolute right-2 top-1/2 -translate-y-1/2 px-4 py-2 button-gradient text-white font-semibold rounded-lg"
                   >
-                    Notify Me
+                    {t("blog.coming_soon.button_text")}
                   </button>
                 </div>
               </form>
-              {/* Display success or error messages to the user */}
               {message && <p className="mt-4 text-secondary">{message}</p>}
             </div>
           )}

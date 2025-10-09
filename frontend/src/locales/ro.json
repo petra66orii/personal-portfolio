@@ -91,6 +91,25 @@
     "cta_button": "Programează o Consultație Gratuită",
     "learn_more": "Află Mai Multe"
   },
+    "service_detail_page": {
+    "back_button": "Înapoi la toate soluțiile",
+    "whats_included": "Ce este inclus",
+    "our_process": "Procesul Nostru",
+    "who_is_it_for": "Pentru cine este?",
+    "cta_button": "Programează o Consultație",
+    "process_step1_title": "Descoperire și Strategie:",
+    "process_step1_desc": "Vom discuta viziunea și obiectivele tale pentru a crea un plan clar.",
+    "process_step2_title": "Design și Dezvoltare:",
+    "process_step2_desc": "Voi aduce viziunea la viață cu cod curat și un design elegant.",
+    "process_step3_title": "Revizuire și Lansare:",
+    "process_step3_desc": "Vom perfecționa site-ul împreună înainte de a-l lansa lumii întregi.",
+    "who_is_it_for_map": {
+      "digital-gallery": ["Artiști", "Fotografi", "Ilustratori", "Designeri"],
+      "artisan-ecommerce": ["Creatori", "Artizani", "Vânzători de bunuri"],
+      "peace-of-mind-retainer": ["Creativi consacrați", "Antreprenori ocupați"],
+      "strategic-discovery": ["Proiecte noi", "Afaceri care plănuiesc un redesign"]
+    }
+  },
   "project_inquiry": {
     "seo_title": "Cere Ofertă Proiect | Miss Bott",
     "seo_description": "Începe noul tău proiect oferind câteva detalii. Obține o ofertă personalizată pentru servicii de web development.",
@@ -107,7 +126,7 @@
     "other_inquiry": "Altă solicitare / Întrebare generală",
     "placeholder_details": "Spune-mi despre proiectul tău...",
     "placeholder_website": "URL Website Actual (Opțional)",
-    "button_previous": "Anteriorul",
+    "button_previous": "Anterior",
     "step3_title": "Buget și Termen Limită",
     "label_budget": "Buget estimat",
     "select_budget": "Selectează un interval de buget...",
@@ -169,41 +188,29 @@
   "footer": {
     "copyright": "© {{year}} Miss Bott. Toate drepturile rezervate."
   },
-  "blog": {
-    "title": "Resurse pentru Creativi",
-    "description": "Un centru de resurse cu sfaturi, idei și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
-    "author_prefix": "De",
-    "read_time": "{{time}} min citit",
-    "read_more": "Citește mai mult",
-    "coming_soon": {
-      "title": "În curând!",
-      "message": "Lucrez la câteva articole interesante despre web development. Revino în curând!",
-      "headline": "Afacerea ta creativă, amplificată.",
-      "description": "Hub-ul de Resurse va fi lansat în curând. Voi împărtăși sfaturi practice despre web design, marketing online și tehnologie pentru a te ajuta să-ți construiești brandul și să ai succes online."
-    },
-    "seo": {
-      "title": "Blog Tehnologic - Idei Web Development | Miss Bott",
-      "description": "Citește cele mai noi idei, tutoriale și experiențe de la un dezvoltator full-stack. Subiecte: React, Django, TypeScript și practici moderne de web development.",
-      "keywords": "blog tehnologie, blog web development, tutoriale React, ghiduri Django, sfaturi TypeScript, dezvoltare full stack, blog programare România"
-    }
+"blog": {
+  "title": "Resurse pentru Creativi",
+  "description": "Un centru de resurse cu sfaturi, idei și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
+  "author_prefix": "De",
+  "read_time": "{{time}} min citit",
+  "read_more": "Citește mai mult",
+  "coming_soon": {
+    "headline": "Afacerea ta creativă, amplificată.",
+    "description": "Hub-ul de Resurse va fi lansat în curând. Voi împărtăși sfaturi practice despre web design, marketing online și tehnologie pentru a te ajuta să-ți construiești brandul și să ai succes online.",
+    "placeholder": "Introdu emailul pentru a fi notificat(ă)",
+    "button_text": "Notifică-mă"
   },
-  "service_detail_page": {
-    "back_button": "Înapoi la toate soluțiile",
-    "whats_included": "Ce este inclus",
-    "our_process": "Procesul Nostru",
-    "who_is_it_for": "Pentru cine este?",
-    "cta_button": "Programează o Consultație",
-    "process_step1_title": "Descoperire și Strategie:",
-    "process_step1_desc": "Vom discuta viziunea și obiectivele tale pentru a crea un plan clar.",
-    "process_step2_title": "Design și Dezvoltare:",
-    "process_step2_desc": "Voi aduce viziunea la viață cu cod curat și un design elegant.",
-    "process_step3_title": "Revizuire și Lansare:",
-    "process_step3_desc": "Vom perfecționa site-ul împreună înainte de a-l lansa lumii întregi.",
-    "who_is_it_for_map": {
-      "digital-gallery": ["Artiști", "Fotografi", "Ilustratori", "Designeri"],
-      "artisan-ecommerce": ["Creatori", "Artizani", "Vânzători de bunuri"],
-      "peace-of-mind-retainer": ["Creativi consacrați", "Antreprenori ocupați"],
-      "strategic-discovery": ["Proiecte noi", "Afaceri care plănuiesc un redesign"]
-    }
+  "newsletter": {
+    "subscribing": "Abonare în curs...",
+    "success": "Mulțumim pentru abonare!",
+    "error_generic": "Ceva nu a funcționat corect.",
+    "error_unexpected": "A apărut o eroare neașteptată."
+  },
+  "seo": {
+    "title": "Resurse pentru Creativi | Miss Bott",
+    "description": "Un centru de resurse cu sfaturi și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
+    "keywords": "sfaturi online pentru artiști, marketing pentru fotografi, branding creativ, website-uri pentru creativi, social media pentru artiști, blog Miss Bott"
   }
+}
+
 }
