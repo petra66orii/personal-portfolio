@@ -4,15 +4,19 @@
     "pk": 1,
     "fields": {
       "title": "Honeypot E-Commerce",
-      "description": "A full-featured e-commerce platform for an artisan cosmetics brand, built with Django.",
+      "description_en": "A full-featured e-commerce platform for an artisan cosmetics brand, built with Django.",
+      "description_ro": "O platformă e-commerce completă pentru un brand artizanal de cosmetice, construită cu Django.",
       "tech_stack": "Django, PostgreSQL, JavaScript, Stripe, Bootstrap",
       "repo_link": "https://github.com/petra6forii/honeypot",
       "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
       "featured": true,
       "image": "project5.png",
-      "client_challenge": "The goal for 'Honeypot' was to design and build a complete e-commerce solution for a fictional artisan cosmetics brand. The key challenge was to create a secure, user-friendly online store that reflects the brand's premium quality and provides a seamless path from product discovery to purchase.",
-      "my_solution": "I built a full-stack web application from the ground up using Django. It features a complete shopping cart system, secure user authentication, product management, and an admin panel for order tracking. The design is clean, responsive, and focused on showcasing the products beautifully.",
-      "the_result": "The result is a production-ready e-commerce platform designed to drive sales. Key features include Stripe integration for secure payments, a product review system to build social proof, and an intuitive checkout process designed to maximize conversions for a small business."
+      "client_challenge_en": "The goal for 'Honeypot' was to design and build a complete e-commerce solution for a fictional artisan cosmetics brand. The key challenge was to create a secure, user-friendly online store that reflects the brand's premium quality and provides a seamless path from product discovery to purchase.",
+      "client_challenge_ro": "Scopul pentru 'Honeypot' a fost proiectarea și construirea unei soluții e-commerce complete pentru un brand artizanal fictiv de cosmetice. Provocarea principală a fost crearea unui magazin online securizat și ușor de utilizat, care să reflecte calitatea premium a brandului și să ofere un parcurs fluid de la descoperirea produsului la finalizarea comenzii.",
+      "my_solution_en": "I built a full-stack web application from the ground up using Django. It features a complete shopping cart system, secure user authentication, product management, and an admin panel for order tracking. The design is clean, responsive, and focused on showcasing the products beautifully.",
+      "my_solution_ro": "Am construit o aplicație web full-stack de la zero folosind Django. Aceasta include un sistem complet de coș de cumpărături, autentificare securizată a utilizatorilor, management de produse și un panou de administrare pentru urmărirea comenzilor. Designul este curat, responsiv și axat pe prezentarea elegantă a produselor.",
+      "the_result_en": "The result is a production-ready e-commerce platform designed to drive sales. Key features include Stripe integration for secure payments, a product review system to build social proof, and an intuitive checkout process designed to maximize conversions for a small business.",
+      "the_result_ro": "Rezultatul este o platformă e-commerce pregătită pentru producție, concepută pentru a crește vânzările. Caracteristicile cheie includ integrarea cu Stripe pentru plăți sigure, un sistem de recenzii pentru a construi încredere și un proces de finalizare a comenzii intuitiv, menit să maximizeze conversiile pentru o afacere mică."
     }
   },
   {
@@ -20,15 +24,19 @@
     "pk": 2,
     "fields": {
       "title": "Time[less] Travel Blog",
-      "description": "An elegant and engaging blog platform and content management system for a travel writer.",
+      "description_en": "An elegant and engaging blog platform and content management system for a travel writer.",
+      "description_ro": "O platformă de blog elegantă și un sistem de management al conținutului pentru un scriitor de călătorii.",
       "tech_stack": "Django, PostgreSQL, JavaScript, Bootstrap",
       "repo_link": "https://github.com/petra6forii/timeless-travel",
       "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
       "featured": true,
       "image": "project4.png",
-      "client_challenge": "The objective for 'Timeless Travel' was to create an elegant and engaging blog platform for a fictional travel writer. The goal was to build a content-focused site that empowers the author to easily share stories and photos, while providing a smooth and enjoyable reading experience for their audience.",
-      "my_solution": "This is a robust Content Management System (CMS) built with Django. It allows the site administrator to perform full CRUD (Create, Read, Update, Delete) operations on blog posts without needing to touch any code. I focused on a clean, legible design that prioritizes the content and imagery.",
-      "the_result": "The platform empowers a writer to manage their own content and build a community. Key outcomes include an easy-to-use post editor, a comment system for reader engagement, and a paginated, organized layout that encourages visitors to explore more content—all essential features for a professional blogger looking to grow their audience."
+      "client_challenge_en": "The objective for 'Timeless Travel' was to create an elegant and engaging blog platform for a fictional travel writer. The goal was to build a content-focused site that empowers the author to easily share stories and photos, while providing a smooth and enjoyable reading experience for their audience.",
+      "client_challenge_ro": "Obiectivul pentru 'Timeless Travel' a fost crearea unei platforme de blog elegante și atractive pentru un scriitor de călătorii fictiv. Scopul a fost construirea unui site axat pe conținut, care să permită autorului să împărtășească cu ușurință povești și fotografii, oferind în același timp o experiență de lectură plăcută pentru public.",
+      "my_solution_en": "This is a robust Content Management System (CMS) built with Django. It allows the site administrator to perform full CRUD (Create, Read, Update, Delete) operations on blog posts without needing to touch any code. I focused on a clean, legible design that prioritizes the content and imagery.",
+      "my_solution_ro": "Acesta este un sistem robust de management al conținutului (CMS) construit cu Django. Permite administratorului site-ului să efectueze operațiuni CRUD complete (Creare, Citire, Actualizare, Ștergere) pe articolele de blog fără a atinge codul. M-am concentrat pe un design curat și lizibil, care prioritizează conținutul și imaginile.",
+      "the_result_en": "The platform empowers a writer to manage their own content and build a community. Key outcomes include an easy-to-use post editor, a comment system for reader engagement, and a paginated, organized layout that encourages visitors to explore more content—all essential features for a professional blogger looking to grow their audience.",
+      "the_result_ro": "Platforma îi permite unui scriitor să-și gestioneze propriul conținut și să construiască o comunitate. Rezultatele cheie includ un editor de articole ușor de utilizat, un sistem de comentarii pentru interacțiunea cu cititorii și un layout paginat și organizat care încurajează vizitatorii să exploreze mai mult conținut - toate fiind caracteristici esențiale pentru un blogger profesionist care dorește să-și crească publicul."
     }
   }
 ]
