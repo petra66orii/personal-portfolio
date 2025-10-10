@@ -14,6 +14,8 @@ from .serializers import (
     ServiceSerializer,
     ServiceInquirySerializer,
 )
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
@@ -204,6 +206,7 @@ class ServiceInquiryCreateView(generics.CreateAPIView):
         return response
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class NewsletterSignupView(APIView):
     def post(self, request, *args, **kwargs):
         email = request.data.get('email')
