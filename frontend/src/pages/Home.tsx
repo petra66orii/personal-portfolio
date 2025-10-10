@@ -68,7 +68,7 @@ const Home = () => {
         description={t("seo.home_description")}
         keywords={t("seo.home_keywords")}
         type="website"
-        image="/website-background.png"
+        image="/assets/logos/social-logo.png"
       />
       <main className="min-h-screen p-6">
         <div className="glassmorphism backdrop-blur-sm rounded-lg shadow-xl max-w-6xl mx-auto px-6 py-12 border">

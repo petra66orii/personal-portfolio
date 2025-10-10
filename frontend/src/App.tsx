@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import Schema from "./components/Schema";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
@@ -43,7 +44,7 @@ function App() {
   return (
     <>
       <AnimatedBackground isDark={isDark} />
-
+      <Schema />
       <Navbar isDark={isDark} setIsDark={setIsDark} />
 
       <main className="min-h-screen relative z-10">

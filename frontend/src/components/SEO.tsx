@@ -1,95 +1,52 @@
 import { Helmet } from "react-helmet";
+import { useLocation } from "react-router-dom";
 
 interface SEOProps {
   title: string;
   description: string;
   keywords?: string;
   image?: string;
-  url?: string;
   type?: string;
-  author?: string;
 }
 
-const SEO = ({
+const SEO: React.FC<SEOProps> = ({
   title,
   description,
-  keywords = "portfolio, web developer, full stack developer, React, TypeScript, Python, Django",
-  image = "/website-background.png",
-  url = "https://missbott.online",
+  keywords,
+  image,
   type = "website",
-  author = "Miss Bott",
-}: SEOProps) => {
-  const fullTitle = title.includes("Miss Bott")
-    ? title
-    : `${title} | Miss Bott - Fullstack Developer Ireland`;
+}) => {
+  const location = useLocation();
+  const siteUrl = "https://missbott.online";
+  const canonicalUrl = `${siteUrl}${location.pathname}`;
 
-  const fullUrl = `https://missbott.online${window.location.pathname}`;
+  // Use the full, absolute URL for the social sharing image
+  const imageUrl = `${siteUrl}${image || "/assets/logos/social-logo.png"}`;
 
   return (
     <Helmet>
       {/* Basic Meta Tags */}
-      <title>{fullTitle}</title>
+      <title>{title}</title>
       <meta name="description" content={description} />
-      <meta name="keywords" content={keywords} />
-      <meta name="author" content={author} />
+      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="author" content="Miss Bott" />
       <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={canonicalUrl} />
 
-      {/* Open Graph Meta Tags */}
-      <meta property="og:title" content={fullTitle} />
+      {/* Open Graph Meta Tags (for Facebook, LinkedIn, etc.) */}
+      <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="og:url" content={fullUrl} />
+      <meta property="og:image" content={imageUrl} />
+      <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Miss Bott Portfolio" />
+      <meta property="og:site_name" content="Miss Bott" />
 
       {/* Twitter Card Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
+      <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:creator" content="@missbott_dev" />
-
-      <link rel="canonical" href={fullUrl} />
-
-      {/* --- UPDATED: Structured Data with Location and Education --- */}
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Person",
-          name: "Miss Bott",
-          jobTitle: "Full Stack Developer",
-          url: url,
-          image: image,
-          sameAs: [
-            "https://github.com/petra66orii",
-            "https://www.linkedin.com/in/petra-bot-a552601a4/",
-            "https://www.instagram.com/missbott_dev/",
-          ],
-          // NEW: Adds location for local SEO
-          address: {
-            "@type": "PostalAddress",
-            addressLocality: "Galway",
-            addressCountry: "IE",
-          },
-          // NEW: Formalizes your education
-          alumniOf: {
-            "@type": "CollegeOrUniversity",
-            name: "Code Institute",
-          },
-          knowsAbout: [
-            "React.js",
-            "TypeScript",
-            "Python",
-            "Django REST framework",
-            "PostgreSQL",
-            "Full Stack Web Development",
-            "API Development",
-            "Tailwind CSS",
-          ],
-          description:
-            "Full-stack developer based in Galway, Ireland, specializing in building modern web applications with React and Django.",
-        })}
-      </script>
     </Helmet>
   );
 };

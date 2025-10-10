@@ -1,5 +1,3 @@
-// src/pages/ProjectDetailPage.tsx
-
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEO from "../components/SEO";
@@ -94,6 +92,9 @@ const ProjectDetailPage: React.FC = () => {
           "project_detail_page.case_study_title"
         )}`}
         description={project.client_challenge || project.description}
+        keywords={project.tech_stack}
+        type="article"
+        image={project.image}
       />
       <main className="min-h-screen p-6">
         <div className="max-w-6xl mx-auto">
