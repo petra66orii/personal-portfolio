@@ -200,6 +200,11 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = os.getenv('EMAIL_HOST_USER')
 ADMIN_EMAIL = os.getenv('ADMIN_EMAIL', os.getenv('EMAIL_HOST_USER'))
 
+# Mailchimp Configuration
+MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY')
+MAILCHIMP_DATA_CENTER = os.getenv('MAILCHIMP_DATA_CENTER')
+MAILCHIMP_AUDIENCE_ID = os.getenv('MAILCHIMP_AUDIENCE_ID')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
