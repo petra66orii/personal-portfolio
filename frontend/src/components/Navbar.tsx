@@ -79,23 +79,29 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
         {/* Mobile dropdown */}
         {isOpen && (
           <div className="md:hidden mt-2 pb-4 space-y-2 flex flex-col">
-            <NavItem to="/" label="About Me" onClick={() => setIsOpen(false)} />
             <NavItem
-              to="/skills"
-              label="Skills"
+              to="/"
+              label={t("navbar.about")}
               onClick={() => setIsOpen(false)}
             />
             <NavItem
               to="/services"
-              label="Services"
+              label={t("navbar.services")}
               onClick={() => setIsOpen(false)}
             />
-            <NavItem to="/blog" label="Blog" onClick={() => setIsOpen(false)} />
+            <NavItem
+              to="/blog"
+              label={t("navbar.blog")}
+              onClick={() => setIsOpen(false)}
+            />
             <NavItem
               to="/contact"
-              label="Contact"
+              label={t("navbar.contact")}
               onClick={() => setIsOpen(false)}
             />
+            <div>
+              <LanguageSwitcher />
+            </div>
           </div>
         )}
       </div>
