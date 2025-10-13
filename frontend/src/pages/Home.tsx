@@ -93,7 +93,7 @@ const Home = () => {
           <ScrollAnimator>
             <section className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl">
               <div className="text-center mb-12">
-                <h2 className="text-3xl sm:text-4xl text-primary font-bold mb-4 home-title">
+                <h2 className="text-2xl sm:text-4xl text-primary font-bold mb-4 home-title break-words">
                   {t("services1.title")}
                 </h2>
                 <p className="text-lg text-secondary max-w-3xl mx-auto">

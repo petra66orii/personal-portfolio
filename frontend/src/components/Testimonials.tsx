@@ -21,7 +21,7 @@ const Testimonials: React.FC = () => {
     <ScrollAnimator>
       <section className="mb-16">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl text-primary font-bold mb-4">
+          <h2 className="text-2xl sm:text-4xl text-primary font-bold mb-4">
             {t("testimonials.title")}
           </h2>
           <p className="text-lg text-secondary max-w-2xl mx-auto">
