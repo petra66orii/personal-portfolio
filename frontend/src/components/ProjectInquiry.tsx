@@ -1,23 +1,31 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import {
-  ArrowRight,
-  Check,
-  Loader,
-  AlertTriangle,
-  Building,
-  Calendar,
-  Phone,
-  Link as LinkIcon,
-  User,
-  Mail,
-  MessageSquare,
-} from "lucide-react";
 import SEO from "../components/SEO";
-import { FaEuroSign, FaConciergeBell } from "react-icons/fa";
+import { CheckCircle } from "lucide-react";
 
-// Helper function to get CSRF token from cookies
+// Define interfaces for form data and errors
+interface FormData {
+  name: string;
+  email: string;
+  company: string;
+  phone: string;
+  service: string;
+  project_details: string;
+  details: string;
+  budget: string;
+  timeline: string;
+}
+
+interface Errors {
+  [key: string]: string | undefined;
+}
+
+interface Service {
+  id: number;
+  slug: string;
+  name: string;
+}
+
 function getCookie(name: string): string | null {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -33,29 +41,28 @@ function getCookie(name: string): string | null {
   return cookieValue;
 }
 
-interface Service {
-  id: number;
-  name: string;
-}
-
 const ProjectInquiry = () => {
   const { t, i18n } = useTranslation();
-  const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    service: "",
+  const [services, setServices] = useState<Service[]>([]);
+  const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
     company: "",
-    project_details: "",
-    budget_range: "",
-    timeline: "",
     phone: "",
-    website_url: "",
+    service: "",
+    project_details: "",
+    details: "",
+    budget: "",
+    timeline: "",
   });
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
+  const [errors, setErrors] = useState<Errors>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(
+    null
+  );
+
+  const totalSteps = 3;
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -63,15 +70,56 @@ const ProjectInquiry = () => {
         const response = await fetch("/api/services/", {
           headers: { "Accept-Language": i18n.language },
         });
-        if (!response.ok) throw new Error("Failed to fetch services");
         const data = await response.json();
         setServices(data);
       } catch (error) {
-        console.error("Error fetching services:", error);
+        console.error("Failed to fetch services:", error);
       }
     };
     fetchServices();
   }, [i18n.language]);
+
+  const validateStep = (step: number) => {
+    const newErrors: Errors = {};
+    if (step === 1) {
+      if (!formData.name.trim()) newErrors.name = t("validation.name_required");
+      if (!formData.email.trim()) {
+        newErrors.email = t("validation.email_required");
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = t("validation.email_invalid");
+      }
+    }
+    if (step === 2) {
+      if (!formData.service)
+        newErrors.service = t("project_inquiry.validation.service_required");
+      if (!formData.project_details.trim()) {
+        newErrors.project_details = t(
+          "project_inquiry.validation.details_required"
+        );
+      } else if (formData.project_details.trim().length < 20) {
+        newErrors.project_details = t("project_inquiry.validation.details_min");
+      }
+    }
+    if (step === 3) {
+      if (!formData.budget)
+        newErrors.budget = t("project_inquiry.validation.budget_required");
+      if (!formData.timeline)
+        newErrors.timeline = t("project_inquiry.validation.timeline_required");
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const handlePrevious = () => {
+    setErrors({});
+    setCurrentStep((prev) => prev - 1);
+  };
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -82,76 +130,56 @@ const ProjectInquiry = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleNext = () => setStep((prev) => prev + 1);
-  const handlePrev = () => setStep((prev) => prev - 1);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
+    // Also validate previous steps on final submission to be safe
+    if (validateStep(1) && validateStep(2) && validateStep(3)) {
+      setIsSubmitting(true);
+      setSubmitStatus(null);
+      try {
+        const csrfToken = getCookie("csrftoken");
+        const response = await fetch("/api/service-inquiry/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken || "",
+          },
+          body: JSON.stringify(formData),
+        });
 
-    try {
-      const csrfToken = getCookie("csrftoken");
-      const response = await fetch("/api/service-inquiry/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "X-CSRFToken": csrfToken || "",
-        },
-        body: JSON.stringify(formData),
-      });
+        if (!response.ok) {
+          const errorData = await response.json();
+          // Throw an error with the specific message from the backend
+          throw new Error(JSON.stringify(errorData) || "Submission failed");
+        }
 
-      if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.detail || t("project_inquiry.error_submit"));
+        setSubmitStatus("success");
+      } catch (error) {
+        console.error("Submission error:", error);
+        setSubmitStatus("error");
+      } finally {
+        setIsSubmitting(false);
       }
-
-      setSuccess(true);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message || t("project_inquiry.error_unexpected"));
-      } else {
-        setError(t("project_inquiry.error_unexpected"));
-      }
-    } finally {
-      setLoading(false);
     }
   };
 
-  const budgetRanges = [
-    { value: "under_1k", label: t("project_inquiry.budgets.under_1k") },
-    { value: "1k_5k", label: t("project_inquiry.budgets.1k_5k") },
-    { value: "5k_10k", label: t("project_inquiry.budgets.5k_10k") },
-    { value: "10k_plus", label: t("project_inquiry.budgets.10k_plus") },
-    { value: "not_sure", label: t("project_inquiry.budgets.not_sure") },
-  ];
-
-  const timelines = [
-    { value: "asap", label: t("project_inquiry.timelines.asap") },
-    { value: "1_month", label: t("project_inquiry.timelines.1_month") },
-    { value: "2_3_months", label: t("project_inquiry.timelines.2_3_months") },
-    { value: "flexible", label: t("project_inquiry.timelines.flexible") },
-  ];
-
-  if (success) {
+  if (submitStatus === "success") {
     return (
-      <div className="min-h-screen flex items-center justify-center p-6">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="text-center glassmorphism p-12 rounded-2xl max-w-lg mx-auto"
-        >
-          <Check size={64} className="mx-auto text-green-500 mb-4" />
-          <h2 className="text-3xl font-bold text-primary mb-4">
+      <main className="min-h-screen p-6 flex items-center justify-center">
+        <div className="text-center">
+          <CheckCircle className="mx-auto h-16 w-16 text-green-500" />
+          <h2 className="mt-4 text-3xl font-bold text-primary">
             {t("project_inquiry.success_title")}
           </h2>
-          <p className="text-secondary">
+          <p className="mt-2 text-secondary max-w-md mx-auto">
             {t("project_inquiry.success_message")}
           </p>
-        </motion.div>
-      </div>
+        </div>
+      </main>
     );
   }
+
+  const progress = ((currentStep - 1) / (totalSteps - 1)) * 100;
 
   return (
     <>
@@ -159,298 +187,260 @@ const ProjectInquiry = () => {
         title={t("project_inquiry.seo_title")}
         description={t("project_inquiry.seo_description")}
       />
-      <div className="min-h-screen p-6 flex items-center justify-center">
-        <div className="glassmorphism rounded-2xl shadow-xl max-w-2xl w-full mx-auto px-8 py-12 border">
-          <h2 className="text-4xl font-bold mb-2 text-primary text-center">
+      <main className="min-h-screen p-6 flex items-center justify-center">
+        <div className="glassmorphism w-full max-w-2xl p-8 rounded-2xl shadow-xl border">
+          <h1 className="text-3xl font-bold text-center mb-2 text-primary">
             {t("project_inquiry.main_title")}
-          </h2>
+          </h1>
           <p className="text-center text-secondary mb-8">
             {t("project_inquiry.main_subtitle")}
           </p>
 
-          {/* Progress Bar */}
-          <div className="w-full bg-surface rounded-full h-2.5 mb-8">
-            <motion.div
-              className="bg-primary h-2.5 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${(step / 3) * 100}%` }}
-            />
+          <div className="mb-8">
+            <div className="w-full bg-surface rounded-full h-2">
+              <div
+                className="bg-primary h-2 rounded-full transition-all duration-500"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+            <div className="flex justify-between text-xs text-secondary mt-2">
+              <span className={currentStep >= 1 ? "text-primary" : ""}>
+                {t("project_inquiry.step1_title")}
+              </span>
+              <span className={currentStep >= 2 ? "text-primary" : ""}>
+                {t("project_inquiry.step2_title")}
+              </span>
+              <span className={currentStep >= 3 ? "text-primary" : ""}>
+                {t("project_inquiry.step3_title")}
+              </span>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
-            <AnimatePresence mode="wait">
-              {step === 1 && (
-                <motion.div
-                  key="step1"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                >
-                  <h3 className="text-2xl font-semibold mb-6 text-primary">
-                    {t("project_inquiry.step1_title")}
-                  </h3>
-                  <div className="space-y-4">
-                    {/* Name, Email, Company, Phone */}
-                    <InputField
-                      icon={User}
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_name")}
-                      required
-                    />
-                    <InputField
-                      icon={Mail}
-                      name="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_email")}
-                      required
-                    />
-                    <InputField
-                      icon={Building}
-                      name="company"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_company")}
-                    />
-                    <InputField
-                      icon={Phone}
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_phone")}
-                    />
-                  </div>
-                  <div className="mt-8 flex justify-end">
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      className="px-6 py-2 button-gradient text-white font-semibold rounded-lg flex items-center gap-2"
-                    >
-                      {t("project_inquiry.button_next")}{" "}
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 2 && (
-                <motion.div
-                  key="step2"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                >
-                  <h3 className="text-2xl font-semibold mb-6 text-primary">
-                    {t("project_inquiry.step2_title")}
-                  </h3>
-                  <div className="space-y-4">
-                    {/* Service, Details, Website URL */}
-                    <SelectField
-                      label={t("project_inquiry.select_service")}
-                      name="service"
-                      value={formData.service}
-                      icon={FaConciergeBell}
-                      onChange={handleChange}
-                    >
-                      {services.map((s) => (
-                        <option key={s.id} value={s.id}>
-                          {s.name}
-                        </option>
-                      ))}
-                      <option value="Other">
-                        {t("project_inquiry.other_inquiry")}
-                      </option>
-                    </SelectField>
-                    <TextareaField
-                      icon={MessageSquare}
-                      name="project_details"
-                      value={formData.project_details}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_details")}
-                      required
-                    />
-                    <InputField
-                      icon={LinkIcon}
-                      name="website_url"
-                      value={formData.website_url}
-                      onChange={handleChange}
-                      placeholder={t("project_inquiry.placeholder_website")}
-                    />
-                  </div>
-                  <div className="mt-8 flex justify-between">
-                    <button
-                      type="button"
-                      onClick={handlePrev}
-                      className="px-6 py-2 button-simple text-secondary font-semibold rounded-lg"
-                    >
-                      {t("project_inquiry.button_previous")}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleNext}
-                      className="px-6 py-2 button-gradient text-white font-semibold rounded-lg flex items-center gap-2"
-                    >
-                      {t("project_inquiry.button_next")}{" "}
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
-                </motion.div>
-              )}
-
-              {step === 3 && (
-                <motion.div
-                  key="step3"
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 50 }}
-                >
-                  <h3 className="text-2xl font-semibold mb-6 text-primary">
-                    {t("project_inquiry.step3_title")}
-                  </h3>
-                  <div className="space-y-4">
-                    {/* Budget and Timeline */}
-                    <SelectField
-                      icon={FaEuroSign}
-                      name="budget_range"
-                      value={formData.budget_range}
-                      onChange={handleChange}
-                      label={t("project_inquiry.label_budget")}
-                    >
-                      <option value="" disabled>
-                        {t("project_inquiry.select_budget")}
-                      </option>
-                      {budgetRanges.map((b) => (
-                        <option key={b.value} value={b.value}>
-                          {b.label}
-                        </option>
-                      ))}
-                    </SelectField>
-                    <SelectField
-                      icon={Calendar}
-                      name="timeline"
-                      value={formData.timeline}
-                      onChange={handleChange}
-                      label={t("project_inquiry.label_timeline")}
-                    >
-                      <option value="" disabled>
-                        {t("project_inquiry.select_timeline")}
-                      </option>
-                      {timelines.map((t) => (
-                        <option key={t.value} value={t.value}>
-                          {t.label}
-                        </option>
-                      ))}
-                    </SelectField>
-                  </div>
-
-                  {error && (
-                    <div className="mt-4 text-red-500 flex items-center gap-2">
-                      <AlertTriangle size={16} /> {error}
-                    </div>
+          {currentStep === 1 && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleNext();
+              }}
+            >
+              <h2 className="text-xl font-semibold mb-4">
+                {t("project_inquiry.step1_title")}
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder={t("project_inquiry.placeholder_name")}
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  />
+                  {errors.name && (
+                    <p className="text-red-500 text-sm mt-1">{errors.name}</p>
                   )}
+                </div>
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder={t("project_inquiry.placeholder_email")}
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  />
+                  {errors.email && (
+                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                  )}
+                </div>
+              </div>
+              <button
+                type="submit"
+                className="w-full mt-6 py-3 button-gradient text-white font-semibold rounded-lg"
+              >
+                {t("project_inquiry.button_next")}
+              </button>
+            </form>
+          )}
 
-                  <div className="mt-8 flex justify-between">
-                    <button
-                      type="button"
-                      onClick={handlePrev}
-                      className="px-6 py-2 button-simple text-secondary font-semibold rounded-lg"
-                    >
-                      {t("project_inquiry.button_previous")}
-                    </button>
-                    <button
-                      type="submit"
-                      disabled={loading}
-                      className="px-6 py-2 button-gradient text-white font-semibold rounded-lg flex items-center gap-2"
-                    >
-                      {loading ? (
-                        <>
-                          <Loader size={16} className="animate-spin" />{" "}
-                          {t("project_inquiry.button_submitting")}
-                        </>
-                      ) : (
-                        t("project_inquiry.button_submit")
-                      )}
-                    </button>
+          {currentStep === 2 && (
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleNext();
+              }}
+            >
+              <h2 className="text-xl font-semibold mb-4">
+                {t("project_inquiry.step2_title")}
+              </h2>
+              <div className="space-y-4">
+                <div>
+                  <select
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    className="w-full p-3 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      {t("project_inquiry.select_service")}
+                    </option>
+                    {/* FIX 2: The value is now the service ID (a number) */}
+                    {services.map((s) => (
+                      <option key={s.slug} value={s.id}>
+                        {s.name}
+                      </option>
+                    ))}
+                    <option value="other">
+                      {t("project_inquiry.other_inquiry")}
+                    </option>
+                  </select>
+                  {errors.service && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.service}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  {/* FIX 1: The name is now "project_details" */}
+                  <textarea
+                    name="project_details"
+                    placeholder={t("project_inquiry.placeholder_details")}
+                    value={formData.project_details}
+                    onChange={handleChange}
+                    required
+                    maxLength={5000}
+                    className="w-full p-3 h-40 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none resize-none"
+                  />
+                  <div className="text-right text-xs text-secondary mt-1">
+                    {formData.project_details.length} / 5000
                   </div>
-                </motion.div>
+                  {errors.project_details && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.project_details}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="flex gap-4 mt-6">
+                <button
+                  type="button"
+                  onClick={handlePrevious}
+                  className="w-1/2 py-3 button-simple font-semibold rounded-lg"
+                >
+                  {t("project_inquiry.button_previous")}
+                </button>
+                <button
+                  type="submit"
+                  className="w-1/2 py-3 button-gradient text-white font-semibold rounded-lg"
+                >
+                  {t("project_inquiry.button_next")}
+                </button>
+              </div>
+            </form>
+          )}
+
+          {currentStep === 3 && (
+            <form onSubmit={handleSubmit}>
+              <h2 className="text-xl font-semibold mb-4">
+                {t("project_inquiry.step3_title")}
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-sm font-medium text-secondary">
+                    {t("project_inquiry.label_budget")}
+                  </label>
+                  <select
+                    name="budget"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className="w-full p-3 mt-1 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      {t("project_inquiry.select_budget")}
+                    </option>
+                    <option value="under_1k">
+                      {t("project_inquiry.budgets.under_1k")}
+                    </option>
+                    <option value="1k_5k">
+                      {t("project_inquiry.budgets.1k_5k")}
+                    </option>
+                    <option value="5k_10k">
+                      {t("project_inquiry.budgets.5k_10k")}
+                    </option>
+                    <option value="10k_plus">
+                      {t("project_inquiry.budgets.10k_plus")}
+                    </option>
+                    <option value="not_sure">
+                      {t("project_inquiry.budgets.not_sure")}
+                    </option>
+                  </select>
+                  {errors.budget && (
+                    <p className="text-red-500 text-sm mt-1">{errors.budget}</p>
+                  )}
+                </div>
+                <div>
+                  <label className="text-sm font-medium text-secondary">
+                    {t("project_inquiry.label_timeline")}
+                  </label>
+                  <select
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    className="w-full p-3 mt-1 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  >
+                    <option value="" disabled>
+                      {t("project_inquiry.select_timeline")}
+                    </option>
+                    <option value="asap">
+                      {t("project_inquiry.timelines.asap")}
+                    </option>
+                    <option value="1_month">
+                      {t("project_inquiry.timelines.1_month")}
+                    </option>
+                    <option value="2_3_months">
+                      {t("project_inquiry.timelines.2_3_months")}
+                    </option>
+                    <option value="flexible">
+                      {t("project_inquiry.timelines.flexible")}
+                    </option>
+                  </select>
+                  {errors.timeline && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.timeline}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <div className="flex gap-4 mt-6">
+                <button
+                  type="button"
+                  onClick={handlePrevious}
+                  className="w-1/2 py-3 button-simple font-semibold rounded-lg"
+                >
+                  {t("project_inquiry.button_previous")}
+                </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full sm:w-1/2 py-3 button-gradient text-white font-semibold rounded-lg disabled:opacity-50"
+                >
+                  {isSubmitting
+                    ? t("project_inquiry.button_submitting")
+                    : t("project_inquiry.button_submit")}
+                </button>
+              </div>
+              {submitStatus === "error" && (
+                <p className="text-red-500 text-center mt-4">
+                  {t("project_inquiry.error_submit")}
+                </p>
               )}
-            </AnimatePresence>
-          </form>
+            </form>
+          )}
         </div>
-      </div>
+      </main>
     </>
   );
 };
-
-// Reusable input components for consistent styling
-const InputField: React.FC<
-  {
-    icon: React.ComponentType<{ size: number }>;
-  } & React.InputHTMLAttributes<HTMLInputElement>
-> = ({ icon: Icon, ...props }) => (
-  <div className="relative">
-    <div className="absolute top-1/2 left-4 -translate-y-1/2 text-secondary">
-      <Icon size={20} />
-    </div>
-    <input
-      {...props}
-      className="w-full p-4 pl-12 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent ring-primary"
-    />
-  </div>
-);
-
-const TextareaField: React.FC<
-  {
-    icon: React.ComponentType<{ size: number }>;
-  } & React.TextareaHTMLAttributes<HTMLTextAreaElement>
-> = ({ icon: Icon, ...props }) => (
-  <div className="relative">
-    <div className="absolute top-7 left-4 -translate-y-1/2 text-secondary">
-      <Icon size={20} />
-    </div>
-    <textarea
-      {...props}
-      rows={5}
-      className="w-full p-4 pl-12 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent ring-primary resize-vertical"
-    />
-  </div>
-);
-
-const SelectField: React.FC<
-  {
-    icon: React.ComponentType<{ size: number }>;
-    label?: string;
-    children: React.ReactNode;
-  } & React.SelectHTMLAttributes<HTMLSelectElement>
-> = ({ icon: Icon, label, children, ...props }) => (
-  <div className="relative">
-    {label && (
-      <label className="block text-sm font-medium text-secondary mb-2">
-        {label}
-      </label>
-    )}
-    <div className="absolute top-12 bottom-0 my-auto left-4 text-secondary">
-      <Icon size={20} />
-    </div>
-    <select
-      {...props}
-      className="w-full p-4 pl-12 border rounded-lg glassmorphism focus:outline-none focus:ring-2 focus:border-transparent ring-primary appearance-none"
-    >
-      {children}
-    </select>
-    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-secondary">
-      <svg
-        className="fill-current h-4 w-4"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-      >
-        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-      </svg>
-    </div>
-  </div>
-);
 
 export default ProjectInquiry;

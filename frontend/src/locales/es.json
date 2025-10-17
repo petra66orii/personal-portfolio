@@ -138,6 +138,13 @@
     "success_message": "Gracias por tu interés. He recibido los detalles de tu proyecto y me pondré en contacto contigo en 1-2 días hábiles para programar una consulta.",
     "error_submit": "El envío falló. Por favor, inténtalo de nuevo.",
     "error_unexpected": "Ocurrió un error inesperado.",
+    "validation": {
+      "service_required": "Por favor, selecciona un servicio.",
+      "details_required": "Por favor, proporciona algunos detalles sobre tu proyecto.",
+      "details_min": "Por favor, proporciona un poco más de detalle (al menos 20 caracteres).",
+      "budget_required": "Por favor, selecciona un presupuesto estimado.",
+      "timeline_required": "Por favor, selecciona un plazo para el proyecto."
+    },
     "budgets": {
       "under_1k": "Menos de 1.000 €",
       "1k_5k": "1.000 € - 5.000 €",
@@ -151,6 +158,14 @@
       "2_3_months": "2-3 meses",
       "flexible": "Flexible"
     }
+  },
+  "validation": {
+    "name_required": "El nombre es obligatorio",
+    "name_min": "El nombre debe tener al menos 2 caracteres",
+    "email_required": "El email es obligatorio",
+    "email_invalid": "Por favor, ingresa una dirección de email válida",
+    "message_required": "El mensaje es obligatorio",
+    "message_min": "El mensaje debe tener al menos 10 caracteres"
   },
   "contact": {
     "title": "Ponte en Contacto",

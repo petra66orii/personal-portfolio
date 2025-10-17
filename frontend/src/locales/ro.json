@@ -126,7 +126,7 @@
     "other_inquiry": "Altă solicitare / Întrebare generală",
     "placeholder_details": "Spune-mi despre proiectul tău...",
     "placeholder_website": "URL Website Actual (Opțional)",
-    "button_previous": "Anterior",
+    "button_previous": "Anteriorul",
     "step3_title": "Buget și Termen Limită",
     "label_budget": "Buget estimat",
     "select_budget": "Selectează un interval de buget...",
@@ -138,6 +138,13 @@
     "success_message": "Mulțumesc pentru interes. Am primit detaliile proiectului tău și te voi contacta în 1-2 zile lucrătoare pentru a programa o consultație.",
     "error_submit": "Trimiterea a eșuat. Te rog, încearcă din nou.",
     "error_unexpected": "A apărut o eroare neașteptată.",
+    "validation": {
+      "service_required": "Te rog, selectează un serviciu.",
+      "details_required": "Te rog, oferă câteva detalii despre proiectul tău.",
+      "details_min": "Te rog, oferă mai multe detalii (cel puțin 20 de caractere).",
+      "budget_required": "Te rog, selectează un buget estimativ.",
+      "timeline_required": "Te rog, selectează un termen pentru proiect."
+    },
     "budgets": {
       "under_1k": "Sub 1.000 €",
       "1k_5k": "1.000 € - 5.000 €",
@@ -151,6 +158,14 @@
       "2_3_months": "2-3 luni",
       "flexible": "Flexibil"
     }
+  },
+  "validation": {
+    "name_required": "Numele este obligatoriu",
+    "name_min": "Numele trebuie să aibă cel puțin 2 caractere",
+    "email_required": "Emailul este obligatoriu",
+    "email_invalid": "Te rog, introdu o adresă de email validă",
+    "message_required": "Mesajul este obligatoriu",
+    "message_min": "Mesajul trebuie să aibă cel puțin 10 caractere"
   },
   "contact": {
     "title": "Contactează-mă",

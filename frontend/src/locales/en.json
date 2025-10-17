@@ -113,7 +113,7 @@
   }
 },
 
-"project_inquiry": {
+  "project_inquiry": {
     "seo_title": "Project Inquiry | Miss Bott",
     "seo_description": "Start your new project by providing some details. Get a personalized quote for web development services.",
     "main_title": "Project Planner",
@@ -141,20 +141,35 @@
     "success_message": "Thank you for your interest. I've received your project details and will get back to you within 1-2 business days to schedule a consultation.",
     "error_submit": "Submission failed. Please try again.",
     "error_unexpected": "An unexpected error occurred.",
+    "validation": {
+      "service_required": "Please select a service.",
+      "details_required": "Please provide some details about your project.",
+      "details_min": "Please provide a bit more detail (at least 20 characters).",
+      "budget_required": "Please select an estimated budget.",
+      "timeline_required": "Please select a project timeline."
+    },
     "budgets": {
-        "under_1k": "Under €1,000",
-        "1k_5k": "€1,000 - €5,000",
-        "5k_10k": "€5,000 - €10,000",
-        "10k_plus": "€10,000+",
-        "not_sure": "Not sure yet"
+      "under_1k": "Under €1,000",
+      "1k_5k": "€1,000 - €5,000",
+      "5k_10k": "€5,000 - €10,000",
+      "10k_plus": "€10,000+",
+      "not_sure": "Not sure yet"
     },
     "timelines": {
-        "asap": "ASAP",
-        "1_month": "Within 1 month",
-        "2_3_months": "2-3 months",
-        "flexible": "Flexible"
+      "asap": "ASAP",
+      "1_month": "Within 1 month",
+      "2_3_months": "2-3 months",
+      "flexible": "Flexible"
     }
-},
+  },
+  "validation": {
+    "name_required": "Name is required",
+    "name_min": "Name must be at least 2 characters",
+    "email_required": "Email is required",
+    "email_invalid": "Please enter a valid email address",
+    "message_required": "Message is required",
+    "message_min": "Message must be at least 10 characters"
+  },
 
 "contact": {
     "title": "Get In Touch",
