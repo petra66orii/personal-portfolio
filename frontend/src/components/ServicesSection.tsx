@@ -189,7 +189,7 @@ const ServicesSection: React.FC = () => {
                 </p>
                 <Link
                   to="/quote"
-                  className="bg-gradient-to-r button-gradient text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                  className="inline-block whitespace-nowrap bg-gradient-to-r button-gradient text-white font-semibold text-sm sm:text-base py-3 px-4 sm:px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                 >
                   {t("services2.cta_button")}
                 </Link>
