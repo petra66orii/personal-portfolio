@@ -201,7 +201,11 @@
     }
   },
   "footer": {
-    "copyright": "© {{year}} Miss Bott. Todos los derechos reservados."
+    "copyright": "© {{year}} Miss Bott. Todos los derechos reservados.",
+    "terms_of_use": "Términos de Uso",
+    "privacy_policy": "Política de Privacidad",
+    "cookies_policy": "Política de Cookies",
+    "impressum": "Miss Bott | Registrada en Irlanda"
   },
   "blog": {
     "title": "Artículos para Creativos",
@@ -246,6 +250,474 @@
     "message": "Algo salió mal de nuestro lado. Estamos trabajando para solucionarlo lo antes posible.",
     "seo_title": "Error del Servidor | Miss Bott",
     "seo_desc": "Actualmente estamos experimentando problemas con el servidor. Por favor, inténtalo de nuevo más tarde."
+  }
+},
+
+"legal": {
+  "privacy_policy": {
+    "title": "Política de Privacidad",
+    "updated": "Última actualización: 17 de noviembre de 2025",
+    "intro_1": "Miss Bott (\"nosotros\", \"nuestro\" o \"nos\") se compromete a proteger su privacidad. Esta Política de Privacidad explica cómo Miss Bott recopila, utiliza y divulga su información personal.",
+    "intro_2": "Esta Política de Privacidad se aplica a nuestro sitio web y sus subdominios asociados (colectivamente, nuestro \"Servicio\") junto con nuestra aplicación, Miss Bott. Al acceder o utilizar nuestro Servicio, usted indica que ha leído, entendido y acepta nuestra recopilación, almacenamiento, uso y divulgación de su información personal tal como se describe en esta Política de Privacidad y en nuestros Términos de Servicio.",
+    "definitions": {
+      "title": "Definiciones y términos clave",
+      "desc": "Para explicar las cosas con la mayor claridad posible en esta Política de Privacidad, cada vez que se hace referencia a cualquiera de estos términos, se definen estrictamente como:",
+      "list": [
+        "<strong>Cookie:</strong> pequeña cantidad de datos generada por un sitio web y guardada por su navegador web. Se utiliza para identificar su navegador, proporcionar análisis, recordar información sobre usted, como su preferencia de idioma o información de inicio de sesión.",
+        "<strong>Compañía:</strong> cuando esta política menciona \"Compañía\", \"nosotros\", \"nos\" o \"nuestro\", se refiere a Miss Bott, que es responsable de su información bajo esta Política de Privacidad.",
+        "<strong>País:</strong> donde se encuentran Miss Bott o los propietarios/fundadores de Miss Bott, en este caso es Irlanda.",
+        "<strong>Cliente:</strong> se refiere a la empresa, organización o persona que se registra para utilizar el Servicio Miss Bott para gestionar las relaciones con sus consumidores o usuarios del servicio.",
+        "<strong>Dispositivo:</strong> cualquier dispositivo conectado a Internet, como un teléfono, tableta, computadora o cualquier otro dispositivo que se pueda utilizar para visitar Miss Bott y utilizar los servicios.",
+        "<strong>Dirección IP:</strong> A cada dispositivo conectado a Internet se le asigna un número conocido como dirección de protocolo de Internet (IP). Estos números se asignan generalmente en bloques geográficos. Una dirección IP a menudo se puede utilizar para identificar la ubicación desde la cual un dispositivo se conecta a Internet.",
+        "<strong>Personal:</strong> se refiere a aquellas personas que son empleadas por Miss Bott o están bajo contrato para realizar un servicio en nombre de una de las partes.",
+        "<strong>Datos Personales:</strong> cualquier información que directa, indirectamente o en conexión con otra información — incluyendo un número de identificación personal — permita la identificación o identificabilidad de una persona física.",
+        "<strong>Servicio:</strong> se refiere al servicio proporcionado por Miss Bott tal como se describe en los términos relativos (si están disponibles) y en esta plataforma.",
+        "<strong>Servicio de terceros:</strong> se refiere a anunciantes, patrocinadores de concursos, socios promocionales y de marketing, y otros que proporcionan nuestro contenido o cuyos productos o servicios creemos que pueden interesarle.",
+        "<strong>Sitio web:</strong> el sitio de Miss Bott, al que se puede acceder a través de esta URL: https://missbott.online",
+        "<strong>Usted:</strong> una persona o entidad que está registrada con Miss Bott para utilizar los Servicios."
+      ]
+    },
+    "collection": {
+      "title": "¿Qué información recopilamos?",
+      "desc": "Recopilamos información de usted cuando visita nuestro sitio web, se registra en nuestro sitio, realiza un pedido, se suscribe a nuestro boletín informativo, responde a una encuesta o completa un formulario.",
+      "list": [
+        "Nombre / Nombre de usuario",
+        "Números de teléfono",
+        "Direcciones de correo electrónico",
+        "Direcciones de facturación",
+        "Números de tarjetas de débito/crédito",
+        "Contraseña"
+      ]
+    },
+    "usage": {
+      "title": "¿Cómo usamos la información que recopilamos?",
+      "desc": "Cualquiera de la información que recopilamos de usted puede usarse de una de las siguientes maneras:",
+      "list": [
+        "Para personalizar su experiencia (su información nos ayuda a responder mejor a sus necesidades individuales)",
+        "Para mejorar nuestro sitio web (nos esforzamos continuamente por mejorar nuestras ofertas de sitios web en función de la información y los comentarios que recibimos de usted)",
+        "Para mejorar el servicio al cliente (su información nos ayuda a responder de manera más efectiva a sus solicitudes de servicio al cliente y necesidades de soporte)",
+        "Para procesar transacciones",
+        "Para administrar un concurso, promoción, encuesta u otra característica del sitio",
+        "Para enviar correos electrónicos periódicos"
+      ]
+    },
+    "third_party_end_user": {
+      "title": "¿Cuándo utiliza Miss Bott información de usuarios finales de terceros?",
+      "p1": "Miss Bott recopilará Datos de Usuario Final necesarios para proporcionar los servicios de Miss Bott a nuestros clientes.",
+      "p2": "Los usuarios finales pueden proporcionarnos voluntariamente información que han puesto a disposición en sitios web de redes sociales. Si nos proporciona dicha información, podemos recopilar información disponible públicamente de los sitios web de redes sociales que haya indicado. Puede controlar cuánta de su información hacen pública los sitios web de redes sociales visitando estos sitios web y cambiando su configuración de privacidad."
+    },
+    "third_party_customer": {
+      "title": "¿Cuándo utiliza Miss Bott información de clientes de terceros?",
+      "p1": "Recibimos cierta información de terceros cuando nos contacta. Por ejemplo, cuando nos envía su dirección de correo electrónico para mostrar interés en convertirse en cliente de Miss Bott, recibimos información de un tercero que proporciona servicios de detección automatizada de fraude a Miss Bott. También recopilamos ocasionalmente información que se hace pública en sitios web de redes sociales. Puede controlar cuánta de su información hacen pública los sitios web de redes sociales visitando estos sitios web y cambiando su configuración de privacidad."
+    },
+    "sharing": {
+      "title": "¿Compartimos la información que recopilamos con terceros?",
+      "p1": "Podemos compartir la información que recopilamos, tanto personal como no personal, con terceros como anunciantes, patrocinadores de concursos, socios promocionales y de marketing, y otros que proporcionan nuestro contenido o cuyos productos o servicios creemos que pueden interesarle. También podemos compartirla con nuestras empresas afiliadas y socios comerciales actuales y futuros, y si estamos involucrados en una fusión, venta de activos u otra reorganización comercial, también podemos compartir o transferir su información personal y no personal a nuestros sucesores en interés."
+    },
+    "collection_source": {
+      "title": "¿Dónde y cuándo se recopila información de clientes y usuarios finales?",
+      "p1": "Miss Bott recopilará información personal que usted nos envíe. También podemos recibir información personal sobre usted de terceros como se describe anteriormente."
+    },
+    "email_usage": {
+      "title": "¿Cómo usamos su dirección de correo electrónico?",
+      "p1": "Al enviar su dirección de correo electrónico en este sitio web, acepta recibir correos electrónicos de nosotros. Puede cancelar su participación en cualquiera de estas listas de correo electrónico en cualquier momento haciendo clic en el enlace de exclusión voluntaria u otra opción de cancelación de suscripción que se incluye en el correo electrónico respectivo. Solo enviamos correos electrónicos a personas que nos han autorizado a contactarlos, ya sea directamente o a través de un tercero. No enviamos correos electrónicos comerciales no solicitados, porque odiamos el spam tanto como usted. Al enviar su dirección de correo electrónico, también acepta permitirnos usar su dirección de correo electrónico para la segmentación de audiencia de clientes en sitios como Facebook, donde mostramos publicidad personalizada a personas específicas que han optado por recibir comunicaciones de nosotros. Las direcciones de correo electrónico enviadas solo a través de la página de procesamiento de pedidos se utilizarán con el único propósito de enviarle información y actualizaciones relacionadas con su pedido. Sin embargo, si nos ha proporcionado el mismo correo electrónico a través de otro método, podemos usarlo para cualquiera de los fines establecidos en esta Política. Nota: Si en algún momento desea darse de baja de recibir correos electrónicos futuros, incluimos instrucciones detalladas para darse de baja en la parte inferior de cada correo electrónico."
+    },
+    "retention": {
+      "title": "¿Cuánto tiempo conservamos su información?",
+      "p1": "Conservamos su información solo mientras la necesitemos para proporcionarle Miss Bott y cumplir con los fines descritos en esta política. Este es también el caso para cualquier persona con la que compartamos su información y que realice servicios en nuestro nombre. Cuando ya no necesitemos usar su información y no haya necesidad de que la conservemos para cumplir con nuestras obligaciones legales o reglamentarias, la eliminaremos de nuestros sistemas o la despersonalizaremos para que no podamos identificarlo."
+    },
+    "protection": {
+      "title": "¿Cómo protegemos su información?",
+      "p1": "Implementamos una variedad de medidas de seguridad para mantener la seguridad de su información personal cuando realiza un pedido o ingresa, envía o accede a su información personal. Ofrecemos el uso de un servidor seguro. Toda la información confidencial/crediticia suministrada se transmite a través de la tecnología Secure Socket Layer (SSL) y luego se cifra en la base de datos de nuestros proveedores de pasarela de pago solo para ser accesible por aquellos autorizados con derechos especiales de acceso a dichos sistemas, y están obligados a mantener la información confidencial. Después de una transacción, su información privada (tarjetas de crédito, números de seguridad social, finanzas, etc.) nunca se mantiene en archivo. Sin embargo, no podemos asegurar ni garantizar la seguridad absoluta de ninguna información que transmita a Miss Bott ni garantizar que su información en el Servicio no pueda ser accedida, divulgada, alterada o destruida por una violación de cualquiera de nuestras salvaguardas físicas, técnicas o administrativas."
+    },
+    "international": {
+      "title": "¿Podría transferirse mi información a otros países?",
+      "p1": "Miss Bott está constituida en Irlanda. La información recopilada a través de nuestro sitio web, a través de interacciones directas con usted, o del uso de nuestros servicios de ayuda puede transferirse de vez en cuando a nuestras oficinas o personal, o a terceros, ubicados en todo el mundo, y puede verse y alojarse en cualquier lugar del mundo, incluidos países que pueden no tener leyes de aplicación general que regulen el uso y la transferencia de dichos datos. En la mayor medida permitida por la ley aplicable, al utilizar cualquiera de los anteriores, usted acepta voluntariamente la transferencia transfronteriza y el alojamiento de dicha información."
+    },
+    "security_note": {
+      "title": "¿Es segura la información recopilada a través del Servicio Miss Bott?",
+      "p1": "Tomamos precauciones para proteger la seguridad de su información. Tenemos procedimientos físicos, electrónicos y administrativos para ayudar a salvaguardar, prevenir el acceso no autorizado, mantener la seguridad de los datos y usar correctamente su información. Sin embargo, ni las personas ni los sistemas de seguridad son infalibles, incluidos los sistemas de cifrado. Además, las personas pueden cometer delitos intencionales, cometer errores o no seguir las políticas. Por lo tanto, aunque hacemos esfuerzos razonables para proteger su información personal, no podemos garantizar su seguridad absoluta. Si la ley aplicable impone algún deber irrenunciable de proteger su información personal, usted acepta que la mala conducta intencional será el estándar utilizado para medir nuestro cumplimiento con ese deber."
+    },
+    "update_info": {
+      "title": "¿Puedo actualizar o corregir mi información?",
+      "p1": "Los derechos que tiene para solicitar actualizaciones o correcciones a la información que recopila Miss Bott dependen de su relación con Miss Bott. El personal puede actualizar o corregir su información según se detalla en nuestras políticas internas de empleo de la empresa. Los clientes tienen derecho a solicitar la restricción de ciertos usos y divulgaciones de información de identificación personal de la siguiente manera. Puede contactarnos para (1) actualizar o corregir su información de identificación personal, (2) cambiar sus preferencias con respecto a las comunicaciones y otra información que recibe de nosotros, o (3) eliminar la información de identificación personal mantenida sobre usted en nuestros sistemas (sujeto al siguiente párrafo), cancelando su cuenta."
+    },
+    "sale_business": {
+      "title": "Venta de Negocio",
+      "p1": "Nos reservamos el derecho de transferir información a un tercero en caso de venta, fusión u otra transferencia de todos o sustancialmente todos los activos de Miss Bott o cualquiera de sus Afiliadas Corporativas (como se define en el presente), o esa parte de Miss Bott o cualquiera de sus Afiliadas Corporativas con la que se relaciona el Servicio, o en el caso de que descontinuemos nuestro negocio o presentemos una petición o se haya presentado contra nosotros una petición en bancarrota, reorganización o procedimiento similar, siempre que el tercero acepte adherirse a los términos de esta Política de Privacidad."
+    },
+    "affiliates": {
+      "title": "Afiliados",
+      "p1": "Podemos divulgar información (incluida información personal) sobre usted a nuestras Afiliadas Corporativas. A los efectos de esta Política de Privacidad, \"Afiliada Corporativa\" significa cualquier persona o entidad que directa o indirectamente controla, es controlada por o está bajo control común con Miss Bott, ya sea por propiedad o de otra manera. Cualquier información relacionada con usted que proporcionemos a nuestras Afiliadas Corporativas será tratada por dichas Afiliadas Corporativas de acuerdo con los términos de esta Política de Privacidad."
+    },
+    "governing_law": {
+      "title": "Ley Aplicable",
+      "p1": "Esta Política de Privacidad se rige por las leyes de Irlanda sin tener en cuenta su disposición sobre conflictos de leyes. Usted acepta la jurisdicción exclusiva de los tribunales en relación con cualquier acción o disputa que surja entre las partes bajo o en conexión con esta Política de Privacidad, excepto para aquellas personas que puedan tener derechos a presentar reclamos bajo el Escudo de Privacidad o el marco suizo-estadounidense."
+    },
+    "consent": {
+      "title": "Su Consentimiento",
+      "p1": "Hemos actualizado nuestra Política de Privacidad para brindarle total transparencia sobre lo que se establece cuando visita nuestro sitio y cómo se utiliza. Al utilizar nuestro sitio web, registrar una cuenta o realizar una compra, por la presente acepta nuestra Política de Privacidad y acepta sus términos."
+    },
+    "links": {
+      "title": "Enlaces a Otros Sitios Web",
+      "p1": "Esta Política de Privacidad se aplica solo a los Servicios. Los Servicios pueden contener enlaces a otros sitios web no operados o controlados por Miss Bott. No somos responsables del contenido, la precisión o las opiniones expresadas en dichos sitios web, y dichos sitios web no son investigados, monitoreados o verificados por nosotros en cuanto a precisión o integridad. Recuerde que cuando utiliza un enlace para ir de los Servicios a otro sitio web, nuestra Política de Privacidad ya no está vigente. Su navegación e interacción en cualquier otro sitio web, incluidos aquellos que tienen un enlace en nuestra plataforma, están sujetos a las propias reglas y políticas de ese sitio web. Dichos terceros pueden utilizar sus propias cookies u otros métodos para recopilar información sobre usted."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "p1": "Miss Bott utiliza \"Cookies\" para identificar las áreas de nuestro sitio web que ha visitado. Una Cookie es una pequeña pieza de datos almacenada en su computadora o dispositivo móvil por su navegador web. Utilizamos Cookies para mejorar el rendimiento y la funcionalidad de nuestro sitio web, pero no son esenciales para su uso. Sin embargo, sin estas cookies, cierta funcionalidad como los videos puede no estar disponible o se le requerirá que ingrese sus datos de inicio de sesión cada vez que visite el sitio web, ya que no podríamos recordar que había iniciado sesión anteriormente. La mayoría de los navegadores web se pueden configurar para desactivar el uso de Cookies. Sin embargo, si desactiva las Cookies, es posible que no pueda acceder a la funcionalidad de nuestro sitio web correctamente o en absoluto. Nunca colocamos Información de Identificación Personal en Cookies."
+    },
+    "blocking_cookies": {
+      "title": "Bloquear y deshabilitar cookies y tecnologías similares",
+      "p1": "Dondequiera que se encuentre, también puede configurar su navegador para bloquear cookies y tecnologías similares, pero esta acción puede bloquear nuestras cookies esenciales e impedir que nuestro sitio web funcione correctamente, y es posible que no pueda utilizar completamente todas sus características y servicios. También debe tener en cuenta que también puede perder información guardada (por ejemplo, detalles de inicio de sesión guardados, preferencias del sitio) si bloquea las cookies en su navegador. Los diferentes navegadores ponen a su disposición diferentes controles. Deshabilitar una cookie o categoría de cookie no elimina la cookie de su navegador, deberá hacerlo usted mismo desde dentro de su navegador, debe visitar el menú de ayuda de su navegador para obtener más información."
+    },
+    "payment": {
+      "title": "Detalles de Pago",
+      "p1": "Con respecto a cualquier tarjeta de crédito u otros detalles de procesamiento de pago que nos haya proporcionado, nos comprometemos a que esta información confidencial se almacenará de la manera más segura posible."
+    },
+    "kids": {
+      "title": "Privacidad de los Niños",
+      "p1": "No nos dirigimos a nadie menor de 13 años. No recopilamos a sabiendas información de identificación personal de nadie menor de 13 años. Si usted es un padre o tutor y sabe que su hijo nos ha proporcionado Datos Personales, comuníquese con nosotros. Si nos damos cuenta de que hemos recopilado Datos Personales de cualquier persona menor de 13 años sin verificación del consentimiento de los padres, tomamos medidas para eliminar esa información de nuestros servidores."
+    },
+    "tracking": {
+      "title": "Tecnologías de Rastreo",
+      "list": [
+        "<strong>Google Maps API:</strong> <p>Google Maps API es una herramienta robusta que se puede utilizar para crear un mapa personalizado, un mapa de búsqueda, funciones de registro, mostrar datos en vivo sincronizados con la ubicación, planificar rutas o crear un mashup, solo por nombrar algunos.</p> <p>Google Maps API puede recopilar información de Usted y de Su Dispositivo con fines de seguridad. Google Maps API recopila información que se mantiene de acuerdo con su Política de Privacidad.</p>",
+        "<strong>Cookies:</strong> <p>Utilizamos Cookies para mejorar el rendimiento y la funcionalidad de nuestra plataforma, pero no son esenciales para su uso. Sin embargo, sin estas cookies, cierta funcionalidad como los videos puede no estar disponible o se le requerirá que ingrese sus datos de inicio de sesión cada vez que visite la plataforma, ya que no podríamos recordar que había iniciado sesión anteriormente.</p>",
+        "<strong>Almacenamiento Local:</strong> <p>El Almacenamiento Local, a veces conocido como almacenamiento DOM, proporciona a las aplicaciones web métodos y protocolos para almacenar datos del lado del cliente. El almacenamiento web admite el almacenamiento persistente de datos, similar a las cookies pero con una capacidad muy mejorada y sin información almacenada en el encabezado de solicitud HTTP.</p>",
+        "<strong>Sesiones:</strong> <p>Utilizamos \"Sesiones\" para identificar las áreas de nuestro sitio web que ha visitado. Una Sesión es una pequeña pieza de datos almacenada en su computadora o dispositivo móvil por su navegador web.</p>"
+      ]
+    },
+    "gdpr": {
+      "title": "Información sobre el Reglamento General de Protección de Datos (GDPR)",
+      "p1": "Podemos estar recopilando y utilizando información de usted si es del Espacio Económico Europeo (EEE), y en esta sección de nuestra Política de Privacidad vamos a explicar exactamente cómo y por qué se recopilan estos datos, y cómo mantenemos estos datos bajo protección contra la replicación o el uso incorrecto.",
+      "sub_title_1": "¿Qué es GDPR?",
+      "p2": "GDPR es una ley de privacidad y protección de datos en toda la UE que regula cómo las empresas protegen los datos de los residentes de la UE y mejora el control que los residentes de la UE tienen sobre sus datos personales. El GDPR es relevante para cualquier empresa que opere a nivel mundial y no solo para las empresas con sede en la UE y los residentes de la UE. Los datos de nuestros clientes son importantes independientemente de dónde se encuentren, por lo que hemos implementado controles GDPR como nuestro estándar base para todas nuestras operaciones en todo el mundo.",
+      "sub_title_2": "¿Qué son los datos personales?",
+      "p3": "Cualquier dato que se relacione con un individuo identificable o identificado. GDPR cubre un amplio espectro de información que podría usarse por sí sola, o en combinación con otras piezas de información, para identificar a una persona. Los datos personales se extienden más allá del nombre o la dirección de correo electrónico de una persona. Algunos ejemplos incluyen información financiera, opiniones políticas, datos genéticos, datos biométricos, direcciones IP, dirección física, orientación sexual y origen étnico.",
+      "p4": "Los Principios de Protección de Datos incluyen requisitos como:",
+      "list_principles": [
+        "Los datos personales recopilados deben procesarse de manera justa, legal y transparente y solo deben usarse de una manera que una persona esperaría razonablemente.",
+        "Los datos personales solo deben recopilarse para cumplir un propósito específico y solo deben usarse para ese propósito. Las organizaciones deben especificar por qué necesitan los datos personales cuando los recopilan.",
+        "Los datos personales no deben conservarse más tiempo del necesario para cumplir con su propósito.",
+        "Las personas cubiertas por el GDPR tienen derecho a acceder a sus propios datos personales. También pueden solicitar una copia de sus datos y que sus datos sean actualizados, eliminados, restringidos o trasladados a otra organización."
+      ],
+      "sub_title_3": "Derechos del Interesado Individual - Acceso a Datos, Portabilidad y Eliminación",
+      "p5": "Estamos comprometidos a ayudar a nuestros clientes a cumplir con los requisitos de derechos de los interesados del GDPR. Miss Bott procesa o almacena todos los datos personales en proveedores totalmente examinados y que cumplen con la DPA. Almacenamos toda la conversación y los datos personales durante hasta 6 años a menos que se elimine su cuenta. En cuyo caso, eliminamos todos los datos de acuerdo con nuestros Términos de Servicio y Política de Privacidad, pero no los retendremos por más de 60 días.",
+      "p6": "Somos conscientes de que si trabaja con clientes de la UE, debe poder proporcionarles la capacidad de acceder, actualizar, recuperar y eliminar datos personales. ¡Lo tenemos cubierto! Nos hemos configurado como autoservicio desde el principio y siempre le hemos dado acceso a sus datos y a los datos de sus clientes. Nuestro equipo de atención al cliente está aquí para responder cualquier pregunta que pueda tener sobre el trabajo con la API."
+    },
+    "california": {
+      "title": "Residentes de California",
+      "p1": "La Ley de Privacidad del Consumidor de California (CCPA) nos exige divulgar las categorías de Información Personal que recopilamos y cómo la usamos, las categorías de fuentes de las cuales recopilamos Información Personal y los terceros con quienes la compartimos, lo cual hemos explicado anteriormente.",
+      "p2": "También estamos obligados a comunicar información sobre los derechos que tienen los residentes de California según la ley de California. Puede ejercer los siguientes derechos:",
+      "list": [
+        "Derecho a Saber y Acceder. Puede enviar una solicitud verificable de información con respecto a: (1) categorías de Información Personal que recopilamos, usamos o compartimos; (2) propósitos para los cuales recopilamos o usamos categorías de Información Personal; (3) categorías de fuentes de las cuales recopilamos Información Personal; y (4) piezas específicas de Información Personal que hemos recopilado sobre usted.",
+        "Derecho a Igualdad de Servicio. No lo discriminaremos si ejerce sus derechos de privacidad.",
+        "Derecho a Eliminar. Puede enviar una solicitud verificable para cerrar su cuenta y eliminaremos la Información Personal sobre usted que hemos recopilado.",
+        "Solicitar que una empresa que vende los datos personales de un consumidor, no venda los datos personales del consumidor."
+      ],
+      "p3": "Si realiza una solicitud, tenemos un mes para responderle. Si desea ejercer alguno de estos derechos, contáctenos.",
+      "p4": "No vendemos la Información Personal de nuestros usuarios.",
+      "p5": "Para obtener más información sobre estos derechos, contáctenos."
+    },
+    "caloppa": {
+      "title": "Ley de Protección de la Privacidad en Línea de California (CalOPPA)",
+      "p1": "CalOPPA nos exige divulgar las categorías de Información Personal que recopilamos y cómo la usamos, las categorías de fuentes de las cuales recopilamos Información Personal y los terceros con quienes la compartimos, lo cual hemos explicado anteriormente.",
+      "p2": "Los usuarios de CalOPPA tienen los siguientes derechos:",
+      "list": [
+        "Derecho a Saber y Acceder. Puede enviar una solicitud verificable de información con respecto a: (1) categorías de Información Personal que recopilamos, usamos o compartimos; (2) propósitos para los cuales recopilamos o usamos categorías de Información Personal; (3) categorías de fuentes de las cuales recopilamos Información Personal; y (4) piezas específicas de Información Personal que hemos recopilado sobre usted.",
+        "Derecho a Igualdad de Servicio. No lo discriminaremos si ejerce sus derechos de privacidad.",
+        "Derecho a Eliminar. Puede enviar una solicitud verificable para cerrar su cuenta y eliminaremos la Información Personal sobre usted que hemos recopilado.",
+        "Derecho a solicitar que una empresa que vende los datos personales de un consumidor, no venda los datos personales del consumidor."
+      ],
+      "p3": "Si realiza una solicitud, tenemos un mes para responderle. Si desea ejercer alguno de estos derechos, contáctenos.",
+      "p4": "No vendemos la Información Personal de nuestros usuarios.",
+      "p5": "Para obtener más información sobre estos derechos, contáctenos."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "p1": "No dude en contactarnos si tiene alguna pregunta."
+    }
+  },
+  "cookie_policy": {
+    "title": "Política de Cookies",
+    "updated": "Última actualización: 17 de noviembre de 2025",
+    "definitions": {
+      "title": "Definiciones y términos clave",
+      "p1": "Para explicar las cosas lo más claramente posible en esta Política de Cookies, cada vez que se hace referencia a cualquiera de estos términos, se definen estrictamente como:",
+      "list": [
+        "<strong>Cookie:</strong> pequeña cantidad de datos generada por un sitio web y guardada por su navegador web. Se utiliza para identificar su navegador, proporcionar análisis, recordar información sobre usted, como su preferencia de idioma o información de inicio de sesión.",
+        "<strong>Compañía:</strong> cuando esta política menciona \"Compañía\", \"nosotros\", \"nos\" o \"nuestro\", se refiere a Miss Bott, que es responsable de su información bajo esta Política de Cookies.",
+        "<strong>Dispositivo:</strong> cualquier dispositivo conectado a Internet, como un teléfono, tableta, computadora o cualquier otro dispositivo que se pueda utilizar para visitar Miss Bott y utilizar los servicios.",
+        "<strong>Datos Personales:</strong> cualquier información que directa, indirectamente o en conexión con otra información — incluyendo un número de identificación personal — permita la identificación o identificabilidad de una persona física.",
+        "<strong>Servicio:</strong> se refiere al servicio proporcionado por Miss Bott tal como se describe en los términos relativos (si están disponibles) y en esta plataforma.",
+        "<strong>Servicio de terceros:</strong> se refiere a anunciantes, patrocinadores de concursos, socios promocionales y de marketing, y otros que proporcionan nuestro contenido o cuyos productos o servicios creemos que pueden interesarle.",
+        "<strong>Sitio web:</strong> sitio, al que se puede acceder a través de esta URL: https://missbott.online"
+      ],
+      "termify_note": "Esta Política de Cookies fue creada con <a href=\"https://termify.io\" target=\"_blank\">Termify</a>."
+    },
+    "intro": {
+      "title": "Introducción",
+      "p1": "Esta Política de Cookies explica cómo Miss Bott y sus afiliados (colectivamente \"Miss Bott\", \"nosotros\", \"nos\" y \"nuestro\"), utilizan cookies y tecnologías similares para reconocerlo cuando visita nuestro sitio web, incluyendo sin limitación https://missbott.online y cualquier URL relacionada, versiones móviles o localizadas y dominios / subdominios relacionados (\"Sitios Web\"). Explica qué son estas tecnologías y por qué las usamos, así como las opciones sobre cómo controlarlas."
+    },
+    "what_is": {
+      "title": "¿Qué es una cookie?",
+      "p1": "Una cookie es un pequeño archivo de texto que se almacena en su computadora u otro dispositivo conectado a Internet para identificar su navegador, proporcionar análisis, recordar información sobre usted, como su preferencia de idioma o información de inicio de sesión. Son completamente seguras y no se pueden utilizar para ejecutar programas o enviar virus a su dispositivo."
+    },
+    "why_use": {
+      "title": "¿Por qué utilizamos cookies?",
+      "p1": "Utilizamos cookies de primera parte y/o de terceros en nuestro sitio web para varios propósitos, tales como:",
+      "list": [
+        "Para facilitar la operación y funcionalidad de nuestro sitio web;",
+        "Para mejorar su experiencia en nuestro sitio web y hacer que la navegación sea más rápida y fácil;",
+        "Para permitirnos crear una experiencia de usuario personalizada para usted y para que entendamos qué es útil o de interés para usted;",
+        "Para analizar cómo se utiliza nuestro sitio web y cómo podemos personalizarlo mejor;",
+        "Para identificar futuros clientes potenciales y personalizar las interacciones de marketing y ventas con ellos;",
+        "Para facilitar la adaptación de la publicidad en línea a sus intereses.",
+        "Usted: una persona o entidad que está registrada con Miss Bott para utilizar los Servicios."
+      ]
+    },
+    "types": {
+      "title": "¿Qué tipo de cookies utiliza Miss Bott?",
+      "p1": "Las cookies pueden ser cookies de sesión o cookies persistentes. Una cookie de sesión expira automáticamente cuando cierra su navegador. Una cookie persistente permanecerá hasta que expire o elimine sus cookies. Las fechas de vencimiento se establecen en las propias cookies; algunas pueden expirar después de unos minutos, mientras que otras pueden expirar después de varios años. Las cookies colocadas por el sitio web que está visitando se denominan \"cookies de primera parte\".",
+      "p2": "Las cookies estrictamente necesarias son necesarias para que nuestro sitio web funcione y no se pueden desactivar en nuestros sistemas. Son esenciales para permitirle navegar por el sitio web y utilizar sus funciones. Si elimina o desactiva estas cookies, no podemos garantizar que podrá utilizar nuestro sitio web.",
+      "p3": "Utilizamos los siguientes tipos de cookies en nuestro sitio web:"
+    },
+    "essential": {
+      "title": "Cookies Esenciales",
+      "p1": "Utilizamos cookies esenciales para hacer que nuestro sitio web funcione. Estas cookies son estrictamente necesarias para habilitar la funcionalidad principal como la seguridad, la gestión de la red, sus preferencias de cookies y la accesibilidad. Sin ellas, no podría utilizar servicios básicos. Puede desactivarlas cambiando la configuración de su navegador, pero esto puede afectar el funcionamiento de los Sitios Web."
+    },
+    "performance": {
+      "title": "Cookies de Rendimiento y Funcionalidad",
+      "p1": "Estas cookies se utilizan para mejorar el rendimiento y la funcionalidad de nuestro sitio web, pero no son esenciales para su uso. Sin embargo, sin estas cookies, cierta funcionalidad como los videos puede no estar disponible o se le requerirá que ingrese sus datos de inicio de sesión cada vez que visite el sitio web, ya que no podríamos recordar que había iniciado sesión anteriormente."
+    },
+    "analytics": {
+      "title": "Cookies de Análisis y Personalización",
+      "p1": "Estas cookies recopilan información que se utiliza para ayudarnos a entender cómo se utiliza nuestro sitio web o qué tan efectivas son nuestras campañas de marketing, o para ayudarnos a personalizar nuestro sitio web para usted.",
+      "p2": "Utilizamos cookies servidas por Google Analytics para recopilar datos limitados directamente de los navegadores de los usuarios finales para permitirnos comprender mejor su uso de nuestro sitio web. Puede encontrar más información sobre cómo Google recopila y utiliza estos datos en: https://www.google.com/policies/privacy/partners/. Puede optar por no participar en todos los análisis respaldados por Google en nuestros Sitios Web visitando: https://tools.google.com/dlpage/gaoptout."
+    },
+    "third_party": {
+      "title": "Cookies de Terceros",
+      "p1": "Algunas cookies que se han establecido en nuestro sitio web no son establecidas por Miss Bott. Los Sitios Web pueden estar integrados con contenido de terceros para servir publicidad. Estos proveedores de servicios de terceros pueden establecer sus propias cookies en su navegador web. Los proveedores de servicios de terceros controlan muchas de las cookies de rendimiento y funcionalidad, publicidad, marketing y análisis descritas anteriormente. No controlamos el uso de estas cookies de terceros, ya que las cookies solo pueden ser accedidas por el tercero que las estableció originalmente."
+    },
+    "management": {
+      "title": "¿Cómo puede gestionar las cookies?",
+      "p1": "La mayoría de los navegadores le permiten controlar las cookies a través de sus preferencias de 'configuración'. Sin embargo, si limita la capacidad de los sitios web para establecer cookies, puede empeorar su experiencia general de usuario, ya que dejará de estar personalizada para usted. También puede impedirle guardar configuraciones personalizadas como la información de inicio de sesión. Los fabricantes de navegadores proporcionan páginas de ayuda relacionadas con la gestión de cookies en sus productos.",
+      "p2": "Los fabricantes de navegadores proporcionan páginas de ayuda relacionadas con la gestión de cookies en sus productos. Consulte a continuación para obtener más información.",
+      "list": [
+        "Google Chrome",
+        "Internet Explorer",
+        "Mozilla Firefox",
+        "Safari (Escritorio)",
+        "Safari (Móvil)",
+        "Navegador Android",
+        "Opera",
+        "Opera Mobile"
+      ]
+    },
+    "blocking": {
+      "title": "Bloquear y deshabilitar cookies y tecnologías similares",
+      "p1": "Dondequiera que se encuentre, también puede configurar su navegador para bloquear cookies y tecnologías similares, pero esta acción puede bloquear nuestras cookies esenciales e impedir que nuestro sitio web funcione correctamente, y es posible que no pueda utilizar completamente todas sus características y servicios. También debe tener en cuenta que también puede perder información guardada (por ejemplo, detalles de inicio de sesión guardados, preferencias del sitio) si bloquea las cookies en su navegador. Los diferentes navegadores ponen a su disposición diferentes controles. Deshabilitar una cookie o categoría de cookie no elimina la cookie de su navegador, deberá hacerlo usted mismo desde dentro de su navegador, debe visitar el menú de ayuda de su navegador para obtener más información."
+    },
+    "changes": {
+      "title": "Cambios en Nuestra Política de Cookies",
+      "p1": "Podemos cambiar nuestro Servicio y políticas, y es posible que necesitemos realizar cambios en esta Política de Cookies para que reflejen con precisión nuestro Servicio y políticas. A menos que la ley exija lo contrario, le notificaremos (por ejemplo, a través de nuestro Servicio) antes de realizar cambios en esta Política de Cookies y le daremos la oportunidad de revisarlos antes de que entren en vigor. Luego, si continúa utilizando el Servicio, estará sujeto a la Política de Cookies actualizada. Si no desea aceptar esta o cualquier Política de Cookies actualizada, puede eliminar su cuenta."
+    },
+    "consent": {
+      "title": "Su Consentimiento",
+      "p1": "Al utilizar nuestro sitio web, registrar una cuenta o realizar una compra, por la presente acepta nuestra Política de Cookies y acepta sus términos."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "p1": "No dude en contactarnos si tiene alguna pregunta sobre nuestra Política de Cookies.",
+      "list": [
+        "Vía Email: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>",
+        "Vía este Enlace: https://missbott.online",
+        "Vía esta Dirección: 7A The Crescent, Bride Street"
+      ]
+    }
+  },
+  "terms_of_use": {
+    "title": "Términos de Uso",
+    "updated": "Última actualización: 17 de noviembre de 2025",
+    "intro": {
+      "p1": "Al acceder y realizar un pedido con Miss Bott, usted confirma que está de acuerdo y sujeto a los términos de servicio contenidos en los Términos y Condiciones descritos a continuación. Estos términos se aplican a todo el sitio web y a cualquier correo electrónico u otro tipo de comunicación entre usted y Miss Bott.",
+      "p2": "Bajo ninguna circunstancia el equipo de Miss Bott será responsable de ningún daño directo, indirecto, especial, incidental o consecuente, incluidos, entre otros, la pérdida de datos o ganancias, que surjan del uso o la imposibilidad de uso de los materiales de este sitio, incluso si el equipo de Miss Bott o un representante autorizado ha sido advertido de la posibilidad de tales daños. Si su uso de materiales de este sitio resulta en la necesidad de servicio, reparación o corrección de equipos o datos, usted asume los costos de los mismos.",
+      "p3": "Miss Bott no será responsable de ningún resultado que pueda ocurrir durante el curso del uso de nuestros recursos. Nos reservamos el derecho de cambiar los precios y revisar la política de uso de recursos en cualquier momento. Estos Términos y Condiciones fueron creados con <a href=\"https://termify.io\" target=\"_blank\">Termify</a>."
+    },
+    "license": {
+      "title": "Licencia",
+      "p1": "Miss Bott le otorga una licencia revocable, no exclusiva, intransferible y limitada para descargar, instalar y utilizar el sitio web estrictamente de acuerdo con los términos de este Acuerdo.",
+      "p2": "Estos Términos y Condiciones son un contrato entre usted y Miss Bott (referido en estos Términos y Condiciones como \"Miss Bott\", \"nosotros\", \"nos\" o \"nuestro\"), el proveedor del sitio web de Miss Bott y los servicios accesibles desde el sitio web de Miss Bott (que se denominan colectivamente en estos Términos y Condiciones como el \"Servicio Miss Bott\").",
+      "p3": "Usted acepta estar sujeto a estos Términos y Condiciones. Si no está de acuerdo con estos Términos y Condiciones, no utilice el Servicio Miss Bott. En estos Términos y Condiciones, \"usted\" se refiere tanto a usted como individuo como a la entidad que representa. Si viola cualquiera de estos Términos y Condiciones, nos reservamos el derecho de cancelar su cuenta o bloquear el acceso a su cuenta sin previo aviso."
+    },
+    "definitions": {
+      "title": "Definiciones y términos clave",
+      "p1": "Para explicar las cosas lo más claramente posible en estos Términos y Condiciones, cada vez que se hace referencia a cualquiera de estos términos, se definen estrictamente como:",
+      "list": [
+        "<strong>Cookie:</strong> pequeña cantidad de datos generada por un sitio web y guardada por su navegador web. Se utiliza para identificar su navegador, proporcionar análisis, recordar información sobre usted, como su preferencia de idioma o información de inicio de sesión.",
+        "<strong>Compañía:</strong> cuando esta política menciona \"Compañía\", \"nosotros\", \"nos\" o \"nuestro\", se refiere a Miss Bott, que es responsable de su información bajo estos Términos y Condiciones.",
+        "<strong>País:</strong> donde se encuentran Miss Bott o los propietarios/fundadores de Miss Bott, en este caso es ",
+        "<strong>Dispositivo:</strong> cualquier dispositivo conectado a Internet, como un teléfono, tableta, computadora o cualquier otro dispositivo que se pueda utilizar para visitar Miss Bott y utilizar los servicios.",
+        "<strong>Servicio:</strong> se refiere al servicio proporcionado por Miss Bott tal como se describe en los términos relativos (si están disponibles) y en esta plataforma.",
+        "<strong>Servicio de terceros:</strong> se refiere a anunciantes, patrocinadores de concursos, socios promocionales y de marketing, y otros que proporcionan nuestro contenido o cuyos productos o servicios creemos que pueden interesarle.",
+        "<strong>Sitio web:</strong> el sitio de Miss Bott, al que se puede acceder a través de esta URL: https://missbott.online",
+        "<strong>Usted:</strong> una persona o entidad que está registrada con Miss Bott para utilizar los Servicios."
+      ]
+    },
+    "restrictions": {
+      "title": "Restricciones",
+      "p1": "Usted acepta no hacer, y no permitirá que otros hagan lo siguiente:",
+      "list": [
+        "Licenciar, vender, alquilar, arrendar, asignar, distribuir, transmitir, alojar, subcontratar, divulgar o explotar comercialmente de otro modo el sitio web o poner la plataforma a disposición de terceros.",
+        "Modificar, realizar trabajos derivados, desensamblar, descifrar, compilar inversamente o realizar ingeniería inversa de cualquier parte del sitio web.",
+        "Eliminar, alterar u ocultar cualquier aviso de propiedad (incluyendo cualquier aviso de derechos de autor o marca registrada) de Miss Bott o sus afiliados, socios, proveedores o los licenciantes del sitio web."
+      ]
+    },
+    "refunds": {
+      "title": "Política de Devoluciones y Reembolsos",
+      "p1": "Gracias por comprar en Miss Bott. Apreciamos el hecho de que le guste comprar las cosas que construimos. También queremos asegurarnos de que tenga una experiencia gratificante mientras explora, evalúa y compra nuestros productos.",
+      "p2": "Al igual que con cualquier experiencia de compra, existen términos y condiciones que se aplican a las transacciones en Miss Bott. Seremos tan breves como nuestros abogados nos permitan. Lo principal que debe recordar es que al realizar un pedido o realizar una compra en Miss Bott, acepta los términos junto con la Política de Privacidad de Miss Bott.",
+      "p3": "Si, por alguna razón, no está completamente satisfecho con algún bien o servicio que brindamos, no dude en contactarnos y discutiremos cualquiera de los problemas que esté experimentando con nuestro producto."
+    },
+    "suggestions": {
+      "title": "Sus Sugerencias",
+      "p1": "Cualquier comentario, idea, mejora o sugerencia (colectivamente, \"Sugerencias\") proporcionada por usted a Miss Bott con respecto al sitio web seguirá siendo propiedad única y exclusiva de Miss Bott.",
+      "p2": "Miss Bott será libre de usar, copiar, modificar, publicar o redistribuir las Sugerencias para cualquier propósito y de cualquier manera sin ningún crédito ni compensación para usted."
+    },
+    "consent": {
+      "title": "Su Consentimiento",
+      "p1": "Hemos actualizado nuestros Términos y Condiciones para brindarle total transparencia sobre lo que se establece cuando visita nuestro sitio y cómo se utiliza. Al utilizar nuestro sitio web, registrar una cuenta o realizar una compra, por la presente acepta nuestros Términos y Condiciones."
+    },
+    "links": {
+      "title": "Enlaces a Otros Sitios Web",
+      "p1": "Estos Términos y Condiciones se aplican solo a los Servicios. Los Servicios pueden contener enlaces a otros sitios web no operados o controlados por Miss Bott. No somos responsables del contenido, la precisión o las opiniones expresadas en dichos sitios web, y dichos sitios web no son investigados, monitoreados o verificados por nosotros en cuanto a precisión o integridad. Recuerde que cuando utiliza un enlace para ir de los Servicios a otro sitio web, nuestros Términos y Condiciones ya no están vigentes. Su navegación e interacción en cualquier otro sitio web, incluidos aquellos que tienen un enlace en nuestra plataforma, están sujetos a las propias reglas y políticas de ese sitio web. Dichos terceros pueden utilizar sus propias cookies u otros métodos para recopilar información sobre usted."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "p1": "Miss Bott utiliza \"Cookies\" para identificar las áreas de nuestro sitio web que ha visitado. Una Cookie es una pequeña pieza de datos almacenada en su computadora o dispositivo móvil por su navegador web. Utilizamos Cookies para mejorar el rendimiento y la funcionalidad de nuestro sitio web, pero no son esenciales para su uso. Sin embargo, sin estas cookies, cierta funcionalidad como los videos puede no estar disponible o se le requerirá que ingrese sus datos de inicio de sesión cada vez que visite el sitio web, ya que no podríamos recordar que había iniciado sesión anteriormente. La mayoría de los navegadores web se pueden configurar para desactivar el uso de Cookies. Sin embargo, si desactiva las Cookies, es posible que no pueda acceder a la funcionalidad de nuestro sitio web correctamente o en absoluto. Nunca colocamos Información de Identificación Personal en Cookies."
+    },
+    "changes": {
+      "title": "Cambios en Nuestros Términos y Condiciones",
+      "p1": "Usted reconoce y acepta que Miss Bott puede dejar de proporcionar (permanente o temporalmente) el Servicio (o cualquier característica dentro del Servicio) a usted o a los usuarios en general a su sola discreción, sin previo aviso. Puede dejar de usar el Servicio en cualquier momento. No necesita informar específicamente a Miss Bott cuando deje de usar el Servicio. Usted reconoce y acepta que si Miss Bott deshabilita el acceso a su cuenta, es posible que se le impida acceder al Servicio, los detalles de su cuenta o cualquier archivo u otro material contenido en su cuenta.",
+      "p2": "Si decidimos cambiar nuestros Términos y Condiciones, publicaremos esos cambios en esta página y/o actualizaremos la fecha de modificación de los Términos y Condiciones a continuación."
+    },
+    "modifications": {
+      "title": "Modificaciones a Nuestro sitio web",
+      "p1": "Miss Bott se reserva el derecho de modificar, suspender o descontinuar, temporal o permanentemente, el sitio web o cualquier servicio al que se conecte, con o sin previo aviso y sin responsabilidad ante usted."
+    },
+    "updates": {
+      "title": "Actualizaciones a Nuestro sitio web",
+      "p1": "Miss Bott puede proporcionar de vez en cuando mejoras o mejoras a las características/funcionalidad del sitio web, que pueden incluir parches, correcciones de errores, actualizaciones, mejoras y otras modificaciones (\"Actualizaciones\").",
+      "p2": "Las actualizaciones pueden modificar o eliminar ciertas características y/o funcionalidades del sitio web. Usted acepta que Miss Bott no tiene la obligación de (i) proporcionar Actualizaciones, o (ii) continuar proporcionando o habilitando características y/o funcionalidades particulares del sitio web para usted.",
+      "p3": "Además, acepta que todas las Actualizaciones (i) se considerarán parte integral del sitio web y (ii) estarán sujetas a los términos y condiciones de este Acuerdo."
+    },
+    "third_party": {
+      "title": "Servicios de Terceros",
+      "p1": "Podemos mostrar, incluir o poner a disposición contenido de terceros (incluidos datos, información, aplicaciones y otros servicios de productos) o proporcionar enlaces a sitios web o servicios de terceros (\"Servicios de Terceros\").",
+      "p2": "Usted reconoce y acepta que Miss Bott no será responsable de ningún Servicio de Terceros, incluida su precisión, integridad, puntualidad, validez, cumplimiento de derechos de autor, legalidad, decencia, calidad o cualquier otro aspecto de los mismos. Miss Bott no asume ni tendrá ninguna responsabilidad ante usted o cualquier otra persona o entidad por los Servicios de Terceros.",
+      "p3": "Los Servicios de Terceros y los enlaces a los mismos se proporcionan únicamente para su conveniencia y usted accede y los utiliza bajo su propio riesgo y sujeto a los términos y condiciones de dichos terceros."
+    },
+    "termination": {
+      "title": "Duración y Terminación",
+      "p1": "Este Acuerdo permanecerá en vigor hasta que sea terminado por usted o por Miss Bott.",
+      "p2": "Miss Bott puede, a su sola discreción, en cualquier momento y por cualquier motivo o sin él, suspender o terminar este Acuerdo con o sin previo aviso.",
+      "p3": "Este Acuerdo terminará inmediatamente, sin previo aviso de Miss Bott, en caso de que no cumpla con alguna disposición de este Acuerdo. También puede terminar este Acuerdo eliminando el sitio web y todas las copias del mismo de su computadora.",
+      "p4": "Tras la terminación de este Acuerdo, deberá dejar de usar el sitio web y eliminar todas las copias del sitio web de su computadora.",
+      "p5": "La terminación de este Acuerdo no limitará ninguno de los derechos o recursos de Miss Bott por ley o en equidad en caso de incumplimiento por su parte (durante la vigencia de este Acuerdo) de cualquiera de sus obligaciones bajo el presente Acuerdo."
+    },
+    "copyright": {
+      "title": "Aviso de Infracción de Derechos de Autor",
+      "p1": "Si usted es propietario de derechos de autor o agente de dicho propietario y cree que cualquier material en nuestro sitio web constituye una infracción de sus derechos de autor, comuníquese con nosotros indicando la siguiente información: (a) una firma física o electrónica del propietario de los derechos de autor o una persona autorizada para actuar en su nombre; (b) identificación del material que se reclama como infractor; (c) su información de contacto, incluida su dirección, número de teléfono y un correo electrónico; (d) una declaración suya de que cree de buena fe que el uso del material no está autorizado por los propietarios de los derechos de autor; y (e) una declaración de que la información en la notificación es precisa y, bajo pena de perjurio, está autorizado para actuar en nombre del propietario."
+    },
+    "indemnification": {
+      "title": "Indemnización",
+      "p1": "Usted acepta indemnizar y eximir de responsabilidad a Miss Bott y a sus padres, subsidiarias, afiliados, funcionarios, empleados, agentes, socios y licenciantes (si los hubiera) de cualquier reclamo o demanda, incluidos los honorarios razonables de abogados, debido a o que surjan de su: (a) uso del sitio web; (b) violación de este Acuerdo o cualquier ley o regulación; o (c) violación de cualquier derecho de un tercero."
+    },
+    "warranties": {
+      "title": "Sin Garantías",
+      "p1": "El sitio web se le proporciona \"TAL CUAL\" y \"SEGÚN DISPONIBILIDAD\" y con todas las fallas y defectos sin garantía de ningún tipo. En la máxima medida permitida por la ley aplicable, Miss Bott, en su propio nombre y en nombre de sus afiliados y sus respectivos licenciantes y proveedores de servicios, renuncia expresamente a todas las garantías, ya sean expresas, implícitas, legales o de otro tipo, con respecto al sitio web, incluidas todas las garantías implícitas de comerciabilidad, idoneidad para un propósito particular, título y no infracción, y garantías que puedan surgir del curso de la negociación, curso del desempeño, uso o práctica comercial. Sin limitación a lo anterior, Miss Bott no ofrece ninguna garantía o compromiso, y no hace ninguna representación de ningún tipo de que el sitio web cumplirá con sus requisitos, logrará los resultados previstos, será compatible o funcionará con cualquier otro software, sistemas o servicios, operará sin interrupción, cumplirá con los estándares de rendimiento o confiabilidad o estará libre de errores o que cualquier error o defecto pueda o será corregido.",
+      "p2": "Sin limitar lo anterior, ni Miss Bott ni ningún proveedor de Miss Bott hace ninguna representación o garantía de ningún tipo, expresa o implícita: (i) en cuanto al funcionamiento o disponibilidad del sitio web, o la información, contenido y materiales o productos incluidos en el mismo; (ii) que el sitio web será ininterrumpido o libre de errores; (iii) en cuanto a la precisión, confiabilidad o vigencia de cualquier información o contenido proporcionado a través del sitio web; o (iv) que el sitio web, sus servidores, el contenido o los correos electrónicos enviados desde o en nombre de Miss Bott están libres de virus, scripts, troyanos, gusanos, malware, bombas de tiempo u otros componentes dañinos.",
+      "p3": "Algunas jurisdicciones no permiten la exclusión o las limitaciones de las garantías implícitas o las limitaciones de los derechos legales aplicables de un consumidor, por lo que algunas o todas las exclusiones y limitaciones anteriores pueden no aplicarse a usted."
+    },
+    "liability": {
+      "title": "Limitación de Responsabilidad",
+      "p1": "Sin perjuicio de los daños en los que pueda incurrir, la responsabilidad total de Miss Bott y cualquiera de sus proveedores bajo cualquier disposición de este Acuerdo y su recurso exclusivo para todo lo anterior se limitará al monto realmente pagado por usted por el sitio web.",
+      "p2": "En la máxima medida permitida por la ley aplicable, en ningún caso Miss Bott o sus proveedores serán responsables de ningún daño especial, incidental, indirecto o consecuente (incluidos, entre otros, daños por pérdida de ganancias, por pérdida de datos u otra información, por interrupción del negocio, por lesiones personales, por pérdida de privacidad que surja de o esté relacionada de alguna manera con el uso o la imposibilidad de usar el sitio web, software de terceros y/o hardware de terceros utilizado con el sitio web, o de otro modo en relación con cualquier disposición de este Acuerdo), incluso si Miss Bott o cualquier proveedor ha sido advertido de la posibilidad de tales daños e incluso si el recurso no cumple con su propósito esencial.",
+      "p3": "Algunos estados/jurisdicciones no permiten la exclusión o limitación de daños incidentales o consecuentes, por lo que la limitación o exclusión anterior puede no aplicarse a usted."
+    },
+    "severability": {
+      "title": "Divisibilidad",
+      "p1": "Si alguna disposición de este Acuerdo se considera inaplicable o inválida, dicha disposición se cambiará e interpretará para lograr los objetivos de dicha disposición en la mayor medida posible según la ley aplicable y las disposiciones restantes continuarán en pleno vigor y efecto.",
+      "p2": "Este Acuerdo, junto con la Política de Privacidad y cualquier otro aviso legal publicado por Miss Bott en los Servicios, constituirá el acuerdo completo entre usted y Miss Bott con respecto a los Servicios. Si alguna disposición de este Acuerdo es considerada inválida por un tribunal de jurisdicción competente, la invalidez de dicha disposición no afectará la validez de las disposiciones restantes de este Acuerdo, que permanecerán en pleno vigor y efecto. Ninguna renuncia a cualquier término de este Acuerdo se considerará una renuncia adicional o continua de dicho término o cualquier otro término, y el hecho de que Miss Bott no haga valer cualquier derecho o disposición bajo este Acuerdo no constituirá una renuncia a dicho derecho o disposición. USTED Y Miss Bott ACUERDAN QUE CUALQUIER CAUSA DE ACCIÓN QUE SURJA DE O ESTÉ RELACIONADA CON LOS SERVICIOS DEBE COMENZAR DENTRO DE UN (1) AÑO DESPUÉS DE QUE LA CAUSA DE ACCIÓN SE ACUMULE. DE LO CONTRARIO, DICHA CAUSA DE ACCIÓN ESTÁ PERMANENTEMENTE PRESCRITA."
+    },
+    "waiver": {
+      "title": "Renuncia",
+      "p1": "Salvo lo dispuesto en el presente, el hecho de no ejercer un derecho o de no exigir el cumplimiento de una obligación en virtud de este Acuerdo no afectará la capacidad de una parte para ejercer dicho derecho o exigir dicho cumplimiento en cualquier momento posterior, ni la renuncia a un incumplimiento constituirá una renuncia a cualquier incumplimiento posterior.",
+      "p2": "Ningún fracaso en el ejercicio, y ningún retraso en el ejercicio, por parte de cualquiera de las partes, de cualquier derecho o poder bajo este Acuerdo operará como una renuncia a ese derecho o poder. Ningún ejercicio único o parcial de cualquier derecho o poder bajo este Acuerdo impedirá el ejercicio posterior de ese o cualquier otro derecho otorgado en el presente. En caso de conflicto entre este Acuerdo y cualquier compra aplicable u otros términos, regirán los términos de este Acuerdo."
+    },
+    "amendments": {
+      "title": "Enmiendas a este Acuerdo",
+      "p1": "Miss Bott se reserva el derecho, a su sola discreción, de modificar o reemplazar este Acuerdo en cualquier momento. Si una revisión es material, proporcionaremos un aviso de al menos 30 días antes de que entren en vigor los nuevos términos. Lo que constituye un cambio material se determinará a nuestra sola discreción.",
+      "p2": "Al continuar accediendo o utilizando nuestro sitio web después de que las revisiones entren en vigor, usted acepta estar sujeto a los términos revisados. Si no acepta los nuevos términos, ya no está autorizado para usar Miss Bott."
+    },
+    "entire_agreement": {
+      "title": "Acuerdo Completo",
+      "p1": "El Acuerdo constituye el acuerdo completo entre usted y Miss Bott con respecto a su uso del sitio web y reemplaza todos los acuerdos escritos u orales anteriores y contemporáneos entre usted y Miss Bott.",
+      "p2": "Puede estar sujeto a términos y condiciones adicionales que se aplican cuando usa o compra otros servicios de Miss Bott, que Miss Bott le proporcionará en el momento de dicho uso o compra."
+    },
+    "updates_terms": {
+      "title": "Actualizaciones a Nuestros Términos",
+      "p1": "Podemos cambiar nuestro Servicio y políticas, y es posible que necesitemos realizar cambios en estos Términos para que reflejen con precisión nuestro Servicio y políticas. A menos que la ley exija lo contrario, le notificaremos (por ejemplo, a través de nuestro Servicio) antes de realizar cambios en estos Términos y le daremos la oportunidad de revisarlos antes de que entren en vigor. Luego, si continúa utilizando el Servicio, estará sujeto a los Términos actualizados. Si no desea aceptar estos o cualquier Término actualizado, puede eliminar su cuenta."
+    },
+    "ip": {
+      "title": "Propiedad Intelectual",
+      "p1": "El sitio web y todo su contenido, características y funcionalidad (incluidos, entre otros, toda la información, software, texto, pantallas, imágenes, video y audio, y el diseño, selección y disposición de los mismos), son propiedad de Miss Bott, sus licenciantes u otros proveedores de dicho material y están protegidos por leyes internacionales de derechos de autor, marcas registradas, patentes, secretos comerciales y otras leyes de propiedad intelectual o derechos de propiedad. El material no puede ser copiado, modificado, reproducido, descargado o distribuido de ninguna manera, en todo o en parte, sin el permiso previo por escrito expreso de Miss Bott, a menos que y excepto como se disponga expresamente en estos Términos y Condiciones. Se prohíbe cualquier uso no autorizado del material."
+    },
+    "arbitration": {
+      "title": "Acuerdo de Arbitraje",
+      "p1": "Esta sección se aplica a cualquier disputa EXCEPTO QUE NO INCLUYE UNA DISPUTA RELACIONADA CON RECLAMOS DE ALIVIO INJUNCTIVO O EQUITATIVO CON RESPECTO A LA EJECUCIÓN O VALIDEZ DE SUS DERECHOS DE PROPIEDAD INTELECTUAL O LOS DE Miss Bott. El término \"disputa\" significa cualquier disputa, acción u otra controversia entre usted y Miss Bott con respecto a los Servicios o este acuerdo, ya sea en contrato, garantía, agravio, estatuto, regulación, ordenanza o cualquier otra base legal o equitativa. \"Disputa\" tendrá el significado más amplio posible permitido por la ley."
+    },
+    "notice_dispute": {
+      "title": "Aviso de Disputa",
+      "p1": "En caso de disputa, usted o Miss Bott deben enviar al otro un Aviso de Disputa, que es una declaración escrita que establece el nombre, la dirección y la información de contacto de la parte que lo envía, los hechos que dan lugar a la disputa y el alivio solicitado. Debe enviar cualquier Aviso de Disputa por correo electrónico a: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>. Miss Bott le enviará cualquier Aviso de Disputa por correo a su dirección si la tenemos, o de lo contrario a su dirección de correo electrónico. Usted y Miss Bott intentarán resolver cualquier disputa mediante negociación informal dentro de los sesenta (60) días a partir de la fecha en que se envíe el Aviso de Disputa. Después de sesenta (60) días, usted o Miss Bott pueden comenzar el arbitraje."
+    },
+    "binding_arbitration": {
+      "title": "Arbitraje Vinculante",
+      "p1": "Si usted y Miss Bott no resuelven ninguna disputa mediante negociación informal, cualquier otro esfuerzo para resolver la disputa se llevará a cabo exclusivamente mediante arbitraje vinculante como se describe en esta sección. Usted renuncia al derecho de litigar (o participar como parte o miembro de la clase) todas las disputas en la corte ante un juez o jurado. La disputa se resolverá mediante arbitraje vinculante de acuerdo con las reglas de arbitraje comercial de la Asociación Americana de Arbitraje. Cualquiera de las partes puede buscar cualquier medida cautelar provisional o preliminar de cualquier tribunal de jurisdicción competente, según sea necesario para proteger los derechos o la propiedad de la parte en espera de la finalización del arbitraje. Todos y cada uno de los costos legales, contables y otros costos, honorarios y gastos incurridos por la parte ganadora correrán a cargo de la parte no ganadora."
+    },
+    "submissions": {
+      "title": "Envíos y Privacidad",
+      "p1": "En el caso de que envíe o publique ideas, sugerencias creativas, diseños, fotografías, información, anuncios, datos o propuestas, incluidas ideas para productos, servicios, características, tecnologías o promociones nuevos o mejorados, usted acepta expresamente que dichos envíos se tratarán automáticamente como no confidenciales y no propietarios y se convertirán en propiedad exclusiva de Miss Bott sin ninguna compensación o crédito para usted. Miss Bott y sus afiliados no tendrán obligaciones con respecto a dichos envíos o publicaciones y pueden usar las ideas contenidas en dichos envíos o publicaciones para cualquier propósito en cualquier medio a perpetuidad, incluidos, entre otros, el desarrollo, la fabricación y la comercialización de productos y servicios utilizando dichas ideas."
+    },
+    "promotions": {
+      "title": "Promociones",
+      "p1": "Miss Bott puede, de vez en cuando, incluir concursos, promociones, sorteos u otras actividades (\"Promociones\") que requieran que envíe material o información sobre usted. Tenga en cuenta que todas las Promociones pueden regirse por reglas separadas que pueden contener ciertos requisitos de elegibilidad, como restricciones de edad y ubicación geográfica. Usted es responsable de leer todas las reglas de las Promociones para determinar si es elegible para participar o no. Si participa en cualquier Promoción, acepta cumplir y cumplir con todas las Reglas de las Promociones.",
+      "p2": "Pueden aplicarse términos y condiciones adicionales a las compras de bienes o servicios en o a través de los Servicios, cuyos términos y condiciones forman parte de este Acuerdo mediante esta referencia."
+    },
+    "typos": {
+      "title": "Errores Tipográficos",
+      "p1": "En el caso de que un producto y/o servicio se enumere a un precio incorrecto o con información incorrecta debido a un error tipográfico, tendremos el derecho de rechazar o cancelar cualquier pedido realizado para el producto y/o servicio enumerado al precio incorrecto. Tendremos el derecho de rechazar o cancelar cualquier pedido de este tipo, ya sea que el pedido haya sido confirmado o no y se haya cargado a su tarjeta de crédito. Si su tarjeta de crédito ya ha sido cargada por la compra y su pedido es cancelado, emitiremos inmediatamente un crédito a su cuenta de tarjeta de crédito u otra cuenta de pago por el monto del cargo."
+    },
+    "miscellaneous": {
+      "title": "Miscelánea",
+      "p1": "Si por alguna razón un tribunal de jurisdicción competente considera que alguna disposición o parte de estos Términos y Condiciones es inaplicable, el resto de estos Términos y Condiciones continuará en pleno vigor y efecto. Cualquier renuncia a cualquier disposición de estos Términos y Condiciones será efectiva solo si se realiza por escrito y está firmada por un representante autorizado de Miss Bott. Miss Bott tendrá derecho a medidas cautelares u otro alivio equitativo (sin la obligación de depositar ninguna fianza o garantía) en caso de cualquier incumplimiento o incumplimiento anticipado por su parte. Miss Bott opera y controla el Servicio Miss Bott desde sus oficinas en . El Servicio no está destinado a ser distribuido o utilizado por ninguna persona o entidad en ninguna jurisdicción o país donde dicha distribución o uso sea contrario a la ley o regulación. En consecuencia, aquellas personas que elijan acceder al Servicio Miss Bott desde otras ubicaciones lo hacen por su propia iniciativa y son las únicas responsables del cumplimiento de las leyes locales, si y en la medida en que las leyes locales sean aplicables. Estos Términos y Condiciones (que incluyen e incorporan la Política de Privacidad de Miss Bott) contienen el entendimiento completo y reemplazan todos los entendimientos previos entre usted y Miss Bott con respecto a su tema, y no pueden ser cambiados o modificados por usted. Los encabezados de las secciones utilizados en este Acuerdo son solo por conveniencia y no tendrán ninguna importancia legal."
+    },
+    "disclaimer": {
+      "title": "Descargo de Responsabilidad",
+      "p1": "Miss Bott no es responsable de ningún contenido, código o cualquier otra imprecisión.",
+      "p2": "Miss Bott no ofrece garantías.",
+      "p3": "En ningún caso Miss Bott será responsable de ningún daño especial, directo, indirecto, consecuente o incidental o cualquier daño, ya sea en una acción de contrato, negligencia u otro agravio, que surja de o en conexión con el uso del Servicio o el contenido del Servicio. La Compañía se reserva el derecho de realizar adiciones, eliminaciones o modificaciones al contenido del Servicio en cualquier momento sin previo aviso.",
+      "p4": "El Servicio Miss Bott y su contenido se proporcionan \"tal cual\" y \"según disponibilidad\" sin ninguna garantía o representación de ningún tipo, ya sea expresa o implícita. Miss Bott es un distribuidor y no un editor del contenido proporcionado por terceros; como tal, Miss Bott no ejerce control editorial sobre dicho contenido y no ofrece ninguna garantía o representación en cuanto a la precisión, confiabilidad o vigencia de cualquier información, contenido, servicio o mercancía proporcionada a través o accesible a través del Servicio Miss Bott. Sin limitar lo anterior, Miss Bott renuncia específicamente a todas las garantías y representaciones en cualquier contenido transmitido en o en conexión con el Servicio Miss Bott o en sitios que pueden aparecer como enlaces en el Servicio Miss Bott, o en los productos proporcionados como parte de, o de otro modo en conexión con, el Servicio Miss Bott, incluidas, entre otras, cualquier garantía de comerciabilidad, idoneidad para un propósito particular o no infracción de derechos de terceros. Ningún consejo oral o información escrita proporcionada por Miss Bott o cualquiera de sus afiliados, empleados, funcionarios, directores, agentes o similares creará una garantía. La información sobre precios y disponibilidad está sujeta a cambios sin previo aviso. Sin limitar lo anterior, Miss Bott no garantiza que el Servicio Miss Bott sea ininterrumpido, no corrupto, oportuno o libre de errores."
+    },
+    "contact": {
+      "title": "Contáctenos",
+      "p1": "No dude en contactarnos si tiene alguna pregunta.",
+      "list": [
+        "Vía Email: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>",
+        "Vía este Enlace: https://missbott.online",
+        "Vía esta Dirección: 7A The Crescent, Bride Street"
+      ]
+    }
   }
 }
 }

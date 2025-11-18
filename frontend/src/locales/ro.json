@@ -201,7 +201,11 @@
     }
   },
   "footer": {
-    "copyright": "© {{year}} Miss Bott. Toate drepturile rezervate."
+    "copyright": "© {{year}} Miss Bott. Toate drepturile rezervate.",
+    "terms_of_use": "Termeni de Utilizare",
+    "privacy_policy": "Politica de Confidențialitate",
+    "cookies_policy": "Politica de Cookie-uri",
+        "impressum": "Miss Bott | Înregistrată în Irlanda"
   },
 "blog": {
   "title": "Resurse pentru Creativi",
@@ -247,6 +251,475 @@
     "seo_title": "Eroare de Server | Miss Bott",
     "seo_desc": "Momentan întâmpinăm probleme cu serverul. Te rog, încearcă din nou mai târziu."
   }
+},
+
+"legal": {
+  "privacy_policy": {
+    "title": "Politica de Confidențialitate",
+    "updated": "Ultima actualizare: 17 noiembrie 2025",
+    "intro_1": "Miss Bott („noi”, „al nostru” sau „nouă”) se angajează să vă protejeze confidențialitatea. Această Politică de Confidențialitate explică modul în care informațiile dumneavoastră personale sunt colectate, utilizate și dezvăluite de Miss Bott.",
+    "intro_2": "Această Politică de Confidențialitate se aplică site-ului nostru și subdomeniilor asociate (colectiv, „Serviciul” nostru) împreună cu aplicația noastră, Miss Bott. Prin accesarea sau utilizarea Serviciului nostru, indicați că ați citit, înțeles și sunteți de acord cu colectarea, stocarea, utilizarea și dezvăluirea informațiilor dumneavoastră personale, așa cum este descris în această Politică de Confidențialitate și în Termenii noștri de Serviciu.",
+    "definitions": {
+      "title": "Definiții și termeni cheie",
+      "desc": "Pentru a explica lucrurile cât mai clar posibil în această Politică de Confidențialitate, de fiecare dată când se face referire la oricare dintre acești termeni, aceștia sunt definiți strict astfel:",
+      "list": [
+        "<strong>Cookie:</strong> o cantitate mică de date generată de un site web și salvată de browserul dumneavoastră web. Este utilizată pentru a vă identifica browserul, pentru a oferi analize, pentru a reține informații despre dumneavoastră, cum ar fi preferința de limbă sau informațiile de conectare.",
+        "<strong>Companie:</strong> când această politică menționează „Companie”, „noi”, „ne” sau „al nostru”, se referă la Miss Bott, care este responsabilă pentru informațiile dumneavoastră conform acestei Politici de Confidențialitate.",
+        "<strong>Țară:</strong> unde Miss Bott sau proprietarii/fondatorii Miss Bott își au sediul, în acest caz fiind Irlanda.",
+        "<strong>Client:</strong> se referă la compania, organizația sau persoana care se înregistrează pentru a utiliza Serviciul Miss Bott pentru a gestiona relațiile cu consumatorii sau utilizatorii serviciilor sale.",
+        "<strong>Dispozitiv:</strong> orice dispozitiv conectat la internet, cum ar fi un telefon, tabletă, computer sau orice alt dispozitiv care poate fi utilizat pentru a vizita Miss Bott și a utiliza serviciile.",
+        "<strong>Adresă IP:</strong> Fiecărui dispozitiv conectat la Internet i se atribuie un număr cunoscut sub numele de adresă de protocol Internet (IP). Aceste numere sunt de obicei atribuite în blocuri geografice. O adresă IP poate fi adesea utilizată pentru a identifica locația din care un dispozitiv se conectează la Internet.",
+        "<strong>Personal:</strong> se referă la acele persoane care sunt angajate de Miss Bott sau sunt sub contract pentru a efectua un serviciu în numele uneia dintre părți.",
+        "<strong>Date Personale:</strong> orice informație care direct, indirect sau în legătură cu alte informații — inclusiv un număr personal de identificare — permite identificarea sau identificabilitatea unei persoane fizice.",
+        "<strong>Serviciu:</strong> se referă la serviciul oferit de Miss Bott așa cum este descris în termenii relativi (dacă sunt disponibili) și pe această platformă.",
+        "<strong>Serviciu terță parte:</strong> se referă la agenți de publicitate, sponsori de concursuri, parteneri promoționali și de marketing și alții care furnizează conținutul nostru sau ale căror produse sau servicii credem că v-ar putea interesa.",
+        "<strong>Website:</strong> site-ul Miss Bott, care poate fi accesat prin acest URL: https://missbott.online",
+        "<strong>Dumneavoastră:</strong> o persoană sau entitate care este înregistrată la Miss Bott pentru a utiliza Serviciile."
+      ]
+    },
+    "collection": {
+      "title": "Ce informații colectăm?",
+      "desc": "Colectăm informații de la dumneavoastră atunci când vizitați site-ul nostru, vă înregistrați pe site-ul nostru, plasați o comandă, vă abonați la newsletter-ul nostru, răspundeți la un sondaj sau completați un formular.",
+      "list": [
+        "Nume / Nume de utilizator",
+        "Numere de telefon",
+        "Adrese de email",
+        "Adrese de facturare",
+        "Numere de card de debit/credit",
+        "Parolă"
+      ]
+    },
+    "usage": {
+      "title": "Cum folosim informațiile pe care le colectăm?",
+      "desc": "Oricare dintre informațiile pe care le colectăm de la dumneavoastră poate fi utilizată într-unul dintre următoarele moduri:",
+      "list": [
+        "Pentru a vă personaliza experiența (informațiile dumneavoastră ne ajută să răspundem mai bine nevoilor dumneavoastră individuale)",
+        "Pentru a îmbunătăți site-ul nostru (ne străduim continuu să ne îmbunătățim ofertele site-ului pe baza informațiilor și feedback-ului pe care îl primim de la dumneavoastră)",
+        "Pentru a îmbunătăți serviciul pentru clienți (informațiile dumneavoastră ne ajută să răspundem mai eficient solicitărilor dumneavoastră de servicii pentru clienți și nevoilor de asistență)",
+        "Pentru a procesa tranzacții",
+        "Pentru a administra un concurs, promoție, sondaj sau altă caracteristică a site-ului",
+        "Pentru a trimite emailuri periodice"
+      ]
+    },
+    "third_party_end_user": {
+      "title": "Când utilizează Miss Bott informațiile utilizatorilor finali de la terți?",
+      "p1": "Miss Bott va colecta Datele Utilizatorului Final necesare pentru a furniza serviciile Miss Bott clienților noștri.",
+      "p2": "Utilizatorii finali ne pot furniza voluntar informații pe care le-au făcut disponibile pe site-urile de social media. Dacă ne furnizați astfel de informații, putem colecta informații disponibile public de pe site-urile de social media pe care le-ați indicat. Puteți controla cât de mult din informațiile dumneavoastră fac publice site-urile de social media vizitând aceste site-uri și modificându-vă setările de confidențialitate."
+    },
+    "third_party_customer": {
+      "title": "Când utilizează Miss Bott informațiile clienților de la terți?",
+      "p1": "Primim unele informații de la terți atunci când ne contactați. De exemplu, atunci când ne trimiteți adresa dumneavoastră de email pentru a vă arăta interesul de a deveni client Miss Bott, primim informații de la o terță parte care furnizează servicii automate de detectare a fraudei către Miss Bott. De asemenea, colectăm ocazional informații care sunt făcute publice pe site-urile de social media. Puteți controla cât de mult din informațiile dumneavoastră fac publice site-urile de social media vizitând aceste site-uri și modificându-vă setările de confidențialitate."
+    },
+    "sharing": {
+      "title": "Împărtășim informațiile pe care le colectăm cu terțe părți?",
+      "p1": "Putem împărtăși informațiile pe care le colectăm, atât personale cât și non-personale, cu terțe părți, cum ar fi agenți de publicitate, sponsori de concursuri, parteneri promoționali și de marketing și alții care furnizează conținutul nostru sau ale căror produse sau servicii credem că v-ar putea interesa. De asemenea, le putem împărtăși cu companiile noastre afiliate și partenerii de afaceri actuali și viitori, iar dacă suntem implicați într-o fuziune, vânzare de active sau altă reorganizare a afacerii, putem, de asemenea, să împărtășim sau să transferăm informațiile dumneavoastră personale și non-personale succesorilor noștri în interes."
+    },
+    "collection_source": {
+      "title": "Unde și când sunt colectate informațiile de la clienți și utilizatori finali?",
+      "p1": "Miss Bott va colecta informațiile personale pe care ni le trimiteți. De asemenea, putem primi informații personale despre dumneavoastră de la terți, așa cum este descris mai sus."
+    },
+    "email_usage": {
+      "title": "Cum folosim adresa dumneavoastră de email?",
+      "p1": "Prin trimiterea adresei dumneavoastră de email pe acest site, sunteți de acord să primiți emailuri de la noi. Puteți anula participarea la oricare dintre aceste liste de emailuri în orice moment, făcând clic pe link-ul de renunțare sau pe altă opțiune de dezabonare inclusă în emailul respectiv. Trimitem emailuri doar persoanelor care ne-au autorizat să le contactăm, fie direct, fie printr-o terță parte. Nu trimitem emailuri comerciale nesolicitate, deoarece urâm spam-ul la fel de mult ca dumneavoastră. Prin trimiterea adresei dumneavoastră de email, sunteți de asemenea de acord să ne permiteți să folosim adresa dumneavoastră de email pentru targetarea audienței clienților pe site-uri precum Facebook, unde afișăm publicitate personalizată persoanelor specifice care au optat să primească comunicări de la noi. Adresele de email trimise doar prin pagina de procesare a comenzilor vor fi utilizate în scopul unic de a vă trimite informații și actualizări referitoare la comanda dumneavoastră. Cu toate acestea, dacă ne-ați furnizat același email printr-o altă metodă, îl putem folosi pentru oricare dintre scopurile menționate în această Politică. Notă: Dacă în orice moment doriți să vă dezabonați de la primirea de emailuri viitoare, includem instrucțiuni detaliate de dezabonare în partea de jos a fiecărui email."
+    },
+    "retention": {
+      "title": "Cât timp păstrăm informațiile dumneavoastră?",
+      "p1": "Păstrăm informațiile dumneavoastră doar atâta timp cât avem nevoie de ele pentru a vă furniza Miss Bott și pentru a îndeplini scopurile descrise în această politică. Acest lucru este valabil și pentru oricine cu care împărtășim informațiile dumneavoastră și care efectuează servicii în numele nostru. Când nu mai avem nevoie să folosim informațiile dumneavoastră și nu este nevoie să le păstrăm pentru a respecta obligațiile noastre legale sau de reglementare, le vom elimina din sistemele noastre sau le vom depersonaliza astfel încât să nu vă putem identifica."
+    },
+    "protection": {
+      "title": "Cum vă protejăm informațiile?",
+      "p1": "Implementăm o varietate de măsuri de securitate pentru a menține siguranța informațiilor dumneavoastră personale atunci când plasați o comandă sau introduceți, trimiteți sau accesați informațiile dumneavoastră personale. Oferim utilizarea unui server securizat. Toate informațiile sensibile/de credit furnizate sunt transmise prin tehnologia Secure Socket Layer (SSL) și apoi criptate în baza de date a furnizorilor noștri de gateway de plată, pentru a fi accesibile doar de către cei autorizați cu drepturi speciale de acces la astfel de sisteme, și sunt obligați să păstreze informațiile confidențiale. După o tranzacție, informațiile dumneavoastră private (carduri de credit, numere de securitate socială, date financiare etc.) nu sunt păstrate niciodată în dosar. Nu putem, totuși, asigura sau garanta securitatea absolută a oricărei informații pe care o transmiteți către Miss Bott sau garanta că informațiile dumneavoastră de pe Serviciu nu pot fi accesate, dezvăluite, modificate sau distruse printr-o încălcare a oricăreia dintre garanțiile noastre fizice, tehnice sau manageriale."
+    },
+    "international": {
+      "title": "Ar putea fi transferate informațiile mele în alte țări?",
+      "p1": "Miss Bott este încorporată în Irlanda. Informațiile colectate prin intermediul site-ului nostru, prin interacțiuni directe cu dumneavoastră sau prin utilizarea serviciilor noastre de ajutor pot fi transferate din când în când către birourile sau personalul nostru, sau către terți, situați în întreaga lume, și pot fi vizualizate și găzduite oriunde în lume, inclusiv în țări care este posibil să nu aibă legi de aplicabilitate generală care reglementează utilizarea și transferul acestor date. În măsura maximă permisă de legea aplicabilă, prin utilizarea oricăruia dintre cele de mai sus, consimțiți voluntar la transferul transfrontalier și găzduirea acestor informații."
+    },
+    "security_note": {
+      "title": "Sunt sigure informațiile colectate prin Serviciul Miss Bott?",
+      "p1": "Luăm măsuri de precauție pentru a proteja securitatea informațiilor dumneavoastră. Avem proceduri fizice, electronice și manageriale pentru a ajuta la protejarea, prevenirea accesului neautorizat, menținerea securității datelor și utilizarea corectă a informațiilor dumneavoastră. Cu toate acestea, nici oamenii, nici sistemele de securitate nu sunt infailibile, inclusiv sistemele de criptare. În plus, oamenii pot comite infracțiuni intenționate, pot face greșeli sau pot să nu respecte politicile. Prin urmare, deși depunem eforturi rezonabile pentru a vă proteja informațiile personale, nu putem garanta securitatea absolută a acestora. Dacă legea aplicabilă impune o obligație care nu poate fi exonerată de a vă proteja informațiile personale, sunteți de acord că abaterea intenționată va fi standardul utilizat pentru a măsura conformitatea noastră cu acea obligație."
+    },
+    "update_info": {
+      "title": "Pot să-mi actualizez sau să-mi corectez informațiile?",
+      "p1": "Drepturile pe care le aveți de a solicita actualizări sau corecții ale informațiilor pe care le colectează Miss Bott depind de relația dumneavoastră cu Miss Bott. Personalul își poate actualiza sau corecta informațiile așa cum este detaliat în politicile noastre interne de angajare ale companiei. Clienții au dreptul de a solicita restricționarea anumitor utilizări și dezvăluiri ale informațiilor de identificare personală după cum urmează. Ne puteți contacta pentru (1) a actualiza sau corecta informațiile dumneavoastră de identificare personală, (2) a vă schimba preferințele cu privire la comunicările și alte informații pe care le primiți de la noi, sau (3) a șterge informațiile de identificare personală menținute despre dumneavoastră în sistemele noastre (sub rezerva paragrafului următor), prin anularea contului dumneavoastră."
+    },
+    "sale_business": {
+      "title": "Vânzarea Afacerii",
+      "p1": "Ne rezervăm dreptul de a transfera informații către o terță parte în cazul unei vânzări, fuziuni sau alt transfer al tuturor sau substanțial al tuturor activelor Miss Bott sau ale oricăreia dintre Afiliații săi Corporativi (așa cum sunt definiți aici), sau acea parte a Miss Bott sau a oricăruia dintre Afiliații săi Corporativi la care se referă Serviciul, sau în cazul în care ne întrerupem activitatea sau depunem o petiție sau a fost depusă împotriva noastră o petiție în faliment, reorganizare sau procedură similară, cu condiția ca terța parte să fie de acord să respecte termenii acestei Politici de Confidențialitate."
+    },
+    "affiliates": {
+      "title": "Afiliați",
+      "p1": "Putem dezvălui informații (inclusiv informații personale) despre dumneavoastră Afiliaților noștri Corporativi. În sensul acestei Politici de Confidențialitate, „Afiliat Corporativ” înseamnă orice persoană sau entitate care controlează direct sau indirect, este controlată de sau se află sub control comun cu Miss Bott, fie prin proprietate sau altfel. Orice informație referitoare la dumneavoastră pe care o furnizăm Afiliaților noștri Corporativi va fi tratată de acei Afiliați Corporativi în conformitate cu termenii acestei Politici de Confidențialitate."
+    },
+    "governing_law": {
+      "title": "Legea Aplicabilă",
+      "p1": "Această Politică de Confidențialitate este guvernată de legile din Irlanda, fără a ține seama de prevederile sale privind conflictul de legi. Sunteți de acord cu jurisdicția exclusivă a instanțelor în legătură cu orice acțiune sau dispută care apare între părți în temeiul sau în legătură cu această Politică de Confidențialitate, cu excepția acelor persoane care pot avea drepturi de a face reclamații în cadrul Privacy Shield sau al cadrului elvețiano-american."
+    },
+    "consent": {
+      "title": "Consimțământul Dumneavoastră",
+      "p1": "Ne-am actualizat Politica de Confidențialitate pentru a vă oferi o transparență completă asupra a ceea ce este setat atunci când vizitați site-ul nostru și cum este utilizat. Prin utilizarea site-ului nostru, înregistrarea unui cont sau efectuarea unei achiziții, sunteți de acord prin prezenta cu Politica noastră de Confidențialitate și sunteți de acord cu termenii acesteia."
+    },
+    "links": {
+      "title": "Link-uri către Alte Site-uri Web",
+      "p1": "Această Politică de Confidențialitate se aplică numai Serviciilor. Serviciile pot conține link-uri către alte site-uri web care nu sunt operate sau controlate de Miss Bott. Nu suntem responsabili pentru conținutul, acuratețea sau opiniile exprimate pe astfel de site-uri web, iar astfel de site-uri web nu sunt investigate, monitorizate sau verificate pentru acuratețe sau completitudine de către noi. Vă rugăm să rețineți că atunci când utilizați un link pentru a trece de la Servicii la un alt site web, Politica noastră de Confidențialitate nu mai este în vigoare. Navigarea și interacțiunea dumneavoastră pe orice alt site web, inclusiv cele care au un link pe platforma noastră, sunt supuse regulilor și politicilor proprii ale acelui site web. Astfel de terțe părți pot utiliza propriile cookie-uri sau alte metode pentru a colecta informații despre dumneavoastră."
+    },
+    "cookies": {
+      "title": "Cookie-uri",
+      "p1": "Miss Bott utilizează „Cookie-uri” pentru a identifica zonele site-ului nostru pe care le-ați vizitat. Un Cookie este o mică piesă de date stocată pe computerul sau dispozitivul dumneavoastră mobil de către browserul dumneavoastră web. Folosim Cookie-uri pentru a îmbunătăți performanța și funcționalitatea site-ului nostru web, dar nu sunt esențiale pentru utilizarea acestuia. Cu toate acestea, fără aceste cookie-uri, anumite funcționalități, cum ar fi videoclipurile, pot deveni indisponibile sau vi se va solicita să introduceți detaliile de conectare de fiecare dată când vizitați site-ul web, deoarece nu am putea să ne amintim că v-ați autentificat anterior. Majoritatea browserelor web pot fi setate să dezactiveze utilizarea Cookie-urilor. Cu toate acestea, dacă dezactivați Cookie-urile, este posibil să nu puteți accesa funcționalitatea de pe site-ul nostru web corect sau deloc. Nu plasăm niciodată Informații de Identificare Personală în Cookie-uri."
+    },
+    "blocking_cookies": {
+      "title": "Blocarea și dezactivarea cookie-urilor și tehnologiilor similare",
+      "p1": "Oriunde v-ați afla, puteți seta, de asemenea, browserul să blocheze cookie-urile și tehnologiile similare, dar această acțiune poate bloca cookie-urile noastre esențiale și poate împiedica funcționarea corectă a site-ului nostru web și este posibil să nu puteți utiliza pe deplin toate caracteristicile și serviciile sale. De asemenea, ar trebui să știți că puteți pierde și unele informații salvate (de exemplu, detaliile de conectare salvate, preferințele site-ului) dacă blocați cookie-urile pe browserul dumneavoastră. Browsere diferite pun la dispoziție controale diferite. Dezactivarea unui cookie sau a unei categorii de cookie-uri nu șterge cookie-ul din browserul dumneavoastră, va trebui să faceți acest lucru singur din browser, ar trebui să vizitați meniul de ajutor al browserului dumneavoastră pentru mai multe informații."
+    },
+    "payment": {
+      "title": "Detalii de Plată",
+      "p1": "În ceea ce privește orice card de credit sau alte detalii de procesare a plăților pe care ni le-ați furnizat, ne angajăm că aceste informații confidențiale vor fi stocate în cel mai sigur mod posibil."
+    },
+    "kids": {
+      "title": "Confidențialitatea Copiilor",
+      "p1": "Nu ne adresăm nimănui sub vârsta de 13 ani. Nu colectăm cu bună știință informații de identificare personală de la nimeni sub vârsta de 13 ani. Dacă sunteți părinte sau tutore și știți că copilul dumneavoastră ne-a furnizat Date Personale, vă rugăm să ne contactați. Dacă aflăm că am colectat Date Personale de la oricine sub vârsta de 13 ani fără verificarea consimțământului părintesc, luăm măsuri pentru a elimina acele informații de pe serverele noastre."
+    },
+    "tracking": {
+      "title": "Tehnologii de Urmărire",
+      "list": [
+        "<strong>Google Maps API:</strong> <p>Google Maps API este un instrument robust care poate fi utilizat pentru a crea o hartă personalizată, o hartă care poate fi căutată, funcții de check-in, afișarea datelor live sincronizate cu locația, planificarea rutelor sau crearea unui mashup, doar pentru a numi câteva.</p> <p>Google Maps API poate colecta informații de la Dumneavoastră și de pe Dispozitivul Dumneavoastră în scopuri de securitate. Google Maps API colectează informații care sunt deținute în conformitate cu Politica sa de Confidențialitate.</p>",
+        "<strong>Cookie-uri:</strong> <p>Folosim Cookie-uri pentru a îmbunătăți performanța și funcționalitatea platformei noastre, dar nu sunt esențiale pentru utilizarea acesteia. Cu toate acestea, fără aceste cookie-uri, anumite funcționalități, cum ar fi videoclipurile, pot deveni indisponibile sau vi se va solicita să introduceți detaliile de conectare de fiecare dată când vizitați platforma, deoarece nu am putea să ne amintim că v-ați autentificat anterior.</p>",
+        "<strong>Stocare Locală:</strong> <p>Stocarea Locală, uneori cunoscută sub numele de stocare DOM, oferă aplicațiilor web metode și protocoale pentru stocarea datelor la nivelul clientului. Stocarea web acceptă stocarea persistentă a datelor, similară cu cookie-urile, dar cu o capacitate mult îmbunătățită și fără informații stocate în antetul solicitării HTTP.</p>",
+        "<strong>Sesiuni:</strong> <p>Folosim „Sesiuni” pentru a identifica zonele site-ului nostru pe care le-ați vizitat. O Sesiune este o mică piesă de date stocată pe computerul sau dispozitivul dumneavoastră mobil de către browserul dumneavoastră web.</p>"
+      ]
+    },
+    "gdpr": {
+      "title": "Informații despre Regulamentul General privind Protecția Datelor (GDPR)",
+      "p1": "Este posibil să colectăm și să utilizăm informații de la dumneavoastră dacă sunteți din Spațiul Economic European (SEE), iar în această secțiune a Politicii noastre de Confidențialitate vom explica exact cum și de ce sunt colectate aceste date și cum menținem aceste date sub protecție împotriva replicării sau utilizării incorecte.",
+      "sub_title_1": "Ce este GDPR?",
+      "p2": "GDPR este o lege privind confidențialitatea și protecția datelor la nivelul UE care reglementează modul în care datele rezidenților UE sunt protejate de companii și îmbunătățește controlul pe care rezidenții UE îl au asupra datelor lor personale. GDPR este relevant pentru orice companie care operează la nivel global și nu doar pentru companiile cu sediul în UE și rezidenții UE. Datele clienților noștri sunt importante indiferent de locul în care se află, motiv pentru care am implementat controalele GDPR ca standard de bază pentru toate operațiunile noastre din întreaga lume.",
+      "sub_title_2": "Ce sunt datele personale?",
+      "p3": "Orice date care se referă la un individ identificabil sau identificat. GDPR acoperă un spectru larg de informații care ar putea fi utilizate pe cont propriu sau în combinație cu alte informații pentru a identifica o persoană. Datele personale se extind dincolo de numele sau adresa de email a unei persoane. Unele exemple includ informații financiare, opinii politice, date genetice, date biometrice, adrese IP, adresa fizică, orientarea sexuală și etnia.",
+      "p4": "Principiile de Protecție a Datelor includ cerințe precum:",
+      "list_principles": [
+        "Datele personale colectate trebuie prelucrate într-un mod corect, legal și transparent și ar trebui utilizate numai într-un mod la care o persoană s-ar aștepta în mod rezonabil.",
+        "Datele personale ar trebui colectate numai pentru a îndeplini un scop specific și ar trebui utilizate numai în acel scop. Organizațiile trebuie să specifice de ce au nevoie de datele personale atunci când le colectează.",
+        "Datele personale nu ar trebui păstrate mai mult decât este necesar pentru a-și îndeplini scopul.",
+        "Persoanele acoperite de GDPR au dreptul de a accesa propriile date personale. De asemenea, pot solicita o copie a datelor lor și ca datele lor să fie actualizate, șterse, restricționate sau mutate la o altă organizație."
+      ],
+      "sub_title_3": "Drepturile Persoanei Vizate Individuale - Accesul la Date, Portabilitatea și Ștergerea",
+      "p5": "Ne angajăm să ajutăm clienții noștri să îndeplinească cerințele privind drepturile persoanelor vizate din GDPR. Miss Bott prelucrează sau stochează toate datele personale la furnizori complet verificați și conformi cu DPA. Stocăm toate conversațiile și datele personale timp de până la 6 ani, cu excepția cazului în care contul dumneavoastră este șters. În acest caz, eliminăm toate datele în conformitate cu Termenii noștri de Serviciu și Politica de Confidențialitate, dar nu le vom păstra mai mult de 60 de zile.",
+      "p6": "Suntem conștienți că, dacă lucrați cu clienți din UE, trebuie să le puteți oferi capacitatea de a accesa, actualiza, recupera și elimina datele personale. Vă sprijinim! Am fost configurați ca autoservire de la început și v-am oferit întotdeauna acces la datele dumneavoastră și la datele clienților dumneavoastră. Echipa noastră de asistență pentru clienți este aici pentru a răspunde la orice întrebări pe care le-ați putea avea despre lucrul cu API-ul."
+    },
+    "california": {
+      "title": "Rezidenții din California",
+      "p1": "California Consumer Privacy Act (CCPA) ne cere să dezvăluim categoriile de Informații Personale pe care le colectăm și modul în care le folosim, categoriile de surse de la care colectăm Informații Personale și terțele părți cu care le împărtășim, lucru pe care l-am explicat mai sus.",
+      "p2": "De asemenea, suntem obligați să comunicăm informații despre drepturile pe care rezidenții din California le au conform legii din California. Vă puteți exercita următoarele drepturi:",
+      "list": [
+        "Dreptul de a Ști și de a Accesa. Puteți trimite o solicitare verificabilă pentru informații privind: (1) categoriile de Informații Personale pe care le colectăm, utilizăm sau împărtășim; (2) scopurile pentru care categoriile de Informații Personale sunt colectate sau utilizate de noi; (3) categoriile de surse din care colectăm Informații Personale; și (4) piese specifice de Informații Personale pe care le-am colectat despre dumneavoastră.",
+        "Dreptul la Servicii Egale. Nu vă vom discrimina dacă vă exercitați drepturile de confidențialitate.",
+        "Dreptul de a Șterge. Puteți trimite o solicitare verificabilă pentru a vă închide contul și vom șterge Informațiile Personale despre dumneavoastră pe care le-am colectat.",
+        "Solicitați ca o afacere care vinde datele personale ale unui consumator să nu vândă datele personale ale consumatorului."
+      ],
+      "p3": "Dacă faceți o solicitare, avem o lună pentru a vă răspunde. Dacă doriți să exercitați oricare dintre aceste drepturi, vă rugăm să ne contactați.",
+      "p4": "Nu vindem Informațiile Personale ale utilizatorilor noștri.",
+      "p5": "Pentru mai multe informații despre aceste drepturi, vă rugăm să ne contactați."
+    },
+    "caloppa": {
+      "title": "California Online Privacy Protection Act (CalOPPA)",
+      "p1": "CalOPPA ne cere să dezvăluim categoriile de Informații Personale pe care le colectăm și modul în care le folosim, categoriile de surse de la care colectăm Informații Personale și terțele părți cu care le împărtășim, lucru pe care l-am explicat mai sus.",
+      "p2": "Utilizatorii CalOPPA au următoarele drepturi:",
+      "list": [
+        "Dreptul de a Ști și de a Accesa. Puteți trimite o solicitare verificabilă pentru informații privind: (1) categoriile de Informații Personale pe care le colectăm, utilizăm sau împărtășim; (2) scopurile pentru care categoriile de Informații Personale sunt colectate sau utilizate de noi; (3) categoriile de surse din care colectăm Informații Personale; și (4) piese specifice de Informații Personale pe care le-am colectat despre dumneavoastră.",
+        "Dreptul la Servicii Egale. Nu vă vom discrimina dacă vă exercitați drepturile de confidențialitate.",
+        "Dreptul de a Șterge. Puteți trimite o solicitare verificabilă pentru a vă închide contul și vom șterge Informațiile Personale despre dumneavoastră pe care le-am colectat.",
+        "Dreptul de a solicita ca o afacere care vinde datele personale ale unui consumator să nu vândă datele personale ale consumatorului."
+      ],
+      "p3": "Dacă faceți o solicitare, avem o lună pentru a vă răspunde. Dacă doriți să exercitați oricare dintre aceste drepturi, vă rugăm să ne contactați.",
+      "p4": "Nu vindem Informațiile Personale ale utilizatorilor noștri.",
+      "p5": "Pentru mai multe informații despre aceste drepturi, vă rugăm să ne contactați."
+    },
+    "contact": {
+      "title": "Contactează-ne",
+      "p1": "Nu ezitați să ne contactați dacă aveți întrebări."
+    }
+  },
+  "cookie_policy": {
+    "title": "Politica de Cookie-uri",
+    "updated": "Ultima actualizare: 17 noiembrie 2025",
+    "definitions": {
+      "title": "Definiții și termeni cheie",
+      "p1": "Pentru a explica lucrurile cât mai clar posibil în această Politică de Cookie-uri, de fiecare dată când se face referire la oricare dintre acești termeni, aceștia sunt definiți strict astfel:",
+      "list": [
+        "<strong>Cookie:</strong> o cantitate mică de date generată de un site web și salvată de browserul dumneavoastră web. Este utilizată pentru a vă identifica browserul, pentru a oferi analize, pentru a reține informații despre dumneavoastră, cum ar fi preferința de limbă sau informațiile de conectare.",
+        "<strong>Companie:</strong> când această politică menționează „Companie”, „noi”, „ne” sau „al nostru”, se referă la Miss Bott, care este responsabilă pentru informațiile dumneavoastră conform acestei Politici de Cookie-uri.",
+        "<strong>Dispozitiv:</strong> orice dispozitiv conectat la internet, cum ar fi un telefon, tabletă, computer sau orice alt dispozitiv care poate fi utilizat pentru a vizita Miss Bott și a utiliza serviciile.",
+        "<strong>Date Personale:</strong> orice informație care direct, indirect sau în legătură cu alte informații — inclusiv un număr personal de identificare — permite identificarea sau identificabilitatea unei persoane fizice.",
+        "<strong>Serviciu:</strong> se referă la serviciul oferit de Miss Bott așa cum este descris în termenii relativi (dacă sunt disponibili) și pe această platformă.",
+        "<strong>Serviciu terță parte:</strong> se referă la agenți de publicitate, sponsori de concursuri, parteneri promoționali și de marketing și alții care furnizează conținutul nostru sau ale căror produse sau servicii credem că v-ar putea interesa.",
+        "<strong>Website:</strong> site, care poate fi accesat prin acest URL: https://missbott.online"
+      ],
+      "termify_note": "Această Politică de Cookie-uri a fost creată cu <a href=\"https://termify.io\" target=\"_blank\">Termify</a>."
+    },
+    "intro": {
+      "title": "Introducere",
+      "p1": "Această Politică de Cookie-uri explică modul în care Miss Bott și afiliații săi (colectiv „Miss Bott”, „noi”, „ne” și „al nostru”) utilizează cookie-uri și tehnologii similare pentru a vă recunoaște atunci când vizitați site-ul nostru web, inclusiv, fără limitare, https://missbott.online și orice URL-uri aferente, versiuni mobile sau localizate și domenii / subdomenii conexe („Site-uri Web”). Explică ce sunt aceste tehnologii și de ce le folosim, precum și opțiunile privind modul de a le controla."
+    },
+    "what_is": {
+      "title": "Ce este un cookie?",
+      "p1": "Un cookie este un fișier text mic care este stocat pe computerul dumneavoastră sau pe alt dispozitiv conectat la internet pentru a vă identifica browserul, a oferi analize, a reține informații despre dumneavoastră, cum ar fi preferința de limbă sau informațiile de conectare. Sunt complet sigure și nu pot fi utilizate pentru a rula programe sau a livra viruși pe dispozitivul dumneavoastră."
+    },
+    "why_use": {
+      "title": "De ce folosim cookie-uri?",
+      "p1": "Folosim cookie-uri primare și/sau de la terți pe site-ul nostru web în diverse scopuri, cum ar fi:",
+      "list": [
+        "Pentru a facilita operarea și funcționalitatea site-ului nostru web;",
+        "Pentru a îmbunătăți experiența dumneavoastră pe site-ul nostru și a face navigarea mai rapidă și mai ușoară;",
+        "Pentru a ne permite să creăm o experiență de utilizator personalizată pentru dumneavoastră și pentru a înțelege ce este util sau de interes pentru dumneavoastră;",
+        "Pentru a analiza modul în care este utilizat site-ul nostru web și cum îl putem personaliza cel mai bine;",
+        "Pentru a identifica potențiali clienți viitori și a personaliza interacțiunile de marketing și vânzări cu aceștia;",
+        "Pentru a facilita adaptarea publicității online la interesele dumneavoastră.",
+        "Dumneavoastră: o persoană sau entitate care este înregistrată la Miss Bott pentru a utiliza Serviciile."
+      ]
+    },
+    "types": {
+      "title": "Ce tip de cookie-uri folosește Miss Bott?",
+      "p1": "Cookie-urile pot fi cookie-uri de sesiune sau cookie-uri persistente. Un cookie de sesiune expiră automat când închideți browserul. Un cookie persistent va rămâne până când expiră sau vă ștergeți cookie-urile. Datele de expirare sunt setate în cookie-urile în sine; unele pot expira după câteva minute, în timp ce altele pot expira după mai mulți ani. Cookie-urile plasate de site-ul web pe care îl vizitați se numesc „cookie-uri primare”.",
+      "p2": "Cookie-urile strict necesare sunt necesare pentru ca site-ul nostru web să funcționeze și nu pot fi dezactivate în sistemele noastre. Ele sunt esențiale pentru a vă permite să navigați pe site și să utilizați funcțiile acestuia. Dacă eliminați sau dezactivați aceste cookie-uri, nu putem garanta că veți putea utiliza site-ul nostru web.",
+      "p3": "Folosim următoarele tipuri de cookie-uri pe site-ul nostru:"
+    },
+    "essential": {
+      "title": "Cookie-uri Esențiale",
+      "p1": "Folosim cookie-uri esențiale pentru ca site-ul nostru web să funcționeze. Aceste cookie-uri sunt strict necesare pentru a permite funcționalitatea de bază, cum ar fi securitatea, gestionarea rețelei, preferințele dumneavoastră privind cookie-urile și accesibilitatea. Fără ele, nu ați putea utiliza servicii de bază. Puteți dezactiva aceste cookie-uri schimbând setările browserului, dar acest lucru poate afecta modul în care funcționează Site-urile Web."
+    },
+    "performance": {
+      "title": "Cookie-uri de Performanță și Funcționalitate",
+      "p1": "Aceste cookie-uri sunt utilizate pentru a îmbunătăți performanța și funcționalitatea site-ului nostru web, dar nu sunt esențiale pentru utilizarea acestuia. Cu toate acestea, fără aceste cookie-uri, anumite funcționalități, cum ar fi videoclipurile, pot deveni indisponibile sau vi se va solicita să introduceți detaliile de conectare de fiecare dată când vizitați site-ul web, deoarece nu am putea să ne amintim că v-ați autentificat anterior."
+    },
+    "analytics": {
+      "title": "Cookie-uri de Analiză și Personalizare",
+      "p1": "Aceste cookie-uri colectează informații care sunt utilizate pentru a ne ajuta să înțelegem cum este utilizat site-ul nostru web sau cât de eficiente sunt campaniile noastre de marketing, sau pentru a ne ajuta să personalizăm site-ul nostru web pentru dumneavoastră.",
+      "p2": "Folosim cookie-uri furnizate de Google Analytics pentru a colecta date limitate direct de la browserele utilizatorilor finali pentru a ne permite să înțelegem mai bine utilizarea site-ului nostru web. Mai multe informații despre modul în care Google colectează și utilizează aceste date pot fi găsite la: https://www.google.com/policies/privacy/partners/. Puteți renunța la toate analizele acceptate de Google pe Site-urile noastre Web vizitând: https://tools.google.com/dlpage/gaoptout."
+    },
+    "third_party": {
+      "title": "Cookie-uri de la Terți",
+      "p1": "Unele cookie-uri care au fost setate pe site-ul nostru nu sunt setate direct de Miss Bott. Site-urile Web pot avea conținut încorporat de la terți pentru a livra publicitate. Acești furnizori de servicii terți pot seta propriile cookie-uri pe browserul dumneavoastră web. Furnizorii de servicii terți controlează multe dintre cookie-urile de performanță și funcționalitate, publicitate, marketing și analiză descrise mai sus. Nu controlăm utilizarea acestor cookie-uri de la terți, deoarece cookie-urile pot fi accesate doar de terțul care le-a setat inițial."
+    },
+    "management": {
+      "title": "Cum puteți gestiona cookie-urile?",
+      "p1": "Majoritatea browserelor vă permit să controlați cookie-urile prin preferințele lor de „setări”. Cu toate acestea, dacă limitați capacitatea site-urilor web de a seta cookie-uri, puteți înrăutăți experiența generală de utilizator, deoarece nu va mai fi personalizată pentru dumneavoastră. De asemenea, vă poate împiedica să salvați setări personalizate, cum ar fi informațiile de conectare. Producătorii de browsere oferă pagini de ajutor referitoare la gestionarea cookie-urilor în produsele lor.",
+      "p2": "Producătorii de browsere oferă pagini de ajutor referitoare la gestionarea cookie-urilor în produsele lor. Vă rugăm să vedeți mai jos pentru mai multe informații.",
+      "list": [
+        "Google Chrome",
+        "Internet Explorer",
+        "Mozilla Firefox",
+        "Safari (Desktop)",
+        "Safari (Mobil)",
+        "Android Browser",
+        "Opera",
+        "Opera Mobile"
+      ]
+    },
+    "blocking": {
+      "title": "Blocarea și dezactivarea cookie-urilor și tehnologiilor similare",
+      "p1": "Oriunde v-ați afla, puteți seta, de asemenea, browserul să blocheze cookie-urile și tehnologiile similare, dar această acțiune poate bloca cookie-urile noastre esențiale și poate împiedica funcționarea corectă a site-ului nostru web și este posibil să nu puteți utiliza pe deplin toate caracteristicile și serviciile sale. De asemenea, ar trebui să știți că puteți pierde și unele informații salvate (de exemplu, detaliile de conectare salvate, preferințele site-ului) dacă blocați cookie-urile pe browserul dumneavoastră. Browsere diferite pun la dispoziție controale diferite. Dezactivarea unui cookie sau a unei categorii de cookie-uri nu șterge cookie-ul din browserul dumneavoastră, va trebui să faceți acest lucru singur din browser, ar trebui să vizitați meniul de ajutor al browserului dumneavoastră pentru mai multe informații."
+    },
+    "changes": {
+      "title": "Modificări ale Politicii Noastre de Cookie-uri",
+      "p1": "Putem modifica Serviciul și politicile noastre și s-ar putea să fie nevoie să facem modificări la această Politică de Cookie-uri pentru ca acestea să reflecte cu exactitate Serviciul și politicile noastre. Cu excepția cazului în care legea prevede altfel, vă vom notifica (de exemplu, prin intermediul Serviciului nostru) înainte de a face modificări la această Politică de Cookie-uri și vă vom oferi posibilitatea de a le revizui înainte de a intra în vigoare. Apoi, dacă continuați să utilizați Serviciul, veți fi obligat de Politica de Cookie-uri actualizată. Dacă nu doriți să fiți de acord cu aceasta sau cu orice Politică de Cookie-uri actualizată, vă puteți șterge contul."
+    },
+    "consent": {
+      "title": "Consimțământul Dumneavoastră",
+      "p1": "Prin utilizarea site-ului nostru, înregistrarea unui cont sau efectuarea unei achiziții, sunteți de acord prin prezenta cu Politica noastră de Cookie-uri și sunteți de acord cu termenii acesteia."
+    },
+    "contact": {
+      "title": "Contactează-ne",
+      "p1": "Nu ezitați să ne contactați dacă aveți întrebări referitoare la Politica noastră de Cookie-uri.",
+      "list": [
+        "Prin Email: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>",
+        "Prin acest Link: https://missbott.online",
+        "La această Adresă: 7A The Crescent, Bride Street"
+      ]
+    }
+  },
+  "terms_of_use": {
+    "title": "Termeni de Utilizare",
+    "updated": "Ultima actualizare: 17 noiembrie 2025",
+    "intro": {
+      "p1": "Prin accesarea și plasarea unei comenzi la Miss Bott, confirmați că sunteți de acord și că vă supuneți termenilor de serviciu conținuți în Termenii și Condițiile prezentate mai jos. Acești termeni se aplică întregului site web și oricărui email sau alt tip de comunicare între dumneavoastră și Miss Bott.",
+      "p2": "În nicio circumstanță echipa Miss Bott nu va fi răspunzătoare pentru daune directe, indirecte, speciale, accidentale sau consecutive, inclusiv, dar fără a se limita la, pierderea de date sau profit, rezultate din utilizarea sau incapacitatea de a utiliza materialele de pe acest site, chiar dacă echipa Miss Bott sau un reprezentant autorizat a fost informat despre posibilitatea unor astfel de daune. Dacă utilizarea materialelor de pe acest site de către dumneavoastră duce la necesitatea de service, reparații sau corectare a echipamentelor sau datelor, vă asumați costurile aferente.",
+      "p3": "Miss Bott nu va fi responsabilă pentru niciun rezultat care poate apărea în cursul utilizării resurselor noastre. Ne rezervăm dreptul de a modifica prețurile și de a revizui politica de utilizare a resurselor în orice moment. Acești Termeni și Condiții au fost creați cu <a href=\"https://termify.io\" target=\"_blank\">Termify</a>."
+    },
+    "license": {
+      "title": "Licență",
+      "p1": "Miss Bott vă acordă o licență revocabilă, neexclusivă, netransferabilă și limitată pentru a descărca, instala și utiliza site-ul web strict în conformitate cu termenii acestui Acord.",
+      "p2": "Acești Termeni și Condiții reprezintă un contract între dumneavoastră și Miss Bott (denumită în acești Termeni și Condiții „Miss Bott”, „noi”, „ne” sau „al nostru”), furnizorul site-ului Miss Bott și al serviciilor accesibile de pe site-ul Miss Bott (care sunt denumite colectiv în acești Termeni și Condiții „Serviciul Miss Bott”).",
+      "p3": "Sunteți de acord să fiți obligat de acești Termeni și Condiții. Dacă nu sunteți de acord cu acești Termeni și Condiții, vă rugăm să nu utilizați Serviciul Miss Bott. În acești Termeni și Condiții, „dumneavoastră” se referă atât la dumneavoastră ca individ, cât și la entitatea pe care o reprezentați. Dacă încălcați oricare dintre acești Termeni și Condiții, ne rezervăm dreptul de a vă anula contul sau de a bloca accesul la contul dumneavoastră fără notificare."
+    },
+    "definitions": {
+      "title": "Definiții și termeni cheie",
+      "p1": "Pentru a explica lucrurile cât mai clar posibil în acești Termeni și Condiții, de fiecare dată când se face referire la oricare dintre acești termeni, aceștia sunt definiți strict astfel:",
+      "list": [
+        "<strong>Cookie:</strong> o cantitate mică de date generată de un site web și salvată de browserul dumneavoastră web. Este utilizată pentru a vă identifica browserul, pentru a oferi analize, pentru a reține informații despre dumneavoastră, cum ar fi preferința de limbă sau informațiile de conectare.",
+        "<strong>Companie:</strong> când această politică menționează „Companie”, „noi”, „ne” sau „al nostru”, se referă la Miss Bott, care este responsabilă pentru informațiile dumneavoastră conform acestor Termeni și Condiții.",
+        "<strong>Țară:</strong> unde Miss Bott sau proprietarii/fondatorii Miss Bott își au sediul, în acest caz fiind Irlanda.",
+        "<strong>Dispozitiv:</strong> orice dispozitiv conectat la internet, cum ar fi un telefon, tabletă, computer sau orice alt dispozitiv care poate fi utilizat pentru a vizita Miss Bott și a utiliza serviciile.",
+        "<strong>Serviciu:</strong> se referă la serviciul oferit de Miss Bott așa cum este descris în termenii relativi (dacă sunt disponibili) și pe această platformă.",
+        "<strong>Serviciu terță parte:</strong> se referă la agenți de publicitate, sponsori de concursuri, parteneri promoționali și de marketing și alții care furnizează conținutul nostru sau ale căror produse sau servicii credem că v-ar putea interesa.",
+        "<strong>Website:</strong> site-ul Miss Bott, care poate fi accesat prin acest URL: https://missbott.online",
+        "<strong>Dumneavoastră:</strong> o persoană sau entitate care este înregistrată la Miss Bott pentru a utiliza Serviciile."
+      ]
+    },
+    "restrictions": {
+      "title": "Restricții",
+      "p1": "Sunteți de acord să nu faceți și nu veți permite altora să facă următoarele:",
+      "list": [
+        "Să licențiați, vindeți, închiriați, atribuiți, distribuiți, transmiteți, găzduiți, externalizați, dezvăluiți sau să exploatați comercial în alt mod site-ul web sau să faceți platforma disponibilă oricărei terțe părți.",
+        "Să modificați, să realizați lucrări derivate, să dezasamblați, să decriptați, să compilați invers sau să faceți inginerie inversă pe orice parte a site-ului web.",
+        "Să eliminați, modificați sau ascundeți orice notificare de proprietate (inclusiv orice notificare de drepturi de autor sau marcă înregistrată) a Miss Bott sau a afiliaților, partenerilor, furnizorilor sau licențiatorilor săi de pe site-ul web."
+      ]
+    },
+    "refunds": {
+      "title": "Politica de Returnare și Rambursare",
+      "p1": "Vă mulțumim pentru cumpărăturile la Miss Bott. Apreciem faptul că vă place să cumpărați lucrurile pe care le construim. De asemenea, dorim să ne asigurăm că aveți o experiență plină de satisfacții în timp ce explorați, evaluați și cumpărați produsele noastre.",
+      "p2": "La fel ca în orice experiență de cumpărături, există termeni și condiții care se aplică tranzacțiilor la Miss Bott. Vom fi cât se poate de scurți pe cât ne permit avocații noștri. Principalul lucru de reținut este că, prin plasarea unei comenzi sau efectuarea unei achiziții la Miss Bott, sunteți de acord cu termenii împreună cu Politica de Confidențialitate a Miss Bott.",
+      "p3": "Dacă, din orice motiv, nu sunteți complet mulțumit de orice bun sau serviciu pe care îl oferim, nu ezitați să ne contactați și vom discuta oricare dintre problemele pe care le întâmpinați cu produsul nostru."
+    },
+    "suggestions": {
+      "title": "Sugestiile Dumneavoastră",
+      "p1": "Orice feedback, comentarii, idei, îmbunătățiri sau sugestii (colectiv, „Sugestii”) furnizate de dumneavoastră către Miss Bott cu privire la site-ul web vor rămâne proprietatea unică și exclusivă a Miss Bott.",
+      "p2": "Miss Bott va fi liberă să utilizeze, să copieze, să modifice, să publice sau să redistribuie Sugestiile în orice scop și în orice mod, fără niciun credit sau nicio compensație pentru dumneavoastră."
+    },
+    "consent": {
+      "title": "Consimțământul Dumneavoastră",
+      "p1": "Ne-am actualizat Termenii și Condițiile pentru a vă oferi o transparență completă asupra a ceea ce este setat atunci când vizitați site-ul nostru și cum este utilizat. Prin utilizarea site-ului nostru, înregistrarea unui cont sau efectuarea unei achiziții, sunteți de acord prin prezenta cu Termenii și Condițiile noastre."
+    },
+    "links": {
+      "title": "Link-uri către Alte Site-uri Web",
+      "p1": "Acești Termeni și Condiții se aplică numai Serviciilor. Serviciile pot conține link-uri către alte site-uri web care nu sunt operate sau controlate de Miss Bott. Nu suntem responsabili pentru conținutul, acuratețea sau opiniile exprimate pe astfel de site-uri web, iar astfel de site-uri web nu sunt investigate, monitorizate sau verificate pentru acuratețe sau completitudine de către noi. Vă rugăm să rețineți că atunci când utilizați un link pentru a trece de la Servicii la un alt site web, Termenii și Condițiile noastre nu mai sunt în vigoare. Navigarea și interacțiunea dumneavoastră pe orice alt site web, inclusiv cele care au un link pe platforma noastră, sunt supuse regulilor și politicilor proprii ale acelui site web. Astfel de terțe părți pot utiliza propriile cookie-uri sau alte metode pentru a colecta informații despre dumneavoastră."
+    },
+    "cookies": {
+      "title": "Cookie-uri",
+      "p1": "Miss Bott utilizează „Cookie-uri” pentru a identifica zonele site-ului nostru pe care le-ați vizitat. Un Cookie este o mică piesă de date stocată pe computerul sau dispozitivul dumneavoastră mobil de către browserul dumneavoastră web. Folosim Cookie-uri pentru a îmbunătăți performanța și funcționalitatea site-ului nostru web, dar nu sunt esențiale pentru utilizarea acestuia. Cu toate acestea, fără aceste cookie-uri, anumite funcționalități, cum ar fi videoclipurile, pot deveni indisponibile sau vi se va solicita să introduceți detaliile de conectare de fiecare dată când vizitați site-ul web, deoarece nu am putea să ne amintim că v-ați autentificat anterior. Majoritatea browserelor web pot fi setate să dezactiveze utilizarea Cookie-urilor. Cu toate acestea, dacă dezactivați Cookie-urile, este posibil să nu puteți accesa funcționalitatea de pe site-ul nostru web corect sau deloc. Nu plasăm niciodată Informații de Identificare Personală în Cookie-uri."
+    },
+    "changes": {
+      "title": "Modificări ale Termenilor și Condițiilor Noastre",
+      "p1": "Luați la cunoștință și sunteți de acord că Miss Bott poate înceta (permanent sau temporar) furnizarea Serviciului (sau a oricăror caracteristici din cadrul Serviciului) către dumneavoastră sau către utilizatori în general, la propria discreție, fără notificare prealabilă. Puteți înceta utilizarea Serviciului în orice moment. Nu este necesar să informați în mod specific Miss Bott atunci când încetați utilizarea Serviciului. Luați la cunoștință și sunteți de acord că, dacă Miss Bott dezactivează accesul la contul dumneavoastră, este posibil să fiți împiedicat să accesați Serviciul, detaliile contului dumneavoastră sau orice fișiere sau alte materiale conținute în contul dumneavoastră.",
+      "p2": "Dacă decidem să schimbăm Termenii și Condițiile noastre, vom posta acele modificări pe această pagină și/sau vom actualiza data modificării Termenilor și Condițiilor de mai jos."
+    },
+    "modifications": {
+      "title": "Modificări ale site-ului nostru",
+      "p1": "Miss Bott își rezervă dreptul de a modifica, suspenda sau întrerupe, temporar sau permanent, site-ul web sau orice serviciu la care se conectează, cu sau fără notificare și fără răspundere față de dumneavoastră."
+    },
+    "updates": {
+      "title": "Actualizări ale site-ului nostru",
+      "p1": "Miss Bott poate oferi din când în când îmbunătățiri ale caracteristicilor/funcționalității site-ului web, care pot include patch-uri, corecturi de erori, actualizări, upgrade-uri și alte modificări („Actualizări”).",
+      "p2": "Actualizările pot modifica sau șterge anumite caracteristici și/sau funcționalități ale site-ului web. Sunteți de acord că Miss Bott nu are obligația de a (i) furniza Actualizări sau (ii) de a continua să furnizeze sau să activeze anumite caracteristici și/sau funcționalități ale site-ului web pentru dumneavoastră.",
+      "p3": "Sunteți de acord în continuare că toate Actualizările vor fi (i) considerate a constitui o parte integrantă a site-ului web și (ii) supuse termenilor și condițiilor acestui Acord."
+    },
+    "third_party": {
+      "title": "Servicii Terțe",
+      "p1": "Putem afișa, include sau face disponibil conținut terț (inclusiv date, informații, aplicații și alte servicii de produse) sau oferi link-uri către site-uri web sau servicii terțe („Servicii Terțe”).",
+      "p2": "Luați la cunoștință și sunteți de acord că Miss Bott nu va fi responsabilă pentru niciun Serviciu Terț, inclusiv acuratețea, completitudinea, actualitatea, validitatea, conformitatea cu drepturile de autor, legalitatea, decența, calitatea sau orice alt aspect al acestora. Miss Bott nu își asumă și nu va avea nicio răspundere sau responsabilitate față de dumneavoastră sau orice altă persoană sau entitate pentru niciun Serviciu Terț.",
+      "p3": "Serviciile Terțe și link-urile către acestea sunt furnizate exclusiv ca o comoditate pentru dumneavoastră și le accesați și utilizați în totalitate pe propriul risc și sub rezerva termenilor și condițiilor acestor terți."
+    },
+    "termination": {
+      "title": "Durată și Încetare",
+      "p1": "Acest Acord va rămâne în vigoare până la încetarea acestuia de către dumneavoastră sau de către Miss Bott.",
+      "p2": "Miss Bott poate, la propria discreție, în orice moment și pentru orice motiv sau fără motiv, să suspende sau să rezilieze acest Acord cu sau fără notificare prealabilă.",
+      "p3": "Acest Acord va înceta imediat, fără notificare prealabilă din partea Miss Bott, în cazul în care nu respectați oricare dintre prevederile acestui Acord. De asemenea, puteți rezilia acest Acord ștergând site-ul web și toate copiile acestuia de pe computerul dumneavoastră.",
+      "p4": "La încetarea acestui Acord, veți înceta orice utilizare a site-ului web și veți șterge toate copiile site-ului web de pe computerul dumneavoastră.",
+      "p5": "Încetarea acestui Acord nu va limita niciunul dintre drepturile sau remediile Miss Bott conform legii sau echității în caz de încălcare de către dumneavoastră (în timpul termenului acestui Acord) a oricăreia dintre obligațiile dumneavoastră din prezentul Acord."
+    },
+    "copyright": {
+      "title": "Notificare de Încălcare a Drepturilor de Autor",
+      "p1": "Dacă sunteți proprietarul drepturilor de autor sau agentul unui astfel de proprietar și considerați că orice material de pe site-ul nostru constituie o încălcare a drepturilor dumneavoastră de autor, vă rugăm să ne contactați prezentând următoarele informații: (a) o semnătură fizică sau electronică a proprietarului drepturilor de autor sau a unei persoane autorizate să acționeze în numele acestuia; (b) identificarea materialului despre care se pretinde că încalcă drepturile; (c) informațiile dumneavoastră de contact, inclusiv adresa, numărul de telefon și un email; (d) o declarație din partea dumneavoastră că aveți o credință de bună-credință că utilizarea materialului nu este autorizată de proprietarii drepturilor de autor; și (e) o declarație că informațiile din notificare sunt exacte și, sub sancțiunea sperjurului, sunteți autorizat să acționați în numele proprietarului."
+    },
+    "indemnification": {
+      "title": "Despăgubire",
+      "p1": "Sunteți de acord să despăgubiți și să exonerați de răspundere Miss Bott și părinții, filialele, afiliații, ofițerii, angajații, agenții, partenerii și licențiatorii săi (dacă există) de orice revendicare sau cerere, inclusiv onorariile rezonabile ale avocaților, datorate sau rezultate din: (a) utilizarea site-ului web de către dumneavoastră; (b) încălcarea acestui Acord sau a oricărei legi sau reglementări; sau (c) încălcarea oricărui drept al unei terțe părți."
+    },
+    "warranties": {
+      "title": "Fără Garanții",
+      "p1": "Site-ul web vă este furnizat „CA ATARE” și „AȘA CUM ESTE DISPONIBIL” și cu toate defectele și lipsurile, fără garanție de niciun fel. În măsura maximă permisă de legea aplicabilă, Miss Bott, în nume propriu și în numele afiliaților săi și al licențiatorilor și furnizorilor lor de servicii respectivi, își declină în mod expres toate garanțiile, fie exprese, implicite, statutare sau de altă natură, cu privire la site-ul web, inclusiv toate garanțiile implicite de vandabilitate, adecvare pentru un anumit scop, titlu și neîncălcare, și garanțiile care pot apărea din cursul negocierii, cursul performanței, utilizare sau practica comercială. Fără a limita cele de mai sus, Miss Bott nu oferă nicio garanție sau angajament și nu face nicio reprezentare de niciun fel că site-ul web va îndeplini cerințele dumneavoastră, va obține orice rezultate intenționate, va fi compatibil sau va funcționa cu orice alt software, sisteme sau servicii, va funcționa fără întrerupere, va îndeplini orice standarde de performanță sau fiabilitate sau va fi lipsit de erori sau că orice erori sau defecte pot fi sau vor fi corectate.",
+      "p2": "Fără a limita cele de mai sus, nici Miss Bott, nici vreun furnizor al Miss Bott nu face nicio reprezentare sau garanție de niciun fel, expresă sau implicită: (i) cu privire la funcționarea sau disponibilitatea site-ului web, sau a informațiilor, conținutului și materialelor sau produselor incluse pe acesta; (ii) că site-ul web va fi neîntrerupt sau fără erori; (iii) cu privire la acuratețea, fiabilitatea sau actualitatea oricărei informații sau conținut furnizat prin intermediul site-ului web; sau (iv) că site-ul web, serverele sale, conținutul sau e-mailurile trimise de la sau în numele Miss Bott sunt lipsite de viruși, scripturi, cai troieni, viermi, malware, timebombs sau alte componente dăunătoare.",
+      "p3": "Unele jurisdicții nu permit excluderea sau limitările garanțiilor implicite sau limitările drepturilor statutare aplicabile ale unui consumator, astfel încât unele sau toate excluderile și limitările de mai sus este posibil să nu vi se aplice."
+    },
+    "liability": {
+      "title": "Limitarea Răspunderii",
+      "p1": "Indiferent de daunele pe care le-ați putea suferi, întreaga răspundere a Miss Bott și a oricăruia dintre furnizorii săi în temeiul oricărei prevederi a acestui Acord și remediul dumneavoastră exclusiv pentru toate cele de mai sus se vor limita la suma plătită efectiv de dumneavoastră pentru site-ul web.",
+      "p2": "În măsura maximă permisă de legea aplicabilă, în niciun caz Miss Bott sau furnizorii săi nu vor fi răspunzători pentru daune speciale, incidentale, indirecte sau consecutive (inclusiv, dar fără a se limita la, daune pentru pierderea profiturilor, pentru pierderea datelor sau a altor informații, pentru întreruperea activității, pentru vătămare corporală, pentru pierderea confidențialității care decurge din sau în orice mod legat de utilizarea sau incapacitatea de a utiliza site-ul web, software-ul terță parte și/sau hardware-ul terță parte utilizat cu site-ul web, sau altfel în legătură cu orice prevedere a acestui Acord), chiar dacă Miss Bott sau orice furnizor a fost informat despre posibilitatea unor astfel de daune și chiar dacă remediul nu își atinge scopul esențial.",
+      "p3": "Unele state/jurisdicții nu permit excluderea sau limitarea daunelor incidentale sau consecutive, astfel încât limitarea sau excluderea de mai sus este posibil să nu vi se aplice."
+    },
+    "severability": {
+      "title": "Separabilitate",
+      "p1": "Dacă orice prevedere a acestui Acord este considerată a fi inaplicabilă sau invalidă, acea prevedere va fi modificată și interpretată pentru a atinge obiectivele acelei prevederi în cea mai mare măsură posibilă conform legii aplicabile, iar prevederile rămase vor continua să fie în vigoare și să producă efecte depline.",
+      "p2": "Acest Acord, împreună cu Politica de Confidențialitate și orice alte notificări legale publicate de Miss Bott pe Servicii, vor constitui întregul acord între dumneavoastră și Miss Bott cu privire la Servicii. Dacă orice prevedere a acestui Acord este considerată invalidă de o instanță competentă, invaliditatea acelei prevederi nu va afecta validitatea prevederilor rămase ale acestui Acord, care vor rămâne în vigoare și vor produce efecte depline. Nicio renunțare la orice termen al acestui Acord nu va fi considerată o renunțare ulterioară sau continuă la un astfel de termen sau la orice alt termen, iar eșecul Miss Bott de a revendica orice drept sau prevedere în temeiul acestui Acord nu va constitui o renunțare la un astfel de drept sau prevedere. DUMNEAVOASTRĂ ȘI Miss Bott SUNTEȚI DE ACORD CĂ ORICE CAUZĂ DE ACȚIUNE CARE DECURGE DIN SAU ESTE LEGATĂ DE SERVICII TREBUIE SĂ ÎNCEAPĂ ÎN TERMEN DE UN (1) AN DUPĂ CE CAUZA DE ACȚIUNE APARE. ÎN CAZ CONTRAR, O ASTFEL DE CAUZĂ DE ACȚIUNE ESTE PRESCRISĂ PERMANENT."
+    },
+    "waiver": {
+      "title": "Renunțare",
+      "p1": "Cu excepția celor prevăzute aici, eșecul de a exercita un drept sau de a solicita îndeplinirea unei obligații în temeiul acestui Acord nu va afecta capacitatea unei părți de a exercita un astfel de drept sau de a solicita o astfel de îndeplinire în orice moment ulterior și nici renunțarea la o încălcare nu va constitui o renunțare la orice încălcare ulterioară.",
+      "p2": "Niciun eșec de a exercita și nicio întârziere în exercitarea, din partea oricărei părți, a oricărui drept sau a oricărei puteri în temeiul acestui Acord nu va funcționa ca o renunțare la acel drept sau putere. Niciun exercițiu unic sau parțial al oricărui drept sau putere în temeiul acestui Acord nu va împiedica exercitarea ulterioară a acelui sau a oricărui alt drept acordat aici. În cazul unui conflict între acest Acord și orice achiziție aplicabilă sau alți termeni, termenii acestui Acord vor guverna."
+    },
+    "amendments": {
+      "title": "Amendamente la acest Acord",
+      "p1": "Miss Bott își rezervă dreptul, la propria discreție, de a modifica sau înlocui acest Acord în orice moment. Dacă o revizuire este materială, vom furniza un preaviz de cel puțin 30 de zile înainte ca noii termeni să intre în vigoare. Ce constituie o modificare materială va fi stabilit la discreția noastră exclusivă.",
+      "p2": "Continuând să accesați sau să utilizați site-ul nostru web după ce orice revizuiri devin efective, sunteți de acord să fiți obligat de termenii revizuiți. Dacă nu sunteți de acord cu noii termeni, nu mai sunteți autorizat să utilizați Miss Bott."
+    },
+    "entire_agreement": {
+      "title": "Întregul Acord",
+      "p1": "Acordul constituie întregul acord între dumneavoastră și Miss Bott cu privire la utilizarea site-ului web și înlocuiește toate acordurile scrise sau orale anterioare și contemporane între dumneavoastră și Miss Bott.",
+      "p2": "Puteți fi supus unor termeni și condiții suplimentare care se aplică atunci când utilizați sau achiziționați alte servicii Miss Bott, pe care Miss Bott vi le va furniza la momentul utilizării sau achiziției respective."
+    },
+    "updates_terms": {
+      "title": "Actualizări ale Termenilor Noștri",
+      "p1": "Putem modifica Serviciul și politicile noastre și s-ar putea să fie nevoie să facem modificări la acești Termeni pentru ca aceștia să reflecte cu exactitate Serviciul și politicile noastre. Cu excepția cazului în care legea prevede altfel, vă vom notifica (de exemplu, prin intermediul Serviciului nostru) înainte de a face modificări la acești Termeni și vă vom oferi posibilitatea de a-i revizui înainte de a intra în vigoare. Apoi, dacă continuați să utilizați Serviciul, veți fi obligat de Termenii actualizați. Dacă nu doriți să fiți de acord cu acești Termeni sau cu orice Termeni actualizați, vă puteți șterge contul."
+    },
+    "ip": {
+      "title": "Proprietate Intelectuală",
+      "p1": "Site-ul web și întregul său conținut, caracteristici și funcționalități (inclusiv, dar fără a se limita la, toate informațiile, software-ul, textul, afișajele, imaginile, video și audio, precum și designul, selecția și aranjarea acestora) sunt deținute de Miss Bott, licențiatorii săi sau alți furnizori de astfel de materiale și sunt protejate de legile internaționale privind drepturile de autor, mărcile comerciale, brevetele, secretele comerciale și alte legi privind proprietatea intelectuală sau drepturile de proprietate. Materialul nu poate fi copiat, modificat, reprodus, descărcat sau distribuit în niciun fel, în întregime sau parțial, fără permisiunea expresă prealabilă scrisă a Miss Bott, cu excepția cazului și în măsura în care este prevăzut în mod expres în acești Termeni și Condiții. Orice utilizare neautorizată a materialului este interzisă."
+    },
+    "arbitration": {
+      "title": "Acord de Arbitraj",
+      "p1": "Această secțiune se aplică oricărei dispute, CU EXCEPȚIA FAPTULUI CĂ NU INCLUDE O DISPUTĂ REFERITOARE LA REVENDICĂRI PENTRU MĂSURI INJUNCTIVE SAU ECHITABILE PRIVIND APLICAREA SAU VALIDITATEA DREPTURILOR DUMNEAVOASTRĂ SAU ALE Miss Bott DE PROPRIETATE INTELECTUALĂ. Termenul „dispută” înseamnă orice dispută, acțiune sau altă controversă între dumneavoastră și Miss Bott cu privire la Servicii sau la acest acord, fie în contract, garanție, delict, statut, reglementare, ordonanță sau orice altă bază legală sau echitabilă. „Disputei” i se va da cel mai larg sens posibil permis de lege."
+    },
+    "notice_dispute": {
+      "title": "Notificare de Dispută",
+      "p1": "În cazul unei dispute, dumneavoastră sau Miss Bott trebuie să transmiteți celeilalte părți o Notificare de Dispută, care este o declarație scrisă ce conține numele, adresa și informațiile de contact ale părții care o transmite, faptele care dau naștere disputei și măsura solicitată. Trebuie să trimiteți orice Notificare de Dispută prin email la: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>. Miss Bott vă va trimite orice Notificare de Dispută prin poștă la adresa dumneavoastră dacă o avem, sau altfel la adresa dumneavoastră de email. Dumneavoastră și Miss Bott veți încerca să rezolvați orice dispută prin negociere informală în termen de șaizeci (60) de zile de la data trimiterii Notificării de Dispută. După șaizeci (60) de zile, dumneavoastră sau Miss Bott puteți începe arbitrajul."
+    },
+    "binding_arbitration": {
+      "title": "Arbitraj Obligatoriu",
+      "p1": "Dacă dumneavoastră și Miss Bott nu rezolvați nicio dispută prin negociere informală, orice alt efort de a rezolva disputa va fi efectuat exclusiv prin arbitraj obligatoriu, așa cum este descris în această secțiune. Renunțați la dreptul de a litiga (sau de a participa ca parte sau membru al clasei) toate disputele în instanță în fața unui judecător sau juriu. Disputa va fi soluționată prin arbitraj obligatoriu în conformitate cu regulile de arbitraj comercial ale Asociației Americane de Arbitraj. Oricare dintre părți poate solicita orice măsură injunctivă interimară sau preliminară de la orice instanță competentă, după cum este necesar pentru a proteja drepturile sau proprietatea părții în așteptarea finalizării arbitrajului. Orice și toate costurile legale, contabile și alte costuri, taxe și cheltuieli suportate de partea câștigătoare vor fi suportate de partea care nu câștigă."
+    },
+    "submissions": {
+      "title": "Trimiteri și Confidențialitate",
+      "p1": "În cazul în care trimiteți sau postați orice idei, sugestii creative, designuri, fotografii, informații, reclame, date sau propuneri, inclusiv idei pentru produse, servicii, caracteristici, tehnologii sau promoții noi sau îmbunătățite, sunteți de acord în mod expres că astfel de trimiteri vor fi tratate automat ca neconfidențiale și neproprietare și vor deveni proprietatea exclusivă a Miss Bott fără nicio compensație sau credit pentru dumneavoastră. Miss Bott și afiliații săi nu vor avea obligații cu privire la astfel de trimiteri sau postări și pot utiliza ideile conținute în astfel de trimiteri sau postări în orice scop, în orice mediu, pe termen nelimitat, inclusiv, dar fără a se limita la, dezvoltarea, fabricarea și comercializarea produselor și serviciilor folosind astfel de idei."
+    },
+    "promotions": {
+      "title": "Promoții",
+      "p1": "Miss Bott poate, din când în când, să includă concursuri, promoții, tombole sau alte activități („Promoții”) care necesită să trimiteți materiale sau informații despre dumneavoastră. Vă rugăm să rețineți că toate Promoțiile pot fi guvernate de reguli separate care pot conține anumite cerințe de eligibilitate, cum ar fi restricții privind vârsta și locația geografică. Sunteți responsabil să citiți toate regulile Promoțiilor pentru a determina dacă sunteți sau nu eligibil să participați. Dacă participați la orice Promoție, sunteți de acord să respectați și să vă conformați tuturor Regulilor Promoțiilor.",
+      "p2": "Termeni și condiții suplimentare se pot aplica achizițiilor de bunuri sau servicii de pe sau prin intermediul Serviciilor, termeni și condiții care fac parte din acest Acord prin această referință."
+    },
+    "typos": {
+      "title": "Erori Tipografice",
+      "p1": "În cazul în care un produs și/sau serviciu este listat la un preț incorect sau cu informații incorecte din cauza unei erori tipografice, vom avea dreptul de a refuza sau anula orice comenzi plasate pentru produsul și/sau serviciul listat la prețul incorect. Vom avea dreptul de a refuza sau anula orice astfel de comandă, indiferent dacă comanda a fost sau nu confirmată și cardul dumneavoastră de credit a fost debitat. Dacă cardul dumneavoastră de credit a fost deja debitat pentru achiziție și comanda dumneavoastră este anulată, vom emite imediat un credit în contul cardului dumneavoastră de credit sau în alt cont de plată în valoarea debitării."
+    },
+    "miscellaneous": {
+      "title": "Diverse",
+      "p1": "Dacă, din orice motiv, o instanță competentă constată că orice prevedere sau porțiune a acestor Termeni și Condiții este inaplicabilă, restul acestor Termeni și Condiții va continua să fie în vigoare și să producă efecte depline. Orice renunțare la orice prevedere a acestor Termeni și Condiții va fi efectivă numai dacă este în scris și semnată de un reprezentant autorizat al Miss Bott. Miss Bott va avea dreptul la măsuri injonctive sau alte măsuri echitabile (fără obligațiile de a posta orice garanție sau cauțiune) în cazul oricărei încălcări sau încălcări anticipate de către dumneavoastră. Miss Bott operează și controlează Serviciul Miss Bott din birourile sale din . Serviciul nu este destinat distribuirii sau utilizării de către nicio persoană sau entitate în nicio jurisdicție sau țară în care o astfel de distribuție sau utilizare ar fi contrară legii sau reglementărilor. În consecință, acele persoane care aleg să acceseze Serviciul Miss Bott din alte locații o fac din proprie inițiativă și sunt singurele responsabile pentru respectarea legilor locale, dacă și în măsura în care legile locale sunt aplicabile. Acești Termeni și Condiții (care includ și încorporează Politica de Confidențialitate Miss Bott) conțin întreaga înțelegere și înlocuiesc toate înțelegerile anterioare dintre dumneavoastră și Miss Bott cu privire la subiectul său și nu pot fi schimbate sau modificate de către dumneavoastră. Titlurile secțiunilor utilizate în acest Acord sunt doar pentru comoditate și nu vor avea nicio importanță legală."
+    },
+    "disclaimer": {
+      "title": "Declinarea Responsabilității",
+      "p1": "Miss Bott nu este responsabilă pentru niciun conținut, cod sau orice altă imprecizie.",
+      "p2": "Miss Bott nu oferă garanții sau asigurări.",
+      "p3": "În niciun caz Miss Bott nu va fi răspunzătoare pentru daune speciale, directe, indirecte, consecutive sau incidentale sau orice alte daune, fie într-o acțiune contractuală, neglijență sau alt delict, care decurg din sau în legătură cu utilizarea Serviciului sau a conținutului Serviciului. Compania își rezervă dreptul de a face adăugiri, ștergeri sau modificări ale conținutului Serviciului în orice moment, fără notificare prealabilă.",
+      "p4": "Serviciul Miss Bott și conținutul său sunt furnizate „ca atare” și „așa cum sunt disponibile” fără nicio garanție sau reprezentare de niciun fel, fie expresă, fie implicită. Miss Bott este un distribuitor și nu un editor al conținutului furnizat de terți; ca atare, Miss Bott nu exercită niciun control editorial asupra unui astfel de conținut și nu oferă nicio garanție sau reprezentare cu privire la acuratețea, fiabilitatea sau actualitatea oricărei informații, conținut, serviciu sau marfă furnizată prin sau accesibilă prin intermediul Serviciului Miss Bott. Fără a limita cele de mai sus, Miss Bott își declină în mod specific toate garanțiile și reprezentările în orice conținut transmis pe sau în legătură cu Serviciul Miss Bott sau pe site-uri care pot apărea ca link-uri pe Serviciul Miss Bott, sau în produsele furnizate ca parte a, sau altfel în legătură cu, Serviciul Miss Bott, inclusiv, fără limitare, orice garanții de vandabilitate, adecvare pentru un anumit scop sau neîncălcare a drepturilor terților. Niciun sfat oral sau informație scrisă oferită de Miss Bott sau de oricare dintre afiliații, angajații, ofițerii, directorii, agenții săi sau alții asemenea nu va crea o garanție. Informațiile despre preț și disponibilitate pot fi modificate fără notificare. Fără a limita cele de mai sus, Miss Bott nu garantează că Serviciul Miss Bott va fi neîntrerupt, necorupt, oportun sau fără erori."
+    },
+    "contact": {
+      "title": "Contactează-ne",
+      "p1": "Nu ezitați să ne contactați dacă aveți întrebări.",
+      "list": [
+        "Prin Email: <a href=\"mailto:contact@missbott.online\">contact@missbott.online</a>",
+        "Prin acest Link: https://missbott.online",
+        "La această Adresă: 7A The Crescent, Bride Street"
+      ]
+    }
+  }
+
 }
 
 }
