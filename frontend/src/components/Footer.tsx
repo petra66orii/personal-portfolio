@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { SiLinkedin, SiInstagram, SiX } from "react-icons/si";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -12,6 +13,27 @@ const Footer = () => {
           <p className="text-xs text-secondary">
             {t("footer.copyright", { year: currentYear })}
           </p>
+          {/* Legal Links Section (NEW) */}
+          <div className="flex space-x-4 text-xs text-secondary">
+            <Link
+              to="/privacy-policy"
+              className="hover:text-primary transition-colors"
+            >
+              {t("footer.privacy_policy")}
+            </Link>
+            <Link
+              to="/cookie-policy"
+              className="hover:text-primary transition-colors"
+            >
+              {t("footer.cookies_policy")}
+            </Link>
+            <Link
+              to="/terms-of-use"
+              className="hover:text-primary transition-colors"
+            >
+              {t("footer.terms_of_use")}
+            </Link>
+          </div>
           <div className="flex items-center space-x-3">
             <a
               className="text-primary transition-colors duration-200 hover:text-secondary"
@@ -41,6 +63,9 @@ const Footer = () => {
               <SiX className="w-4 h-4" />
             </a>
           </div>
+        </div>
+        <div className="text-center py-2 text-[10px] text-secondary/50">
+          <p className="text-xs text-secondary">{t("footer.impressum")}</p>
         </div>
       </div>
     </footer>
