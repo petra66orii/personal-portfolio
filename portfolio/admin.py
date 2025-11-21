@@ -30,7 +30,7 @@ class ServiceInquiryAdmin(admin.ModelAdmin):
 
 class BlogPostAdmin(SummernoteModelAdmin):
     # This tells Summernote which field needs the rich text editor
-    summernote_fields = ('content',) 
+    summernote_fields = ('content', 'content_en', 'content_ro', 'content_es') 
     
     # Optional: Standard admin configurations
     list_display = ('title', 'created_at')
