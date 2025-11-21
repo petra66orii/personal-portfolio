@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'portfolio',
     'corsheaders',
     'storages',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -177,6 +178,9 @@ else:
     # Local development
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+
+SUMMERNOTE_THEME = 'bs4'
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

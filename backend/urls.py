@@ -10,6 +10,7 @@ handler403 = permission_denied_view
 
 urlpatterns = [
     path(os.environ.get('DJANGO_ADMIN_URL', 'admin/'), admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
     path('api/', include('portfolio.urls')),
 ]
 
