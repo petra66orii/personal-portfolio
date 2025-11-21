@@ -79,6 +79,12 @@ function App() {
           fontSize: "13px",
           borderRadius: "4px",
         }} // Green button
+        declineButtonStyle={{
+          background: "#F4320B",
+          color: "#000",
+          fontSize: "13px",
+          borderRadius: "4px",
+        }}
         expires={150}
         enableDeclineButton
       >
