@@ -213,6 +213,10 @@
     "author_prefix": "Por",
     "read_time": "{{time}} min de lectura",
     "read_more": "Leer más",
+          "thanks_reading": "¡Gracias por leer!",
+      "share": "Compartir",
+      "back_to_blog": "Volver a Artículos",
+      "min_read": " min de lectura",
     "coming_soon": {
       "headline": "Tu Negocio Creativo, Amplificado.",
       "description": "El centro de artículos llegará pronto. Compartiré consejos prácticos sobre diseño web, marketing y tecnología para ayudarte a construir tu marca y prosperar en línea.",

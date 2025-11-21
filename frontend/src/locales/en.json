@@ -219,6 +219,10 @@
   "author_prefix": "By",
   "read_time": "{{time}} min read",
   "read_more": "Read more",
+      "thanks_reading": "Thanks for reading!",
+    "share": "Share",
+    "back_to_blog": "Back to Blog",
+    "min_read": " min read",
   "coming_soon": {
     "headline": "Your Creative Business, Amplified.",
     "description": "The Insights Hub is coming soon. I'll be sharing practical tips on web design, online marketing, and technology to help you build your brand and thrive online.",

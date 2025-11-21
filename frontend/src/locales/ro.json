@@ -213,6 +213,10 @@
   "author_prefix": "De",
   "read_time": "{{time}} min citit",
   "read_more": "Citește mai mult",
+      "thanks_reading": "Mulțumesc pentru lectură!",
+    "share": "Distribuie",
+    "back_to_blog": "Înapoi la Articole",
+    "min_read": " min de citit",
   "coming_soon": {
     "headline": "Afacerea ta creativă, amplificată.",
     "description": "Hub-ul de Resurse va fi lansat în curând. Voi împărtăși sfaturi practice despre web design, marketing online și tehnologie pentru a te ajuta să-ți construiești brandul și să ai succes online.",
