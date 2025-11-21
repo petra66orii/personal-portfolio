@@ -7,6 +7,8 @@ from rest_framework import viewsets, generics, status
 from django.core.mail import send_mail
 from django.conf import settings
 from rest_framework import permissions
+from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse
 from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry
 from .serializers import (
     ProjectSerializer,
@@ -246,3 +248,39 @@ class NewsletterSignupView(APIView):
             return Response({'error': error_detail}, status=err.response.status_code)
         except Exception:
             return Response({'error': 'An unexpected error occurred.'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        
+def blog_post_detail(request, slug):
+    print(f"\n🔍 DEBUG: View called with slug: '{slug}'")
+    
+    # 1. Check if ANY posts exist
+    count = BlogPost.objects.count()
+    print(f"📊 DEBUG: Total posts in DB: {count}")
+
+    # 2. Try to find it manually (bypassing get_object_or_404 for a second)
+    try:
+        post = BlogPost.objects.get(slug=slug)
+        print(f"✅ DEBUG: Found post: {post.title}")
+    except BlogPost.DoesNotExist:
+        print(f"❌ DEBUG: Post NOT found for slug: '{slug}'")
+        
+        # 3. Print all available slugs to compare
+        print("📋 DEBUG: Available slugs in DB:")
+        for p in BlogPost.objects.all():
+            print(f"   -> '{p.slug}'")
+        
+        # Re-raise the 404 so Django handles it
+        post = get_object_or_404(BlogPost, slug=slug)
+
+    data = {
+        "id": post.id,
+        "title": post.title,
+        "content": post.content, 
+        "excerpt": post.excerpt,
+        "author": str(post.author), 
+        "published_date": post.published_date,
+        "slug": post.slug,
+        "featured_image": post.featured_image.url if post.featured_image else None,
+        "read_time": post.read_time
+    }
+    
+    return JsonResponse(data)
