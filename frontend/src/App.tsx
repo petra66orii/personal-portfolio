@@ -16,6 +16,7 @@ import CookieConsent from "react-cookie-consent";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import CookiePolicy from "./pages/CookiePolicy";
 import TermsOfUse from "./pages/TermsOfUse";
+import BlogDetailPage from "./pages/BlogDetailPage";
 
 function App() {
   // 1. Theme state is now managed here in the main App component
@@ -57,6 +58,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogDetailPage />} />
           <Route path="/quote" element={<ProjectInquiry />} />
           <Route path="/services/:slug" element={<ServiceDetailPage />} />
           <Route path="/projects/:id" element={<ProjectDetailPage />} />
