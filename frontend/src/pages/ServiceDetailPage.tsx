@@ -83,9 +83,9 @@ const ServiceDetailPage: React.FC = () => {
   }
 
   const whoIsItForList =
-    t(`service_detail_page.who_is_it_for_map.${service.slug}`, {
+    (t(`service_detail_page.who_is_it_for_map.${service.slug}`, {
       returnObjects: true,
-    }) || [];
+    }) as string[]) || [];
 
   return (
     <>
