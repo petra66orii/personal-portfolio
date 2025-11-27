@@ -8,24 +8,24 @@
     "blog": "Insights",
     "contact": "Contact"
   },
-  "home": {
-    "title": "You Have the Vision. I Build the Digital Reality.",
-    "description_p1": "I'm a technical partner for artists, photographers, and artisans who are ready to elevate their online presence. ",
-    "description_p2": "You create stunning work. I build the world-class website that showcases it, turning your passion into a thriving online business.",
-    "call_to_action": "Start Here"
+"home": {
+    "title": "Escape the Template Ceiling. Build a Digital Asset.",
+    "description_p1": "I am the technical partner for ambitious SMEs, startups, and e-commerce brands that have outgrown the limitations of WordPress, Squarespace, and Shopify.",
+    "description_p2": "You need performance, not plugins. I build custom-coded React & Django platforms that score 90+ on Google, ensuring you never lose a customer to a slow loading screen again.",
+    "call_to_action": "View the Stacks"
   },
   "services1": {
-    "title": "Solutions for Creative Professionals",
-    "description": "Your craft deserves a beautiful, high-performance website. Discover the packages designed to help your creative business succeed.",
-    "web_dev_title": "The Digital Gallery",
-    "web_dev_desc": "A stunning portfolio to showcase your work and attract high-value clients.",
-    "maintenance_title": "The Artisan's E-Commerce Hub",
-    "maintenance_desc": "A beautiful online store to sell your products, prints, or digital goods.",
-    "optimization_title": "Peace of Mind Retainer",
-    "optimization_desc": "Ongoing support to keep your site secure, updated, and running smoothly.",
-    "consultation_title": "Strategic Consultation",
-    "consultation_desc": "Expert guidance to map out your digital strategy and achieve your goals.",
-    "view_all": "Explore Solutions"
+    "title": "Engineered for Growth",
+    "description": "No templates. No bloat. Just enterprise-grade technology packaged into transparent, fixed-price stacks designed for your specific growth stage.",
+    "web_dev_title": "The Foundation Stack",
+    "web_dev_desc": "A bespoke, lightning-fast brochure site with a Headless CMS. The perfect digital storefront for professionals building authority.",
+    "maintenance_title": "The Commerce Stack",
+    "maintenance_desc": "Headless e-commerce with custom API integrations. For brands demanding total control over their customer experience.",
+    "optimization_title": "The Application Stack",
+    "optimization_desc": "A full-stack React + Django web application with custom user dashboards and logic. True software, not just a website.",
+    "consultation_title": "Strategic Discovery Session",
+    "consultation_desc": "The mandatory first step. A paid, deep-dive technical roadmap to define your scope and prevent scope creep before we build.",
+    "view_all": "Compare the Stacks"
   },
   "testimonials": {
   "title": "What My Clients Say",
@@ -73,92 +73,90 @@
   "error_message": "Failed to fetch project details. Please try again later.",
   "not_found": "The project could not be found."
 },
-  "seo": {
-    "home_title": "Web Design for Artists & Creatives | Miss Bott",
-    "home_description": "I build beautiful, high-performance websites for artists, photographers, and creative professionals. Let's translate your vision into a stunning online presence.",
-    "home_keywords": "web design for artists, photographer portfolio website, web developer for creatives, e-commerce for artists, custom websites Ireland, portfolio websites for designers, Miss Bott"
+"seo": {
+    "home_title": "High-Performance Custom Web Development | React & Django | Miss Bott",
+    "home_description": "Escape the template ceiling. I build custom, scalable web applications for ambitious SMEs and E-commerce brands using React and Django. 90+ Google Performance scores guaranteed.",
+    "home_keywords": "custom web development, react developer, django developer, headless commerce, high performance websites, web application development, miss bott, dublin web design, ireland web design, galway web design"
   },
 
-  "services2": {
+"services2": {
     "header_professional": "Our",
-    "header_web_services": "Solutions",
-    "header_description": "From stunning digital portfolios to robust online stores, I deliver modern, high-performance solutions tailored to the needs of creative professionals.",
-    "most_popular_badge": "Most Popular",
-    "more_features": "+{{count}} more features",
-    "custom_quote": "Custom Quote",
-    "get_quote_button": "Get Quote",
-    "cta_title": "Ready to Elevate Your Online Presence?",
-    "cta_description": "Let's discuss your vision and create something extraordinary together. Get a free, no-obligation discovery call and a personalized proposal.",
-    "cta_button": "Book Your Free Discovery Call",
+    "header_web_services": "Product Stacks",
+    "header_description": "From high-performance marketing sites to complex web applications, I deliver custom-coded React & Django solutions engineered for businesses ready to scale.",
+    "most_popular_badge": "Best Value",
+    "more_features": "+{{count}} advanced features",
+    "custom_quote": "Enterprise",
+    "get_quote_button": "View Stack Details",
+    "cta_title": "Ready to Build Your Digital Asset?",
+    "cta_description": "Your project deserves a solid foundation. Skip the sales fluff and book a Strategic Discovery Session to define your technical roadmap, timeline, and fixed price.",
+    "cta_button": "Book Strategic Discovery",
     "learn_more": "Learn More"
   },
-  
 "service_detail_page": {
-  "back_button": "Back to All Solutions",
-  "whats_included": "What's Included",
-  "our_process": "Our Process",
-  "who_is_it_for": "Who Is This For?",
-  "cta_button": "Book a Free Call",
-  "process_step1_title": "Discovery & Strategy:",
-  "process_step1_desc": "We'll discuss your vision and goals to create a clear plan.",
-  "process_step2_title": "Design & Development:",
-  "process_step2_desc": "I'll bring the vision to life with clean code and beautiful design.",
-  "process_step3_title": "Review & Launch:",
-  "process_step3_desc": "We'll refine the site together before launching it to the world.",
+    "back_button": "Back to Stacks",
+    "whats_included": "Technical Deliverables",
+    "our_process": "Execution Roadmap",
+    "who_is_it_for": "Ideal For",
+    "cta_button": "Apply for Discovery",
+    "process_step1_title": "Strategy & Scope:",
+    "process_step1_desc": "We define technical requirements and user flows in a paid Discovery Session.",
+    "process_step2_title": "Agile Development:",
+    "process_step2_desc": "I build the custom React frontend and Django backend in rapid sprints.",
+    "process_step3_title": "Deploy & Scale:",
+    "process_step3_desc": "We launch your high-performance platform and activate your growth retainer.",
   "who_is_it_for_map": {
-    "digital-gallery": ["Artists", "Photographers", "Illustrators", "Designers"],
-    "artisan-ecommerce": ["Makers", "Artisans", "Sellers of goods"],
-    "peace-of-mind-retainer": ["Established Creatives", "Busy Business Owners"],
-    "strategic-discovery": ["New Ventures", "Businesses planning a redesign"]
-  }
-},
-
+        "foundation-stack": ["Professional Services", "Creative Agencies", "Consultancies", "Real Estate Firms"],
+        "commerce-stack": ["DTC Brands", "Fashion Labels", "Scaling Retailers", "Wholesalers"],
+        "application-stack": ["SaaS Startups", "FinTech Companies", "Tech Platforms", "Membership Sites"],
+        "strategic-discovery-session": ["New Ventures", "Scaling Companies"]
+      }
+  },
   "project_inquiry": {
-    "seo_title": "Project Inquiry | Miss Bott",
-    "seo_description": "Start your new project by providing some details. Get a personalized quote for web development services.",
-    "main_title": "Project Planner",
-    "main_subtitle": "Let's build something amazing. Tell me about your project.",
-    "step1_title": "About You",
-    "placeholder_name": "Your Name",
-    "placeholder_email": "Your Email",
-    "placeholder_company": "Company Name (Optional)",
-    "placeholder_phone": "Phone Number (Optional)",
-    "button_next": "Next",
-    "step2_title": "About The Project",
-    "select_service": "Select a service...",
-    "other_inquiry": "Other / General Inquiry",
-    "placeholder_details": "Tell me about your project...",
-    "placeholder_website": "Current Website URL (Optional)",
-    "button_previous": "Previous",
-    "step3_title": "Budget & Timeline",
+    "seo_title": "Apply for Strategic Discovery | Miss Bott",
+    "seo_description": "Apply for a Strategic Discovery Session with Miss Bott to define your project roadmap and technical requirements.",
+    "main_title": "Strategic Discovery Application",
+    "main_subtitle": "Serious projects require serious planning. Tell me about your goals. If we are a fit, we will schedule a paid Discovery Session (€500) to build your roadmap.",
+    "step1_title": "The Stakeholder",
+    "placeholder_name": "Full Name",
+    "placeholder_email": "Work Email",
+    "placeholder_company": "Company Name",
+    "placeholder_phone": "Phone Number",
+    "button_next": "Next Step",
+    "step2_title": "The Scope",
+    "select_service": "Which Stack interests you?",
+    "other_inquiry": "Enterprise / Custom App",
+    "placeholder_details": "Describe your technical challenges (e.g. 'Shopify is too slow', 'We need custom user logins')...",
+    "placeholder_website": "Current Website URL (if applicable)",
+    "button_previous": "Back",
+    "step3_title": "Investment & Timeline",
     "label_budget": "Estimated Budget",
-    "select_budget": "Select a budget range...",
-    "label_timeline": "Project Timeline",
-    "select_timeline": "Select a timeline...",
-    "button_submitting": "Submitting...",
-    "button_submit": "Submit Inquiry",
-    "success_title": "Inquiry Sent!",
-    "success_message": "Thank you for your interest. I've received your project details and will get back to you within 1-2 business days to schedule a consultation.",
+    "select_budget": "Select an investment range...",
+    "label_timeline": "Target Launch",
+    "select_timeline": "Select a timeframe...",
+    "button_submitting": "Processing...",
+    "button_submit": "Submit Application",
+    "success_title": "Application Received",
+    "success_message": "I have received your details. I will review your application and email you within 24 hours with the next steps for booking your Discovery Session.",
     "error_submit": "Submission failed. Please try again.",
     "error_unexpected": "An unexpected error occurred.",
     "validation": {
-      "service_required": "Please select a service.",
-      "details_required": "Please provide some details about your project.",
-      "details_min": "Please provide a bit more detail (at least 20 characters).",
-      "budget_required": "Please select an estimated budget.",
-      "timeline_required": "Please select a project timeline."
+      "service_required": "Please select a Product Stack.",
+      "details_required": "Please describe your project goals.",
+      "details_min": "Please provide more detail (at least 20 characters).",
+      "budget_required": "Please select a budget range.",
+      "timeline_required": "Please select a timeline."
     },
     "budgets": {
-      "under_1k": "Under €1,000",
-      "1k_5k": "€1,000 - €5,000",
-      "5k_10k": "€5,000 - €10,000",
-      "10k_plus": "€10,000+",
+      "under_1k": "Strategy Only (€500 - €1,500)",
+      "1k_5k": "Foundation Stack (€6k - €10k)",
+      "5k_10k": "Commerce Stack (€12k - €20k)",
+      "10k_plus": "Application Stack (€20k+)",
       "not_sure": "Not sure yet"
     },
     "timelines": {
-      "asap": "ASAP",
-      "1_month": "Within 1 month",
-      "2_3_months": "2-3 months",
+      "asap": "ASAP (Priority)",
+      "1_month": "1-2 Months",
+      "2_3_months": "3-4 Months",
       "flexible": "Flexible"
     }
   },
@@ -214,31 +212,31 @@
 },
 
 "blog": {
-  "title": "Insights for Creatives",
-  "description": "A resource hub with tips, insights, and inspiration to help creative professionals build their brand and thrive online.",
+  "title": "Technical Strategy & Insights",
+  "description": "A resource hub for founders and SMEs. We dismantle the myths of template sites and share engineering-led strategies for sustainable digital growth.",
   "author_prefix": "By",
   "read_time": "{{time}} min read",
-  "read_more": "Read more",
-      "thanks_reading": "Thanks for reading!",
-    "share": "Share",
-    "back_to_blog": "Back to Blog",
-    "min_read": " min read",
+  "read_more": "Read Analysis",
+  "thanks_reading": "Thanks for reading!",
+  "share": "Share Intelligence",
+  "back_to_blog": "Back to Insights",
+  "min_read": " min read",
   "coming_soon": {
-    "headline": "Your Creative Business, Amplified.",
-    "description": "The Insights Hub is coming soon. I'll be sharing practical tips on web design, online marketing, and technology to help you build your brand and thrive online.",
-    "placeholder": "Enter your email to be notified",
+    "headline": "Engineering Your Competitive Edge.",
+    "description": "The Insights Hub is launching soon. Expect deep dives on Headless Commerce, Django performance architecture, and the ROI of custom software infrastructure.",
+    "placeholder": "Enter your email for updates",
     "button_text": "Notify Me"
   },
   "newsletter": {
-    "subscribing": "Subscribing...",
-    "success": "Thank you for subscribing!",
+    "subscribing": "Initializing...",
+    "success": "You're on the list. Expect high-signal updates.",
     "error_generic": "Something went wrong.",
     "error_unexpected": "An unexpected error occurred."
   },
   "seo": {
-    "title": "Insights for Creatives | Miss Bott",
-    "description": "A resource hub with tips and inspiration to help creative professionals build their brand and thrive online.",
-    "keywords": "online tips for artists, marketing for photographers, building a creative brand, websites for creatives, social media for artists, Miss Bott blog"
+    "title": "Technical Strategy & Insights | Miss Bott",
+    "description": "Expert insights on high-performance web development, headless commerce, and digital scalability for SMEs and startups.",
+    "keywords": "custom software development, django vs wordpress, headless commerce strategies, react performance optimization, SME digital transformation, Miss Bott blog"
   }
 },
 "error_page": {

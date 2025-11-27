@@ -8,24 +8,24 @@
     "blog": "Resurse",
     "contact": "Contact"
   },
-  "home": {
-    "title": "Tu ai viziunea. Eu construiesc realitatea digitală.",
-    "description_p1": "Sunt un partener tehnic pentru artiști, fotografi și artizani care sunt gata să-și eleveze prezența online.",
-    "description_p2": "Tu creezi opere uimitoare. Eu construiesc website-ul de clasă mondială care le pune în valoare, transformându-ți pasiunea într-o afacere online de succes.",
-    "call_to_action": "Începeți Aici"
+"home": {
+    "title": "Depășește Limitele Șabloanelor. Construiește un Activ Digital.",
+    "description_p1": "Sunt partenerul tehnic pentru IMM-uri ambițioase, startup-uri și branduri de e-commerce care au depășit limitările WordPress, Squarespace și Shopify.",
+    "description_p2": "Ai nevoie de performanță, nu de plugin-uri. Construiesc platforme personalizate cu React și Django care obțin scoruri de 90+ pe Google, asigurându-te că nu vei mai pierde niciun client din cauza unui site lent.",
+    "call_to_action": "Vezi Pachetele"
   },
   "services1": {
-    "title": "Soluții pentru profesioniști creativi",
-    "description": "Măiestria ta merită un website frumos și performant. Descoperă pachetele concepute pentru a ajuta afacerea ta creativă să aibă succes.",
-    "web_dev_title": "Galeria Digitală",
-    "web_dev_desc": "Un portofoliu uimitor pentru a-ți prezenta lucrările și a atrage clienți valoroși.",
-    "maintenance_title": "Hub-ul E-Commerce al Artizanului",
-    "maintenance_desc": "Un magazin online elegant pentru a vinde produsele, printurile sau bunurile tale digitale.",
-    "optimization_title": "Abonament pentru Liniște Sufletească",
-    "optimization_desc": "Suport continuu pentru a menține site-ul tău securizat, actualizat și funcționând perfect.",
-    "consultation_title": "Consultanță Strategică",
-    "consultation_desc": "Ghidare expertă pentru a contura strategia ta digitală și a-ți atinge obiectivele.",
-    "view_all": "Explorează Soluțiile"
+    "title": "Inginerie pentru Creștere",
+    "description": "Fără șabloane. Fără cod inutil. Doar tehnologie de nivel enterprise, structurată în pachete transparente cu preț fix, concepute pentru stadiul tău de creștere.",
+    "web_dev_title": "Stack-ul Foundation",
+    "web_dev_desc": "Un site de prezentare personalizat, ultra-rapid, cu CMS Headless. Vitrina digitală perfectă pentru profesioniștii care își construiesc autoritatea.",
+    "maintenance_title": "Stack-ul Commerce",
+    "maintenance_desc": "E-commerce Headless cu integrări API personalizate. Pentru brandurile care cer control total asupra experienței clienților.",
+    "optimization_title": "Stack-ul Application",
+    "optimization_desc": "O aplicație web full-stack React + Django, cu panouri de control și logică personalizată pentru utilizatori. Software adevărat, nu doar un website.",
+    "consultation_title": "Sesiune de Descoperire Strategică",
+    "consultation_desc": "Primul pas obligatoriu. O foaie de parcurs tehnică detaliată, contra cost, pentru a defini scopul și a preveni extinderea necontrolată a proiectului înainte de a construi.",
+    "view_all": "Compară Soluțiile"
   },
   "testimonials": {
   "title": "Ce Spun Clienții Mei",
@@ -73,89 +73,89 @@
   "error_message": "Nu s-au putut prelua detaliile proiectului. Te rog, încearcă din nou.",
   "not_found": "Proiectul nu a putut fi găsit."
 },
-  "seo": {
-    "home_title": "Web Design pentru Artiști și Creativi | Miss Bott",
-    "home_description": "Construiesc website-uri frumoase și performante pentru artiști, fotografi și profesioniști creativi. Hai să traducem viziunea ta într-o prezență online uimitoare.",
-    "home_keywords": "web design pentru artiști, website portofoliu fotograf, dezvoltator web pentru creativi, e-commerce pentru artiști, website-uri personalizate România, portofolii pentru designeri, Miss Bott"
+"seo": {
+    "home_title": "Dezvoltare Web Personalizată și Performantă | React & Django | Miss Bott",
+    "home_description": "Depășește limitele șabloanelor. Construiesc aplicații web scalabile și personalizate pentru IMM-uri și startup-uri, folosind React și Django. Scoruri de performanță 90+ garantate.",
+    "home_keywords": "dezvoltare web personalizata, programator react, dezvoltator django, magazine online headless, optimizare viteza site, aplicatii web custom, miss bott, web design dublin, web design romania, web design galway"
   },
-  "services2": {
-    "header_professional": "Soluțiile",
+"services2": {
+    "header_professional": "Pachetele",
     "header_web_services": "Noastre",
-    "header_description": "De la portofolii digitale uimitoare la magazine online robuste, livrez soluții moderne și performante, adaptate nevoilor profesioniștilor creativi.",
-    "most_popular_badge": "Cel mai popular",
-    "more_features": "+ încă {{count}}",
-    "custom_quote": "Ofertă Personalizată",
-    "get_quote_button": "Obține o Ofertă",
-    "cta_title": "Gata să-ți elevezi prezența online?",
-    "cta_description": "Hai să discutăm viziunea ta și să creăm ceva extraordinar împreună. Obține o consultație gratuită și o propunere personalizată.",
-    "cta_button": "Programează o Consultație Gratuită",
+    "header_description": "De la site-uri de marketing ultra-rapide la aplicații web complexe, livrez soluții personalizate React & Django, proiectate pentru afaceri gata de scalare.",
+    "most_popular_badge": "Recomandat",
+    "more_features": "+{{count}} funcționalități avansate",
+    "custom_quote": "Enterprise",
+    "get_quote_button": "Vezi Detalii Pachet",
+    "cta_title": "Ești gata să construiești un Activ Digital?",
+    "cta_description": "Proiectul tău merită o fundație solidă. Sari peste vânzările inutile și rezervă o Sesiune de Descoperire Strategică pentru a defini foaia de parcurs tehnică și prețul fix.",
+    "cta_button": "Rezervă Sesiunea Strategică",
     "learn_more": "Află Mai Multe"
   },
-    "service_detail_page": {
-    "back_button": "Înapoi la toate soluțiile",
-    "whats_included": "Ce este inclus",
-    "our_process": "Procesul Nostru",
-    "who_is_it_for": "Pentru cine este?",
-    "cta_button": "Programează o Consultație",
-    "process_step1_title": "Descoperire și Strategie:",
-    "process_step1_desc": "Vom discuta viziunea și obiectivele tale pentru a crea un plan clar.",
-    "process_step2_title": "Design și Dezvoltare:",
-    "process_step2_desc": "Voi aduce viziunea la viață cu cod curat și un design elegant.",
-    "process_step3_title": "Revizuire și Lansare:",
-    "process_step3_desc": "Vom perfecționa site-ul împreună înainte de a-l lansa lumii întregi.",
-    "who_is_it_for_map": {
-      "digital-gallery": ["Artiști", "Fotografi", "Ilustratori", "Designeri"],
-      "artisan-ecommerce": ["Creatori", "Artizani", "Vânzători de bunuri"],
-      "peace-of-mind-retainer": ["Creativi consacrați", "Antreprenori ocupați"],
-      "strategic-discovery": ["Proiecte noi", "Afaceri care plănuiesc un redesign"]
+"service_detail_page": {
+    "back_button": "Înapoi la Pachete",
+    "whats_included": "Livrabile Tehnice",
+    "our_process": "Foaie de Parcurs",
+    "who_is_it_for": "Ideal Pentru",
+    "cta_button": "Aplică pentru Descoperire",
+    "process_step1_title": "Strategie & Scop:",
+    "process_step1_desc": "Definim cerințele tehnice și fluxurile într-o Sesiune de Descoperire plătită.",
+    "process_step2_title": "Dezvoltare Agile:",
+    "process_step2_desc": "Construiesc frontend-ul React și backend-ul Django în sprint-uri rapide.",
+    "process_step3_title": "Lansare & Scalare:",
+    "process_step3_desc": "Lansăm platforma de înaltă performanță și activăm mentenanța.",
+"who_is_it_for_map": {
+      "foundation-stack": ["Servicii Profesionale", "Agenții Creative", "Firme de Consultanță", "Imobiliare"],
+      "commerce-stack": ["Branduri DTC", "Retaileri în Scalare", "Magazine Online", "Distribuitori"],
+      "application-stack": ["Startup-uri SaaS", "Companii FinTech", "Platforme Tech", "Site-uri de Membri"],
+      "strategic-discovery-session": ["Noi Afaceri", "Companii în Creștere"]
     }
   },
   "project_inquiry": {
-    "seo_title": "Cere Ofertă Proiect | Miss Bott",
-    "seo_description": "Începe noul tău proiect oferind câteva detalii. Obține o ofertă personalizată pentru servicii de web development.",
-    "main_title": "Planificator de Proiect",
-    "main_subtitle": "Hai să construim ceva uimitor. Spune-mi despre proiectul tău.",
+    "seo_title": "Aplică pentru Sesiune Strategică | Miss Bott",
+    "seo_description": "Aplică pentru o Sesiune de Descoperire Strategică cu Miss Bott pentru a defini foaia de parcurs tehnică.",
+    "main_title": "Aplicație pentru Strategie",
+    "main_subtitle": "Proiectele serioase necesită planificare serioasă. Dacă ne potrivim, vom programa o Sesiune de Descoperire (500 €) pentru a crea planul.",
     "step1_title": "Despre Tine",
-    "placeholder_name": "Numele Tău",
-    "placeholder_email": "Emailul Tău",
-    "placeholder_company": "Nume Companie (Opțional)",
-    "placeholder_phone": "Număr de Telefon (Opțional)",
-    "button_next": "Următorul",
+    "placeholder_name": "Nume Complet",
+    "placeholder_email": "Email de Lucru",
+    "placeholder_company": "Nume Companie",
+    "placeholder_phone": "Număr Telefon",
+    "button_next": "Următorul Pas",
     "step2_title": "Despre Proiect",
-    "select_service": "Selectează un serviciu...",
-    "other_inquiry": "Altă solicitare / Întrebare generală",
-    "placeholder_details": "Spune-mi despre proiectul tău...",
-    "placeholder_website": "URL Website Actual (Opțional)",
-    "button_previous": "Anteriorul",
-    "step3_title": "Buget și Termen Limită",
-    "label_budget": "Buget estimat",
-    "select_budget": "Selectează un interval de buget...",
-    "label_timeline": "Termen limită proiect",
-    "select_timeline": "Selectează un termen...",
-    "button_submitting": "Se trimite...",
-    "button_submit": "Trimite Cererea",
-    "success_title": "Cerere Trimisă!",
-    "success_message": "Mulțumesc pentru interes. Am primit detaliile proiectului tău și te voi contacta în 1-2 zile lucrătoare pentru a programa o consultație.",
-    "error_submit": "Trimiterea a eșuat. Te rog, încearcă din nou.",
+    "select_service": "Ce Stack te interesează?",
+    "other_inquiry": "Enterprise / Aplicație Custom",
+    "placeholder_details": "Descrie provocările tehnice (ex: 'Shopify e prea lent', 'Avem nevoie de login custom')...",
+    "placeholder_website": "Website Actual (dacă există)",
+    "button_previous": "Înapoi",
+    "step3_title": "Buget & Termen",
+    "label_budget": "Buget Estimat",
+    "select_budget": "Alege un interval...",
+    "label_timeline": "Termen Lansare",
+    "select_timeline": "Alege o perioadă...",
+    "button_submitting": "Se procesează...",
+    "button_submit": "Trimite Aplicația",
+    "success_title": "Aplicație Primită!",
+    "success_message": "Am primit detaliile tale. Voi analiza aplicația și te voi contacta în 24 de ore cu următorii pași pentru programare.",
+    "error_submit": "Trimiterea a eșuat. Te rog încearcă din nou.",
     "error_unexpected": "A apărut o eroare neașteptată.",
     "validation": {
-      "service_required": "Te rog, selectează un serviciu.",
-      "details_required": "Te rog, oferă câteva detalii despre proiectul tău.",
-      "details_min": "Te rog, oferă mai multe detalii (cel puțin 20 de caractere).",
-      "budget_required": "Te rog, selectează un buget estimativ.",
-      "timeline_required": "Te rog, selectează un termen pentru proiect."
+      "service_required": "Te rog alege un pachet.",
+      "details_required": "Te rog oferă detalii despre proiect.",
+      "details_min": "Te rog oferă mai multe detalii (min 20 caractere).",
+      "budget_required": "Te rog alege un buget estimat.",
+      "timeline_required": "Te rog alege un termen."
     },
     "budgets": {
-      "under_1k": "Sub 1.000 €",
-      "1k_5k": "1.000 € - 5.000 €",
-      "5k_10k": "5.000 € - 10.000 €",
-      "10k_plus": "Peste 10.000 €",
-      "not_sure": "Nu sunt sigur(ă) încă"
+      "under_1k": "Doar Strategie (500 € - 1.500 €)",
+      "1k_5k": "Stack Foundation (6.000 € - 10.000 €)",
+      "5k_10k": "Stack Commerce (12.000 € - 20.000 €)",
+      "10k_plus": "Stack Application (20.000 €+)",
+      "not_sure": "Nu sunt sigur încă"
     },
     "timelines": {
-      "asap": "Cât mai curând posibil",
-      "1_month": "În decurs de o lună",
-      "2_3_months": "2-3 luni",
+      "asap": "Cât mai curând (Prioritate)",
+      "1_month": "1-2 Luni",
+      "2_3_months": "3-4 Luni",
       "flexible": "Flexibil"
     }
   },
@@ -208,31 +208,31 @@
         "impressum": "Miss Bott | Înregistrată în Irlanda"
   },
 "blog": {
-  "title": "Resurse pentru Creativi",
-  "description": "Un centru de resurse cu sfaturi, idei și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
+  "title": "Strategie Tehnică & Insight-uri",
+  "description": "Un hub de resurse pentru fondatori și IMM-uri. Demontăm miturile site-urilor șablon și împărtășim strategii bazate pe inginerie pentru o creștere digitală sustenabilă.",
   "author_prefix": "De",
-  "read_time": "{{time}} min citit",
-  "read_more": "Citește mai mult",
-      "thanks_reading": "Mulțumesc pentru lectură!",
-    "share": "Distribuie",
-    "back_to_blog": "Înapoi la Articole",
-    "min_read": " min de citit",
+  "read_time": "{{time}} min de citit",
+  "read_more": "Citește Analiza",
+  "thanks_reading": "Mulțumesc pentru lectură!",
+  "share": "Distribuie Expertiza",
+  "back_to_blog": "Înapoi la Insight-uri",
+  "min_read": " min de citit",
   "coming_soon": {
-    "headline": "Afacerea ta creativă, amplificată.",
-    "description": "Hub-ul de Resurse va fi lansat în curând. Voi împărtăși sfaturi practice despre web design, marketing online și tehnologie pentru a te ajuta să-ți construiești brandul și să ai succes online.",
-    "placeholder": "Introdu emailul pentru a fi notificat(ă)",
-    "button_text": "Notifică-mă"
+    "headline": "Ingineria Avantajului Tău Competitiv.",
+    "description": "Hub-ul de Insight-uri se lansează curând. Așteaptă-te la analize profunde despre Comerț Headless, arhitectura de performanță Django și ROI-ul infrastructurii software personalizate.",
+    "placeholder": "Introdu email-ul pentru actualizări",
+    "button_text": "Anunță-mă"
   },
   "newsletter": {
-    "subscribing": "Abonare în curs...",
-    "success": "Mulțumim pentru abonare!",
-    "error_generic": "Ceva nu a funcționat corect.",
+    "subscribing": "Se inițializează...",
+    "success": "Ești pe listă. Așteaptă-te la informații de valoare.",
+    "error_generic": "Ceva nu a funcționat.",
     "error_unexpected": "A apărut o eroare neașteptată."
   },
   "seo": {
-    "title": "Resurse pentru Creativi | Miss Bott",
-    "description": "Un centru de resurse cu sfaturi și inspirație pentru a ajuta profesioniștii creativi să-și construiască brandul și să prospere online.",
-    "keywords": "sfaturi online pentru artiști, marketing pentru fotografi, branding creativ, website-uri pentru creativi, social media pentru artiști, blog Miss Bott"
+    "title": "Strategie Tehnică & Insight-uri | Miss Bott",
+    "description": "Insight-uri experte despre dezvoltare web de înaltă performanță, comerț headless și scalabilitate digitală pentru IMM-uri și startup-uri.",
+    "keywords": "dezvoltare software personalizat, django vs wordpress, strategii comerț headless, optimizare performanță react, transformare digitală IMM, blog Miss Bott"
   }
 },
 "error_page": {

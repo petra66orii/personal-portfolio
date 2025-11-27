@@ -8,24 +8,24 @@
     "blog": "Artículos",
     "contact": "Contacto"
   },
-  "home": {
-    "title": "Tú tienes la visión. Yo construyo la realidad digital.",
-    "description_p1": "Soy un socio técnico para artistas, fotógrafos y artesanos que están listos para elevar su presencia en línea.",
-    "description_p2": "Tú creas obras asombrosas. Yo construyo el sitio web de clase mundial que las exhibe, convirtiendo tu pasión en un próspero negocio en línea.",
-    "call_to_action": "Comienza Aquí"
+"home": {
+    "title": "Escapa del Techo de las Plantillas. Construye un Activo Digital.",
+    "description_p1": "Soy el socio técnico para PYMES ambiciosas, startups y marcas de comercio electrónico que han superado las limitaciones de WordPress, Squarespace y Shopify.",
+    "description_p2": "Necesitas rendimiento, no plugins. Construyo plataformas personalizadas en React y Django que obtienen más de 90 puntos en Google, asegurando que nunca más pierdas un cliente por una carga lenta.",
+    "call_to_action": "Ver los Stacks"
   },
   "services1": {
-    "title": "Soluciones para Profesionales Creativos",
-    "description": "Tu arte merece un sitio web hermoso y de alto rendimiento. Descubre los paquetes diseñados para ayudar a tu negocio creativo a tener éxito.",
-    "web_dev_title": "La Galería Digital",
-    "web_dev_desc": "Un portafolio impresionante para exhibir tu trabajo y atraer clientes de alto valor.",
-    "maintenance_title": "El Centro E-Commerce del Artesano",
-    "maintenance_desc": "Una hermosa tienda en línea para vender tus productos, impresiones o bienes digitales.",
-    "optimization_title": "Retainer de Tranquilidad",
-    "optimization_desc": "Soporte continuo para mantener tu sitio seguro, actualizado y funcionando sin problemas.",
-    "consultation_title": "Consulta Estratégica",
-    "consultation_desc": "Asesoramiento experto para trazar tu estrategia digital y alcanzar tus metas.",
-    "view_all": "Explorar Soluciones"
+    "title": "Ingeniería para el Crecimiento",
+    "description": "Sin plantillas. Sin código basura. Solo tecnología de nivel empresarial empaquetada en stacks transparentes de precio fijo, diseñados para tu etapa de crecimiento.",
+    "web_dev_title": "El Stack Foundation",
+    "web_dev_desc": "Un sitio web a medida, ultrarrápido, con CMS Headless. El escaparate digital perfecto para profesionales que construyen autoridad.",
+    "maintenance_title": "El Stack Commerce",
+    "maintenance_desc": "Comercio electrónico Headless con integraciones API personalizadas. Para marcas que exigen un control total sobre la experiencia del cliente.",
+    "optimization_title": "El Stack Application",
+    "optimization_desc": "Una aplicación web full-stack React + Django con paneles de usuario y lógica personalizada. Software real, no solo un sitio web.",
+    "consultation_title": "Sesión de Descubrimiento Estratégico",
+    "consultation_desc": "El primer paso obligatorio. Una hoja de ruta técnica detallada y de pago para definir el alcance y evitar desviaciones antes de construir.",
+    "view_all": "Comparar los Stacks"
   },
   "testimonials": {
     "title": "Lo que dicen mis clientes",
@@ -73,10 +73,10 @@
     "error_message": "No se pudieron cargar los detalles del proyecto. Por favor, inténtalo de nuevo.",
     "not_found": "El proyecto no pudo ser encontrado."
   },
-  "seo": {
-    "home_title": "Diseño Web para Artistas y Creativos | Miss Bott",
-    "home_description": "Construyo sitios web hermosos y de alto rendimiento para artistas, fotógrafos y profesionales creativos. Traduzcamos tu visión en una presencia en línea impresionante.",
-    "home_keywords": "diseño web para artistas, sitio web portafolio fotógrafo, desarrollador web para creativos, e-commerce para artistas, sitios web personalizados, portafolios para diseñadores, Miss Bott"
+"seo": {
+    "home_title": "Desarrollo Web a Medida de Alto Rendimiento | React y Django | Miss Bott",
+    "home_description": "Escapa del techo de las plantillas. Construyo aplicaciones web escalables y a medida para PYMES y marcas de E-commerce utilizando React y Django. Puntuaciones de rendimiento 90+ garantizadas.",
+    "home_keywords": "desarrollo web a medida, programador react, desarrollador django, comercio headless, sitios web alto rendimiento, aplicaciones web, miss bott"
   },
   "services2": {
     "header_professional": "Nuestras",
@@ -91,71 +91,71 @@
     "cta_button": "Reserva Tu Llamada Gratuita",
     "learn_more": "Saber Más"
   },
-  "service_detail_page": {
-    "back_button": "Volver a Todas las Soluciones",
-    "whats_included": "Qué está incluido",
-    "our_process": "Nuestro Proceso",
-    "who_is_it_for": "¿Para quién es?",
-    "cta_button": "Reservar una llamada",
-    "process_step1_title": "Descubrimiento y Estrategia:",
-    "process_step1_desc": "Discutiremos tu visión y objetivos para crear un plan claro.",
-    "process_step2_title": "Diseño y Desarrollo:",
-    "process_step2_desc": "Daré vida a la visión con código limpio y un diseño hermoso.",
-    "process_step3_title": "Revisión y Lanzamiento:",
-    "process_step3_desc": "Perfeccionaremos el sitio juntos antes de lanzarlo al mundo.",
-    "who_is_it_for_map": {
-      "digital-gallery": ["Artistas", "Fotógrafos", "Ilustradores", "Diseñadores"],
-      "artisan-ecommerce": ["Creadores", "Artesanos", "Vendedores de bienes"],
-      "peace-of-mind-retainer": ["Creativos establecidos", "Empresarios ocupados"],
-      "strategic-discovery": ["Nuevos proyectos", "Negocios planeando un rediseño"]
+"service_detail_page": {
+    "back_button": "Volver a los Stacks",
+    "whats_included": "Entregables Técnicos",
+    "our_process": "Hoja de Ruta",
+    "who_is_it_for": "Ideal Para",
+    "cta_button": "Solicitar Descubrimiento",
+    "process_step1_title": "Estrategia y Alcance:",
+    "process_step1_desc": "Definimos requisitos técnicos y flujos en una Sesión de Descubrimiento pagada.",
+    "process_step2_title": "Desarrollo Ágil:",
+    "process_step2_desc": "Construyo el frontend React y backend Django en sprints rápidos.",
+    "process_step3_title": "Lanzamiento y Escala:",
+    "process_step3_desc": "Lanzamos tu plataforma de alto rendimiento y activamos el mantenimiento.",
+"who_is_it_for_map": {
+      "foundation-stack": ["Servicios Profesionales", "Agencias Creativas", "Consultoras", "Inmobiliarias"],
+      "commerce-stack": ["Marcas DTC", "Tiendas en Expansión", "Retailers", "Mayoristas"],
+      "application-stack": ["Startups SaaS", "FinTech", "Plataformas Tech", "Sitios de Membresía"],
+      "strategic-discovery-session": ["Nuevos Negocios", "Empresas en Crecimiento"]
     }
   },
   "project_inquiry": {
-    "seo_title": "Solicitud de Proyecto | Miss Bott",
-    "seo_description": "Comienza tu nuevo proyecto proporcionando algunos detalles. Obtén un presupuesto personalizado para servicios de desarrollo web.",
-    "main_title": "Planificador de Proyectos",
-    "main_subtitle": "Construyamos algo asombroso. Cuéntame sobre tu proyecto.",
+    "seo_title": "Solicitar Sesión Estratégica | Miss Bott",
+    "seo_description": "Solicita una Sesión de Descubrimiento Estratégico con Miss Bott para definir tu hoja de ruta técnica.",
+    "main_title": "Solicitud de Estrategia",
+    "main_subtitle": "Los proyectos serios requieren planificación seria. Si encajamos, programaremos una Sesión de Descubrimiento (500 €) para crear tu plan.",
     "step1_title": "Sobre Ti",
-    "placeholder_name": "Tu Nombre",
-    "placeholder_email": "Tu Email",
-    "placeholder_company": "Nombre de la Empresa (Opcional)",
-    "placeholder_phone": "Número de Teléfono (Opcional)",
-    "button_next": "Siguiente",
-    "step2_title": "Sobre El Proyecto",
-    "select_service": "Selecciona un servicio...",
-    "other_inquiry": "Otra consulta / General",
-    "placeholder_details": "Cuéntame sobre tu proyecto...",
-    "placeholder_website": "URL del Sitio Web Actual (Opcional)",
-    "button_previous": "Anterior",
-    "step3_title": "Presupuesto y Plazo",
+    "placeholder_name": "Nombre Completo",
+    "placeholder_email": "Correo Profesional",
+    "placeholder_company": "Nombre de la Empresa",
+    "placeholder_phone": "Número de Teléfono",
+    "button_next": "Siguiente Paso",
+    "step2_title": "El Proyecto",
+    "select_service": "¿Qué Stack te interesa?",
+    "other_inquiry": "Enterprise / App a Medida",
+    "placeholder_details": "Describe tus desafíos técnicos (ej: 'Shopify es muy lento', 'Necesitamos login personalizado')...",
+    "placeholder_website": "Sitio Web Actual (si existe)",
+    "button_previous": "Atrás",
+    "step3_title": "Inversión y Plazo",
     "label_budget": "Presupuesto Estimado",
-    "select_budget": "Selecciona un rango de presupuesto...",
-    "label_timeline": "Plazo del Proyecto",
+    "select_budget": "Selecciona un rango...",
+    "label_timeline": "Fecha Objetivo",
     "select_timeline": "Selecciona un plazo...",
-    "button_submitting": "Enviando...",
+    "button_submitting": "Procesando...",
     "button_submit": "Enviar Solicitud",
-    "success_title": "¡Solicitud Enviada!",
-    "success_message": "Gracias por tu interés. He recibido los detalles de tu proyecto y me pondré en contacto contigo en 1-2 días hábiles para programar una consulta.",
-    "error_submit": "El envío falló. Por favor, inténtalo de nuevo.",
+    "success_title": "¡Solicitud Recibida!",
+    "success_message": "He recibido tus detalles. Revisaré tu solicitud y te enviaré los siguientes pasos por correo en 24 horas.",
+    "error_submit": "El envío falló. Por favor inténtalo de nuevo.",
     "error_unexpected": "Ocurrió un error inesperado.",
     "validation": {
-      "service_required": "Por favor, selecciona un servicio.",
-      "details_required": "Por favor, proporciona algunos detalles sobre tu proyecto.",
-      "details_min": "Por favor, proporciona un poco más de detalle (al menos 20 caracteres).",
-      "budget_required": "Por favor, selecciona un presupuesto estimado.",
-      "timeline_required": "Por favor, selecciona un plazo para el proyecto."
+      "service_required": "Por favor selecciona un Stack.",
+      "details_required": "Por favor describe los objetivos del proyecto.",
+      "details_min": "Por favor proporciona más detalles (mínimo 20 caracteres).",
+      "budget_required": "Por favor selecciona un presupuesto.",
+      "timeline_required": "Por favor selecciona un plazo."
     },
     "budgets": {
-      "under_1k": "Menos de 1.000 €",
-      "1k_5k": "1.000 € - 5.000 €",
-      "5k_10k": "5.000 € - 10.000 €",
-      "10k_plus": "Más de 10.000 €",
-      "not_sure": "No estoy seguro/a todavía"
+      "under_1k": "Solo Estrategia (500 € - 1.500 €)",
+      "1k_5k": "Stack Foundation (6.000 € - 10.000 €)",
+      "5k_10k": "Stack Commerce (12.000 € - 20.000 €)",
+      "10k_plus": "Stack Application (20.000 €+)",
+      "not_sure": "No estoy seguro aún"
     },
     "timelines": {
-      "asap": "Lo antes posible",
-      "1_month": "Dentro de 1 mes",
-      "2_3_months": "2-3 meses",
+      "asap": "Lo antes posible (Prioridad)",
+      "1_month": "1-2 Meses",
+      "2_3_months": "3-4 Meses",
       "flexible": "Flexible"
     }
   },
@@ -207,34 +207,34 @@
     "cookies_policy": "Política de Cookies",
     "impressum": "Miss Bott | Registrada en Irlanda"
   },
-  "blog": {
-    "title": "Artículos para Creativos",
-    "description": "Un centro de recursos con consejos, ideas e inspiración para ayudar a los profesionales creativos a construir su marca y prosperar en línea.",
-    "author_prefix": "Por",
-    "read_time": "{{time}} min de lectura",
-    "read_more": "Leer más",
-          "thanks_reading": "¡Gracias por leer!",
-      "share": "Compartir",
-      "back_to_blog": "Volver a Artículos",
-      "min_read": " min de lectura",
-    "coming_soon": {
-      "headline": "Tu Negocio Creativo, Amplificado.",
-      "description": "El centro de artículos llegará pronto. Compartiré consejos prácticos sobre diseño web, marketing y tecnología para ayudarte a construir tu marca y prosperar en línea.",
-      "placeholder": "Ingresa tu email para ser notificado",
-      "button_text": "Notificar"
-    },
-    "newsletter": {
-      "subscribing": "Suscribiendo...",
-      "success": "¡Gracias por suscribirte!",
-      "error_generic": "Algo salió mal.",
-      "error_unexpected": "Ocurrió un error inesperado."
-    },
-    "seo": {
-      "title": "Artículos para Creativos | Miss Bott",
-      "description": "Un centro de recursos con consejos e inspiración para ayudar a los profesionales creativos a construir su marca y prosperar en línea.",
-      "keywords": "consejos para artistas, marketing para fotógrafos, branding creativo, sitios web para creativos, redes sociales para artistas, blog Miss Bott"
-    }
+"blog": {
+  "title": "Estrategia Técnica e Insights",
+  "description": "Un centro de recursos para fundadores y PYMEs. Desmontamos los mitos de los sitios de plantillas y compartimos estrategias de ingeniería para un crecimiento digital sostenible.",
+  "author_prefix": "Por",
+  "read_time": "{{time}} min de lectura",
+  "read_more": "Leer Análisis",
+  "thanks_reading": "¡Gracias por leer!",
+  "share": "Compartir Inteligencia",
+  "back_to_blog": "Volver a Insights",
+  "min_read": " min de lectura",
+  "coming_soon": {
+    "headline": "Ingeniería para tu Ventaja Competitiva.",
+    "description": "El Hub de Insights se lanzará pronto. Espera análisis profundos sobre Comercio Headless, arquitectura de rendimiento Django y el ROI de la infraestructura de software personalizada.",
+    "placeholder": "Introduce tu email para actualizaciones",
+    "button_text": "Notificarme"
   },
+  "newsletter": {
+    "subscribing": "Inicializando...",
+    "success": "Estás en la lista. Espera contenido de alto valor.",
+    "error_generic": "Algo salió mal.",
+    "error_unexpected": "Ocurrió un error inesperado."
+  },
+  "seo": {
+    "title": "Estrategia Técnica e Insights | Miss Bott",
+    "description": "Insights expertos sobre desarrollo web de alto rendimiento, comercio headless y escalabilidad digital para PYMEs y startups.",
+    "keywords": "desarrollo de software a medida, django vs wordpress, estrategias comercio headless, optimización rendimiento react, transformación digital pymes, blog Miss Bott"
+  }
+},
   "error_page": {
   "go_home_button": "Volver al Inicio",
   "404": {
