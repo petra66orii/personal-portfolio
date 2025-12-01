@@ -9,9 +9,9 @@ interface FormData {
   email: string;
   company: string;
   phone: string;
+  website_url: string;
   service: string;
   project_details: string;
-  details: string;
   budget: string;
   timeline: string;
 }
@@ -50,9 +50,9 @@ const ProjectInquiry = () => {
     email: "",
     company: "",
     phone: "",
+    website_url: "",
     service: "",
     project_details: "",
-    details: "",
     budget: "",
     timeline: "",
   });
@@ -252,6 +252,30 @@ const ProjectInquiry = () => {
                   {errors.email && (
                     <p className="text-red-500 text-sm mt-1">{errors.email}</p>
                   )}
+                </div>
+
+                {/* ADD THIS: Company Name (Optional but recommended) */}
+                <div>
+                  <input
+                    type="text"
+                    name="company"
+                    placeholder={t("project_inquiry.placeholder_company")} // Add to en.json
+                    value={formData.company}
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  />
+                </div>
+
+                {/* ADD THIS: Website URL (Crucial for AI Audit) */}
+                <div>
+                  <input
+                    type="url"
+                    name="website_url" // Matches Django model field
+                    placeholder={t("project_inquiry.placeholder_website")} // Add to en.json
+                    value={formData.website_url} // You need to add this to your interface below
+                    onChange={handleChange}
+                    className="w-full p-3 rounded-lg bg-surface border-2 border-transparent focus:border-primary focus:outline-none"
+                  />
                 </div>
               </div>
               <button
