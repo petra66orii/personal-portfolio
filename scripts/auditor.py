@@ -10,10 +10,8 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor
-from dotenv import load_dotenv # New import
+from dotenv import load_dotenv
 
-# --- CONFIGURATION ---
-# This loads your .env file!
 load_dotenv() 
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
