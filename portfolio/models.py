@@ -85,6 +85,24 @@ class ServiceInquiry(models.Model):
     website_url = models.URLField(blank=True, help_text="Current website if any")
     created_at = models.DateTimeField(auto_now_add=True)
     responded = models.BooleanField(default=False)
+    # AI Analysis Fields
+    ai_summary = models.TextField(blank=True, help_text="GPT generated summary")
+    lead_score = models.IntegerField(default=0, help_text="1-10 score based on fit")
+    is_analyzed = models.BooleanField(default=False)
+    ai_email_draft = models.TextField(blank=True, help_text="AI-generated response draft")
+    ai_analysis_raw = models.TextField(blank=True, help_text="Raw AI analysis data")
+    
+    # Status
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('analyzed', 'AI Analyzed'),
+        ('approved', 'Approved (Link Sent)'),
+        ('rejected', 'Rejected'),
+    ]
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+
+    def __str__(self):
+        return f"{self.name} - Score: {self.lead_score}/10"
     
     class Meta:
         ordering = ['-created_at']
