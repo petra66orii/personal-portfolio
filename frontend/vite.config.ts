@@ -31,10 +31,20 @@ export default defineConfig(({ command }) => {
       },
     }
   } else {
-    // --- PRODUCTION BUILD ---
     return {
       plugins,
       base: '/static/',
-    }
+      build: {
+        outDir: 'dist',
+        emptyOutDir: true,
+        rollupOptions: {
+          output: {
+            entryFileNames: 'assets/index.js',
+            chunkFileNames: 'assets/[name].js',
+            assetFileNames: 'assets/[name][extname]',
+          },
+        },
+      },
+    };
   }
 })
