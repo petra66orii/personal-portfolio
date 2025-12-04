@@ -43,7 +43,6 @@ cp frontend/dist/index.html templates/
 
 # --- FIX PATHS inside index.html ---
 echo "🔧 Fixing static asset paths in index.html"
-sed -i 's|/assets/|/static/assets/|g' templates/index.html
 
 # --- COPY MAIN frontend build into staticfiles ---
 echo "📁 Copying main dist/ into staticfiles/"
