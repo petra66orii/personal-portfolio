@@ -9,7 +9,7 @@ from django.conf import settings
 from rest_framework import permissions
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
-from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry
+from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry, SiteAudit
 from .serializers import (
     ProjectSerializer,
     ContactMessageSerializer,
@@ -19,6 +19,9 @@ from .serializers import (
 )
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.admin.views.decorators import staff_member_required
+from scripts.auditor import SiteAuditor 
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
@@ -284,3 +287,30 @@ def blog_post_detail(request, slug):
     }
     
     return JsonResponse(data)
+
+@staff_member_required
+def audit_dashboard_view(request):
+    return render(request, "admin/audit_dashboard.html")
+
+
+@require_POST
+@staff_member_required
+def run_audit_api(request):
+    try:
+        data = json.loads(request.body)
+        url = data.get("url")
+
+        if not url:
+            return JsonResponse({"error": "URL is required"}, status=400)
+
+        auditor = SiteAuditor(url)
+        result = auditor.run_audit()  # full dict for React
+
+        # 🔁 reuse the same persistence logic as admin action
+        SiteAudit.from_audit_result(url, result)
+
+        # Frontend still gets the full result
+        return JsonResponse(result)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)
