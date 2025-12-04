@@ -3,6 +3,9 @@ from django_summernote.admin import SummernoteModelAdmin
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
+from .models import SiteAudit
+from scripts.auditor import SiteAuditor
+import threading
 import os
 
 # Import your models
@@ -134,3 +137,49 @@ class BlogPostAdmin(SummernoteModelAdmin):
     search_fields = ['title', 'content']
 
 admin.site.register(BlogPost, BlogPostAdmin)
+
+
+
+@admin.action(description="⚡ Run Technical Audit (Lighthouse + GPT)")
+def run_technical_audit(modeladmin, request, queryset):
+    """
+    Runs the audit script. Warning: This takes ~15-20 seconds per site.
+    """
+    success_count = 0
+
+    for audit in queryset:
+        modeladmin.message_user(
+            request,
+            f"Starting audit for {audit.url}... Please wait.",
+            level=messages.INFO,
+        )
+
+        try:
+            auditor = SiteAuditor(audit.url)
+            result = auditor.run_audit()
+
+            # 🔁 reuse unified helper
+            SiteAudit.from_audit_result(audit.url, result, instance=audit)
+
+            success_count += 1
+
+        except Exception as e:
+            modeladmin.message_user(
+                request,
+                f"Audit failed for {audit.url}: {e}",
+                level=messages.ERROR,
+            )
+
+    if success_count > 0:
+        modeladmin.message_user(
+            request,
+            f"Completed {success_count} audits.",
+            level=messages.SUCCESS,
+        )
+
+
+@admin.register(SiteAudit)
+class SiteAuditAdmin(admin.ModelAdmin):
+    list_display = ("url", "performance_score", "created_at")
+    actions = [run_technical_audit]
+    readonly_fields = ("raw_audit_data", "ai_strategy_email")
