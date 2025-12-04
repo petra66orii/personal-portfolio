@@ -1,11 +1,9 @@
-import subprocess
 import json
 import os
 import ssl
 import socket
 import requests
 import datetime
-import platform # New import to detect Windows
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 from openai import OpenAI
@@ -32,7 +30,7 @@ class SiteAuditor:
         print("🔒 Checking SSL Certificate...")
         try:
             context = ssl.create_default_context()
-            with socket.create_connection((self.domain, 443), timeout=5) as sock:
+            with socket.create_connection((self.domain, 443), timeout=10) as sock:
                 with context.wrap_socket(sock, server_hostname=self.domain) as ssock:
                     cert = ssock.getpeercert()
                     # Date format example: 'May 25 23:59:59 2025 GMT'
@@ -45,45 +43,51 @@ class SiteAuditor:
             return {"error": str(e), "status": "Error"}
 
     def run_lighthouse(self):
-        """Runs Google Lighthouse for Core Web Vitals."""
-        print("⚡ Running Google Lighthouse (this takes ~15s)...")
-        filename = f"lighthouse_{self.domain}.json"
-        
-        # WINDOWS FIX: Detect if running on Windows and use .cmd
-        lighthouse_cmd = "lighthouse.cmd" if platform.system() == "Windows" else "lighthouse"
-        
-        command = [
-            lighthouse_cmd, self.url,
-            "--output=json", f"--output-path={filename}",
-            "--only-categories=performance,accessibility,seo",
-            "--chrome-flags=--headless --no-sandbox", "--quiet"
-        ]
-        try:
-            # shell=True helps Windows find the path sometimes, but .cmd is the safer fix
-            subprocess.run(command, check=True)
+            """
+            Runs audit via Google PageSpeed Insights API.
+            Updated Timeout: 120s for heavy e-commerce sites.
+            """
+            api_key = os.getenv("GOOGLE_PAGESPEED_KEY")
+            if not api_key:
+                return {"error": "Missing GOOGLE_PAGESPEED_KEY in .env"}
+
+            endpoint = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed"
             
-            with open(filename, "r", encoding='utf-8') as f: # Added utf-8 encoding for safety
-                data = json.load(f)
-            os.remove(filename) # Clean up
-            
-            return {
-                "performance_score": int(data["categories"]["performance"]["score"] * 100),
-                "accessibility_score": int(data["categories"]["accessibility"]["score"] * 100),
-                "mobile_speed_index": data["audits"]["speed-index"]["displayValue"]
+            # We request 3 categories: performance, accessibility, SEO
+            params = {
+                "url": self.url,
+                "key": api_key,
+                "strategy": "mobile", # 'mobile' is the standard for modern SEO
+                "category": ["performance", "accessibility", "seo"]
             }
-        except FileNotFoundError:
-            print("❌ Error: Lighthouse not found.")
-            print("   Run 'npm install -g lighthouse' in your terminal.")
-            return {"error": "Lighthouse not installed"}
-        except Exception as e:
-            print(f"❌ Lighthouse failed: {e}")
-            return {"error": "Could not run Lighthouse"}
+
+            try:
+                print(f"⚡ Requesting audit from Google API for {self.url}...")
+                # UPDATED: Timeout increased to 120s as per Phase 2 requirements
+                response = requests.get(endpoint, params=params, timeout=120)
+                
+                if response.status_code != 200:
+                    return {"error": f"Google API Failed: {response.status_code} - {response.text[:100]}"}
+
+                data = response.json()
+                lhs = data.get("lighthouseResult", {}).get("categories", {})
+
+                return {
+                    "performance_score": int(lhs.get("performance", {}).get("score", 0) * 100),
+                    "accessibility_score": int(lhs.get("accessibility", {}).get("score", 0) * 100),
+                    "seo_score": int(lhs.get("seo", {}).get("score", 0) * 100),
+                    # Core Web Vitals (Real User Data if available)
+                    "core_web_vitals": data.get("loadingExperience", {}).get("overall_category", "Unavailable")
+                }
+
+            except Exception as e:
+                return {"error": f"Audit failed: {str(e)}"}
 
     def check_page_health(self):
         """Scrapes the homepage for broken links, meta tags, and viewport."""
         print("🕷️ Crawling homepage for health metrics...")
         try:
-            response = requests.get(self.url, headers=HEADERS, timeout=10)
+            response = requests.get(self.url, headers=HEADERS, timeout=15)
             soup = BeautifulSoup(response.content, 'html.parser')
             
             # 1. Meta Tags Check
@@ -101,10 +105,10 @@ class SiteAuditor:
                 if self.domain in full_url:
                     internal_links.append(full_url)
             
-            # Check up to 15 internal links to keep it fast
+            # Check up to 20 internal links
             broken_links = []
-            with ThreadPoolExecutor(max_workers=5) as executor:
-                results = executor.map(self._check_link_status, internal_links[:15])
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                results = executor.map(self._check_link_status, internal_links[:20])
                 for link, status in results:
                     if status >= 400:
                         broken_links.append(link)
@@ -123,7 +127,7 @@ class SiteAuditor:
 
     def _check_link_status(self, url):
         try:
-            r = requests.head(url, headers=HEADERS, timeout=3)
+            r = requests.head(url, headers=HEADERS, timeout=5)
             return url, r.status_code
         except:
             return url, 500
@@ -137,32 +141,43 @@ class SiteAuditor:
 
             client = OpenAI(api_key=OPENAI_API_KEY)
             
-            prompt = f"""
-            You are Miss Bott, a high-end Digital Consultant and Solutions Architect. You do not sell "bug fixes"; you sell high-performance digital transformations starting at €6,000.
+            prompt = f"""You are Miss Bott, a high-end Digital Consultant and Solutions Architect. You do not sell "bug fixes"; you sell high-performance digital transformations starting at €6,000.
 
-            Write a cold outreach email to a business owner based on this audit of their website: {self.url}
+Write a cold outreach email to a business owner based on this audit of their website: {self.url}
 
-            **Audit Findings:**
-            - SSL/Security: {audit_data.get('ssl', {})} 
-            - Performance: {audit_data.get('lighthouse', {})}
-            - Health: {audit_data.get('health', {})} 
+**Audit Findings:**
+- SSL/Security: {audit_data.get('ssl', {})} 
+- Performance: {audit_data.get('lighthouse', {})}
+- Health: {audit_data.get('health', {})} 
 
-            **The Strategy (The "Why"):**
-            - Treat these errors not as "small bugs" but as "symptoms of Technical Debt" caused by their current platform (likely WordPress).
-            - Do NOT offer to "fix the links."
-            - Explain that their current site is a liability (slow, insecure, leaking leads).
-            - Propose a "Strategic Migration": Rebuilding the site on a modern, custom architecture (Python/Wagtail) to permanently solve these issues while preserving their brand and content.
-            
-            **Email Structure:**
-            1. **Subject:** tailored to the most critical error (e.g., "Strategic concern regarding [Domain] performance")
-            2. **The Hook:** Professional and concise. You analyzed their site as part of your market research.
-            3. **The Diagnosis:** Reveal the data. Be direct. "Your site is scoring X. This indicates the underlying platform is struggling to scale."
-            4. **The Pivot:** "Most agencies would offer to patch these errors for a fee. I advise against that. It’s a temporary fix for a structural problem."
-            5. **The Solution:** Mention your premium service: A complete migration to a custom, high-speed stack.
-            6. **The CTA:** Invite them for a "15-minute Strategy Review" to walk through the report. No sales pressure, just expert advice.
-            
-            **Tone:** Authoritative, sophisticated, expensive, yet helpful. Like a doctor giving a diagnosis.
-            """
+**The Strategy (The "Why"):**
+- Treat these errors not as "small bugs" but as "symptoms of Technical Debt" caused by their current platform (likely WordPress).
+- Do NOT offer to "fix the links."
+- Explain that their current site is a liability (slow, insecure, leaking leads).
+- Propose a "Strategic Migration": rebuilding the site on a modern, custom architecture (Python/Wagtail) to permanently solve these issues while preserving their brand and content.
+
+**Email Structure:**
+1. **Subject:** tailored to the most critical error (e.g., "Strategic concern regarding [Domain] performance")
+2. **The Hook:** Professional and concise. You analyzed their site as part of your market research.
+3. **The Diagnosis:** Reveal the data. Be direct. “Your site is scoring X. This indicates the underlying platform is struggling to scale.”
+4. **The Pivot:** “Most agencies would offer to patch these errors for a fee. I advise against that. It’s a temporary fix for a structural problem.”
+5. **The Solution:** Mention your premium service: a complete migration to a custom, high-speed stack.
+6. **The CTA:** Invite them for a “15-minute Strategy Review” to walk through the report. No sales pressure, just expert advice.
+
+**Tone:** authoritative, sophisticated, expensive, yet helpful. Like a doctor giving a diagnosis.
+
+**Signature Requirements:**
+- Always sign the email as:
+    ```
+    —
+    Miss Bott  
+    Digital Consultant & Solutions Architect  
+    Email: developer@missbott.online  
+    Website: https://missbott.online
+    ```
+- The signature must appear exactly in this format at the end of the email.
+"""
+
 
             response = client.chat.completions.create(
                 model="gpt-4o",
