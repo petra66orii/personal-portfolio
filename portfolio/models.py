@@ -151,3 +151,43 @@ class BlogPost(models.Model):
     
     def __str__(self):
         return self.title
+
+# portfolio/models.py
+
+class SiteAudit(models.Model):
+    url = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    performance_score = models.IntegerField(null=True, blank=True)
+    accessibility_score = models.IntegerField(null=True, blank=True)
+    raw_audit_data = models.JSONField(null=True, blank=True)
+    
+    ai_strategy_email = models.TextField(
+        blank=True,
+        help_text="GPT-4 Generated Outreach",
+    )
+
+    def __str__(self):
+        return f"{self.url} - {self.performance_score}/100"
+
+    @classmethod
+    def from_audit_result(cls, url: str, result: dict, instance: "SiteAudit | None" = None) -> "SiteAudit":
+        """
+        Normalises saving audit data so admin action + API behave the same.
+        result is the full dict from SiteAuditor.run_audit().
+        """
+        data = result.get("technical_data", {})
+        lighthouse = data.get("lighthouse", {})
+
+        audit = instance or cls(url=url)
+
+        # store the same shape you already use in admin: technical_data only
+        audit.raw_audit_data = data
+        audit.ai_strategy_email = result.get("email_draft", "")
+
+        if "error" not in lighthouse:
+            audit.performance_score = lighthouse.get("performance_score", 0)
+            audit.accessibility_score = lighthouse.get("accessibility_score", 0)
+
+        audit.save()
+        return audit
