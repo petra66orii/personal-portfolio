@@ -1,0 +1,14 @@
+{% extends "admin/base.html" %} {% load i18n %} {% block branding %}
+<h1 id="site-name">
+  <a href="{% url 'admin:index' %}">Miss Bott Admin</a>
+</h1>
+{% endblock branding %} {% block nav-global %} {{ block.super }}
+<div id="consultant-dashboard-link" style="margin-left: 1rem">
+  <a
+    href="{% url 'consultant_dashboard' %}"
+    style="color: #0a0a0f; font-weight: 600"
+  >
+    {% trans "Consultant Dashboard" %}
+  </a>
+</div>
+{% endblock nav-global %}

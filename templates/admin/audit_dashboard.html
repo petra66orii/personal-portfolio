@@ -1,0 +1,14 @@
+{% extends "admin/base_site.html" %} {% load static %} {% block title %}Client
+Intelligence Dashboard | Miss Bott{% endblock %} {% block content %}
+<div id="root"></div>
+
+<script>
+  window.DJANGO_CSRF_TOKEN = "{{ csrf_token }}";
+</script>
+
+{# NEW: load the Tailwind/CSS bundle #}
+<link rel="stylesheet" href="{% static 'audit-dashboard.css' %}" />
+
+{# JS bundle #}
+<script src="{% static 'audit-dashboard.bundle.js' %}"></script>
+{% endblock %}
