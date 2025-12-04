@@ -345,3 +345,16 @@ body {
 .dark .rich-text-content strong, .dark .rich-text-content b {
   color: var(--text-dark-primary) !important;
 }
+
+/* Prevent Django Admin from overriding the React dashboard */
+.admin-reset {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter",
+    "Segoe UI", sans-serif;
+  color: #0f172a;
+}
+
+
+/* Allow Tailwind utility classes to work properly inside revert container */
+.admin-reset * {
+  box-sizing: border-box;
+}
