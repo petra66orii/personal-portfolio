@@ -1,0 +1,264 @@
+{
+  "name": "SME Finder → Django Auditor",
+  "nodes": [
+    {
+      "id": "e8c0eacb-7f6b-4f34-9f0c-001111111111",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        260,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "a4b2c3d4-0001-4f6a-9b1e-222222222222",
+      "name": "Set Search Params",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "values": {
+          "string": [
+            {
+              "name": "keyword",
+              "value": "hairdresser"
+            },
+            {
+              "name": "location",
+              "value": "Galway, Ireland"
+            }
+          ],
+          "number": [
+            {
+              "name": "maxResults",
+              "value": 20
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b5c6d7e8-0002-4a9e-8c3f-333333333333",
+      "name": "Search Businesses",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "url": "https://maps.googleapis.com/maps/api/place/textsearch/json",
+        "method": "GET",
+        "responseFormat": "json",
+        "queryParametersUi": {
+          "parameter": [
+            {
+              "name": "query",
+              "value": "={{$json[\"keyword\"] + ' in ' + $json[\"location\"]}}"
+            },
+            {
+              "name": "key",
+              "value": "={{$env.GOOGLE_PLACES_KEY}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "c6d7e8f9-0003-4b1a-9f5e-444444444444",
+      "name": "Fan Out Places",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [
+        1000,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const results = $json.results || [];\nconst search = $items(\"Set Search Params\")[0].json;\nconst max = search.maxResults || 50;\n\nconst sliced = results.slice(0, max);\n\nreturn sliced.map(place => ({\n  json: {\n    place_id: place.place_id,\n    name: place.name,\n    address: place.formatted_address,\n    keyword: search.keyword,\n    location: search.location\n  }\n}));"
+      }
+    },
+    {
+      "id": "d7e8f9a0-0004-4c2b-8a6f-555555555555",
+      "name": "Get Place Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1240,
+        300
+      ],
+      "parameters": {
+        "url": "https://maps.googleapis.com/maps/api/place/details/json",
+        "method": "GET",
+        "responseFormat": "json",
+        "queryParametersUi": {
+          "parameter": [
+            {
+              "name": "place_id",
+              "value": "={{$json[\"place_id\"]}}"
+            },
+            {
+              "name": "fields",
+              "value": "name,website,formatted_address,formatted_phone_number,rating,user_ratings_total"
+            },
+            {
+              "name": "key",
+              "value": "={{$env.GOOGLE_PLACES_KEY}}"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "e9f0a1b2-0005-4d3c-9b7a-666666666666",
+      "name": "Normalize Business",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 2,
+      "position": [
+        1480,
+        300
+      ],
+      "parameters": {
+        "functionCode": "const details = $json.result || {};\nconst search = $items(\"Set Search Params\")[0].json;\n\nreturn [{\n  json: {\n    name: details.name,\n    address: details.formatted_address,\n    website: details.website || '',\n    phone: details.formatted_phone_number || '',\n    rating: details.rating || null,\n    reviews: details.user_ratings_total || 0,\n    keyword: search.keyword,\n    location: search.location\n  }\n}];"
+      }
+    },
+    {
+      "id": "f0a1b2c3-0006-4e4d-8c8b-777777777777",
+      "name": "Filter Has Website",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1720,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{$json[\"website\"]}}",
+              "operation": "isNotEmpty"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "a1b2c3d4-0007-4f5e-9d9c-888888888888",
+      "name": "Send to Django Auditor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [
+        1960,
+        260
+      ],
+      "parameters": {
+        "url": "={{$env.DJANGO_AUDITOR_URL}}",
+        "method": "POST",
+        "responseFormat": "json",
+        "jsonParameters": true,
+        "options": {},
+        "bodyParametersJson": "={\n  \"url\": $json.website,\n  \"business_name\": $json.name,\n  \"category\": $json.keyword,\n  \"location\": $json.location\n}",
+        "headerParametersUi": {
+          "parameter": [
+            {
+              "name": "X-API-KEY",
+              "value": "={{$env.N8N_API_KEY}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set Search Params",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Search Params": {
+      "main": [
+        [
+          {
+            "node": "Search Businesses",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search Businesses": {
+      "main": [
+        [
+          {
+            "node": "Fan Out Places",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fan Out Places": {
+      "main": [
+        [
+          {
+            "node": "Get Place Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Place Details": {
+      "main": [
+        [
+          {
+            "node": "Normalize Business",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Normalize Business": {
+      "main": [
+        [
+          {
+            "node": "Filter Has Website",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Has Website": {
+      "main": [
+        [
+          {
+            "node": "Send to Django Auditor",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

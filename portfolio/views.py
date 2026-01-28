@@ -1,6 +1,8 @@
 import requests
 import json
 import threading
+import logging
+from .tasks import run_site_audit_task
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets, generics, status
@@ -21,7 +23,7 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.admin.views.decorators import staff_member_required
-from scripts.auditor import SiteAuditor 
+from .scripts.auditor import SiteAuditor
 
 
 class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
@@ -294,23 +296,58 @@ def audit_dashboard_view(request):
 
 
 @require_POST
-@staff_member_required
 def run_audit_api(request):
+    """
+    Unified audit endpoint:
+
+    - Called from React/admin: runs audit synchronously and returns full result.
+    - Called from n8n (with X-N8N-KEY): enqueues Celery job and returns 202/queued.
+    """
     try:
-        data = json.loads(request.body)
-        url = data.get("url")
+        # Safely parse JSON body
+        data_raw = request.body.decode("utf-8") if request.body else "{}"
+        data = json.loads(data_raw)
+        url = (data.get("url") or "").strip()
 
         if not url:
             return JsonResponse({"error": "URL is required"}, status=400)
 
+        # --- Detect n8n caller via header ---
+        n8n_key = request.headers.get("X-N8N-KEY")
+
+        # If header is present, treat it as an n8n call and enforce API key
+        if n8n_key is not None:
+            expected = getattr(settings, "N8N_DJANGO_API_KEY", "")
+            if not expected or n8n_key != expected:
+                logger.warning("Invalid N8N key from %s", request.META.get("REMOTE_ADDR"))
+                return JsonResponse({"error": "unauthorized"}, status=401)
+
+            # Queue async Celery task, return immediately
+            run_site_audit_task.delay(url)
+            return JsonResponse(
+                {"status": "queued", "url": url},
+                status=202,
+            )
+
+        # --- Normal path (admin/dashboard): run audit synchronously ---
         auditor = SiteAuditor(url)
         result = auditor.run_audit()  # full dict for React
 
-        # 🔁 reuse the same persistence logic as admin action
+        # Persist using shared helper
         SiteAudit.from_audit_result(url, result)
 
-        # Frontend still gets the full result
-        return JsonResponse(result)
+        return JsonResponse(result, status=200)
 
     except Exception as e:
-        return JsonResponse({"error": str(e)}, status=500)
+        logger.exception("run_audit_api failed")
+
+        # If this was n8n, don't break the workflow: return 200 with error info.
+        n8n_key = request.headers.get("X-N8N-KEY")
+        status_code = 200 if n8n_key is not None else 500
+
+        return JsonResponse(
+            {"error": f"audit_failed: {e}"},
+            status=status_code,
+        )
+    
+logger = logging.getLogger(__name__)

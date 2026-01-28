@@ -19,6 +19,7 @@ urlpatterns = [
     path(ADMIN_URL, admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api/', include('portfolio.urls')),
+    path("api/audits/from-n8n/", views.run_audit_api, name="run_audit_from_n8n"),
 ]
 
 # Serve media files

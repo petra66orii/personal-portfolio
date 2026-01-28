@@ -2,9 +2,11 @@ __pycache__/
 *.pyc
 .env
 .env.local
+.env.n8n
 *.sqlite3
 node_modules/
 staticfiles/
 db.sqlite3
 .DS_Store
 .venv/
+n8n_data/

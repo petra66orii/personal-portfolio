@@ -2,7 +2,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from .models import ServiceInquiry
-from scripts.ai_screener import analyze_lead
+from .scripts.ai_screener import analyze_lead
 import threading
 
 @receiver(post_save, sender=ServiceInquiry)

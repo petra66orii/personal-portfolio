@@ -10,9 +10,12 @@ from openai import OpenAI
 from concurrent.futures import ThreadPoolExecutor
 from dotenv import load_dotenv
 
-load_dotenv() 
+load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# Single shared client for the whole module
+openai_client = OpenAI(api_key=OPENAI_API_KEY) if OPENAI_API_KEY else None
 
 # Simulate a real browser to avoid being blocked by basic firewalls
 HEADERS = {
@@ -133,15 +136,13 @@ class SiteAuditor:
             return url, 500
 
     def generate_hire_me_email(self, audit_data):
-            """Uses OpenAI to write the Premium Consultant email."""
-            print("🤖 Generating 'Miss Bott' Strategic Proposal...")
-            
-            if not OPENAI_API_KEY:
-                return "ERROR: OpenAI API Key not found. Please check your .env file."
+        """Uses OpenAI to write the Premium Consultant email."""
+        print("🤖 Generating 'Miss Bott' Strategic Proposal...")
 
-            client = OpenAI(api_key=OPENAI_API_KEY)
-            
-            prompt = f"""You are Miss Bott, a high-end Digital Consultant and Solutions Architect. You do not sell "bug fixes"; you sell high-performance digital transformations starting at €6,000.
+        if not openai_client:
+            return "ERROR: OpenAI API Key not found. Please check your .env file."
+
+        prompt = f"""You are Miss Bott, a high-end Digital Consultant and Solutions Architect. You do not sell "bug fixes"; you sell high-performance digital transformations starting at €6,000.
 
 Write a cold outreach email to a business owner based on this audit of their website: {self.url}
 
@@ -178,13 +179,23 @@ Write a cold outreach email to a business owner based on this audit of their web
 - The signature must appear exactly in this format at the end of the email.
 """
 
+        # Robust OpenAI call with timeout + retry
+        last_error = None
+        for attempt in range(2):  # two attempts max
+            try:
+                response = openai_client.chat.completions.create(
+                    model="gpt-4o",
+                    messages=[{"role": "user", "content": prompt}],
+                    temperature=0.7,
+                    timeout=20,  # prevents hanging forever
+                )
+                return response.choices[0].message.content
+            except Exception as e:
+                last_error = e
+                print(f"⚠️ OpenAI error (attempt {attempt + 1}): {e}")
 
-            response = client.chat.completions.create(
-                model="gpt-4o",
-                messages=[{"role": "user", "content": prompt}],
-                temperature=0.7,
-            )
-            return response.choices[0].message.content
+        return f"ERROR: OpenAI request failed after retries: {last_error}"
+
 
     def run_audit(self):
         # Aggregate all data

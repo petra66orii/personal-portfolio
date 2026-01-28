@@ -27,6 +27,10 @@ ALLOWED_HOSTS = [
     'missbott.online',
     'personal-portfolio-k5mk.onrender.com',
     os.getenv('RENDER_EXTERNAL_HOSTNAME', ''),
+    'host.docker.internal',
+    'n8n',
+    'django',
+    'web',
 ]
 
 
@@ -182,6 +186,19 @@ else:
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 SUMMERNOTE_THEME = 'bs4'
+
+N8N_API_KEY = os.getenv("N8N_API_KEY", "")
+N8N_DJANGO_API_KEY = os.getenv("N8N_DJANGO_API_KEY", "")
+
+REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
+
+CELERY_BROKER_URL = REDIS_URL
+CELERY_RESULT_BACKEND = REDIS_URL
+
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "Europe/Dublin"
 
 # Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
