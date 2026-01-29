@@ -117,10 +117,10 @@ services:
       N8N_PROTOCOL: "http"
       GENERIC_TIMEZONE: "Europe/Dublin"
     volumes:
-      - n8n_data:/home/node/.n8n
+      - ./n8n_data:/home/node/.n8n
     depends_on:
       - web
-      - db 
+      - db
 
 volumes:
   postgres_data:
