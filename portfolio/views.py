@@ -294,7 +294,7 @@ def blog_post_detail(request, slug):
 def audit_dashboard_view(request):
     return render(request, "admin/audit_dashboard.html")
 
-
+@csrf_exempt
 @require_POST
 def run_audit_api(request):
     """

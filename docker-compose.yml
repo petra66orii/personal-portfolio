@@ -23,6 +23,7 @@ services:
       dockerfile: Dockerfile
     container_name: missbott_web
     volumes:
+      - .:/app
       - ./media:/app/media
       - ./staticfiles:/app/staticfiles
       - static_volume:/var/www/static
@@ -30,9 +31,9 @@ services:
       - "8000:8000"
     environment:
       DJANGO_SETTINGS_MODULE: backend.settings
-      DJANGO_SECRET_KEY: ${SECRET_KEY}
-      DJANGO_DEBUG: ${DEBUG}
-      DJANGO_ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      SECRET_KEY: ${SECRET_KEY}
+      DEBUG: ${DEBUG}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
 
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
@@ -61,6 +62,9 @@ services:
       dockerfile: Dockerfile
     container_name: missbott_celery_worker
     command: celery -A backend worker -l info
+    depends_on:
+      - db
+      - redis
     environment:
       DJANGO_SETTINGS_MODULE: backend.settings
       DJANGO_SECRET_KEY: ${SECRET_KEY}
@@ -76,9 +80,7 @@ services:
       REDIS_URL: redis://redis:6379/0
       OPENAI_API_KEY: ${OPENAI_API_KEY}
       GOOGLE_PAGESPEED_KEY: ${GOOGLE_PAGESPEED_KEY}
-    depends_on:
-      - db
-      - redis
+      
 
   celery_beat:
     build:
@@ -88,9 +90,9 @@ services:
     command: celery -A backend beat -l info
     environment:
       DJANGO_SETTINGS_MODULE: backend.settings
-      DJANGO_SECRET_KEY: ${SECRET_KEY}
-      DJANGO_DEBUG: ${DEBUG}
-      DJANGO_ALLOWED_HOSTS: ${ALLOWED_HOSTS}
+      SECRET_KEY: ${SECRET_KEY}
+      DEBUG: ${DEBUG}
+      ALLOWED_HOSTS: ${ALLOWED_HOSTS}
 
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}

@@ -70,7 +70,10 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / "templates"],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend/dist'),
+            os.path.join(BASE_DIR, 'templates')
+            ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,7 +95,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
-    # We are in a deployed environment (like Render)
+    # Production (Render) - Uses the single URL
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
@@ -100,8 +103,20 @@ if DATABASE_URL:
             ssl_require=True
         )
     }
+elif os.getenv("POSTGRES_DB"):
+    # Local Docker - Uses the individual variables
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv("POSTGRES_DB"),
+            'USER': os.getenv("POSTGRES_USER"),
+            'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
+            'HOST': os.getenv("POSTGRES_HOST"),
+            'PORT': os.getenv("POSTGRES_PORT"),
+        }
+    }
 else:
-    # We are in a local development environment
+    # Fallback to SQLite (only if no DB config is found at all)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',

@@ -1,16 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";  
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
+  base: "/static/",
   plugins: [
     react(),
-    tailwindcss(),          
+    tailwindcss(),
   ],
   build: {
     outDir: "dist-admin",
     emptyOutDir: true,
-    cssCodeSplit: false, 
+    cssCodeSplit: false,
     rollupOptions: {
       input: "src/admin-entry.tsx",
       output: {
