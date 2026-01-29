@@ -26,7 +26,6 @@ RUN pip install --upgrade pip && pip install -r ./backend/requirements.txt
 COPY backend ./backend
 COPY portfolio ./portfolio
 COPY manage.py ./
-COPY db.sqlite3 ./
 COPY media ./media
 COPY templates ./templates
 
