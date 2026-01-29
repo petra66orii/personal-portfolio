@@ -190,10 +190,8 @@ WHITENOISE_MANIFEST_STRICT = False
 # Media files configuration
 MEDIA_URL = '/media/'
 
-# Use writable directories for media files
-if os.getenv("RENDER", "") == "true":
-    # In production on Render, use a writable directory within the app
-    MEDIA_ROOT = '/var/data/media' 
+if "RENDER" in os.environ:
+    MEDIA_ROOT = '/var/data/media'
 else:
     # Local development
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
