@@ -58,13 +58,10 @@ cp -r frontend/dist-admin/* staticfiles/dist-admin/
 echo "📦 Collecting static files"
 python manage.py collectstatic --noinput
 
-# --- MIGRATIONS ---
-echo "🗃️ Running migrations"
-python manage.py migrate
-
 # --- FIXTURES (optional) ---
 if [ "$LOAD_FIXTURES" = "true" ]; then
     python manage.py loaddata projects.json
+    python manage.py loaddata services.json
     echo "Fixtures loaded"
 else
     echo "Skipping fixtures (set LOAD_FIXTURES=true to load)"

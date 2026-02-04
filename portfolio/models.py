@@ -35,7 +35,7 @@ class Service(models.Model):
     short_description = models.CharField(max_length=200, help_text="Brief description for cards")
     description = models.TextField()
     features = models.TextField(help_text="One feature per line")
-    starting_price = models.CharField(max_length=50, blank=True, help_text="e.g., 'From £500' or 'Contact for Quote'")
+    starting_price = models.CharField(max_length=50, blank=True, help_text="Contact for Quote")
     delivery_time = models.CharField(max_length=50, blank=True, help_text="e.g., '2-3 weeks'")
     icon = models.CharField(max_length=50, default='code', help_text="Lucide icon name")
     featured = models.BooleanField(default=False)
