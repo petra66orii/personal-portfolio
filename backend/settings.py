@@ -188,12 +188,32 @@ WHITENOISE_USE_FINDERS = True
 WHITENOISE_MANIFEST_STRICT = False
 
 # Media files configuration
-MEDIA_URL = '/media/'
 
-if "RENDER" in os.environ:
-    MEDIA_ROOT = '/var/data/media'
+if os.getenv("USE_S3", "False").lower() == "true":
+    # Cloudflare R2 (S3 Compatible) Settings
+    AWS_ACCESS_KEY_ID = os.getenv('R2_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('R2_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.getenv('R2_BUCKET_NAME')
+    AWS_S3_ENDPOINT_URL = os.getenv('R2_ENDPOINT_URL')
+    
+    # Required for R2 compatibility
+    AWS_S3_REGION_NAME = 'auto'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_FILE_OVERWRITE = False
+    
+    # Crucial for Custom Domains: removes the messy authentication tokens from the URL
+    AWS_QUERYSTRING_AUTH = False
+    
+    # Tell Django to use your new custom domain
+    AWS_S3_CUSTOM_DOMAIN = os.getenv('R2_CUSTOM_DOMAIN')
+    
+    # Set the storage backend and the public URL
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/'
+
 else:
-    # Local development
+    # Local Development Fallback (Clean standard directory, no Render disk)
+    MEDIA_URL = '/media/'
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
