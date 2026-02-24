@@ -36,14 +36,14 @@ ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL', 'admin/')
 print("SITEMAP VIEW:", sitemap)
 print("SITEMAPS DICT:", sitemaps)
 urlpatterns = [
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django-sitemap"),
+    path("robots.txt", robots_txt, name="robots-txt"),
     path(f'{ADMIN_URL}/consultant-dashboard/', views.audit_dashboard_view, name='consultant_dashboard'),
     path('api/run-audit/', views.run_audit_api, name='run_audit_api'),
     path(f'{ADMIN_URL}', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
     path('api/', include('portfolio.urls')),
     path("api/audits/from-n8n/", views.run_audit_api, name="run_audit_from_n8n"),
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django-sitemap"),
-    path("robots.txt", robots_txt, name="robots-txt"),
     path("", react_app, name="home"),
     path("services", react_app, name="services"),
     path("services/strategic-discovery-session", react_app, name="service_discovery"),
