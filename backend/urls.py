@@ -35,8 +35,18 @@ react_app = TemplateView.as_view(template_name="index.html")
 ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL', 'admin/')
 
 urlpatterns = [
-    path("sitemap.xml", sitemap_index, {"sitemaps": sitemaps}, name="django-sitemap-index"),
-    path("sitemap-<section>.xml", sitemap_view, {"sitemaps": sitemaps}, name="django-sitemap"),
+    path(
+        "sitemap.xml",
+        sitemap_index,
+        {"sitemaps": sitemaps, "sitemap_url_name": "django-sitemap"},
+        name="django-sitemap-index",
+    ),
+    path(
+        "sitemap-<section>.xml",
+        sitemap_view,
+        {"sitemaps": sitemaps},
+        name="django-sitemap",
+    ),
     path("robots.txt", robots_txt, name="robots-txt"),
     path(f'{ADMIN_URL}/consultant-dashboard/', views.audit_dashboard_view, name='consultant_dashboard'),
     path('api/run-audit/', views.run_audit_api, name='run_audit_api'),
@@ -61,7 +71,7 @@ urlpatterns += [
 
 urlpatterns += [
     re_path(
-    r'^(?!static/|admin/|adminportal/|api/|media/|sitemap\.xml$|robots\.txt$).*$', 
-    TemplateView.as_view(template_name="index.html")
-),
+        r'^(?!static/|admin/|adminportal/|api/|media/|sitemap.*\.xml$|robots\.txt$).*$', 
+        TemplateView.as_view(template_name="index.html")
+    ),
 ]
