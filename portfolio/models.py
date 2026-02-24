@@ -152,8 +152,6 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
-# portfolio/models.py
-
 class SiteAudit(models.Model):
     url = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)

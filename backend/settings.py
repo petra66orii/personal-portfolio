@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'storages',
     'django_summernote',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [
@@ -88,6 +90,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+SITE_ID = 1
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
