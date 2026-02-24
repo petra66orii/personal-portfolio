@@ -7,7 +7,8 @@ from django.views.generic import TemplateView
 from django.http import HttpResponse
 from .views import permission_denied_view
 from portfolio import views
-from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps.views import index as sitemap_index
+from django.contrib.sitemaps.views import sitemap as sitemap_view
 
 from portfolio.sitemaps import StaticViewSitemap, BlogPostSitemap, ProjectSitemap
 
@@ -33,10 +34,9 @@ react_app = TemplateView.as_view(template_name="index.html")
 # Standardizing this variable so we don't mix hardcoded strings
 ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL', 'admin/')
 
-print("SITEMAP VIEW:", sitemap)
-print("SITEMAPS DICT:", sitemaps)
 urlpatterns = [
-    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="django-sitemap"),
+    path("sitemap.xml", sitemap_index, {"sitemaps": sitemaps}, name="django-sitemap-index"),
+    path("sitemap-<section>.xml", sitemap_view, {"sitemaps": sitemaps}, name="django-sitemap"),
     path("robots.txt", robots_txt, name="robots-txt"),
     path(f'{ADMIN_URL}/consultant-dashboard/', views.audit_dashboard_view, name='consultant_dashboard'),
     path('api/run-audit/', views.run_audit_api, name='run_audit_api'),
