@@ -35,14 +35,14 @@ react_app = TemplateView.as_view(template_name="index.html")
 ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL', 'admin/')
 
 urlpatterns = [
-    path(
+   path(
         "sitemap.xml",
         sitemap_index,
         {"sitemaps": sitemaps, "sitemap_url_name": "django-sitemap"},
         name="django-sitemap-index",
     ),
-    path(
-        "sitemap-<section>.xml",
+    re_path(
+        r"^sitemap-(?P<section>.+)\.xml$",
         sitemap_view,
         {"sitemaps": sitemaps},
         name="django-sitemap",
