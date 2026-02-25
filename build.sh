@@ -11,6 +11,10 @@ npm --prefix frontend install
 echo "🛠️ Building MAIN frontend"
 npm --prefix frontend run build
 
+echo "🧹 Removing any frontend-generated sitemap/robots (force backend-only)"
+rm -f frontend/dist/sitemap.xml frontend/dist/robots.txt
+rm -f frontend/dist/sitemap-*.xml frontend/dist/robots*.txt
+
 echo "🛠️ Building ADMIN dashboard bundle"
 npm --prefix frontend run build:admin
 
@@ -44,6 +48,10 @@ cp frontend/dist/index.html templates/
 # --- FIX PATHS inside index.html ---
 echo "🔧 Fixing static asset paths in index.html"
 
+echo "🧹 Safety check: ensure sitemap/robots are not in dist before copying"
+rm -f frontend/dist/sitemap.xml frontend/dist/robots.txt
+rm -f frontend/dist/sitemap-*.xml frontend/dist/robots*.txt
+
 # --- COPY MAIN frontend build into staticfiles ---
 echo "📁 Copying main dist/ into staticfiles/"
 mkdir -p staticfiles
@@ -56,7 +64,10 @@ cp -r frontend/dist-admin/* staticfiles/dist-admin/
 
 # --- COLLECTSTATIC (Django + WhiteNoise) ---
 echo "📦 Collecting static files"
-python manage.py collectstatic --noinput
+python manage.py collectstatic --noinput \
+  --ignore "sitemap.xml" \
+  --ignore "sitemap-*.xml" \
+  --ignore "robots.txt"
 
 # --- FIXTURES (optional) ---
 if [ "$LOAD_FIXTURES" = "true" ]; then
