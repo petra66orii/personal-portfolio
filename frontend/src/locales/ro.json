@@ -9,26 +9,35 @@
     "contact": "Contact"
   },
 "home": {
-    "title": "Depășește Limitele Șabloanelor. Construiește un Activ Digital.",
-    "description_p1": "Sunt partenerul tehnic pentru IMM-uri ambițioase, startup-uri și branduri de e-commerce care au depășit limitările WordPress, Squarespace și Shopify.",
-    "description_p2": "Ai nevoie de performanță, nu de plugin-uri. Construiesc platforme personalizate cu React și Django care obțin scoruri de 90+ pe Google, asigurându-te că nu vei mai pierde niciun client din cauza unui site lent.",
-    "call_to_action": "Vezi Pachetele"
+    "title": "Ai Depășit WordPress sau Squarespace?",
+    "subtitle": "Construiește un site care chiar se potrivește cu afacerea ta.",
+    "description_p1": "Construiesc site-uri de înaltă performanță și aplicații web personalizate pentru afaceri care au atins limitele platformelor de șabloane. Performanță mai rapidă, control total și sisteme construite să crească odată cu tine.",
+    "description_p2": "Construite cu tehnologii moderne precum Django, React, PostgreSQL și infrastructură cloud scalabilă.",
+    "call_to_action": "Rezervă o Sesiune de Descoperire"
+  },
+  "problem": {
+    "title": "De Ce Afacerile Depășesc Platformele de Șabloane",
+    "description1": "Platformele precum WordPress, Squarespace și Shopify sunt fantastice pentru a porni o afacere online rapid. Dar pe măsură ce companiile cresc, aceleași instrumente care le-au ajutat să înceapă acum pot să le țină pe loc.",
+    "description2": "Site-urile devin mai lente pe măsură ce se adaugă mai multe plugin-uri. Funcționalitatea personalizată devine dificilă sau imposibilă fără soluții alternative. Integrările cu instrumente interne, CRM-uri sau sisteme de automatizare încep să se simtă fragile. Ceea ce a început ca un site simplu se transformă încet într-un patchwork de plugin-uri, corecții și limitări.",
+    "desciption3": "La un moment dat, întrebarea se schimbă de la “Cum reparăm acest plugin?” la “Oare ar trebui să fie construit diferit site-ul nostru?”",
+    "description4": "Aici intervine Miss Bott — înlocuind sistemele de șabloane fragile cu o arhitectură web modernă proiectată pentru viteză, flexibilitate și creștere pe termen lung."
   },
   "services1": {
     "title": "Inginerie pentru Creștere",
-    "description": "Fără șabloane. Fără cod inutil. Doar tehnologie de nivel enterprise, structurată în pachete transparente cu preț fix, concepute pentru stadiul tău de creștere.",
+    "description1": "Când afacerile cresc, platformele de șabloane încep să se interpună. Performanță lentă, conflicte de plugin-uri, flexibilitate limitată.",
+    "description2": "Miss Bott înlocuiește aceste limitări cu o arhitectură web modernă proiectată pentru viteză, scalabilitate și control total.",
     "web_dev_title": "Stack-ul Foundation",
-    "web_dev_desc": "Un site de prezentare personalizat, ultra-rapid, cu CMS Headless. Vitrina digitală perfectă pentru profesioniștii care își construiesc autoritatea.",
+    "web_dev_desc": "Un site web profesional și ultra-rapid cu un sistem de conținut ușor de utilizat, astfel încât să poți actualiza site-ul în orice moment fără să atingi codul.",
     "maintenance_title": "Stack-ul Commerce",
-    "maintenance_desc": "E-commerce Headless cu integrări API personalizate. Pentru brandurile care cer control total asupra experienței clienților.",
+    "maintenance_desc": "Un magazin online de înaltă performanță care oferă control total asupra experienței clienților, integrărilor și performanței.",
     "optimization_title": "Stack-ul Application",
-    "optimization_desc": "O aplicație web full-stack React + Django, cu panouri de control și logică personalizată pentru utilizatori. Software adevărat, nu doar un website.",
+    "optimization_desc": "Software personalizat pentru afacerea ta — panouri de control, automatizare, portale și sisteme interne construite exact în funcție de modul în care lucrezi.",
     "consultation_title": "Sesiune de Descoperire Strategică",
-    "consultation_desc": "Primul pas obligatoriu. O foaie de parcurs tehnică detaliată, contra cost, pentru a defini scopul și a preveni extinderea necontrolată a proiectului înainte de a construi.",
-    "view_all": "Compară Soluțiile"
+    "consultation_desc": "O foaie de parcurs tehnică detaliată, contra cost, pentru a defini scopul și a preveni extinderea necontrolată a proiectului înainte de a construi.",
+    "view_all": "Explorează Soluțiile"
   },
   "testimonials": {
-  "title": "Ce Spun Clienții Mei",
+  "title": "Rezultate de la Clienți Reali",
   "subtitle": "Sunt mândră să colaborez cu profesioniști creativi pentru a construi o prezență digitală pe care o iubesc.",
   "list": [
     {
@@ -73,6 +82,11 @@
   "error_message": "Nu s-au putut prelua detaliile proiectului. Te rog, încearcă din nou.",
   "not_found": "Proiectul nu a putut fi găsit."
 },
+  "cta": {
+    "title": "Ești gata să depășești limitările șabloanelor?",
+    "description": "Rezervă o sesiune de descoperire și vom trasa arhitectura exactă de care afacerea ta are nevoie pentru a scala.",
+    "button": "Rezervă o Sesiune de Descoperire"
+  },
 "seo": {
     "home_title": "Dezvoltare Web Personalizată și Performantă | React & Django | Miss Bott",
     "home_description": "Depășește limitele șabloanelor. Construiesc aplicații web scalabile și personalizate pentru IMM-uri și startup-uri, folosind React și Django. Scoruri de performanță 90+ garantate.",

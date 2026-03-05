@@ -42,7 +42,7 @@ const Home = () => {
         const contentType = response.headers.get("content-type");
         if (!contentType || !contentType.includes("application/json")) {
           throw new TypeError(
-            "Server did not send JSON. Check the backend URL and view."
+            "Server did not send JSON. Check the backend URL and view.",
           );
         }
         const data: Project[] = await response.json();
@@ -77,8 +77,14 @@ const Home = () => {
               <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-primary">
                 {t("home.title")}
               </h1>
+              <h2 className="text-xl sm:text-3xl text-primary font-semibold mb-4">
+                {t("home.subtitle")}
+              </h2>
               <p className="text-lg text-secondary max-w-[790px] my-6 mx-auto">
-                {t("home.description_p1")} {t("home.description_p2")}
+                {t("home.description_p1")}
+                <br />
+                <br />
+                {t("home.description_p2")}
               </p>
 
               <Link
@@ -94,10 +100,39 @@ const Home = () => {
             <section className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl">
               <div className="text-center mb-12">
                 <h2 className="text-2xl sm:text-4xl text-primary font-bold mb-4 home-title break-words">
+                  {t("problem.title")}
+                </h2>
+                <p className="text-lg text-secondary max-w-3xl mx-auto">
+                  {t("problem.description1")}
+                </p>
+                <br />
+                <p className="text-lg text-secondary max-w-3xl mx-auto">
+                  {t("problem.description2")}
+                </p>
+                <br />
+                <p className="text-lg text-secondary max-w-3xl mx-auto">
+                  {t("problem.desciption3")}
+                </p>
+                <br />
+                <p className="text-lg text-secondary max-w-3xl mx-auto">
+                  {t("problem.description4")}
+                </p>
+              </div>
+            </section>
+          </ScrollAnimator>
+
+          <ScrollAnimator>
+            <section className="mb-16 glassmorphism mx-4 px-4 py-12 rounded-2xl">
+              <div className="text-center mb-12">
+                <h2 className="text-2xl sm:text-4xl text-primary font-bold mb-4 home-title break-words">
                   {t("services1.title")}
                 </h2>
                 <p className="text-lg text-secondary max-w-3xl mx-auto">
-                  {t("services1.description")}
+                  {t("services1.description1")}
+                </p>
+                <br />
+                <p className="text-lg text-secondary max-w-3xl mx-auto">
+                  {t("services1.description2")}
                 </p>
               </div>
               <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-8">
@@ -228,6 +263,20 @@ const Home = () => {
               </p>
             </section>
           )}
+          <section className="text-center py-12">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 home-title">
+              {t("cta.title")}
+            </h2>
+            <p className="text-lg text-secondary max-w-3xl mx-auto mb-6">
+              {t("cta.description")}
+            </p>
+            <Link
+              to="/quote"
+              className="inline-block px-8 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              {t("cta.button")}
+            </Link>
+          </section>
         </div>
       </main>
     </>

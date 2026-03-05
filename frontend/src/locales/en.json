@@ -9,26 +9,40 @@
     "contact": "Contact"
   },
 "home": {
-    "title": "Escape the Template Ceiling. Build a Digital Asset.",
-    "description_p1": "I am the technical partner for ambitious SMEs, startups, and e-commerce brands that have outgrown the limitations of WordPress, Squarespace, and Shopify.",
-    "description_p2": "You need performance, not plugins. I build custom-coded React & Django platforms that score 90+ on Google, ensuring you never lose a customer to a slow loading screen again.",
-    "call_to_action": "View the Stacks"
+    "title": "Outgrown WordPress or Squarespace?",
+    "subtitle": "Build a Website That Actually Scales With Your Business.",
+    "description_p1": "I build high-performance websites and custom web applications for businesses that have hit the limits of template platforms. Faster performance, full control, and systems built to grow with you. ",
+    "description_p2": "Built with modern technologies including Django, React, PostgreSQL, and scalable cloud infrastructure.",
+    "call_to_action": "Book a Discovery Call"
+  },
+  "problem": {
+    "title": "Why Businesses Outgrow Template Platforms",
+    "description1": "Platforms like WordPress, Squarespace, and Shopify are fantastic for getting a business online quickly. But as companies grow, the same tools that helped them start can begin holding them back.",
+    "bullet_point1": "Slow loading speeds as plugins accumulate",
+    "bullet_point2": "Custom features requiring complicated workarounds",
+    "bullet_point3": "Fragile integrations with CRM or internal tools",
+    "bullet_point4": "Security and maintenance issues",
+    "bullet_point5": "Increasing technical debt",
+    "description2": "Websites become slower as more plugins are added. Custom functionality becomes difficult or impossible without workarounds. Integrations with internal tools, CRMs, or automation systems start to feel fragile. What started as a simple website slowly turns into a patchwork of plugins, fixes, and limitations.",
+    "desciption3": "At some point, the question changes from “How do we fix this plugin?” to “Should our website actually be built differently?”",
+    "description4": "That’s where Miss Bott comes in — replacing fragile template systems with modern web architecture designed for speed, flexibility, and long-term growth."
   },
   "services1": {
     "title": "Engineered for Growth",
-    "description": "No templates. No bloat. Just enterprise-grade technology packaged into transparent, fixed-price stacks designed for your specific growth stage.",
+    "description1": "When businesses grow, template platforms start getting in the way. Slow performance, plugin conflicts, limited flexibility.",
+    "description2": " Miss Bott replaces those limitations with modern web architecture designed for speed, scalability, and full control.",
     "web_dev_title": "The Foundation Stack",
-    "web_dev_desc": "A bespoke, lightning-fast brochure site with a Headless CMS. The perfect digital storefront for professionals building authority.",
+    "web_dev_desc": "A lightning-fast professional website with an easy content system so you can update your site anytime without touching code.",
     "maintenance_title": "The Commerce Stack",
-    "maintenance_desc": "Headless e-commerce with custom API integrations. For brands demanding total control over their customer experience.",
+    "maintenance_desc": "A high-performance online store with full control over customer experience, integrations, and performance.",
     "optimization_title": "The Application Stack",
-    "optimization_desc": "A full-stack React + Django web application with custom user dashboards and logic. True software, not just a website.",
+    "optimization_desc": "Custom software for your business — dashboards, automation, portals, and internal systems built exactly around how you work.",
     "consultation_title": "Strategic Discovery Session",
-    "consultation_desc": "The mandatory first step. A paid, deep-dive technical roadmap to define your scope and prevent scope creep before we build.",
-    "view_all": "Compare the Stacks"
+    "consultation_desc": "A paid, deep-dive technical roadmap to define your scope and prevent scope creep before we build.",
+    "view_all": "Explore Solutions"
   },
   "testimonials": {
-  "title": "What My Clients Say",
+  "title": "Results from Real Clients",
   "subtitle": "I'm proud to partner with creatives to build a digital presence they love.",
   "list": [
     {
@@ -73,6 +87,11 @@
   "error_message": "Failed to fetch project details. Please try again later.",
   "not_found": "The project could not be found."
 },
+  "cta": {
+    "title": "Ready to Move Beyond Template Limitations?",
+    "description": "Book a discovery session and we’ll map out the exact architecture your business needs to scale.",
+    "button": "Book a Discovery Call"
+  },
 "seo": {
     "home_title": "High-Performance Custom Web Development | React & Django | Miss Bott",
     "home_description": "Escape the template ceiling. I build custom, scalable web applications for ambitious SMEs and E-commerce brands using React and Django. 90+ Google Performance scores guaranteed.",

@@ -9,26 +9,35 @@
     "contact": "Contacto"
   },
 "home": {
-    "title": "Escapa del Techo de las Plantillas. Construye un Activo Digital.",
-    "description_p1": "Soy el socio técnico para PYMES ambiciosas, startups y marcas de comercio electrónico que han superado las limitaciones de WordPress, Squarespace y Shopify.",
-    "description_p2": "Necesitas rendimiento, no plugins. Construyo plataformas personalizadas en React y Django que obtienen más de 90 puntos en Google, asegurando que nunca más pierdas un cliente por una carga lenta.",
-    "call_to_action": "Ver los Stacks"
+    "title": "¿Has superado WordPress o Squarespace? Construye un sitio web que se adapte realmente a tu negocio.",
+    "subtitle": "Construye un sitio web que realmente se adapte a tu negocio.",
+    "description_p1": "Construyo sitios web de alto rendimiento y aplicaciones web personalizadas para empresas que han alcanzado los límites de las plataformas de plantillas. Rendimiento más rápido, control total y sistemas diseñados para crecer contigo.",
+    "description_p2": "Construidos con tecnologías modernas como Django, React, PostgreSQL e infraestructura en la nube escalable.",
+    "call_to_action": "Reserva una Sesión de Descubrimiento"
+  },
+  "problem": {
+    "title": "Por Qué Las Empresas Superan las Plataformas de Plantillas",
+    "description1": "Las plataformas como WordPress, Squarespace y Shopify son fantásticas para poner un negocio en línea rápidamente. Pero a medida que las empresas crecen, las mismas herramientas que les ayudaron a comenzar pueden comenzar a frenarlas.",
+    "description2": "Los sitios web se vuelven más lentos a medida que se agregan más plugins. La funcionalidad personalizada se vuelve difícil o imposible sin soluciones alternativas. Las integraciones con herramientas internas, CRM o sistemas de automatización comienzan a sentirse frágiles. Lo que comenzó como un sitio web simple se convierte lentamente en un parche de plugins, correcciones y limitaciones.",
+    "desciption3": "En algún momento, la pregunta cambia de “¿Cómo arreglamos este plugin?” a “¿Debería nuestro sitio web estar construido de manera diferente?”",
+    "description4": "Ahí es donde entra Miss Bott: reemplazando los sistemas de plantillas frágiles con una arquitectura web moderna diseñada para la velocidad, la flexibilidad y el crecimiento a largo plazo."
   },
   "services1": {
     "title": "Ingeniería para el Crecimiento",
-    "description": "Sin plantillas. Sin código basura. Solo tecnología de nivel empresarial empaquetada en stacks transparentes de precio fijo, diseñados para tu etapa de crecimiento.",
+    "description1": "Cuando las empresas crecen, las plataformas de plantillas comienzan a interponerse. Rendimiento lento, conflictos de plugins, flexibilidad limitada.",
+    "description2": "Miss Bott reemplaza esas limitaciones con arquitectura web moderna diseñada para velocidad, escalabilidad y control total.",
     "web_dev_title": "El Stack Foundation",
-    "web_dev_desc": "Un sitio web a medida, ultrarrápido, con CMS Headless. El escaparate digital perfecto para profesionales que construyen autoridad.",
+    "web_dev_desc": "Un sitio web profesional y ultrarrápido con un sistema de contenido fácil de usar, para que puedas actualizar tu sitio en cualquier momento sin tocar el código.",
     "maintenance_title": "El Stack Commerce",
-    "maintenance_desc": "Comercio electrónico Headless con integraciones API personalizadas. Para marcas que exigen un control total sobre la experiencia del cliente.",
+    "maintenance_desc": "Una tienda en línea de alto rendimiento con control total sobre la experiencia del cliente, integraciones y rendimiento.",
     "optimization_title": "El Stack Application",
-    "optimization_desc": "Una aplicación web full-stack React + Django con paneles de usuario y lógica personalizada. Software real, no solo un sitio web.",
+    "optimization_desc": "Software personalizado para tu negocio — paneles de control, automatización, portales y sistemas internos construidos exactamente según cómo trabajas.",
     "consultation_title": "Sesión de Descubrimiento Estratégico",
-    "consultation_desc": "El primer paso obligatorio. Una hoja de ruta técnica detallada y de pago para definir el alcance y evitar desviaciones antes de construir.",
-    "view_all": "Comparar los Stacks"
+    "consultation_desc": "Una hoja de ruta técnica detallada y de pago para definir el alcance y evitar desviaciones antes de construir.",
+    "view_all": "Explora Soluciones"
   },
   "testimonials": {
-    "title": "Lo que dicen mis clientes",
+    "title": "Resultados de Clientes Reales",
     "subtitle": "Me enorgullece asociarme con creativos para construir una presencia digital que aman.",
     "list": [
       {
@@ -72,6 +81,11 @@
     "error_title": "Error",
     "error_message": "No se pudieron cargar los detalles del proyecto. Por favor, inténtalo de nuevo.",
     "not_found": "El proyecto no pudo ser encontrado."
+  },
+  "cta": {
+    "title": "¿Listo para Superar las Limitaciones de las Plantillas?",
+    "description": "Reserva una sesión de descubrimiento y trazaremos la arquitectura exacta que tu negocio necesita para escalar.",
+    "button": "Reserva una Llamada de Descubrimiento"
   },
 "seo": {
     "home_title": "Desarrollo Web a Medida de Alto Rendimiento | React y Django | Miss Bott",
