@@ -138,13 +138,31 @@ const ProjectInquiry = () => {
       setSubmitStatus(null);
       try {
         const csrfToken = getCookie("csrftoken");
+        const parsedServiceId = Number(formData.service);
+        const payload = {
+          name: formData.name,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone,
+          website_url: formData.website_url,
+          service:
+            formData.service &&
+            formData.service !== "other" &&
+            !Number.isNaN(parsedServiceId)
+              ? parsedServiceId
+              : null,
+          project_details: formData.project_details,
+          budget_range: formData.budget,
+          timeline: formData.timeline,
+        };
+
         const response = await fetch("/api/service-inquiry/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             "X-CSRFToken": csrfToken || "",
           },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         });
 
         if (!response.ok) {

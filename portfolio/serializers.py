@@ -17,7 +17,8 @@ class ProjectSerializer(serializers.ModelSerializer):
 class ContactMessageSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContactMessage
-        fields = '__all__'
+        fields = ['id', 'name', 'email', 'message', 'sent_at']
+        read_only_fields = ['id', 'sent_at']
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
@@ -54,5 +55,18 @@ class ServiceInquirySerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ServiceInquiry
-        fields = '__all__'
-        read_only_fields = ['created_at']
+        fields = [
+            'id',
+            'service',
+            'service_name',
+            'name',
+            'email',
+            'company',
+            'project_details',
+            'budget_range',
+            'timeline',
+            'phone',
+            'website_url',
+            'created_at',
+        ]
+        read_only_fields = ['id', 'service_name', 'created_at']

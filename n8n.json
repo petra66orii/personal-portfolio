@@ -166,7 +166,7 @@
         "headerParametersUi": {
           "parameter": [
             {
-              "name": "X-API-KEY",
+              "name": "X-N8N-KEY",
               "value": "={{$env.N8N_API_KEY}}"
             },
             {

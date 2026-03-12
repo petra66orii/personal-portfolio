@@ -226,6 +226,19 @@ SUMMERNOTE_THEME = 'bs4'
 N8N_API_KEY = os.getenv("N8N_API_KEY", "")
 N8N_DJANGO_API_KEY = os.getenv("N8N_DJANGO_API_KEY", "")
 
+# AI/audit execution controls:
+# - In production, keep these disabled so local n8n+Ollama owns the workflow.
+# - In local development (DEBUG=True), defaults are enabled for convenience.
+ENABLE_INAPP_AI_SCREENING = os.getenv(
+    "ENABLE_INAPP_AI_SCREENING",
+    "True" if DEBUG else "False",
+).lower() == "true"
+
+ALLOW_REMOTE_AUDIT_EXECUTION = os.getenv(
+    "ALLOW_REMOTE_AUDIT_EXECUTION",
+    "True" if DEBUG else "False",
+).lower() == "true"
+
 REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
 
 CELERY_BROKER_URL = REDIS_URL
