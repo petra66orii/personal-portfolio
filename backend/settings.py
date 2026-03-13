@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'portfolio',
+    'growth_ops',
     'corsheaders',
     'storages',
     'django_summernote',
@@ -98,12 +99,13 @@ SITE_ID = 1
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 if DATABASE_URL:
+    require_ssl = DATABASE_URL.startswith("postgres://") or DATABASE_URL.startswith("postgresql://")
     # Production (Render) - Uses the single URL
     DATABASES = {
         'default': dj_database_url.config(
             default=DATABASE_URL,
             conn_max_age=600,
-            ssl_require=True
+            ssl_require=require_ssl,
         )
     }
 elif os.getenv("POSTGRES_DB"):

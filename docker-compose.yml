@@ -17,6 +17,33 @@ services:
     ports:
       - "6379:6379"
 
+  ollama:
+    image: ollama/ollama:latest
+    container_name: missbott_ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  llm_gateway:
+    build:
+      context: ./services/llm-gateway
+      dockerfile: Dockerfile
+    container_name: missbott_llm_gateway
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    environment:
+      LLM_GATEWAY_LOG_LEVEL: ${LLM_GATEWAY_LOG_LEVEL:-INFO}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+      LLM_MODEL_REPORT: ${LLM_MODEL_REPORT:-qwen2.5:14b-instruct-q4_K_M}
+      PROMPT_VERSION_WEBSITE_REPORTER: ${PROMPT_VERSION_WEBSITE_REPORTER:-2026-03-12}
+      LLM_MAX_RETRIES: ${LLM_MAX_RETRIES:-2}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-120}
+    depends_on:
+      - ollama
+
   web:
     build:
       context: .
@@ -45,7 +72,7 @@ services:
       REDIS_URL: redis://redis:6379/0
 
       # Local LLM (privacy-preserving)
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
       OLLAMA_AUDIT_MODEL: ${OLLAMA_AUDIT_MODEL:-mistral-nemo:12b}
       OLLAMA_LEAD_MODEL: ${OLLAMA_LEAD_MODEL:-mistral-nemo:12b}
       OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-120}
@@ -83,7 +110,7 @@ services:
       POSTGRES_PORT: 5432
 
       REDIS_URL: redis://redis:6379/0
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
       OLLAMA_AUDIT_MODEL: ${OLLAMA_AUDIT_MODEL:-mistral-nemo:12b}
       OLLAMA_LEAD_MODEL: ${OLLAMA_LEAD_MODEL:-mistral-nemo:12b}
       OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-120}
@@ -137,3 +164,4 @@ volumes:
   media:
   static_volume:
   n8n_data:
+  ollama_data:

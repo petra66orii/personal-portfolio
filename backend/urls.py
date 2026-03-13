@@ -52,6 +52,7 @@ urlpatterns = [
     path('api/run-audit/', views.run_audit_api, name='run_audit_api'),
     path(f'{ADMIN_URL}', admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
+    path("api/growth/", include("growth_ops.urls")),
     path('api/', include('portfolio.urls')),
     path("api/audits/from-n8n/", views.run_audit_from_n8n, name="run_audit_from_n8n"),
     path("", react_app, name="home"),

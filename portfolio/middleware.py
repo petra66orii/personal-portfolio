@@ -1,6 +1,6 @@
-from django.core.exceptions import PermissionDenied
-from django.urls import reverse
+from django.shortcuts import redirect
 import os
+from urllib.parse import quote
 
 class AdminAccessMiddleware:
     def __init__(self, get_response):
@@ -12,17 +12,21 @@ class AdminAccessMiddleware:
     def __call__(self, request):
         # Check if the user is trying to access the admin area
         if request.path.startswith(self.admin_url_path):
-            # 1. Allow the login page
-            if 'login' in request.path:
-                return self.get_response(request)
-            
-            # 2. Also allow the logout page just in case
-            if 'logout' in request.path:
-                 return self.get_response(request)
+            login_path = f"{self.admin_url_path}login/"
+            logout_path = f"{self.admin_url_path}logout/"
 
-            # 3. If NOT on login page, AND not staff, then block.
+            # Allow auth endpoints.
+            if request.path.startswith(login_path):
+                return self.get_response(request)
+
+            if request.path.startswith(logout_path):
+                return self.get_response(request)
+
+            # Non-staff/non-authenticated users should be redirected to login.
+            # Returning 403 here blocks Django's normal admin login flow.
             if not request.user.is_authenticated or not request.user.is_staff:
-                raise PermissionDenied
+                next_param = quote(request.get_full_path(), safe="")
+                return redirect(f"{login_path}?next={next_param}")
 
         response = self.get_response(request)
         return response
