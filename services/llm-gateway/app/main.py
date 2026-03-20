@@ -2,11 +2,12 @@ from __future__ import annotations
 
 import json
 import logging
+import secrets
 from json import JSONDecodeError
 from typing import Type
 from uuid import uuid4
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel, ValidationError
 
 from .config import Settings
@@ -52,6 +53,23 @@ def _parse_json(content: str) -> dict:
     if not isinstance(parsed, dict):
         raise ValueError("Model output must be a JSON object")
     return parsed
+
+
+def _require_api_key(
+    x_llm_gateway_key: str | None = Header(default=None, alias="X-LLM-GATEWAY-KEY"),
+) -> None:
+    if not settings.llm_gateway_require_api_key:
+        return
+
+    expected_key = settings.llm_gateway_api_key
+    if not expected_key:
+        raise HTTPException(
+            status_code=500,
+            detail={"error": "llm_gateway_api_key_not_configured"},
+        )
+
+    if not x_llm_gateway_key or not secrets.compare_digest(x_llm_gateway_key, expected_key):
+        raise HTTPException(status_code=401, detail={"error": "unauthorized"})
 
 
 @app.get("/health", response_model=HealthResponse)
@@ -152,7 +170,10 @@ def _generate_structured_output(
 
 
 @app.post("/v1/report", response_model=ReportResponse)
-def generate_report(payload: ReportRequest) -> ReportResponse:
+def generate_report(
+    payload: ReportRequest,
+    _: None = Depends(_require_api_key),
+) -> ReportResponse:
     request_id, prompt_name, validated = _generate_structured_output(
         route_name="report",
         prompt_file="website_reporter.md",
@@ -172,7 +193,10 @@ def generate_report(payload: ReportRequest) -> ReportResponse:
 
 
 @app.post("/v1/draft-email", response_model=DraftEmailResponse)
-def draft_email(payload: DraftEmailRequest) -> DraftEmailResponse:
+def draft_email(
+    payload: DraftEmailRequest,
+    _: None = Depends(_require_api_key),
+) -> DraftEmailResponse:
     request_id, prompt_name, validated = _generate_structured_output(
         route_name="draft_email",
         prompt_file="outreach_writer.md",
@@ -192,7 +216,10 @@ def draft_email(payload: DraftEmailRequest) -> DraftEmailResponse:
 
 
 @app.post("/v1/check-email", response_model=CheckEmailResponse)
-def check_email(payload: CheckEmailRequest) -> CheckEmailResponse:
+def check_email(
+    payload: CheckEmailRequest,
+    _: None = Depends(_require_api_key),
+) -> CheckEmailResponse:
     request_id, prompt_name, validated = _generate_structured_output(
         route_name="check_email",
         prompt_file="evidence_checker.md",

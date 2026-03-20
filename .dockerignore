@@ -1,0 +1,16 @@
+.git
+.gitignore
+.env
+.env.local
+.env.n8n
+.venv/
+node_modules/
+frontend/node_modules/
+db.sqlite3
+n8n_data/
+postgres_data/
+ollama_data/
+.vscode/
+__pycache__/
+*.pyc
+*.pyo

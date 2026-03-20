@@ -9,20 +9,22 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
 
   redis:
     image: redis:7-alpine
     restart: always
     ports:
-      - "6379:6379"
+      - "127.0.0.1:6379:6379"
 
   ollama:
     image: ollama/ollama:latest
     container_name: missbott_ollama
     restart: unless-stopped
+    profiles:
+      - docker-ollama
     ports:
-      - "11434:11434"
+      - "127.0.0.1:11434:11434"
     volumes:
       - ollama_data:/root/.ollama
 
@@ -33,10 +35,12 @@ services:
     container_name: missbott_llm_gateway
     restart: unless-stopped
     ports:
-      - "8001:8001"
+      - "127.0.0.1:8001:8001"
     environment:
       LLM_GATEWAY_LOG_LEVEL: ${LLM_GATEWAY_LOG_LEVEL:-INFO}
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+      LLM_GATEWAY_API_KEY: ${LLM_GATEWAY_API_KEY}
+      LLM_GATEWAY_REQUIRE_API_KEY: ${LLM_GATEWAY_REQUIRE_API_KEY:-true}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       LLM_MODEL_REPORT: ${LLM_MODEL_REPORT:-qwen2.5:14b}
       LLM_MODEL_DRAFT_EMAIL: ${LLM_MODEL_DRAFT_EMAIL:-qwen2.5:14b}
       LLM_MODEL_CHECK_EMAIL: ${LLM_MODEL_CHECK_EMAIL:-qwen2.5:14b}
@@ -45,8 +49,6 @@ services:
       PROMPT_VERSION_EVIDENCE_CHECKER: ${PROMPT_VERSION_EVIDENCE_CHECKER:-2026-03-12}
       LLM_MAX_RETRIES: ${LLM_MAX_RETRIES:-2}
       LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-120}
-    depends_on:
-      - ollama
 
   web:
     build:
@@ -59,7 +61,7 @@ services:
       - ./staticfiles:/app/staticfiles
       - static_volume:/var/www/static
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     environment:
       DJANGO_SETTINGS_MODULE: backend.settings
       SECRET_KEY: ${SECRET_KEY}
@@ -76,10 +78,12 @@ services:
       REDIS_URL: redis://redis:6379/0
 
       # Local LLM (privacy-preserving)
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      LLM_GATEWAY_API_KEY: ${LLM_GATEWAY_API_KEY}
       OLLAMA_AUDIT_MODEL: ${OLLAMA_AUDIT_MODEL:-mistral-nemo:12b}
       OLLAMA_LEAD_MODEL: ${OLLAMA_LEAD_MODEL:-mistral-nemo:12b}
       OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-120}
+      SERVE_MEDIA_PUBLICLY: ${SERVE_MEDIA_PUBLICLY:-true}
 
       # External APIs
       GOOGLE_PLACES_KEY: ${GOOGLE_PLACES_KEY}
@@ -114,7 +118,8 @@ services:
       POSTGRES_PORT: 5432
 
       REDIS_URL: redis://redis:6379/0
-      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+      LLM_GATEWAY_API_KEY: ${LLM_GATEWAY_API_KEY}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
       OLLAMA_AUDIT_MODEL: ${OLLAMA_AUDIT_MODEL:-mistral-nemo:12b}
       OLLAMA_LEAD_MODEL: ${OLLAMA_LEAD_MODEL:-mistral-nemo:12b}
       OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-120}
@@ -149,7 +154,7 @@ services:
     container_name: missbott_n8n
     restart: unless-stopped
     ports:
-      - "5678:5678"
+      - "127.0.0.1:5678:5678"
     env_file:
       - .env.n8n
     environment:

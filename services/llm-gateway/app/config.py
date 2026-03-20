@@ -16,6 +16,8 @@ def _int_env(name: str, default: int) -> int:
 @dataclass(frozen=True)
 class Settings:
     log_level: str
+    llm_gateway_api_key: str
+    llm_gateway_require_api_key: bool
     ollama_base_url: str
     llm_model_report: str
     llm_model_draft_email: str
@@ -30,8 +32,18 @@ class Settings:
     @classmethod
     def from_env(cls) -> "Settings":
         default_prompts_dir = Path(__file__).resolve().parent / "prompts"
+        llm_gateway_api_key = os.getenv("LLM_GATEWAY_API_KEY", "").strip()
+        llm_gateway_require_api_key = os.getenv(
+            "LLM_GATEWAY_REQUIRE_API_KEY",
+            "true",
+        ).lower() == "true"
+        if llm_gateway_require_api_key and not llm_gateway_api_key:
+            raise ValueError("LLM_GATEWAY_API_KEY is required when gateway auth is enabled")
+
         return cls(
             log_level=os.getenv("LLM_GATEWAY_LOG_LEVEL", "INFO").upper(),
+            llm_gateway_api_key=llm_gateway_api_key,
+            llm_gateway_require_api_key=llm_gateway_require_api_key,
             ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/"),
             llm_model_report=os.getenv("LLM_MODEL_REPORT", "qwen2.5:14b"),
             llm_model_draft_email=os.getenv(

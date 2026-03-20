@@ -5,6 +5,7 @@ url: "{{base_gateway_url}}/v1/draft-email"
 order: 1000
 headers:
   Content-Type: application/json
+  X-LLM-GATEWAY-KEY: "{{llm_gateway_api_key}}"
 body:
   type: json
   content: >-
