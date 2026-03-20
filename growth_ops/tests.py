@@ -1,15 +1,31 @@
 from __future__ import annotations
 
-from unittest.mock import patch
+import os
+from unittest.mock import Mock, patch
 
-from django.test import override_settings
+from django.test import SimpleTestCase, override_settings
+from django.utils import timezone
 from rest_framework.test import APITestCase
 
-from growth_ops.models import ContentItem, InboxMessage, Lead, LeadScore, OutboundDraft, WebsiteEvidence, WebsiteReport
+from growth_ops.models import (
+    ContentItem,
+    InboxMessage,
+    Lead,
+    LeadScore,
+    OutboundDraft,
+    OutboundSend,
+    Sequence,
+    WebsiteEvidence,
+    WebsiteReport,
+)
 from growth_ops.services.evidence_checker import check_proof_points
+from growth_ops.services.llm_gateway import LLMGatewayClient
 
 
-@override_settings(N8N_DJANGO_API_KEY="test-n8n-key")
+@override_settings(
+    N8N_DJANGO_API_KEY="test-n8n-key",
+    DEFAULT_FROM_EMAIL="hello@missbott.test",
+)
 class GrowthOpsAPITests(APITestCase):
     api_key = "test-n8n-key"
 
@@ -236,6 +252,29 @@ class GrowthOpsAPITests(APITestCase):
         )
         return lead, evidence
 
+    def _create_sendable_draft(
+        self,
+        *,
+        approval_status: str = "approved",
+        approved_at_set: bool = True,
+        sequence_step: int = 1,
+    ) -> OutboundDraft:
+        lead, _evidence = self._create_draftable_lead(bucket="A")
+        contact = lead.contacts.create(email=f"owner-{lead.id}@example.com", name="Owner")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            contact=contact,
+            channel="email",
+            sequence_step=sequence_step,
+            subject="Quick note",
+            body="A short review of your site.",
+            model="qwen2.5:14b",
+            prompt_version="2026-03-12",
+            approval_status=approval_status,
+            approved_at=timezone.now() if approved_at_set and approval_status == "approved" else None,
+        )
+        return draft
+
     @patch("growth_ops.services.outreach.LLMGatewayClient.draft_email")
     def test_drafting_only_for_a_or_b_leads(self, mock_draft_email):
         lead_c, evidence_c = self._create_draftable_lead(bucket="C")
@@ -390,3 +429,153 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(draft.approval_status, "pending")
         self.assertIsNone(draft.approved_at)
         self.assertIsNone(draft.approved_by)
+
+    def test_approve_endpoint_sets_approved_at(self):
+        draft = self._create_sendable_draft(approval_status="pending", approved_at_set=False)
+
+        response = self.client.post(
+            f"/api/growth/drafts/{draft.id}/approve",
+            data={},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 200)
+
+        draft.refresh_from_db()
+        self.assertEqual(draft.approval_status, "approved")
+        self.assertIsNotNone(draft.approved_at)
+
+    def test_reject_endpoint_changes_approval_status(self):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+
+        response = self.client.post(
+            f"/api/growth/drafts/{draft.id}/reject",
+            data={},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 200)
+
+        draft.refresh_from_db()
+        self.assertEqual(draft.approval_status, "rejected")
+        self.assertIsNone(draft.approved_at)
+        self.assertIsNone(draft.approved_by)
+
+    @patch("growth_ops.services.sending.EmailMessage.send")
+    def test_blocked_send_when_draft_not_approved(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="pending", approved_at_set=False)
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data["error_code"], "draft_not_approved")
+        self.assertFalse(mock_send.called)
+
+        send_record = OutboundSend.objects.get(draft=draft)
+        self.assertEqual(send_record.status, "failed")
+        self.assertIn("draft_not_approved", send_record.error)
+
+    @patch("growth_ops.services.sending.EmailMessage.send", return_value=1)
+    def test_successful_send_for_approved_draft_creates_send_record(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.data["status"], "sent")
+        self.assertTrue(mock_send.called)
+
+        send_record = OutboundSend.objects.get(draft=draft, status="sent")
+        self.assertIsNotNone(send_record.sent_at)
+        self.assertTrue(send_record.provider_message_id)
+
+    @patch("growth_ops.services.sending.EmailMessage.send", side_effect=RuntimeError("smtp down"))
+    def test_failure_logging_on_send_error(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 502)
+        self.assertEqual(response.data["error_code"], "send_failed")
+        self.assertTrue(mock_send.called)
+
+        send_record = OutboundSend.objects.get(draft=draft)
+        self.assertEqual(send_record.status, "failed")
+        self.assertEqual(send_record.error, "smtp down")
+
+    @patch("growth_ops.services.sending.EmailMessage.send")
+    def test_duplicate_protection_blocks_already_sent_draft(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+        OutboundSend.objects.create(
+            draft=draft,
+            provider="django_smtp",
+            provider_message_id="<existing@example.com>",
+            status="sent",
+            sent_at=timezone.now(),
+        )
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 409)
+        self.assertEqual(response.data["error_code"], "draft_already_sent")
+        self.assertFalse(mock_send.called)
+        self.assertEqual(OutboundSend.objects.filter(draft=draft, status="sent").count(), 1)
+
+    @patch("growth_ops.services.sending.EmailMessage.send", return_value=1)
+    def test_sequence_record_created_updated_on_successful_send(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True, sequence_step=1)
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertTrue(mock_send.called)
+
+        sequence = Sequence.objects.get(lead=draft.lead)
+        self.assertEqual(sequence.status, "active")
+        self.assertEqual(sequence.step, 1)
+        self.assertIsNone(sequence.next_send_at)
+        self.assertEqual(sequence.meta["last_sent_draft_id"], draft.id)
+
+        draft.lead.refresh_from_db()
+        self.assertEqual(draft.lead.status, "in_sequence")
+
+
+class LLMGatewayClientTests(SimpleTestCase):
+    @patch("growth_ops.services.llm_gateway.requests.post")
+    def test_client_sends_api_key_header_when_configured(self, mock_post):
+        mock_response = Mock()
+        mock_response.raise_for_status.return_value = None
+        mock_response.json.return_value = {"ok": True}
+        mock_post.return_value = mock_response
+
+        with patch.dict(os.environ, {"LLM_GATEWAY_API_KEY": "test-gateway-key"}, clear=False):
+            client = LLMGatewayClient(base_url="http://gateway.test", timeout_seconds=5)
+            response = client.draft_email({"lead_id": 1})
+
+        self.assertEqual(response, {"ok": True})
+        mock_post.assert_called_once_with(
+            "http://gateway.test/v1/draft-email",
+            json={"lead_id": 1},
+            headers={"X-LLM-GATEWAY-KEY": "test-gateway-key"},
+            timeout=5,
+        )

@@ -34,6 +34,17 @@ react_app = TemplateView.as_view(template_name="index.html")
 # Standardizing this variable so we don't mix hardcoded strings
 ADMIN_URL = os.environ.get('DJANGO_ADMIN_URL', 'admin/')
 
+
+def _should_serve_media_publicly() -> bool:
+    explicit_value = os.environ.get("SERVE_MEDIA_PUBLICLY")
+    if explicit_value is not None:
+        return explicit_value.lower() == "true"
+
+    if settings.DEBUG:
+        return True
+
+    return os.environ.get("RENDER", "").lower() != "true"
+
 urlpatterns = [
    path(
         "sitemap.xml",
@@ -65,10 +76,12 @@ urlpatterns = [
     path("contact", react_app, name="contact"),
     ]
 
-# Serve media files
-urlpatterns += [
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
-]
+serve_media_publicly = _should_serve_media_publicly()
+
+if serve_media_publicly:
+    urlpatterns += [
+        re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    ]
 
 urlpatterns += [
     re_path(
