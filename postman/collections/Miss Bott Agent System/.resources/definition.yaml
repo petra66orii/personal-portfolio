@@ -1,0 +1,25 @@
+$kind: collection
+name: Miss Bott Agent System
+description: |-
+  End-to-end test collection for the Miss Bott Agent System.
+
+  Run these requests in order to walk through the full pipeline:
+  1. Health Checks — confirm services are up
+  2. Auth Checks — confirm API key enforcement
+  3. Lead Ingest — create a lead and capture its ID
+  4. Evidence Ingest — push raw evidence for the lead
+  5. Report Persistence — save the LLM-generated report
+  6. Score Persistence — save the lead score
+  7. LLM Gateway Drafting — generate an outreach email
+  8. LLM Gateway Evidence Check — validate the draft against evidence
+  9. Draft Persistence — save the approved draft
+  10. Queue Reads — inspect outbound/reply/content queues
+variables:
+  base_django_url: http://localhost:8000
+  base_gateway_url: http://localhost:8001
+  n8n_api_key: placeholder
+  lead_id: ""
+  report_id: ""
+  score_id: ""
+  evidence_ids: ""
+  draft_body: ""

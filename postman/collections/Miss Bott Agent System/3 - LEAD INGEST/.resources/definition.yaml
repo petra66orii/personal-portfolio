@@ -1,0 +1,7 @@
+$kind: collection
+name: LEAD INGEST
+description: |-
+  Create (or upsert) a lead in the Django backend.  
+  The test script automatically extracts the returned lead ID and saves it  
+  to the {{lead_id}} collection variable so all subsequent requests can use it.
+order: 5000

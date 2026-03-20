@@ -1,0 +1,63 @@
+$kind: http-request
+name: Check Email Evidence via LLM Gateway
+method: POST
+url: "{{base_gateway_url}}/v1/check-email"
+order: 1000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: >-
+    {
+      "lead_id": {{lead_id}},
+      "company_name": "Galway Hair Studio",
+      "original_subject": "Optimize Your Galway Hair Studio Website for Mobile Performance",
+      "original_body": "Hi [Recipient Name],\n\nOur recent technical review of your Galway Hair Studio website has identified areas for improvement, particularly in mobile performance and clarity of call-to-action buttons. The current WordPress template limitations are also constraining your site's technical performance and scalability.\n\nLet's schedule a quick technical review call to discuss how we can enhance your site's performance and ensure it meets the needs of your growing business.\n\nBest regards,\nMiss Bott",
+      "unsupported_claims": [],
+      "supported_proof_points": [
+        {
+          "claim": "Galway Hair Studio's mobile performance score is poor.",
+          "evidence_id": "43",
+          "evidence_path": "performance_score",
+          "quoted_value": "40"
+        },
+        {
+          "claim": "The largest contentful paint time is high, impacting user experience.",
+          "evidence_id": "44",
+          "evidence_path": "lighthouseResult.audits.largest-contentful-paint.numericValue",
+          "quoted_value": "4.5"
+        },
+        {
+          "claim": "No sitemap was detected, which is crucial for SEO.",
+          "evidence_id": "46",
+          "evidence_path": "exists",
+          "quoted_value": "false"
+        },
+        {
+          "claim": "The site is using a WordPress template, limiting customization and scalability.",
+          "evidence_id": "47",
+          "evidence_path": "cms",
+          "quoted_value": "WordPress"
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response contains validation fields", function () {
+          var json = pm.response.json();
+          // Check for at least one common validation field
+          var hasValidationField =
+              json.hasOwnProperty("status") ||
+              json.hasOwnProperty("valid") ||
+              json.hasOwnProperty("passed") ||
+              json.hasOwnProperty("result") ||
+              json.hasOwnProperty("checks") ||
+              json.hasOwnProperty("validation");
+          pm.expect(hasValidationField).to.be.true;
+      });
+    language: text/javascript

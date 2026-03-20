@@ -18,7 +18,11 @@ class Settings:
     log_level: str
     ollama_base_url: str
     llm_model_report: str
+    llm_model_draft_email: str
+    llm_model_check_email: str
     prompt_version_website_reporter: str
+    prompt_version_outreach_writer: str
+    prompt_version_evidence_checker: str
     llm_max_retries: int
     llm_timeout_seconds: int
     prompts_dir: Path
@@ -29,9 +33,25 @@ class Settings:
         return cls(
             log_level=os.getenv("LLM_GATEWAY_LOG_LEVEL", "INFO").upper(),
             ollama_base_url=os.getenv("OLLAMA_BASE_URL", "http://localhost:11434").rstrip("/"),
-            llm_model_report=os.getenv("LLM_MODEL_REPORT", "qwen2.5:14b-instruct-q4_K_M"),
+            llm_model_report=os.getenv("LLM_MODEL_REPORT", "qwen2.5:14b"),
+            llm_model_draft_email=os.getenv(
+                "LLM_MODEL_DRAFT_EMAIL",
+                "qwen2.5:14b",
+            ),
+            llm_model_check_email=os.getenv(
+                "LLM_MODEL_CHECK_EMAIL",
+                "qwen2.5:14b",
+            ),
             prompt_version_website_reporter=os.getenv(
                 "PROMPT_VERSION_WEBSITE_REPORTER",
+                "2026-03-12",
+            ),
+            prompt_version_outreach_writer=os.getenv(
+                "PROMPT_VERSION_OUTREACH_WRITER",
+                "2026-03-12",
+            ),
+            prompt_version_evidence_checker=os.getenv(
+                "PROMPT_VERSION_EVIDENCE_CHECKER",
                 "2026-03-12",
             ),
             llm_max_retries=max(0, _int_env("LLM_MAX_RETRIES", 2)),

@@ -1,9 +1,12 @@
 from __future__ import annotations
 
+from unittest.mock import patch
+
 from django.test import override_settings
 from rest_framework.test import APITestCase
 
 from growth_ops.models import ContentItem, InboxMessage, Lead, LeadScore, OutboundDraft, WebsiteEvidence, WebsiteReport
+from growth_ops.services.evidence_checker import check_proof_points
 
 
 @override_settings(N8N_DJANGO_API_KEY="test-n8n-key")
@@ -83,7 +86,7 @@ class GrowthOpsAPITests(APITestCase):
 
         payload = {
             "lead_id": lead.id,
-            "model": "qwen2.5:14b-instruct-q4_K_M",
+            "model": "qwen2.5:14b",
             "prompt_version": "2026-03-12",
             "evidence_ids": [str(ev1.id), str(ev2.id)],
             "report": {
@@ -202,3 +205,188 @@ class GrowthOpsAPITests(APITestCase):
         content_ids = [item["id"] for item in content_response.data["results"]]
         self.assertIn(content_draft.id, content_ids)
         self.assertNotIn(content_pending.id, content_ids)
+
+    def _create_draftable_lead(self, *, bucket: str) -> tuple[Lead, WebsiteEvidence]:
+        lead = Lead.objects.create(
+            company_name=f"Draft {bucket} Co",
+            website_url=f"https://draft-{bucket.lower()}.example",
+            industry="Ecommerce",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        WebsiteReport.objects.create(
+            lead=lead,
+            model="qwen2.5:14b",
+            prompt_version="2026-03-12",
+            evidence_ids=[str(evidence.id)],
+            report={"executive_summary": "Performance is weak", "findings": []},
+            summary="Performance is weak",
+        )
+        LeadScore.objects.create(
+            lead=lead,
+            score=80 if bucket == "A" else 55 if bucket == "B" else 25,
+            bucket=bucket,
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "paid_discovery"},
+        )
+        return lead, evidence
+
+    @patch("growth_ops.services.outreach.LLMGatewayClient.draft_email")
+    def test_drafting_only_for_a_or_b_leads(self, mock_draft_email):
+        lead_c, evidence_c = self._create_draftable_lead(bucket="C")
+        response_c = self.client.post(
+            "/api/growth/drafts",
+            data={"lead_id": lead_c.id, "sequence_step": 1, "channel": "email"},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response_c.status_code, 400)
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead_c).count(), 0)
+        mock_draft_email.assert_not_called()
+
+        lead_a, evidence_a = self._create_draftable_lead(bucket="A")
+        mock_draft_email.return_value = {
+            "subject": "Quick note on your mobile performance",
+            "body": "Your mobile performance score is 45 and this can hurt conversion.",
+            "proof_points": [
+                {
+                    "claim": "Your mobile performance score is 45.",
+                    "evidence_id": str(evidence_a.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "45",
+                }
+            ],
+            "risk_flags": [],
+            "model": "qwen2.5:14b",
+            "prompt_version": "2026-03-12",
+        }
+        response_a = self.client.post(
+            "/api/growth/drafts",
+            data={"lead_id": lead_a.id, "sequence_step": 1, "channel": "email"},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response_a.status_code, 201)
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead_a).count(), 1)
+
+    def test_evidence_check_failure_on_unsupported_claim(self):
+        lead = Lead.objects.create(company_name="Check Co", website_url="https://check.example")
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45},
+        )
+
+        result = check_proof_points(
+            proof_points=[
+                {
+                    "claim": "Your mobile performance score is 90.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "90",
+                }
+            ],
+            evidence_records=[evidence],
+        )
+        self.assertEqual(result.status, "needs_rewrite")
+        self.assertEqual(len(result.unsupported_proof_points), 1)
+        self.assertEqual(result.unsupported_proof_points[0]["unsupported_reason"], "quoted_value_not_in_evidence")
+
+    @patch("growth_ops.services.outreach.LLMGatewayClient.check_email")
+    @patch("growth_ops.services.outreach.LLMGatewayClient.draft_email")
+    def test_safe_rewrite_behaviour(self, mock_draft_email, mock_check_email):
+        lead, evidence = self._create_draftable_lead(bucket="A")
+
+        mock_draft_email.return_value = {
+            "subject": "Quick note on site speed",
+            "body": "Your mobile performance score is 45 and your LCP is 1000ms.",
+            "proof_points": [
+                {
+                    "claim": "Your mobile performance score is 45.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "45",
+                },
+                {
+                    "claim": "Your LCP is 1000ms.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "lcp_ms",
+                    "quoted_value": "1000",
+                }
+            ],
+            "risk_flags": [],
+            "model": "qwen2.5:14b",
+            "prompt_version": "2026-03-12",
+        }
+        mock_check_email.return_value = {
+            "subject": "Quick note on site speed",
+            "body": "Your mobile performance score is 45 and your LCP is 3800ms on mobile, which usually affects conversion and UX.",
+            "proof_points": [
+                {
+                    "claim": "Your mobile performance score is 45.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "45",
+                },
+                {
+                    "claim": "Your LCP is 3800ms on mobile.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "lcp_ms",
+                    "quoted_value": "3800",
+                }
+            ],
+            "model": "qwen2.5:14b",
+            "prompt_version": "2026-03-12",
+        }
+
+        response = self.client.post(
+            "/api/growth/drafts",
+            data={"lead_id": lead.id, "sequence_step": 1, "channel": "email"},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 201)
+        draft = OutboundDraft.objects.get(id=response.data["id"])
+        self.assertEqual(draft.evidence_check["status"], "rewritten_safe")
+        self.assertIn("UNSUPPORTED_CLAIMS_REWRITTEN", draft.risk_flags)
+        self.assertIn("3800", draft.body)
+        self.assertNotIn("1000", draft.body)
+
+    @patch("growth_ops.services.outreach.LLMGatewayClient.draft_email")
+    def test_draft_persistence_pending_approval_status(self, mock_draft_email):
+        lead, evidence = self._create_draftable_lead(bucket="B")
+        mock_draft_email.return_value = {
+            "subject": "Performance signal worth reviewing",
+            "body": "Your mobile performance score is 45.",
+            "proof_points": [
+                {
+                    "claim": "Your mobile performance score is 45.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "45",
+                }
+            ],
+            "risk_flags": [],
+            "model": "qwen2.5:14b",
+            "prompt_version": "2026-03-12",
+        }
+
+        response = self.client.post(
+            "/api/growth/drafts",
+            data={"lead_id": lead.id, "sequence_step": 2, "channel": "email"},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 201)
+
+        draft = OutboundDraft.objects.get(id=response.data["id"])
+        self.assertEqual(draft.approval_status, "pending")
+        self.assertIsNone(draft.approved_at)
+        self.assertIsNone(draft.approved_by)

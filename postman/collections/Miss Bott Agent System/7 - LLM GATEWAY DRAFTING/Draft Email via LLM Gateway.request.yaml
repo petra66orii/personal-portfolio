@@ -1,0 +1,69 @@
+$kind: http-request
+name: Draft Email via LLM Gateway
+method: POST
+url: "{{base_gateway_url}}/v1/draft-email"
+order: 1000
+headers:
+  Content-Type: application/json
+body:
+  type: json
+  content: >-
+    {
+      "lead_id": {{lead_id}},
+      "company_name": "Galway Hair Studio",
+      "website_url": "https://example.com",
+      "bucket": "A",
+      "score": 85,
+      "offer_type": "paid_discovery",
+      "report_summary": "Mobile performance is poor, CTA clarity is weak, no sitemap was detected, and the site shows WordPress template limitation signals.",
+      "evidence": [
+        {
+          "evidence_id": "43",
+          "evidence_type": "lighthouse_json",
+          "evidence_path": "performance_score"
+        },
+        {
+          "evidence_id": "44",
+          "evidence_type": "pagespeed_json",
+          "evidence_path": "lighthouseResult.audits.largest-contentful-paint.numericValue"
+        },
+        {
+          "evidence_id": "46",
+          "evidence_type": "sitemap_xml",
+          "evidence_path": "exists"
+        },
+        {
+          "evidence_id": "47",
+          "evidence_type": "tech_fingerprint",
+          "evidence_path": "cms"
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response contains 'subject' field", function () {
+          var json = pm.response.json();
+          pm.expect(json).to.have.property("subject");
+      });
+
+      pm.test("Response contains 'body' field", function () {
+          var json = pm.response.json();
+          pm.expect(json).to.have.property("body");
+      });
+
+      // Attempt to save draft body to collection variable
+      try {
+          var json = pm.response.json();
+          if (json.body) {
+              pm.collectionVariables.set("draft_body", json.body);
+              console.log("draft_body saved to collection variable.");
+          }
+      } catch (e) {
+          console.warn("Could not save draft_body:", e.message);
+      }
+    language: text/javascript

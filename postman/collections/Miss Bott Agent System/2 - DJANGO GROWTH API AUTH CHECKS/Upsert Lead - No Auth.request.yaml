@@ -1,0 +1,22 @@
+$kind: http-request
+name: Upsert Lead - No Auth (Expect 401/403)
+method: POST
+url: '{{base_django_url}}/api/growth/leads/upsert'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "company_name": "Test",
+      "website_url": "https://example.com"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Expect 401 or 403 when no API key is provided", function () {
+          pm.expect(pm.response.code).to.be.oneOf([401, 403]);
+      });

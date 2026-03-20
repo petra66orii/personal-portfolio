@@ -1,0 +1,19 @@
+$kind: http-request
+name: Reset Variables
+url: "{{base_gateway_url}}/health"
+method: GET
+scripts:
+  - type: afterResponse
+    code: "pm.collectionVariables.set(\"lead_id\", \"\");\r
+
+      pm.collectionVariables.set(\"evidence_ids\", \"[]\");\r
+
+      pm.collectionVariables.set(\"report_id\", \"\");\r
+
+      pm.collectionVariables.set(\"score_id\", \"\");\r
+
+      \r
+
+      console.log(\"Pipeline variables reset\");"
+    language: text/javascript
+order: 1773437143827
