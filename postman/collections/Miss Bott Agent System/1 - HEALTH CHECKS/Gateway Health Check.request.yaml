@@ -1,0 +1,18 @@
+$kind: http-request
+name: Gateway Health Check
+method: GET
+url: '{{base_gateway_url}}/health'
+order: 1000
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });
+
+      pm.test("Response has status: ok", function () {
+          var json = pm.response.json();
+          pm.expect(json).to.have.property("status");
+          pm.expect(json.status).to.eql("ok");
+      });

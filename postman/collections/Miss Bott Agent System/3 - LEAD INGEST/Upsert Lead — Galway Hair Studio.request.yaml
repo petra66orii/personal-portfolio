@@ -1,0 +1,50 @@
+$kind: http-request
+name: Upsert Lead — Galway Hair Studio
+method: POST
+url: "{{base_django_url}}/api/growth/leads/upsert"
+order: 1773417420873
+headers:
+  Content-Type: application/json
+  X-N8N-API-KEY: "{{n8n_api_key}}"
+body:
+  type: json
+  content: |-
+    {
+      "company_name": "Art Studio",
+      "website_url": "https://galway-art.com",
+      "market": "IE",
+      "industry": "artistry",
+      "location": "Galway",
+      "google_place_id": "test-place-id-003"
+    }
+scripts:
+  - type: afterResponse
+    code: >-
+      pm.test("Lead upsert succeeds (200 or 201)", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+
+
+      // Extract lead_id from the response and store it as a collection
+      variable.
+
+      // Tries the most common response shapes — adjust the key name if your API
+      differs.
+
+      pm.test("lead_id is present in response and saved to collection variable",
+      function () {
+          var json = pm.response.json();
+
+          var leadId =
+              (json.id)          ||   // { "id": 42 }
+              (json.lead_id)     ||   // { "lead_id": 42 }
+              (json.data && json.data.id) ||   // { "data": { "id": 42 } }
+              (json.data && json.data.lead_id) ||  // { "data": { "lead_id": 42 } }
+              (json.lead && json.lead.id);          // { "lead": { "id": 42 } }
+
+          pm.expect(leadId, "Could not find lead_id in response — check the response shape and update the extraction logic above").to.exist;
+
+          pm.collectionVariables.set("lead_id", String(leadId));
+          console.log("✅ lead_id saved to collection variable:", leadId);
+      });
+    language: text/javascript

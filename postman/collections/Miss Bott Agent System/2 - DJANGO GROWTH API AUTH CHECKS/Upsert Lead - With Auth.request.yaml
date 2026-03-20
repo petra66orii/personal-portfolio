@@ -1,0 +1,28 @@
+$kind: http-request
+name: Upsert Lead - With Auth (Expect 200/201)
+method: POST
+url: '{{base_django_url}}/api/growth/leads/upsert'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: X-N8N-API-KEY
+    value: '{{n8n_api_key}}'
+body:
+  type: json
+  content: |-
+    {
+      "company_name": "Test",
+      "website_url": "https://example.com",
+      "market": "IE",
+      "industry": "test",
+      "location": "Test",
+      "google_place_id": "test-001"
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Expect 200 or 201 with valid API key", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });

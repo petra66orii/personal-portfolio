@@ -1,0 +1,62 @@
+$kind: http-request
+name: Save Report
+method: POST
+url: "{{base_django_url}}/api/growth/reports"
+order: 1000
+headers:
+  Content-Type: application/json
+  X-N8N-API-KEY: "{{n8n_api_key}}"
+body:
+  type: json
+  content: >-
+    {
+      "lead_id": {{lead_id}},
+      "model": "qwen2.5",
+      "prompt_version": "v1",
+      "evidence_ids": {{evidence_ids}},
+      "summary": "Mobile performance is poor and no sitemap was detected.",
+      "report": {
+        "cta_clarity": "poor",
+        "executive_summary": {
+          "health_score": 58,
+          "top_issues": [
+            {
+              "title": "Slow mobile performance",
+              "impact": "conversion"
+            },
+            {
+              "title": "Missing sitemap",
+              "impact": "seo"
+            }
+          ]
+        },
+        "outreach_hooks": {
+          "safe_compliment": "The visual branding looks polished and professional.",
+          "proof_points": [
+            {
+              "text": "Mobile performance is weak.",
+              "evidence_ref": ["lighthouse.mobile.performance"]
+            },
+            {
+              "text": "No sitemap was detected.",
+              "evidence_ref": ["sitemap.found"]
+            }
+          ]
+        }
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200 or 201", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+
+      const json = pm.response.json();
+      if (json.id) {
+        pm.collectionVariables.set("report_id", String(json.id));
+      }
+      pm.test("report_id saved", function () {
+        pm.expect(pm.collectionVariables.get("report_id")).to.exist;
+      });
+    language: text/javascript

@@ -206,3 +206,37 @@ class ContactSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ["id", "lead", "name", "role", "email", "phone", "linkedin_url", "created_at"]
+
+
+class DraftCreateRequestSerializer(serializers.Serializer):
+    lead_id = serializers.IntegerField()
+    contact_id = serializers.IntegerField(required=False)
+    channel = serializers.ChoiceField(
+        choices=[choice[0] for choice in OutboundDraft.CHANNEL_CHOICES],
+        default="email",
+    )
+    sequence_step = serializers.IntegerField(min_value=1, max_value=10, default=1)
+
+
+class OutboundDraftDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OutboundDraft
+        fields = [
+            "id",
+            "lead",
+            "contact",
+            "created_at",
+            "updated_at",
+            "channel",
+            "sequence_step",
+            "subject",
+            "body",
+            "model",
+            "prompt_version",
+            "proof_points",
+            "risk_flags",
+            "evidence_check",
+            "approval_status",
+            "approved_at",
+            "approved_by",
+        ]

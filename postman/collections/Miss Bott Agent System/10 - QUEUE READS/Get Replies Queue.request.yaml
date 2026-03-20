@@ -1,0 +1,15 @@
+$kind: http-request
+name: Get Replies Queue
+method: GET
+url: '{{base_django_url}}/api/growth/queue/replies'
+order: 2000
+headers:
+  - key: X-N8N-API-KEY
+    value: '{{n8n_api_key}}'
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 200", function () {
+          pm.response.to.have.status(200);
+      });

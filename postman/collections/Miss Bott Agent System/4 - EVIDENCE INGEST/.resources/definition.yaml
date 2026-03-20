@@ -1,0 +1,109 @@
+$kind: collection
+name: EVIDENCE INGEST
+description: >-
+  Push raw evidence payloads for the lead created in step 3.  
+
+  Run all five requests (Lighthouse, PageSpeed, Robots.txt, Sitemap, Tech
+  Fingerprint)  
+
+  before moving on to Report Persistence.  
+
+  Requires {{lead_id}} to be set — run Lead Ingest first.
+scripts:
+  - type: http:afterResponse
+    code: "pm.test(\"Status is 200 or 201\", function () {\r
+
+      \    pm.expect(pm.response.code).to.be.oneOf([200, 201]);\r
+
+      });\r
+
+      \r
+
+      let evidenceIds = [];\r
+
+      try {\r
+
+      \    evidenceIds = JSON.parse(pm.collectionVariables.get(\"evidence_ids\")
+      || \"[]\");\r
+
+      } catch (e) {\r
+
+      \    evidenceIds = [];\r
+
+      }\r
+
+      \r
+
+      let json = {};\r
+
+      try {\r
+
+      \    json = pm.response.json();\r
+
+      } catch (e) {\r
+
+      \    json = {};\r
+
+      }\r
+
+      \r
+
+      const newIds = [];\r
+
+      \r
+
+      if (Array.isArray(json.evidence_ids)) {\r
+
+      \    json.evidence_ids.forEach(id => {\r
+
+      \        if (id !== null && id !== undefined) newIds.push(id);\r
+
+      \    });\r
+
+      } else if (Array.isArray(json.items)) {\r
+
+      \    json.items.forEach(item => {\r
+
+      \        if (item.id) newIds.push(item.id);\r
+
+      \    });\r
+
+      } else if (Array.isArray(json.created)) {\r
+
+      \    json.created.forEach(item => {\r
+
+      \        if (item.id) newIds.push(item.id);\r
+
+      \    });\r
+
+      } else if (json.id) {\r
+
+      \    newIds.push(json.id);\r
+
+      }\r
+
+      \r
+
+      for (const id of newIds) {\r
+
+      \    if (!evidenceIds.includes(id)) {\r
+
+      \        evidenceIds.push(id);\r
+
+      \    }\r
+
+      }\r
+
+      \r
+
+      pm.collectionVariables.set(\"evidence_ids\",
+      JSON.stringify(evidenceIds));\r
+
+      \r
+
+      pm.test(\"evidence_ids saved\", function () {\r
+
+      \    pm.expect(evidenceIds.length).to.be.greaterThan(0);\r
+
+      });"
+order: 7000

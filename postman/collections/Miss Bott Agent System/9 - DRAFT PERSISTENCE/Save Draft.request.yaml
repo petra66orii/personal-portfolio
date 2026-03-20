@@ -1,0 +1,50 @@
+$kind: http-request
+name: Save Draft
+method: POST
+url: '{{base_django_url}}/api/growth/drafts'
+order: 1000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: X-N8N-API-KEY
+    value: '{{n8n_api_key}}'
+body:
+  type: json
+  content: |-
+    {
+      "lead_id": {{lead_id}},
+      "channel": "email",
+      "sequence_step": 1,
+      "subject": "Quick website observation",
+      "body": "I noticed your mobile performance is weak and no sitemap appears to be present.",
+      "model": "qwen2.5",
+      "prompt_version": "v1",
+      "proof_points": [
+        {
+          "text": "Mobile Lighthouse performance is 42.",
+          "evidence_ref": ["lighthouse.mobile.performance"]
+        },
+        {
+          "text": "No sitemap was detected.",
+          "evidence_ref": ["sitemap.found"]
+        }
+      ],
+      "risk_flags": [],
+      "evidence_check": {
+        "status": "pass"
+      }
+    }
+scripts:
+  - type: afterResponse
+    language: text/javascript
+    code: |-
+      pm.test("Status is 200 or 201", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+
+      pm.test("approval_status should be 'pending'", function () {
+          var json = pm.response.json();
+          // Check at root level or nested in data
+          var approvalStatus = json.approval_status || (json.data && json.data.approval_status);
+          pm.expect(approvalStatus).to.eql("pending");
+      });

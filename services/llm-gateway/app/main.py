@@ -3,15 +3,27 @@ from __future__ import annotations
 import json
 import logging
 from json import JSONDecodeError
+from typing import Type
 from uuid import uuid4
 
 from fastapi import FastAPI, HTTPException
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 
 from .config import Settings
 from .ollama_client import OllamaClient, OllamaClientError
 from .prompt_loader import load_prompt
-from .schemas import HealthResponse, ReportRequest, ReportResponse, ReportResult
+from .schemas import (
+    CheckEmailRequest,
+    CheckEmailResponse,
+    CheckEmailResult,
+    DraftEmailRequest,
+    DraftEmailResponse,
+    DraftEmailResult,
+    HealthResponse,
+    ReportRequest,
+    ReportResponse,
+    ReportResult,
+)
 
 settings = Settings.from_env()
 logging.basicConfig(
@@ -51,14 +63,31 @@ def health() -> HealthResponse:
     )
 
 
-@app.post("/v1/report", response_model=ReportResponse)
-def generate_report(payload: ReportRequest) -> ReportResponse:
-    prompt_path = settings.prompts_dir / "website_reporter.md"
-    prompt = load_prompt(prompt_path)
-    request_id = str(uuid4())
+def _generate_structured_output(
+    *,
+    route_name: str,
+    prompt_file: str,
+    model_name: str,
+    prompt_version: str,
+    request_payload: dict,
+    result_model: Type[BaseModel],
+) -> tuple[str, str, BaseModel]:
+    prompt_path = settings.prompts_dir / prompt_file
+    try:
+        prompt = load_prompt(prompt_path)
+    except Exception as exc:
+        raise HTTPException(
+            status_code=500,
+            detail={
+                "error": "prompt_load_failed",
+                "route": route_name,
+                "reason": str(exc),
+            },
+        ) from exc
 
-    schema_json = json.dumps(ReportResult.model_json_schema(), separators=(",", ":"))
-    user_payload = json.dumps(payload.model_dump(mode="json"), separators=(",", ":"))
+    request_id = str(uuid4())
+    schema_json = json.dumps(result_model.model_json_schema(), separators=(",", ":"))
+    user_payload = json.dumps(request_payload, separators=(",", ":"))
     base_messages = [
         {
             "role": "system",
@@ -87,31 +116,26 @@ def generate_report(payload: ReportRequest) -> ReportResponse:
 
         try:
             content = ollama_client.chat(
-                model=settings.llm_model_report,
+                model=model_name,
                 messages=messages,
                 json_mode=True,
             )
             parsed = _parse_json(content)
-            report = ReportResult.model_validate(parsed)
+            validated = result_model.model_validate(parsed)
             logger.info(
-                "report_generated request_id=%s attempt=%d model=%s prompt=%s",
+                "%s_generated request_id=%s attempt=%d model=%s prompt=%s",
+                route_name,
                 request_id,
                 attempt + 1,
-                settings.llm_model_report,
+                model_name,
                 prompt.prompt_name,
             )
-            return ReportResponse(
-                request_id=request_id,
-                model=settings.llm_model_report,
-                prompt_name=prompt.prompt_name,
-                prompt_version=settings.prompt_version_website_reporter
-                or prompt.prompt_version,
-                **report.model_dump(),
-            )
+            return request_id, prompt.prompt_name, validated
         except (OllamaClientError, JSONDecodeError, ValidationError, ValueError) as exc:
             last_error = str(exc)
             logger.warning(
-                "report_generation_retry request_id=%s attempt=%d error=%s",
+                "%s_generation_retry request_id=%s attempt=%d error=%s",
+                route_name,
                 request_id,
                 attempt + 1,
                 last_error,
@@ -120,8 +144,68 @@ def generate_report(payload: ReportRequest) -> ReportResponse:
     raise HTTPException(
         status_code=502,
         detail={
-            "error": "report_generation_failed",
+            "error": f"{route_name}_generation_failed",
             "request_id": request_id,
             "reason": last_error,
         },
+    )
+
+
+@app.post("/v1/report", response_model=ReportResponse)
+def generate_report(payload: ReportRequest) -> ReportResponse:
+    request_id, prompt_name, validated = _generate_structured_output(
+        route_name="report",
+        prompt_file="website_reporter.md",
+        model_name=settings.llm_model_report,
+        prompt_version=settings.prompt_version_website_reporter,
+        request_payload=payload.model_dump(mode="json"),
+        result_model=ReportResult,
+    )
+    report = ReportResult.model_validate(validated.model_dump())
+    return ReportResponse(
+        request_id=request_id,
+        model=settings.llm_model_report,
+        prompt_name=prompt_name,
+        prompt_version=settings.prompt_version_website_reporter,
+        **report.model_dump(),
+    )
+
+
+@app.post("/v1/draft-email", response_model=DraftEmailResponse)
+def draft_email(payload: DraftEmailRequest) -> DraftEmailResponse:
+    request_id, prompt_name, validated = _generate_structured_output(
+        route_name="draft_email",
+        prompt_file="outreach_writer.md",
+        model_name=settings.llm_model_draft_email,
+        prompt_version=settings.prompt_version_outreach_writer,
+        request_payload=payload.model_dump(mode="json"),
+        result_model=DraftEmailResult,
+    )
+    result = DraftEmailResult.model_validate(validated.model_dump())
+    return DraftEmailResponse(
+        request_id=request_id,
+        model=settings.llm_model_draft_email,
+        prompt_name=prompt_name,
+        prompt_version=settings.prompt_version_outreach_writer,
+        **result.model_dump(),
+    )
+
+
+@app.post("/v1/check-email", response_model=CheckEmailResponse)
+def check_email(payload: CheckEmailRequest) -> CheckEmailResponse:
+    request_id, prompt_name, validated = _generate_structured_output(
+        route_name="check_email",
+        prompt_file="evidence_checker.md",
+        model_name=settings.llm_model_check_email,
+        prompt_version=settings.prompt_version_evidence_checker,
+        request_payload=payload.model_dump(mode="json"),
+        result_model=CheckEmailResult,
+    )
+    result = CheckEmailResult.model_validate(validated.model_dump())
+    return CheckEmailResponse(
+        request_id=request_id,
+        model=settings.llm_model_check_email,
+        prompt_name=prompt_name,
+        prompt_version=settings.prompt_version_evidence_checker,
+        **result.model_dump(),
     )

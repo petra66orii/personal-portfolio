@@ -1,0 +1,32 @@
+$kind: http-request
+name: Evidence - Tech Fingerprint
+method: POST
+url: "{{base_django_url}}/api/growth/evidence"
+order: 5000
+headers:
+  Content-Type: application/json
+  X-N8N-API-KEY: "{{n8n_api_key}}"
+body:
+  type: json
+  content: |-
+    {
+      "lead_id": {{lead_id}},
+      "items": [
+        {
+          "evidence_type": "tech_fingerprint",
+          "url": "https://example.com",
+          "tool": "fingerprint",
+          "payload": {
+            "cms": "WordPress",
+            "signals": ["wp-content", "elementor"]
+          }
+        }
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test("Status is 200 or 201", function () {
+          pm.expect(pm.response.code).to.be.oneOf([200, 201]);
+      });
+    language: text/javascript

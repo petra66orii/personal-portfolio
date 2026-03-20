@@ -10,19 +10,23 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .auth import N8NAPIKeyAuthentication
-from .models import ContentItem, InboxMessage, Lead, LeadScore, OutboundDraft, WebsiteEvidence, WebsiteReport
+from .models import Contact, ContentItem, InboxMessage, Lead, LeadScore, OutboundDraft, WebsiteEvidence, WebsiteReport
 from .serializers import (
     ContentQueueSerializer,
+    DraftCreateRequestSerializer,
     EvidenceIngestRequestSerializer,
     LeadScoreSerializer,
     LeadSerializer,
     LeadUpsertRequestSerializer,
+    OutboundDraftDetailSerializer,
     OutboundQueueSerializer,
     RepliesQueueSerializer,
     ReportPersistRequestSerializer,
     ScorePersistRequestSerializer,
     WebsiteReportSerializer,
 )
+from .services.llm_gateway import LLMGatewayError
+from .services.outreach import LeadNotDraftableError, OutreachDraftingError, create_outbound_draft
 from .services.scoring import compute_lead_score
 
 
@@ -387,6 +391,48 @@ class ScorePersistView(N8NProtectedAPIView):
 
         return Response(
             LeadScoreSerializer(score_record).data,
+            status=status.HTTP_201_CREATED,
+        )
+
+
+class DraftCreateView(N8NProtectedAPIView):
+    @transaction.atomic
+    def post(self, request):
+        serializer = DraftCreateRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        validated = serializer.validated_data
+
+        lead = get_object_or_404(Lead, pk=validated["lead_id"])
+        contact: Contact | None = None
+        contact_id = validated.get("contact_id")
+        if contact_id is not None:
+            contact = get_object_or_404(Contact, pk=contact_id, lead=lead)
+
+        try:
+            draft = create_outbound_draft(
+                lead=lead,
+                contact=contact,
+                sequence_step=validated["sequence_step"],
+                channel=validated["channel"],
+            )
+        except LeadNotDraftableError as exc:
+            return Response(
+                {"error": str(exc)},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+        except OutreachDraftingError as exc:
+            return Response(
+                {"error": str(exc)},
+                status=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            )
+        except LLMGatewayError as exc:
+            return Response(
+                {"error": str(exc)},
+                status=status.HTTP_502_BAD_GATEWAY,
+            )
+
+        return Response(
+            OutboundDraftDetailSerializer(draft).data,
             status=status.HTTP_201_CREATED,
         )
 
