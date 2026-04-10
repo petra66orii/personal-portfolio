@@ -17,16 +17,22 @@ class LLMGatewayClient:
             or os.getenv("LLM_GATEWAY_BASE_URL")
             or "http://llm_gateway:8001"
         ).rstrip("/")
+        self.api_key = os.getenv("LLM_GATEWAY_API_KEY", "").strip()
         try:
             self.timeout_seconds = int(timeout_seconds or os.getenv("LLM_GATEWAY_TIMEOUT_SECONDS", "60"))
         except ValueError:
             self.timeout_seconds = 60
 
     def _post(self, path: str, payload: dict[str, Any]) -> dict[str, Any]:
+        headers: dict[str, str] = {}
+        if self.api_key:
+            headers["X-LLM-GATEWAY-KEY"] = self.api_key
+
         try:
             response = requests.post(
                 f"{self.base_url}{path}",
                 json=payload,
+                headers=headers or None,
                 timeout=self.timeout_seconds,
             )
             response.raise_for_status()
