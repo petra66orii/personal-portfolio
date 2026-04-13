@@ -1,10 +1,12 @@
 from __future__ import annotations
 
+import json
 from typing import Any
 from urllib.parse import urlparse
 
 from django.db import transaction
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -22,12 +24,14 @@ from .serializers import (
     OutboundQueueSerializer,
     RepliesQueueSerializer,
     ReportPersistRequestSerializer,
+    SendApprovedDraftRequestSerializer,
     ScorePersistRequestSerializer,
     WebsiteReportSerializer,
 )
 from .services.llm_gateway import LLMGatewayError
 from .services.outreach import LeadNotDraftableError, OutreachDraftingError, create_outbound_draft
 from .services.scoring import compute_lead_score
+from .services.sending import DraftSendError, send_approved_draft
 
 
 def _normalize_website_url(raw_url: str) -> str:
@@ -78,6 +82,75 @@ def _technical_data_to_evidence_items(technical_data: dict[str, Any], default_ur
             }
         )
     return items
+
+
+def _canonical_json(value: Any) -> str:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+
+
+def _find_matching_evidence(
+    *,
+    lead: Lead,
+    evidence_type: str,
+    url: str,
+    tool: str,
+    payload: Any,
+) -> WebsiteEvidence | None:
+    recent_records = lead.website_evidence.filter(
+        evidence_type=evidence_type,
+        url=url,
+        tool=tool,
+    ).order_by("-created_at")[:25]
+    target_payload = _canonical_json(payload)
+    for record in recent_records:
+        if _canonical_json(record.payload) == target_payload:
+            return record
+    return None
+
+
+def _find_matching_report(
+    *,
+    lead: Lead,
+    model: str,
+    prompt_version: str,
+    evidence_ids: list[str],
+    report_payload: Any,
+    summary: str,
+) -> WebsiteReport | None:
+    recent_reports = lead.website_reports.filter(
+        model=model,
+        prompt_version=prompt_version,
+    ).order_by("-created_at")[:25]
+    target_report = _canonical_json(report_payload)
+    target_evidence_ids = list(evidence_ids)
+    for report in recent_reports:
+        if (
+            list(report.evidence_ids or []) == target_evidence_ids
+            and _canonical_json(report.report) == target_report
+            and (report.summary or "") == summary
+        ):
+            return report
+    return None
+
+
+def _find_matching_score(
+    *,
+    lead: Lead,
+    score: int,
+    bucket: str,
+    reason_codes: list[str],
+    recommendation: dict[str, Any],
+) -> LeadScore | None:
+    recent_scores = lead.scores.filter(score=score, bucket=bucket).order_by("-created_at")[:25]
+    target_reasons = list(reason_codes)
+    target_recommendation = _canonical_json(recommendation)
+    for score_record in recent_scores:
+        if (
+            list(score_record.reason_codes or []) == target_reasons
+            and _canonical_json(score_record.recommendation) == target_recommendation
+        ):
+            return score_record
+    return None
 
 
 class N8NProtectedAPIView(APIView):
@@ -279,17 +352,32 @@ class EvidenceIngestView(N8NProtectedAPIView):
             )
 
         created_ids: list[int] = []
+        reused_ids: list[int] = []
         for item in incoming_items:
+            normalized_url = _normalize_website_url(item.get("url", "")) or lead.website_url
+            tool = item.get("tool", "")
+            payload = item.get("payload", {})
+            existing = _find_matching_evidence(
+                lead=lead,
+                evidence_type=item["evidence_type"],
+                url=normalized_url,
+                tool=tool,
+                payload=payload,
+            )
+            if existing is not None:
+                reused_ids.append(existing.id)
+                continue
+
             record = WebsiteEvidence.objects.create(
                 lead=lead,
                 evidence_type=item["evidence_type"],
-                url=_normalize_website_url(item.get("url", "")) or lead.website_url,
-                tool=item.get("tool", ""),
-                payload=item.get("payload", {}),
+                url=normalized_url,
+                tool=tool,
+                payload=payload,
             )
             created_ids.append(record.id)
 
-        if lead.status == "new":
+        if created_ids and lead.status == "new":
             lead.status = "evidence_collected"
             lead.save()
 
@@ -297,9 +385,10 @@ class EvidenceIngestView(N8NProtectedAPIView):
             {
                 "lead_id": lead.id,
                 "created_count": len(created_ids),
-                "evidence_ids": created_ids,
+                "reused_count": len(reused_ids),
+                "evidence_ids": created_ids + reused_ids,
             },
-            status=status.HTTP_201_CREATED,
+            status=status.HTTP_201_CREATED if created_ids else status.HTTP_200_OK,
         )
 
 
@@ -340,6 +429,20 @@ class ReportPersistView(N8NProtectedAPIView):
                 or ""
             ).strip()
 
+        existing_report = _find_matching_report(
+            lead=lead,
+            model=validated_data["model"],
+            prompt_version=validated_data["prompt_version"],
+            evidence_ids=evidence_ids,
+            report_payload=report_payload,
+            summary=summary,
+        )
+        if existing_report is not None:
+            return Response(
+                WebsiteReportSerializer(existing_report).data,
+                status=status.HTTP_200_OK,
+            )
+
         report = WebsiteReport.objects.create(
             lead=lead,
             model=validated_data["model"],
@@ -376,6 +479,19 @@ class ScorePersistView(N8NProtectedAPIView):
             report_obj = lead.website_reports.order_by("-created_at").first()
 
         result = compute_lead_score(lead=lead, report_obj=report_obj)
+
+        existing_score = _find_matching_score(
+            lead=lead,
+            score=result.score,
+            bucket=result.bucket,
+            reason_codes=result.reason_codes,
+            recommendation=result.recommendation,
+        )
+        if existing_score is not None:
+            return Response(
+                LeadScoreSerializer(existing_score).data,
+                status=status.HTTP_200_OK,
+            )
 
         score_record = LeadScore.objects.create(
             lead=lead,
@@ -434,6 +550,57 @@ class DraftCreateView(N8NProtectedAPIView):
         return Response(
             OutboundDraftDetailSerializer(draft).data,
             status=status.HTTP_201_CREATED,
+        )
+
+
+class DraftApproveView(N8NProtectedAPIView):
+    @transaction.atomic
+    def post(self, request, draft_id: int):
+        draft = get_object_or_404(OutboundDraft, pk=draft_id)
+        if draft.approval_status != "approved":
+            draft.approval_status = "approved"
+            draft.approved_at = timezone.now()
+            draft.approved_by = request.user if getattr(request.user, "is_authenticated", False) else None
+            draft.save(update_fields=["approval_status", "approved_at", "approved_by", "updated_at"])
+        return Response(OutboundDraftDetailSerializer(draft).data, status=status.HTTP_200_OK)
+
+
+class DraftRejectView(N8NProtectedAPIView):
+    @transaction.atomic
+    def post(self, request, draft_id: int):
+        draft = get_object_or_404(OutboundDraft, pk=draft_id)
+        draft.approval_status = "rejected"
+        draft.approved_at = None
+        draft.approved_by = None
+        draft.save(update_fields=["approval_status", "approved_at", "approved_by", "updated_at"])
+        return Response(OutboundDraftDetailSerializer(draft).data, status=status.HTTP_200_OK)
+
+
+class SendApprovedDraftView(N8NProtectedAPIView):
+    def post(self, request):
+        serializer = SendApprovedDraftRequestSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        draft = get_object_or_404(
+            OutboundDraft.objects.select_related("lead", "contact"),
+            pk=serializer.validated_data["draft_id"],
+        )
+
+        try:
+            send_record = send_approved_draft(draft=draft)
+        except DraftSendError as exc:
+            return Response(
+                {"error_code": exc.error_code, "error": str(exc)},
+                status=exc.status_code,
+            )
+
+        return Response(
+            {
+                "status": "sent",
+                "draft_id": draft.id,
+                "send_id": send_record.id,
+                "provider_message_id": send_record.provider_message_id,
+            },
+            status=status.HTTP_200_OK,
         )
 
 

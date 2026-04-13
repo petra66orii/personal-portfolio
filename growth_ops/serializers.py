@@ -240,3 +240,7 @@ class OutboundDraftDetailSerializer(serializers.ModelSerializer):
             "approved_at",
             "approved_by",
         ]
+
+
+class SendApprovedDraftRequestSerializer(serializers.Serializer):
+    draft_id = serializers.IntegerField()

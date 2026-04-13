@@ -52,7 +52,7 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(ok_response.status_code, 201)
         self.assertTrue(ok_response.data["created"])
 
-    def test_evidence_ingest_append_only(self):
+    def test_evidence_ingest_is_idempotent_for_duplicate_payloads(self):
         lead = Lead.objects.create(company_name="Evidence Co", website_url="https://evidence.example")
 
         payload = {
@@ -79,9 +79,10 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(WebsiteEvidence.objects.filter(lead=lead).count(), 2)
 
         response_2 = self.client.post("/api/growth/evidence", data=payload, format="json", **self.headers)
-        self.assertEqual(response_2.status_code, 201)
-        self.assertEqual(response_2.data["created_count"], 2)
-        self.assertEqual(WebsiteEvidence.objects.filter(lead=lead).count(), 4)
+        self.assertEqual(response_2.status_code, 200)
+        self.assertEqual(response_2.data["created_count"], 0)
+        self.assertEqual(response_2.data["reused_count"], 2)
+        self.assertEqual(WebsiteEvidence.objects.filter(lead=lead).count(), 2)
 
     def test_report_persistence(self):
         lead = Lead.objects.create(company_name="Report Co", website_url="https://report.example")
@@ -123,6 +124,16 @@ class GrowthOpsAPITests(APITestCase):
             stored.summary,
             "Performance and platform constraints are limiting growth.",
         )
+
+        duplicate_response = self.client.post(
+            "/api/growth/reports",
+            data=payload,
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(duplicate_response.status_code, 200)
+        self.assertEqual(duplicate_response.data["id"], response.data["id"])
+        self.assertEqual(WebsiteReport.objects.filter(lead=lead).count(), 1)
 
     def test_deterministic_scoring(self):
         lead = Lead.objects.create(
@@ -172,6 +183,16 @@ class GrowthOpsAPITests(APITestCase):
         self.assertIn("CTA_CLARITY_POOR", score.reason_codes)
         self.assertIn("SITEMAP_MISSING", score.reason_codes)
         self.assertIn("TEMPLATE_CMS_LIMITATION_SIGNAL", score.reason_codes)
+
+        duplicate_response = self.client.post(
+            "/api/growth/scores",
+            data={"lead_id": lead.id, "report_id": report.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(duplicate_response.status_code, 200)
+        self.assertEqual(duplicate_response.data["id"], response.data["id"])
+        self.assertEqual(LeadScore.objects.filter(lead=lead).count(), 1)
 
     def test_queue_filtering(self):
         lead = Lead.objects.create(company_name="Queue Co", website_url="https://queue.example")
