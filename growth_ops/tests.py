@@ -500,6 +500,26 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(send_record.status, "failed")
         self.assertIn("draft_not_approved", send_record.error)
 
+    @patch("growth_ops.services.sending.EmailMessage.send")
+    def test_blocked_send_for_non_email_channel(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+        draft.channel = "linkedin"
+        draft.save(update_fields=["channel", "updated_at"])
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.data["error_code"], "unsupported_channel")
+        self.assertFalse(mock_send.called)
+
+        send_record = OutboundSend.objects.get(draft=draft)
+        self.assertEqual(send_record.status, "failed")
+        self.assertIn("unsupported_channel", send_record.error)
+
     @patch("growth_ops.services.sending.EmailMessage.send", return_value=1)
     def test_successful_send_for_approved_draft_creates_send_record(self, mock_send):
         draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
@@ -517,6 +537,24 @@ class GrowthOpsAPITests(APITestCase):
         send_record = OutboundSend.objects.get(draft=draft, status="sent")
         self.assertIsNotNone(send_record.sent_at)
         self.assertTrue(send_record.provider_message_id)
+
+    @patch("growth_ops.services.sending.EmailMessage.send", return_value=0)
+    def test_zero_send_count_is_treated_as_failure(self, mock_send):
+        draft = self._create_sendable_draft(approval_status="approved", approved_at_set=True)
+
+        response = self.client.post(
+            "/api/growth/send-approved",
+            data={"draft_id": draft.id},
+            format="json",
+            **self.headers,
+        )
+        self.assertEqual(response.status_code, 502)
+        self.assertEqual(response.data["error_code"], "send_not_accepted")
+        self.assertTrue(mock_send.called)
+
+        send_record = OutboundSend.objects.get(draft=draft)
+        self.assertEqual(send_record.status, "failed")
+        self.assertEqual(send_record.error, "Email backend did not accept the message.")
 
     @patch("growth_ops.services.sending.EmailMessage.send", side_effect=RuntimeError("smtp down"))
     def test_failure_logging_on_send_error(self, mock_send):

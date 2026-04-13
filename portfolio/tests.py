@@ -76,3 +76,18 @@ class PortfolioSecurityTests(TestCase):
 
         self.assertEqual(response.status_code, 400)
         self.assertEqual(response.json()["error"], "Unable to process this signup request.")
+
+    @override_settings(
+        MAILCHIMP_API_KEY=None,
+        MAILCHIMP_DATA_CENTER=None,
+        MAILCHIMP_AUDIENCE_ID=None,
+    )
+    def test_newsletter_signup_hides_configuration_details(self):
+        response = self.client.post(
+            "/api/newsletter-signup/",
+            data={"email": "user@example.com"},
+            format="json",
+        )
+
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["error"], "Newsletter signup is temporarily unavailable.")

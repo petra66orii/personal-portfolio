@@ -226,8 +226,11 @@ else:
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
-if not SECRET_KEY and not DEBUG:
-    raise ValueError("SECRET_KEY must be configured when DEBUG is False")
+if not SECRET_KEY:
+    if RUNNING_TESTS:
+        SECRET_KEY = "test-secret-key-not-for-production"
+    elif not DEBUG:
+        raise ValueError("SECRET_KEY must be configured when DEBUG is False")
 
 SUMMERNOTE_THEME = 'bs4'
 

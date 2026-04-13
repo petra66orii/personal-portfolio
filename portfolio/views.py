@@ -261,9 +261,10 @@ class NewsletterSignupView(APIView):
         mailchimp_audience_id = getattr(settings, "MAILCHIMP_AUDIENCE_ID", None)
 
         if not all([mailchimp_api_key, mailchimp_data_center, mailchimp_audience_id]):
+            logger.error("Newsletter signup requested but Mailchimp is not configured.")
             return Response(
-                {"error": "Mailchimp settings not configured."},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                {"error": "Newsletter signup is temporarily unavailable."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
         api_url = f"https://{mailchimp_data_center}.api.mailchimp.com/3.0/lists/{mailchimp_audience_id}/members"
