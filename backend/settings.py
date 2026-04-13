@@ -1,7 +1,9 @@
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import sys
 import dj_database_url
+from corsheaders.defaults import default_headers
 
 load_dotenv()
 
@@ -18,6 +20,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
+RUNNING_TESTS = "test" in sys.argv
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -223,6 +226,12 @@ else:
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
+if not SECRET_KEY:
+    if RUNNING_TESTS:
+        SECRET_KEY = "test-secret-key-not-for-production"
+    elif not DEBUG:
+        raise ValueError("SECRET_KEY must be configured when DEBUG is False")
+
 SUMMERNOTE_THEME = 'bs4'
 
 N8N_API_KEY = os.getenv("N8N_API_KEY", "")
@@ -281,7 +290,7 @@ CORS_ALLOWED_ORIGINS = [
 
 CORS_ALLOW_ALL_ORIGINS = False
 CORS_ALLOW_CREDENTIALS = True
-CORS_ALLOW_HEADERS = ["*"]
+CORS_ALLOW_HEADERS = list(default_headers)
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
@@ -291,4 +300,30 @@ CSRF_TRUSTED_ORIGINS = [
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 USE_X_FORWARDED_HOST = True
+
+REST_FRAMEWORK = {
+    "DEFAULT_THROTTLE_RATES": {
+        "contact_form": os.getenv("CONTACT_FORM_THROTTLE", "5/hour"),
+        "service_inquiry": os.getenv("SERVICE_INQUIRY_THROTTLE", "5/hour"),
+        "newsletter_signup": os.getenv("NEWSLETTER_SIGNUP_THROTTLE", "10/hour"),
+    }
+}
+
+SECURE_SSL_REDIRECT = os.getenv(
+    "SECURE_SSL_REDIRECT",
+    "False" if DEBUG or RUNNING_TESTS else "True",
+).lower() == "true"
+SESSION_COOKIE_SECURE = os.getenv(
+    "SESSION_COOKIE_SECURE",
+    "False" if DEBUG else "True",
+).lower() == "true"
+CSRF_COOKIE_SECURE = os.getenv(
+    "CSRF_COOKIE_SECURE",
+    "False" if DEBUG else "True",
+).lower() == "true"
+SECURE_HSTS_SECONDS = int(
+    os.getenv("SECURE_HSTS_SECONDS", "0" if DEBUG else "31536000")
+)
+SECURE_HSTS_INCLUDE_SUBDOMAINS = SECURE_HSTS_SECONDS > 0
+SECURE_HSTS_PRELOAD = SECURE_HSTS_SECONDS > 0
 

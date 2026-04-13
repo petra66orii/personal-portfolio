@@ -20,6 +20,7 @@ from rest_framework.views import APIView
 
 from .models import BlogPost, ContactMessage, Project, Service, ServiceInquiry, SiteAudit
 from .scripts.auditor import SiteAuditor
+from .sanitization import sanitize_rich_html
 from .serializers import (
     BlogPostSerializer,
     ContactMessageSerializer,
@@ -28,6 +29,7 @@ from .serializers import (
     ServiceSerializer,
 )
 from .tasks import run_site_audit_task
+from .throttling import ContactFormThrottle, NewsletterSignupThrottle, ServiceInquiryThrottle
 
 logger = logging.getLogger(__name__)
 
@@ -137,7 +139,8 @@ class ProjectViewSet(viewsets.ReadOnlyModelViewSet):
 class ContactMessageCreateView(generics.CreateAPIView):
     queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
-    permission_classes = []
+    permission_classes = [permissions.AllowAny]
+    throttle_classes = [ContactFormThrottle]
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
@@ -224,7 +227,8 @@ Project Details:
 class ServiceInquiryCreateView(generics.CreateAPIView):
     queryset = ServiceInquiry.objects.all()
     serializer_class = ServiceInquirySerializer
-    permission_classes = []
+    permission_classes = [permissions.AllowAny]
+    throttle_classes = [ServiceInquiryThrottle]
 
     def create(self, request, *args, **kwargs):
         response = super().create(request, *args, **kwargs)
@@ -245,6 +249,7 @@ class ServiceInquiryCreateView(generics.CreateAPIView):
 class NewsletterSignupView(APIView):
     authentication_classes = []
     permission_classes = [permissions.AllowAny]
+    throttle_classes = [NewsletterSignupThrottle]
 
     def post(self, request, *args, **kwargs):
         email = request.data.get("email")
@@ -256,9 +261,10 @@ class NewsletterSignupView(APIView):
         mailchimp_audience_id = getattr(settings, "MAILCHIMP_AUDIENCE_ID", None)
 
         if not all([mailchimp_api_key, mailchimp_data_center, mailchimp_audience_id]):
+            logger.error("Newsletter signup requested but Mailchimp is not configured.")
             return Response(
-                {"error": "Mailchimp settings not configured."},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                {"error": "Newsletter signup is temporarily unavailable."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
         api_url = f"https://{mailchimp_data_center}.api.mailchimp.com/3.0/lists/{mailchimp_audience_id}/members"
@@ -277,14 +283,22 @@ class NewsletterSignupView(APIView):
             resp.raise_for_status()
             return Response({"message": "Successfully subscribed!"}, status=status.HTTP_201_CREATED)
         except requests.exceptions.HTTPError as err:
-            error_json = err.response.json() if err.response is not None else {}
-            error_detail = error_json.get("detail", "An error occurred.")
             status_code = err.response.status_code if err.response is not None else 400
-            return Response({"error": error_detail}, status=status_code)
-        except Exception:
+            logger.info("Newsletter signup rejected by Mailchimp: status=%s", status_code)
+            if status_code == status.HTTP_400_BAD_REQUEST:
+                return Response(
+                    {"error": "Unable to process this signup request."},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
             return Response(
-                {"error": "An unexpected error occurred."},
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                {"error": "Newsletter signup is temporarily unavailable."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
+            )
+        except Exception:
+            logger.exception("Newsletter signup failed")
+            return Response(
+                {"error": "Newsletter signup is temporarily unavailable."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
             )
 
 
@@ -294,7 +308,7 @@ def blog_post_detail(request, slug):
     data = {
         "id": post.id,
         "title": post.title,
-        "content": post.content,
+        "content": sanitize_rich_html(post.content),
         "excerpt": post.excerpt,
         "author": str(post.author),
         "published_date": post.published_date,

@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Project, ContactMessage, BlogPost, Service, ServiceInquiry
+from .sanitization import sanitize_rich_html
 
 class ProjectSerializer(serializers.ModelSerializer):
     image = serializers.SerializerMethodField()
@@ -24,6 +25,7 @@ class ContactMessageSerializer(serializers.ModelSerializer):
 class BlogPostSerializer(serializers.ModelSerializer):
     tags = serializers.SerializerMethodField()
     featured_image = serializers.SerializerMethodField()
+    content = serializers.SerializerMethodField()
     
     class Meta:
         model = BlogPost
@@ -40,6 +42,9 @@ class BlogPostSerializer(serializers.ModelSerializer):
         if not obj.featured_image:
             return None
         return obj.featured_image.url
+
+    def get_content(self, obj):
+        return sanitize_rich_html(obj.content)
 
 
 class ServiceSerializer(serializers.ModelSerializer):

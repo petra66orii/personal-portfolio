@@ -215,6 +215,13 @@ class OutboundSend(models.Model):
 
     class Meta:
         ordering = ("-created_at",)
+        constraints = [
+            models.UniqueConstraint(
+                fields=("draft",),
+                condition=models.Q(status="sent"),
+                name="growth_send_one_sent_per_draft",
+            ),
+        ]
         indexes = [
             models.Index(fields=("status", "created_at"), name="growth_send_status_created_idx"),
         ]
@@ -241,6 +248,9 @@ class Sequence(models.Model):
 
     class Meta:
         ordering = ("-created_at",)
+        constraints = [
+            models.UniqueConstraint(fields=("lead",), name="growth_sequence_unique_lead"),
+        ]
         indexes = [
             models.Index(fields=("status", "next_send_at"), name="growth_seq_status_nextsend_idx"),
         ]

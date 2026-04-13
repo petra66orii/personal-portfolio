@@ -15,7 +15,7 @@ i18n
   .use(initReactI18next)
   // Init i18next
   .init({
-    debug: true, // Set to false in production
+    debug: import.meta.env.DEV,
     fallbackLng: "en", // Use English if detected language is not available
     interpolation: {
       escapeValue: false, // React already safes from xss
