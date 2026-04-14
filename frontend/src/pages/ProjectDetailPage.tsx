@@ -11,20 +11,14 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import OpenEireCaseStudy from "../components/OpenEireCaseStudy";
+import {
+  isFlagshipProject,
+  type ProjectSummary,
+} from "../utils/projects";
 
 // The full project type including our new case study fields
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  image?: string;
-  tech_stack: string;
-  repo_link?: string;
-  live_link?: string;
-  client_challenge?: string;
-  my_solution?: string;
-  the_result?: string;
-};
+type Project = ProjectSummary;
 
 const getImageUrl = (imageUrl?: string) => {
   if (!imageUrl) return "/assets/default-project.png";
@@ -83,6 +77,10 @@ const ProjectDetailPage: React.FC = () => {
         </Link>
       </div>
     );
+  }
+
+  if (isFlagshipProject(project)) {
+    return <OpenEireCaseStudy project={project} />;
   }
 
   return (

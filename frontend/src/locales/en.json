@@ -87,6 +87,179 @@
   "error_message": "Failed to fetch project details. Please try again later.",
   "not_found": "The project could not be found."
 },
+  "case_studies": {
+    "openeire": {
+      "seo": {
+        "title": "OpenEire Studios Case Study | Full-Stack Licensing and Commerce Platform | Miss Bott",
+        "description": "See how Miss Bott built a custom Django and React platform for OpenEire Studios, combining rights-managed licensing, protected downloads, print fulfilment, and AI-assisted admin workflows.",
+        "keywords": "OpenEire Studios case study, Django React case study, custom commerce platform, licensing workflow, protected downloads, print fulfilment, Miss Bott"
+      },
+      "hero": {
+        "eyebrow": "Flagship Case Study",
+        "title": "OpenEire Studios: a custom platform for licensed media, protected delivery, and print commerce",
+        "summary": "OpenEire is not a brochure website dressed up as a product. It is a full-stack commerce and operations platform built to sell drone media in multiple formats, protect purchased assets, and support a business model that off-the-shelf tools do not handle cleanly.",
+        "facts": [
+          {
+            "label": "Project type",
+            "value": "Custom full-stack commerce application"
+          },
+          {
+            "label": "Scope",
+            "value": "Licensing, protected downloads, gated galleries, and print fulfilment"
+          },
+          {
+            "label": "What it proves",
+            "value": "Miss Bott can build software around complex revenue models, not just marketing pages"
+          }
+        ],
+        "primaryCta": "Discuss Your Platform",
+        "secondaryCta": "Explore Solutions"
+      },
+      "overview": {
+        "label": "Project Overview",
+        "title": "What OpenEire needed the platform to do",
+        "paragraphs": [
+          "OpenEire Studios produces premium aerial media that has value in more than one format. The business needed to license digital footage, deliver protected files after purchase, sell physical prints, and control who could access gated galleries.",
+          "That combination changes the brief entirely. This was not a simple content site with a checkout bolted on. It needed custom business rules, secure delivery logic, and admin workflows that could support day-to-day operations without exposing valuable assets."
+        ],
+        "statCards": [
+          {
+            "label": "Audience",
+            "value": "Buyers, licensees, collectors, and internal staff"
+          },
+          {
+            "label": "Business model",
+            "value": "Licensed digital media plus physical print sales"
+          },
+          {
+            "label": "Core requirement",
+            "value": "Custom workflows that protect assets while keeping operations manageable"
+          }
+        ]
+      },
+      "challenge": {
+        "label": "The Challenge",
+        "title": "Why this could not be solved with a template stack",
+        "intro": "OpenEire needed a platform that could support several revenue paths at once without turning the business into a workaround for someone else's product constraints.",
+        "items": [
+          {
+            "title": "Rights-managed licensing",
+            "body": "The same media asset could be sold under different usage terms, pricing structures, and delivery conditions depending on how the client intended to use it."
+          },
+          {
+            "title": "Protected digital delivery",
+            "body": "Purchased media could not simply live in a public folder or generic download flow. Access had to be scoped, temporary, and controlled."
+          },
+          {
+            "title": "Physical and digital product flows",
+            "body": "OpenEire needed one system that could handle both secure digital fulfilment and print fulfilment without splitting operations across disconnected tools."
+          },
+          {
+            "title": "Admin complexity",
+            "body": "Staff needed a usable workflow for drafts, approvals, fulfilment steps, and communications, not a maze of plugins and manual work."
+          }
+        ]
+      },
+      "solution": {
+        "label": "The Solution",
+        "title": "A custom Django and React architecture built around the business model",
+        "intro": "The platform was designed as a real application: Django owns the business rules and protected operations, while React delivers a clean client experience on top of a purpose-built API.",
+        "items": [
+          {
+            "title": "Custom application core",
+            "body": "Django acts as the system of record for licensing logic, access control, fulfilment rules, payments, and operational workflows."
+          },
+          {
+            "title": "Protected galleries and downloads",
+            "body": "Sensitive media stays behind controlled delivery flows, with access generated by the backend instead of exposing raw asset URLs."
+          },
+          {
+            "title": "Licensing and print workflows",
+            "body": "The same platform supports rights-managed digital media and physical print orders, which keeps revenue operations in one coherent system."
+          },
+          {
+            "title": "AI-assisted admin support",
+            "body": "Drafting and review workflows are supported by internal AI tooling to reduce admin friction without giving up human oversight."
+          }
+        ]
+      },
+      "highlights": {
+        "label": "Key Features",
+        "title": "A platform built around real operational complexity",
+        "intro": "The strongest part of OpenEire is not any single feature. It is the way multiple moving parts work together in one controlled system.",
+        "items": [
+          {
+            "title": "Rights-managed licensing workflow",
+            "body": "Licensing requests can move through drafting, review, payment, and final delivery in a structured workflow that matches how the business actually sells media.",
+            "tags": ["Custom logic", "Quote-ready", "Audit-friendly"]
+          },
+          {
+            "title": "Gated gallery access",
+            "body": "Gallery content can be scoped to the right buyer or session instead of being treated like a public asset library.",
+            "tags": ["Protected media", "Scoped access", "Controlled delivery"]
+          },
+          {
+            "title": "Print fulfilment support",
+            "body": "Physical print sales are part of the same application flow, so print orders do not need to live in a separate disconnected store.",
+            "tags": ["Print workflow", "Order handling", "Fulfilment-ready"]
+          },
+          {
+            "title": "AI-assisted internal workflows",
+            "body": "Internal drafting support helps staff move faster on repetitive work while keeping approvals, edits, and final decisions in human hands.",
+            "tags": ["Admin support", "Operational efficiency", "Human review"]
+          }
+        ]
+      },
+      "technical_snapshot": {
+        "label": "Technical Snapshot",
+        "title": "Serious architecture, without unnecessary complexity",
+        "intro": "This project needed custom engineering depth, but the page keeps the story client-readable. The important point is that every major layer was designed to support reliability, control, and future change.",
+        "cards": [
+          {
+            "title": "Backend architecture",
+            "body": "Django and Django REST Framework provide the business logic layer, API surface, validation, and protected workflow handling."
+          },
+          {
+            "title": "Frontend experience",
+            "body": "React delivers a fast client interface that can consume a clean API without embedding sensitive business logic in the browser."
+          },
+          {
+            "title": "Commerce and fulfilment",
+            "body": "Payments, licensing, protected delivery, and print workflows are coordinated through one system rather than stitched together as separate tools."
+          },
+          {
+            "title": "Security and operations",
+            "body": "Protected storage, controlled asset delivery, and internal workflow boundaries help the platform support valuable media safely."
+          }
+        ]
+      },
+      "client_value": {
+        "label": "Why This Matters",
+        "title": "What this proves for clients considering custom development",
+        "intro": "OpenEire shows what happens when software is designed around the business instead of forcing the business to fit a template.",
+        "items": [
+          {
+            "title": "Templates are not always enough",
+            "body": "When a business model includes protected content, custom permissions, licensing, or operational edge cases, the platform often needs to be designed from the ground up."
+          },
+          {
+            "title": "Custom systems can simplify complexity",
+            "body": "The goal is not complexity for its own sake. It is to make a complex business easier to run, easier to scale, and easier to control."
+          },
+          {
+            "title": "The architecture stays flexible",
+            "body": "Because the system is custom, it can evolve with new workflows, integrations, and revenue paths without rebuilding the entire business around platform limitations."
+          }
+        ]
+      },
+      "cta": {
+        "title": "Outgrowing templates or patchwork tools?",
+        "body": "If your business has real workflow complexity, we can scope what a custom platform should actually do before you waste more time forcing the wrong stack to behave.",
+        "primary": "Book a Discovery Call",
+        "secondary": "See the Solution Stacks"
+      }
+    }
+},
   "cta": {
     "title": "Ready to Move Beyond Template Limitations?",
     "description": "Book a discovery session and we’ll map out the exact architecture your business needs to scale.",

@@ -1,6 +1,30 @@
 [
   {
     "model": "portfolio.project",
+    "pk": 4,
+    "fields": {
+      "title": "OpenEire Studios",
+      "description_en": "A custom Django and React platform for selling licensed drone media, managing protected galleries, and handling both digital and physical fulfilment.",
+      "description_ro": "O platformă custom Django și React pentru vânzarea de media aeriană licențiată, gestionarea galeriilor protejate și livrarea atât a produselor digitale, cât și fizice.",
+      "description_es": "Una plataforma a medida con Django y React para vender contenido aéreo con licencia, gestionar galerías protegidas y coordinar la entrega de productos digitales y físicos.",
+      "tech_stack": "Django, Django REST Framework, React, TypeScript, PostgreSQL, Stripe, Cloudflare R2, Redis",
+      "repo_link": "",
+      "live_link": "",
+      "featured": true,
+      "image": "openeire-aerial-drone.png",
+      "client_challenge_en": "OpenEire needed more than a brochure site. The platform had to support rights-managed licensing, gated digital delivery, print fulfilment, and an admin workflow that could safely handle protected media assets.",
+      "client_challenge_ro": "OpenEire avea nevoie de mai mult decât un simplu site de prezentare. Platforma trebuia să susțină licențiere rights-managed, livrare digitală securizată, gestionarea comenzilor de print și un flux administrativ sigur pentru conținut media protejat.",
+      "client_challenge_es": "OpenEire necesitaba algo más que una web de presentación. La plataforma debía soportar licencias rights-managed, entrega digital protegida, gestión de impresiones y un flujo administrativo seguro para contenido multimedia protegido.",
+      "my_solution_en": "I designed a full-stack commerce application with Django as the business logic core and React as the client layer. The system coordinates licensing, secure asset delivery, print orders, payments, and AI-assisted admin support through one custom architecture.",
+      "my_solution_ro": "Am proiectat o aplicație full-stack de e-commerce, cu Django ca nucleu al logicii de business și React ca strat de interfață. Sistemul coordonează licențierea, livrarea securizată a fișierelor, comenzile de print, plățile și suportul administrativ asistat de AI într-o singură arhitectură custom.",
+      "my_solution_es": "Diseñé una aplicación full-stack de e-commerce con Django como núcleo de la lógica de negocio y React como capa de cliente. El sistema coordina licencias, entrega segura de archivos, pedidos de impresión, pagos y soporte administrativo asistido por IA dentro de una única arquitectura a medida.",
+      "the_result_en": "OpenEire now has a platform built around its real business model instead of forcing that model into a template. It demonstrates how custom software can support protected content, complex product flows, and future growth.",
+      "the_result_ro": "OpenEire are acum o platformă construită în jurul modelului său real de business, nu forțată într-un șablon. Proiectul demonstrează cum software-ul custom poate susține conținut protejat, fluxuri complexe de produse și creștere pe termen lung.",
+      "the_result_es": "OpenEire ahora cuenta con una plataforma construida alrededor de su modelo real de negocio, en lugar de forzarlo a encajar en una plantilla. El proyecto demuestra cómo el software a medida puede soportar contenido protegido, flujos de producto complejos y crecimiento a largo plazo."
+    }
+  },
+  {
+    "model": "portfolio.project",
     "pk": 1,
     "fields": {
       "title": "CM Artistry",
@@ -35,7 +59,7 @@
       "repo_link": "https://github.com/petra6forii/honeypot",
       "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
       "featured": true,
-      "image": "project5.png",
+      "image": "react-home-page.png",
       "client_challenge_en": "The objective was to bypass the limitations and transaction fees of platforms like Shopify. The client needed a custom e-commerce architecture capable of handling secure payments, managing SKU-level inventory variations, and providing a bespoke checkout flow.",
       "client_challenge_ro": "Obiectivul a fost depășirea limitărilor și taxelor de tranzacție ale platformelor precum Shopify. Clientul avea nevoie de o arhitectură e-commerce personalizată capabilă să gestioneze plăți sigure, să administreze variațiile de stoc la nivel de SKU și să ofere un flux de checkout unic.",
       "client_challenge_es": "El objetivo era superar las limitaciones y tarifas de transacción de plataformas como Shopify. El cliente necesitaba una arquitectura de comercio electrónico personalizada capaz de manejar pagos seguros, gestionar variaciones de inventario a nivel de SKU y ofrecer un flujo de pago a medida.",
@@ -59,7 +83,7 @@
       "repo_link": "https://github.com/petra6forii/timeless-travel",
       "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
       "featured": true,
-      "image": "project4.png",
+      "image": "timeless-travel-home.png",
       "client_challenge_en": "Standard blogging platforms (WordPress) were too bloated and insecure for the client's specific data needs. They required a lightweight, high-performance CMS with strict permission levels and a relational database structure to link content types efficiently.",
       "client_challenge_ro": "Platformele standard de blogging (WordPress) erau prea încărcate și nesigure pentru nevoile specifice de date ale clientului. Acesta a solicitat un CMS ușor, de înaltă performanță, cu niveluri stricte de permisiune și o structură de bază de date relațională pentru a lega eficient tipurile de conținut.",
       "client_challenge_es": "Las plataformas de blogs estándar (WordPress) eran demasiado pesadas e inseguras para las necesidades de datos específicas del cliente. Requerían un CMS ligero y de alto rendimiento con niveles de permiso estrictos y una estructura de base de datos relacional para vincular tipos de contenido de manera eficiente.",

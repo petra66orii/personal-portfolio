@@ -82,6 +82,179 @@
     "error_message": "No se pudieron cargar los detalles del proyecto. Por favor, inténtalo de nuevo.",
     "not_found": "El proyecto no pudo ser encontrado."
   },
+"case_studies": {
+  "openeire": {
+    "seo": {
+      "title": "Caso de estudio OpenEire Studios | Plataforma full-stack de licencias y e-commerce | Miss Bott",
+      "description": "Descubre cómo Miss Bott desarrolló para OpenEire Studios una plataforma a medida con Django y React para licencias rights-managed, descargas protegidas, gestión de impresión y flujos administrativos asistidos por IA.",
+      "keywords": "caso de estudio OpenEire Studios, proyecto Django React, plataforma e-commerce a medida, flujo de licencias, descargas protegidas, impresión bajo demanda, Miss Bott"
+    },
+    "hero": {
+      "eyebrow": "Caso de estudio principal",
+      "title": "OpenEire Studios: una plataforma a medida para contenido licenciado, entrega protegida y venta de impresiones",
+      "summary": "OpenEire no es una simple web de presentación con buen diseño. Es una plataforma full-stack de e-commerce y operaciones, creada para vender contenido aéreo en varios formatos, proteger los activos tras la compra y sostener un modelo de negocio que las herramientas estándar no gestionan bien.",
+      "facts": [
+        {
+          "label": "Tipo de proyecto",
+          "value": "Aplicación full-stack a medida para e-commerce"
+        },
+        {
+          "label": "Alcance",
+          "value": "Licencias, descargas protegidas, galerías privadas y venta de impresiones"
+        },
+        {
+          "label": "Lo que demuestra",
+          "value": "Miss Bott puede crear software para modelos de ingresos complejos, no solo páginas de marketing"
+        }
+      ],
+      "primaryCta": "Hablemos de tu plataforma",
+      "secondaryCta": "Explorar soluciones"
+    },
+    "overview": {
+      "label": "Resumen del proyecto",
+      "title": "Lo que la plataforma de OpenEire necesitaba resolver",
+      "paragraphs": [
+        "OpenEire Studios produce contenido aéreo premium con valor en más de un formato. La plataforma debía permitir licenciar contenido digital, entregar archivos protegidos tras el pago, vender impresiones físicas y controlar quién podía acceder a galerías privadas.",
+        "Esa combinación cambia por completo el planteamiento. No se trataba de una web de contenido con un checkout añadido. Hacían falta reglas de negocio a medida, lógica de entrega segura y flujos administrativos capaces de sostener la operativa diaria sin exponer activos valiosos."
+      ],
+      "statCards": [
+        {
+          "label": "Audiencia",
+          "value": "Compradores, licenciatarios, coleccionistas y equipo interno"
+        },
+        {
+          "label": "Modelo de negocio",
+          "value": "Contenido digital licenciado más venta de impresiones físicas"
+        },
+        {
+          "label": "Necesidad principal",
+          "value": "Flujos personalizados que protejan los activos sin complicar la operación"
+        }
+      ]
+    },
+    "challenge": {
+      "label": "El reto",
+      "title": "Por qué esto no podía resolverse con una plantilla",
+      "intro": "OpenEire necesitaba una plataforma capaz de sostener varias vías de ingresos al mismo tiempo, sin convertir el negocio en una cadena de apaños para adaptarse a las limitaciones de otro producto.",
+      "items": [
+        {
+          "title": "Licencias rights-managed",
+          "body": "El mismo activo multimedia podía venderse con distintas condiciones de uso, precios y formas de entrega, según el uso previsto por cada cliente."
+        },
+        {
+          "title": "Entrega digital protegida",
+          "body": "El contenido comprado no podía quedar en una carpeta pública ni en un flujo genérico de descarga. El acceso tenía que ser temporal, limitado y controlado."
+        },
+        {
+          "title": "Flujos para productos físicos y digitales",
+          "body": "OpenEire necesitaba un único sistema capaz de gestionar tanto la entrega digital segura como los pedidos de impresión, sin dividir la operación entre herramientas desconectadas."
+        },
+        {
+          "title": "Complejidad administrativa",
+          "body": "El equipo necesitaba un flujo claro para borradores, aprobaciones, entregas y comunicación, no un laberinto de plugins y trabajo manual."
+        }
+      ]
+    },
+    "solution": {
+      "label": "La solución",
+      "title": "Una arquitectura personalizada con Django y React diseñada alrededor del negocio",
+      "intro": "La plataforma se diseñó como una aplicación real: Django se encarga de la lógica de negocio y de las operaciones protegidas, mientras React ofrece una experiencia clara sobre una API creada específicamente para este producto.",
+      "items": [
+        {
+          "title": "Núcleo personalizado de la aplicación",
+          "body": "Django actúa como sistema central para la lógica de licencias, el control de acceso, las reglas de entrega, los pagos y los flujos operativos."
+        },
+        {
+          "title": "Galerías y descargas protegidas",
+          "body": "El contenido sensible permanece detrás de flujos de entrega controlados, con acceso generado desde el backend en lugar de exponer URLs directas."
+        },
+        {
+          "title": "Flujos para licencias e impresiones",
+          "body": "La misma plataforma soporta tanto el contenido digital rights-managed como los pedidos de impresión, manteniendo toda la operación dentro de un único sistema coherente."
+        },
+        {
+          "title": "Soporte administrativo asistido por IA",
+          "body": "Los flujos internos de redacción y revisión se agilizan con herramientas internas de IA, sin perder la supervisión ni la aprobación humana."
+        }
+      ]
+    },
+    "highlights": {
+      "label": "Puntos clave",
+      "title": "Una plataforma diseñada para una complejidad operativa real",
+      "intro": "La mayor fortaleza de OpenEire no está en una sola funcionalidad, sino en cómo varias piezas trabajan juntas dentro de un sistema controlado.",
+      "items": [
+        {
+          "title": "Flujo de licencias rights-managed",
+          "body": "Una solicitud de licencia puede pasar por redacción, revisión, pago y entrega final dentro de un flujo que refleja cómo el negocio vende realmente su contenido.",
+          "tags": ["Lógica a medida", "Preparado para presupuestos", "Trazabilidad clara"]
+        },
+        {
+          "title": "Acceso a galerías privadas",
+          "body": "El contenido de la galería puede limitarse al comprador o a la sesión correcta, en lugar de tratarse como una biblioteca pública de archivos.",
+          "tags": ["Contenido protegido", "Acceso limitado", "Entrega controlada"]
+        },
+        {
+          "title": "Gestión de impresión integrada",
+          "body": "La venta de impresiones físicas forma parte del mismo flujo de aplicación, así que los pedidos no necesitan vivir en una tienda separada y desconectada.",
+          "tags": ["Flujo de impresión", "Gestión de pedidos", "Listo para producción"]
+        },
+        {
+          "title": "Flujos internos asistidos por IA",
+          "body": "El apoyo de IA para borradores ayuda al equipo a avanzar más rápido en tareas repetitivas, manteniendo la revisión y la decisión final en manos humanas.",
+          "tags": ["Soporte interno", "Eficiencia operativa", "Revisión humana"]
+        }
+      ]
+    },
+    "technical_snapshot": {
+      "label": "Resumen técnico",
+      "title": "Arquitectura sólida, sin complejidad innecesaria",
+      "intro": "El proyecto necesitó una base técnica seria, pero la página sigue siendo fácil de entender para clientes. Lo importante es que cada capa principal fue diseñada para ofrecer control, fiabilidad y margen de evolución.",
+      "cards": [
+        {
+          "title": "Arquitectura backend",
+          "body": "Django y Django REST Framework aportan la lógica de negocio, la API, la validación y la gestión de flujos protegidos."
+        },
+        {
+          "title": "Experiencia frontend",
+          "body": "React ofrece una interfaz rápida que consume una API limpia, sin mover lógica sensible al navegador."
+        },
+        {
+          "title": "E-commerce y entregas",
+          "body": "Pagos, licencias, entrega protegida y flujos de impresión se coordinan desde un único sistema, no desde varias herramientas pegadas entre sí."
+        },
+        {
+          "title": "Seguridad y operaciones",
+          "body": "El almacenamiento protegido, la entrega controlada de activos y la separación clara de flujos internos permiten gestionar contenido valioso con seguridad."
+        }
+      ]
+    },
+    "client_value": {
+      "label": "Por qué importa",
+      "title": "Lo que este proyecto demuestra para empresas que están considerando desarrollo a medida",
+      "intro": "OpenEire demuestra lo que ocurre cuando el software se diseña alrededor del negocio, en lugar de forzar al negocio a encajar en una plantilla.",
+      "items": [
+        {
+          "title": "Las plantillas no siempre son suficientes",
+          "body": "Cuando el modelo de negocio incluye contenido protegido, permisos personalizados, licencias o casos operativos especiales, la plataforma suele necesitar un diseño hecho desde cero."
+        },
+        {
+          "title": "Los sistemas a medida pueden simplificar la complejidad",
+          "body": "El objetivo no es añadir complejidad por añadirla, sino hacer que un negocio complejo sea más fácil de operar, escalar y controlar."
+        },
+        {
+          "title": "La arquitectura se mantiene flexible",
+          "body": "Al tratarse de un sistema a medida, puede evolucionar con nuevos flujos, integraciones y vías de ingresos sin reconstruir el negocio alrededor de limitaciones ajenas."
+        }
+      ]
+    },
+    "cta": {
+      "title": "¿Sientes que ya has superado las plantillas o las herramientas improvisadas?",
+      "body": "Si tu negocio tiene flujos reales y cierta complejidad operativa, podemos definir con claridad qué debería hacer una plataforma a medida antes de seguir perdiendo tiempo forzando el stack equivocado.",
+      "primary": "Reserva una llamada de descubrimiento",
+      "secondary": "Ver los stacks de soluciones"
+    }
+  }
+},
   "cta": {
     "title": "¿Listo para Superar las Limitaciones de las Plantillas?",
     "description": "Reserva una sesión de descubrimiento y trazaremos la arquitectura exacta que tu negocio necesita para escalar.",

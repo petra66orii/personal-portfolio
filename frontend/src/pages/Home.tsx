@@ -6,20 +6,14 @@ import Testimonials from "../components/Testimonials";
 import { useTranslation } from "react-i18next";
 import useMediaQuery from "../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
+import { sortProjectsWithFlagshipFirst, type ProjectSummary } from "../utils/projects";
 
 // --- IMPORT SWIPER COMPONENTS AND STYLES ---
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination, Autoplay } from "swiper/modules";
 
-type Project = {
-  id: number;
-  title: string;
-  description: string;
-  tech_stack: string;
-  repo_link?: string;
-  live_link?: string;
+type Project = ProjectSummary & {
   featured: boolean;
-  image?: string;
 };
 
 const Home = () => {
@@ -55,7 +49,9 @@ const Home = () => {
     fetchProjects();
   }, [i18n.language]);
 
-  const featuredProjects = projects.filter((project) => project.featured);
+  const featuredProjects = sortProjectsWithFlagshipFirst(
+    projects.filter((project) => project.featured),
+  );
   const regularProjects = projects.filter((project) => !project.featured);
 
   // Determine whether to show the carousel or a static grid

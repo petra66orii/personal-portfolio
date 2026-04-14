@@ -82,6 +82,187 @@
   "error_message": "Nu s-au putut prelua detaliile proiectului. Te rog, încearcă din nou.",
   "not_found": "Proiectul nu a putut fi găsit."
 },
+"case_studies": {
+  "openeire": {
+    "seo": {
+      "title": "Studiu de caz OpenEire Studios | Platformă full-stack pentru licențiere și e-commerce | Miss Bott",
+      "description": "Vezi cum Miss Bott a construit pentru OpenEire Studios o platformă custom Django și React pentru licențiere rights-managed, livrare securizată de fișiere, vânzare de printuri și fluxuri administrative asistate de AI.",
+      "keywords": "studiu de caz OpenEire Studios, proiect Django React, platformă custom e-commerce, workflow licențiere, livrare securizată, printuri, Miss Bott"
+    },
+
+    "hero": {
+      "eyebrow": "Studiu de caz flagship",
+      "title": "OpenEire Studios: platformă custom pentru media licențiată, livrare securizată și vânzare de printuri",
+      "summary": "OpenEire nu este un simplu website de prezentare care arată bine. Este o platformă full-stack de e-commerce și operațiuni, construită pentru a vinde media aeriană în mai multe formate, a proteja activele după achiziție și a susține un model de business pe care tool-urile standard nu îl gestionează bine.",
+      "facts": [
+        {
+          "label": "Tip proiect",
+          "value": "Aplicație custom full-stack pentru e-commerce"
+        },
+        {
+          "label": "Arie",
+          "value": "Licențiere, livrare securizată, galerii private și printuri"
+        },
+        {
+          "label": "Ce demonstrează",
+          "value": "Miss Bott poate construi software pentru modele de business complexe, nu doar site-uri de prezentare"
+        }
+      ],
+      "primaryCta": "Hai să discutăm platforma ta",
+      "secondaryCta": "Vezi soluțiile"
+    },
+
+    "overview": {
+      "label": "Prezentare proiect",
+      "title": "Ce trebuia să facă platforma OpenEire",
+      "paragraphs": [
+        "OpenEire Studios produce media aeriană premium care are valoare în mai multe forme. Platforma trebuia să permită licențierea conținutului digital, livrarea securizată după plată, vânzarea de printuri fizice și controlul accesului la galerii private.",
+        "Combinația aceasta schimbă complet brief-ul. Nu era vorba despre un site simplu cu un checkout adăugat. Era nevoie de logică de business custom, livrare securizată și fluxuri administrative care să susțină operațiunile zilnice fără să expună active valoroase."
+      ],
+      "statCards": [
+        {
+          "label": "Audiență",
+          "value": "Clienți, licențiați, colecționari și echipa internă"
+        },
+        {
+          "label": "Model de business",
+          "value": "Media digitală licențiată + printuri fizice"
+        },
+        {
+          "label": "Cerință principală",
+          "value": "Fluxuri custom care protejează activele și rămân ușor de operat"
+        }
+      ]
+    },
+
+    "challenge": {
+      "label": "Provocarea",
+      "title": "De ce nu putea fi rezolvat cu un stack bazat pe template-uri",
+      "intro": "OpenEire avea nevoie de o platformă care să susțină mai multe fluxuri de venit simultan, fără să transforme afacerea într-un workaround peste limitările altui produs.",
+      "items": [
+        {
+          "title": "Licențiere rights-managed",
+          "body": "Același activ media putea fi vândut în condiții diferite de utilizare, cu prețuri și livrare adaptate în funcție de cum urma să fie folosit."
+        },
+        {
+          "title": "Livrare digitală securizată",
+          "body": "Media cumpărată nu putea fi disponibilă printr-un link public sau un download generic. Accesul trebuia să fie limitat, temporar și controlat."
+        },
+        {
+          "title": "Produse digitale și fizice în același sistem",
+          "body": "Platforma trebuia să gestioneze atât livrarea digitală securizată, cât și comenzile de print, fără să fragmenteze operațiunile în mai multe tool-uri."
+        },
+        {
+          "title": "Complexitate administrativă",
+          "body": "Echipa avea nevoie de un flux clar pentru drafturi, aprobări și livrare, nu de un sistem construit din pluginuri și procese manuale."
+        }
+      ]
+    },
+
+    "solution": {
+      "label": "Soluția",
+      "title": "O arhitectură Django și React construită în jurul business-ului",
+      "intro": "Platforma a fost gândită ca o aplicație reală: Django gestionează logica de business și operațiunile securizate, iar React livrează o experiență clară peste un API construit special pentru acest produs.",
+      "items": [
+        {
+          "title": "Nucleu custom al aplicației",
+          "body": "Django gestionează logica de licențiere, controlul accesului, plățile și fluxurile operaționale."
+        },
+        {
+          "title": "Galerii și livrare securizată",
+          "body": "Media sensibilă este livrată prin fluxuri controlate, generate de backend, nu prin URL-uri publice."
+        },
+        {
+          "title": "Licențiere + print într-un singur sistem",
+          "body": "Aceeași platformă susține atât media digitală, cât și comenzile de print, fără sisteme separate."
+        },
+        {
+          "title": "Suport administrativ asistat de AI",
+          "body": "Fluxurile interne sunt accelerate cu AI, dar controlul final rămâne la echipă."
+        }
+      ]
+    },
+
+    "highlights": {
+      "label": "Puncte cheie",
+      "title": "O platformă construită pentru complexitate reală",
+      "intro": "Valoarea OpenEire nu stă într-o singură funcționalitate, ci în modul în care toate sistemele lucrează împreună.",
+      "items": [
+        {
+          "title": "Workflow de licențiere",
+          "body": "Cererea de licență trece prin draft, aprobare, plată și livrare într-un flux clar.",
+          "tags": ["Logică custom", "Structurat", "Trasabil"]
+        },
+        {
+          "title": "Acces la galerii private",
+          "body": "Accesul la conținut este limitat și controlat, nu public.",
+          "tags": ["Media protejată", "Acces controlat"]
+        },
+        {
+          "title": "Fulfilment pentru print",
+          "body": "Printurile sunt gestionate în același sistem.",
+          "tags": ["Print", "Comenzi"]
+        },
+        {
+          "title": "Fluxuri asistate de AI",
+          "body": "AI-ul ajută echipa să lucreze mai eficient, fără a elimina controlul uman.",
+          "tags": ["Eficiență", "Control uman"]
+        }
+      ]
+    },
+
+    "technical_snapshot": {
+      "label": "Tehnic (pe scurt)",
+      "title": "Arhitectură serioasă, fără complicații inutile",
+      "intro": "Platforma este construită pentru control și flexibilitate.",
+      "cards": [
+        {
+          "title": "Backend",
+          "body": "Django + DRF gestionează logica și API-ul."
+        },
+        {
+          "title": "Frontend",
+          "body": "React livrează o experiență rapidă."
+        },
+        {
+          "title": "Commerce",
+          "body": "Plăți, licențiere și livrare într-un singur sistem."
+        },
+        {
+          "title": "Securitate",
+          "body": "Livrare controlată și protecție a activelor."
+        }
+      ]
+    },
+
+    "client_value": {
+      "label": "De ce contează",
+      "title": "Ce demonstrează acest proiect",
+      "intro": "OpenEire arată ce se întâmplă când software-ul este construit în jurul business-ului.",
+      "items": [
+        {
+          "title": "Template-urile nu sunt suficiente",
+          "body": "Unele modele de business cer soluții custom."
+        },
+        {
+          "title": "Complexitatea poate fi simplificată",
+          "body": "Un sistem bine gândit face operațiunile mai ușoare."
+        },
+        {
+          "title": "Flexibilitate pe termen lung",
+          "body": "Platforma poate evolua fără limitări."
+        }
+      ]
+    },
+
+    "cta": {
+      "title": "Simți că ai depășit tool-urile actuale?",
+      "body": "Dacă afacerea ta are fluxuri mai complexe, putem defini exact ce ar trebui să facă o platformă custom.",
+      "primary": "Programează o discuție",
+      "secondary": "Vezi soluțiile"
+    }
+  }
+},
   "cta": {
     "title": "Ești gata să depășești limitările șabloanelor?",
     "description": "Rezervă o sesiune de descoperire și vom trasa arhitectura exactă de care afacerea ta are nevoie pentru a scala.",
