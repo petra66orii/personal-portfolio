@@ -25,6 +25,7 @@ RUN pip install --upgrade pip && pip install -r ./backend/requirements.txt
 # Copy backend code
 COPY backend ./backend
 COPY portfolio ./portfolio
+COPY growth_ops ./growth_ops
 COPY manage.py ./
 COPY media ./media
 COPY templates ./templates
