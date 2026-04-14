@@ -64,7 +64,7 @@ cp -r frontend/dist-admin/* staticfiles/dist-admin/
 
 # --- COLLECTSTATIC (Django + WhiteNoise) ---
 echo "📦 Collecting static files"
-python manage.py collectstatic --noinput \
+ALLOW_BUILD_WITHOUT_SECRET_KEY=true python manage.py collectstatic --noinput \
   --ignore "sitemap.xml" \
   --ignore "sitemap-*.xml" \
   --ignore "robots.txt"

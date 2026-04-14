@@ -21,6 +21,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 RUNNING_TESTS = "test" in sys.argv
+ALLOW_BUILD_WITHOUT_SECRET_KEY = (
+    os.getenv("ALLOW_BUILD_WITHOUT_SECRET_KEY", "False").lower() == "true"
+)
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -229,6 +232,9 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 if not SECRET_KEY:
     if RUNNING_TESTS:
         SECRET_KEY = "test-secret-key-not-for-production"
+    elif ALLOW_BUILD_WITHOUT_SECRET_KEY:
+        # Allows image builds to run collectstatic before runtime env vars exist.
+        SECRET_KEY = "build-secret-key-not-for-production"
     elif not DEBUG:
         raise ValueError("SECRET_KEY must be configured when DEBUG is False")
 

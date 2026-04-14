@@ -56,8 +56,9 @@ RUN ls -R /app
 ENV DJANGO_SETTINGS_MODULE=backend.settings
 ENV PYTHONPATH=/app
 
-# Collect static files
-RUN python manage.py collectstatic --noinput
+# Collect static files during the image build without persisting a fallback
+# secret key into the final runtime environment.
+RUN ALLOW_BUILD_WITHOUT_SECRET_KEY=true python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
