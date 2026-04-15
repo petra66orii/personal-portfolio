@@ -903,7 +903,20 @@
     "terms_of_use": "Termeni de Utilizare",
     "privacy_policy": "Politica de Confidențialitate",
     "cookies_policy": "Politica de Cookie-uri",
-        "impressum": "Miss Bott | Înregistrată în Irlanda"
+    "impressum": "Miss Bott | Înregistrată în Irlanda",
+    "trust_badge": "Studio condus de fondator",
+    "tagline": "Miss Bott construiește platforme Django și React scalabile pentru afaceri care au nevoie de arhitectură, nu improvizații.",
+    "email_label": "contact@missbott.online",
+    "discovery_cta": "Programează un Discovery Call",
+    "navigation_title": "Navigare",
+    "legal_title": "Legal",
+    "social_title": "Social",
+    "logo_alt": "Logo Miss Bott",
+    "newsletter_title": "Actualizări",
+    "newsletter_subtitle": "Trimitem ocazional insight-uri utile despre arhitectură, livrare și build-uri custom.",
+    "newsletter_placeholder": "Introdu emailul",
+    "newsletter_button": "Abonează-te",
+    "newsletter_button_loading": "Se trimite..."
   },
 "blog": {
   "title": "Strategie Tehnică & Insight-uri",

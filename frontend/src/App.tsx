@@ -101,7 +101,7 @@ function App() {
         </a>
       </CookieConsent>
 
-      <Footer />
+      <Footer isDark={isDark} />
     </>
   );
 }

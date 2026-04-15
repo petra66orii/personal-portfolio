@@ -1110,7 +1110,20 @@
     "terms_of_use": "Terms of Use",
     "privacy_policy": "Privacy Policy",
     "cookies_policy": "Cookies Policy",
-    "impressum": "Miss Bott | Registered in Ireland"
+    "impressum": "Miss Bott | Registered in Ireland",
+    "trust_badge": "Founder-led studio",
+    "tagline": "Miss Bott builds scalable Django and React platforms for businesses that need architecture, not patchwork.",
+    "email_label": "contact@missbott.online",
+    "discovery_cta": "Book a Discovery Call",
+    "navigation_title": "Navigation",
+    "legal_title": "Legal",
+    "social_title": "Social",
+    "logo_alt": "Miss Bott logo",
+    "newsletter_title": "Get updates",
+    "newsletter_subtitle": "Occasional high-signal insights on architecture, delivery, and custom builds.",
+    "newsletter_placeholder": "Enter your email",
+    "newsletter_button": "Subscribe",
+    "newsletter_button_loading": "Submitting..."
 },
 
 "blog": {
