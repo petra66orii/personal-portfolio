@@ -9,6 +9,245 @@
     "blog": "Resurse",
     "contact": "Contact"
   },
+"services_page_v2": {
+  "seo_title": "Servicii custom și prețuri | Miss Bott",
+  "seo_description": "Explorează serviciile Miss Bott: sesiune Strategic Discovery cu preț fix și stack-urile Foundation, Commerce și Application pentru afaceri care au nevoie de software custom.",
+  "seo_keywords": "preț dezvoltare web custom, sesiune descoperire strategică, servicii Django React, dezvoltare ecommerce custom, aplicații web România",
+  "hero": {
+    "eyebrow": "Servicii și prețuri",
+    "title": "Trei stack-uri de servicii construite pentru livrare controlată.",
+    "summary": "Fiecare colaborare începe cu Discovery, apoi continuă cu stack-ul potrivit nivelului tău de complexitate operațională. Scop clar, arhitectură practică și prețuri ancorate în implementare reală."
+  },
+  "discovery": {
+    "eyebrow": "Sesiune Strategică de Descoperire",
+    "required_badge": "Primul pas obligatoriu",
+    "summary": "Sesiune de lucru plătită care aliniază prioritățile de business, fluxurile utilizatorilor și scopul tehnic înainte de build. Primești roadmap și propunere clară. Taxa este dedusă dacă proiectul continuă.",
+    "price_label": "Preț fix",
+    "credit_note": "Dedus din implementare dacă proiectul continuă.",
+    "cta": "Rezervă Strategic Discovery"
+  },
+  "stacks": {
+    "eyebrow": "Stack-uri de servicii",
+    "title": "Alege stack-ul potrivit sistemului de care ai nevoie",
+    "intro": "Fiecare stack răspunde unui nivel diferit de complexitate, păstrând aceleași standarde tehnice și același model discovery-first.",
+    "scope_note": "Prețurile stack-urilor sunt puncte de pornire. Oferta finală depinde de scop, integrări și complexitatea livrării.",
+    "timeline_label": "Durată tipică",
+    "from_price_label": "De la",
+    "fixed_price_label": "Preț fix",
+    "support_from_label": "Suport și mentenanță de la",
+    "includes_label": "Ce include acest stack",
+    "ideal_for_label": "Potrivire bună pentru",
+    "detail_cta": "Vezi detalii stack",
+    "featured_badge": "Cel mai cerut"
+  },
+  "stack_overrides": {
+    "foundation-stack": {
+      "tier": "Foundation Stack",
+      "hook": "Fundație digitală custom pentru afaceri de servicii care au nevoie de viteză, încredere și mentenanță.",
+      "ideal": "Echipe care au nevoie de o prezență web solidă, fluxuri clare de conținut și stabilitate tehnică pe termen lung.",
+      "support_price": "De la €200/lună"
+    },
+    "commerce-stack": {
+      "tier": "Commerce Stack",
+      "hook": "Arhitectură de comerț custom pentru afaceri care au depășit limitările unui storefront standard.",
+      "ideal": "Branduri care au nevoie de checkout personalizat, integrări, fulfilment și operațiuni administrative într-un singur sistem.",
+      "support_price": "De la €400/lună",
+      "badge": "Cel mai cerut"
+    },
+    "application-stack": {
+      "tier": "Application Stack",
+      "hook": "Build custom de produs pentru fluxuri autentificate, dashboard-uri și logică de business proprie.",
+      "ideal": "Afaceri care construiesc aplicații interne sau pentru clienți, unde permisiunile, fluxurile și scalarea contează.",
+      "support_price": "De la €600/lună"
+    }
+  },
+  "process": {
+    "eyebrow": "Cum lucrăm",
+    "title": "Livrare discovery-first cu control clar al scopului",
+    "steps": [
+      {
+        "title": "Discovery plătit",
+        "body": "Definim obiectivele, constrângerile și direcția tehnică într-o sesiune dedicată."
+      },
+      {
+        "title": "Propunere pe scop",
+        "body": "Primești un plan structurat de implementare, etape de livrare și estimări de cost."
+      },
+      {
+        "title": "Build și review",
+        "body": "Implementarea urmează scopul agreat, cu review pe milestones și comunicare clară."
+      },
+      {
+        "title": "Lansare și suport",
+        "body": "După handover, suportul menține platforma stabilă pe măsură ce afacerea crește."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ai nevoie de software construit pentru operațiuni reale?",
+    "description": "Începe cu Strategic Discovery și primești un plan clar, validat tehnic, înainte de implementare.",
+    "primary": "Începe cu Discovery",
+    "secondary": "Discută proiectul"
+  }
+},
+"service_detail_page_v2": {
+  "back_button": "Înapoi la Servicii",
+  "error_title": "Eroare",
+  "error_message": "Nu s-au putut încărca detaliile serviciului. Încearcă din nou.",
+  "not_found": "Serviciul nu a fost găsit.",
+  "price_label_from": "De la",
+  "price_label_fixed": "Preț fix",
+  "timeline_label": "Durată tipică",
+  "fit_label": "Potrivire bună",
+  "includes_title": "Ce include serviciul",
+  "solves_title": "Ce probleme rezolvă",
+  "process_title": "Cum se desfășoară colaborarea",
+  "pricing_title": "Preț și scop",
+  "support_label": "Suport și mentenanță",
+  "pricing_scope_note": "Prețul final de build este definit pe scop. Oferta depinde de cerințe, integrări și complexitatea livrării.",
+  "details_map": {
+    "strategic-discovery-session": {
+      "eyebrow": "Sesiune Strategică de Descoperire",
+      "fit": "Echipe care au nevoie de scop clar înainte de build",
+      "includes_intro": "Discovery este un workshop strategic plătit, nu un call introductiv. Primești livrabile concrete pe care le poți folosi imediat.",
+      "solves": [
+        "Previne definirea vagă a proiectului și schimbările costisitoare în timpul implementării.",
+        "Aliniază prioritățile de business cu deciziile tehnice.",
+        "Oferă direcție clară de livrare înainte de contract și dezvoltare."
+      ],
+      "process": [
+        {
+          "title": "Pregătire",
+          "body": "Colectăm context despre obiective, utilizatori, constrângeri și sisteme existente."
+        },
+        {
+          "title": "Sesiune de lucru",
+          "body": "În 90 de minute mapăm prioritățile, fluxurile și limitele implementării."
+        },
+        {
+          "title": "Roadmap",
+          "body": "Primești recomandare de arhitectură, etape și priorități de livrare."
+        },
+        {
+          "title": "Propunere",
+          "body": "Urmează propunere pe scop, iar taxa Discovery se deduce dacă proiectul continuă."
+        }
+      ],
+      "pricing_points": [
+        "Discovery are preț fix și este primul pas obligatoriu.",
+        "Dacă implementarea continuă, taxa Discovery se deduce din bugetul de build."
+      ],
+      "support_price": "Nu este necesar înainte de build",
+      "cta_primary": "Rezervă Strategic Discovery",
+      "cta_secondary": "Vezi stack-urile"
+    },
+    "foundation-stack": {
+      "eyebrow": "Foundation Stack",
+      "fit": "Afaceri de servicii care au nevoie de o fundație web solidă și credibilă",
+      "includes_intro": "Foundation livrează o arhitectură web custom, rapidă și mentenabilă, construită pentru poziționare de business, nu limitări de template.",
+      "solves": [
+        "Site-uri template lente și fragile, greu de menținut.",
+        "Fluxuri de conținut neclare care blochează publicarea constantă.",
+        "Fundație tehnică slabă care afectează încrederea și conversia."
+      ],
+      "process": [
+        {
+          "title": "Discovery și scop",
+          "body": "Definim arhitectura, modelul de conținut și scopul tehnic pentru lansare."
+        },
+        {
+          "title": "Design de sistem",
+          "body": "Structurăm frontend, backend și CMS pentru mentenanță simplă."
+        },
+        {
+          "title": "Build și QA",
+          "body": "Implementarea și testarea urmăresc performanța și pregătirea pentru conversie."
+        },
+        {
+          "title": "Lansare și handover",
+          "body": "Lansăm în producție cu documentație și onboarding pentru suport."
+        }
+      ],
+      "pricing_points": [
+        "Build-ul începe de la €7,500, în funcție de scop.",
+        "Suportul și mentenanța încep de la €200/lună."
+      ],
+      "support_price": "De la €200/lună",
+      "cta_primary": "Definește Foundation Scope",
+      "cta_secondary": "Compară stack-urile"
+    },
+    "commerce-stack": {
+      "eyebrow": "Commerce Stack",
+      "fit": "Branduri care au nevoie de fluxuri comerciale personalizate",
+      "includes_intro": "Commerce Stack extinde Foundation cu checkout custom, integrări operaționale și fluxuri administrative construite pentru vânzări reale.",
+      "solves": [
+        "Limitări de storefront care blochează checkout sau fulfilment personalizat.",
+        "Operațiuni separate între produse, comenzi și clienți.",
+        "Setup-uri bazate pe pluginuri care devin instabile la volum tranzacțional."
+      ],
+      "process": [
+        {
+          "title": "Discovery și model",
+          "body": "Definim cerințele de produs, checkout, fulfilment și operațiuni administrative."
+        },
+        {
+          "title": "Arhitectură de comerț",
+          "body": "Mapăm plățile, datele și fluxurile operaționale într-un sistem coerent."
+        },
+        {
+          "title": "Build integrări",
+          "body": "Implementăm și testăm checkout-ul, catalogul, conturile și operațiunile administrative."
+        },
+        {
+          "title": "Pregătire lansare",
+          "body": "Finalizăm QA tranzacțional, handover și setup-ul de suport."
+        }
+      ],
+      "pricing_points": [
+        "Build-ul începe de la €12,000, în funcție de catalog, checkout și integrări.",
+        "Suportul și mentenanța încep de la €400/lună."
+      ],
+      "support_price": "De la €400/lună",
+      "cta_primary": "Definește Commerce Build",
+      "cta_secondary": "Compară stack-urile"
+    },
+    "application-stack": {
+      "eyebrow": "Application Stack",
+      "fit": "Afaceri care construiesc produse software cu fluxuri și permisiuni",
+      "includes_intro": "Application Stack este pentru sisteme la nivel de produs, unde arhitectura, permisiunile și logica de business trebuie să susțină operare continuă.",
+      "solves": [
+        "Fluxuri manuale sau fragmentate care nu pot scala.",
+        "Lipsa controlului pe roluri și aplicarea inconsistentă a regulilor de business.",
+        "Nevoia de arhitectură de aplicație, nu de soluții de tip site de prezentare."
+      ],
+      "process": [
+        {
+          "title": "Discovery și product mapping",
+          "body": "Definim utilizatori, permisiuni, fluxuri cheie și cerințe de sistem."
+        },
+        {
+          "title": "Plan de arhitectură",
+          "body": "Proiectăm modelul de date, structura API și limitele serviciilor."
+        },
+        {
+          "title": "Implementare produs",
+          "body": "Construim modulele de dashboard, workflow și logica de business."
+        },
+        {
+          "title": "Lansare și optimizare",
+          "body": "Punem în producție cu monitorizare și model de suport pentru stabilitate."
+        }
+      ],
+      "pricing_points": [
+        "Build-ul începe de la €20,000, în funcție de complexitate și funcționalități.",
+        "Suportul și mentenanța încep de la €600/lună."
+      ],
+      "support_price": "De la €600/lună",
+      "cta_primary": "Definește Application Build",
+      "cta_secondary": "Compară stack-urile"
+    }
+  }
+},
 "about_page": {
   "seo_title": "Despre Miss Bott | Dezvoltare web custom, founder-led",
   "seo_description": "Află cine este în spatele Miss Bott, cum sunt livrate proiectele și de ce build-urile custom cu Django și React sunt potrivite pentru afaceri care au depășit platformele template.",
@@ -121,20 +360,20 @@
 "home": {
     "title": "Ai Depășit WordPress sau Squarespace?",
     "subtitle": "Construiește un site care chiar se potrivește cu afacerea ta.",
-    "description_p1": "Construiesc site-uri de înaltă performanță și aplicații web personalizate pentru afaceri care au atins limitele platformelor de șabloane. Performanță mai rapidă, control total și sisteme construite să crească odată cu tine.",
+    "description_p1": "Construiesc site-uri de înaltă performanță și aplicații web personalizate pentru afaceri care au atins limitele platformelor de template-uri. Performanță mai rapidă, control total și sisteme construite să crească odată cu tine.",
     "description_p2": "Construite cu tehnologii moderne precum Django, React, PostgreSQL și infrastructură cloud scalabilă.",
     "call_to_action": "Rezervă o Sesiune de Descoperire"
   },
   "problem": {
-    "title": "De Ce Afacerile Depășesc Platformele de Șabloane",
+    "title": "De Ce Afacerile Depășesc Platformele de Template-uri",
     "description1": "Platformele precum WordPress, Squarespace și Shopify sunt fantastice pentru a porni o afacere online rapid. Dar pe măsură ce companiile cresc, aceleași instrumente care le-au ajutat să înceapă acum pot să le țină pe loc.",
     "description2": "Site-urile devin mai lente pe măsură ce se adaugă mai multe plugin-uri. Funcționalitatea personalizată devine dificilă sau imposibilă fără soluții alternative. Integrările cu instrumente interne, CRM-uri sau sisteme de automatizare încep să se simtă fragile. Ceea ce a început ca un site simplu se transformă încet într-un patchwork de plugin-uri, corecții și limitări.",
     "desciption3": "La un moment dat, întrebarea se schimbă de la “Cum reparăm acest plugin?” la “Oare ar trebui să fie construit diferit site-ul nostru?”",
-    "description4": "Aici intervine Miss Bott — înlocuind sistemele de șabloane fragile cu o arhitectură web modernă proiectată pentru viteză, flexibilitate și creștere pe termen lung."
+    "description4": "Aici intervine Miss Bott — înlocuind sistemele de template-uri fragile cu o arhitectură web modernă proiectată pentru viteză, flexibilitate și creștere pe termen lung."
   },
   "services1": {
     "title": "Inginerie pentru Creștere",
-    "description1": "Când afacerile cresc, platformele de șabloane încep să se interpună. Performanță lentă, conflicte de plugin-uri, flexibilitate limitată.",
+    "description1": "Când afacerile cresc, platformele de template-uri încep să se interpună. Performanță lentă, conflicte de plugin-uri, flexibilitate limitată.",
     "description2": "Miss Bott înlocuiește aceste limitări cu o arhitectură web modernă proiectată pentru viteză, scalabilitate și control total.",
     "web_dev_title": "Stack-ul Foundation",
     "web_dev_desc": "Un site web profesional și ultra-rapid cu un sistem de conținut ușor de utilizat, astfel încât să poți actualiza site-ul în orice moment fără să atingi codul.",
@@ -528,13 +767,13 @@
 }
 },
   "cta": {
-    "title": "Ești gata să depășești limitările șabloanelor?",
+    "title": "Ești gata să depășești limitările template-urilor?",
     "description": "Rezervă o sesiune de descoperire și vom trasa arhitectura exactă de care afacerea ta are nevoie pentru a scala.",
     "button": "Rezervă o Sesiune de Descoperire"
   },
 "seo": {
     "home_title": "Dezvoltare Web Personalizată și Performantă | React & Django | Miss Bott",
-    "home_description": "Depășește limitele șabloanelor. Construiesc aplicații web scalabile și personalizate pentru IMM-uri și startup-uri, folosind React și Django. Scoruri de performanță 90+ garantate.",
+    "home_description": "Depășește limitele template-urilor. Construiesc aplicații web scalabile și personalizate pentru IMM-uri și startup-uri, folosind React și Django. Scoruri de performanță 90+ garantate.",
     "home_keywords": "dezvoltare web personalizata, programator react, dezvoltator django, magazine online headless, optimizare viteza site, aplicatii web custom, miss bott, web design dublin, web design romania, web design galway"
   },
 "services2": {

@@ -9,6 +9,245 @@
     "blog": "Artículos",
     "contact": "Contacto"
   },
+"services_page_v2": {
+  "seo_title": "Servicios a medida y precios | Miss Bott",
+  "seo_description": "Explora los servicios de Miss Bott: sesión Strategic Discovery con precio fijo y los stacks Foundation, Commerce y Application para negocios que necesitan software a medida.",
+  "seo_keywords": "precios desarrollo web a medida, sesión de descubrimiento estratégico, servicios Django React, ecommerce a medida, desarrollo de aplicaciones web",
+  "hero": {
+    "eyebrow": "Servicios y precios",
+    "title": "Tres stacks de servicio diseñados para una entrega clara.",
+    "summary": "Cada colaboración empieza con Discovery y después pasa al stack que mejor encaja con tu nivel de complejidad operativa. Alcance claro, arquitectura práctica y precios basados en implementación real."
+  },
+  "discovery": {
+    "eyebrow": "Sesión Strategic Discovery",
+    "required_badge": "Primer paso obligatorio",
+    "summary": "Sesión de trabajo de pago que alinea prioridades de negocio, flujos de usuario y alcance técnico antes del build. Recibes hoja de ruta y propuesta clara. La tarifa se acredita si seguimos con el proyecto.",
+    "price_label": "Precio fijo",
+    "credit_note": "Se acredita al presupuesto de implementación si el proyecto continúa.",
+    "cta": "Reservar Strategic Discovery"
+  },
+  "stacks": {
+    "eyebrow": "Stacks de servicio",
+    "title": "Elige el stack según el sistema que necesitas",
+    "intro": "Cada stack cubre un nivel distinto de complejidad, manteniendo los mismos estándares de ingeniería y el mismo enfoque discovery-first.",
+    "scope_note": "Los precios de los stacks son puntos de partida. La propuesta final depende del alcance, las integraciones y la complejidad de la entrega.",
+    "timeline_label": "Plazo típico",
+    "from_price_label": "Desde",
+    "fixed_price_label": "Precio fijo",
+    "support_from_label": "Soporte y mantenimiento desde",
+    "includes_label": "Qué incluye este stack",
+    "ideal_for_label": "Encaja mejor para",
+    "detail_cta": "Ver detalles del stack",
+    "featured_badge": "Más solicitado"
+  },
+  "stack_overrides": {
+    "foundation-stack": {
+      "tier": "Foundation Stack",
+      "hook": "Base digital a medida para negocios de servicios que necesitan velocidad, confianza y facilidad de mantenimiento.",
+      "ideal": "Equipos que necesitan una presencia web sólida, flujos de contenido estructurados y estabilidad técnica a largo plazo.",
+      "support_price": "Desde €200/mes"
+    },
+    "commerce-stack": {
+      "tier": "Commerce Stack",
+      "hook": "Arquitectura de comercio a medida para negocios que han superado las limitaciones de un storefront estándar.",
+      "ideal": "Marcas que necesitan checkout personalizado, integraciones, fulfilment y operaciones administrativas dentro de un solo sistema.",
+      "support_price": "Desde €400/mes",
+      "badge": "Más solicitado"
+    },
+    "application-stack": {
+      "tier": "Application Stack",
+      "hook": "Build a medida para productos con flujos autenticados, dashboards y lógica de negocio propia.",
+      "ideal": "Negocios que desarrollan aplicaciones internas o para clientes, donde los permisos, los flujos y la escalabilidad son clave.",
+      "support_price": "Desde €600/mes"
+    }
+  },
+  "process": {
+    "eyebrow": "Cómo trabajamos",
+    "title": "Entrega discovery-first con control claro del alcance",
+    "steps": [
+      {
+        "title": "Discovery de pago",
+        "body": "Definimos objetivos, límites y dirección técnica en una sesión enfocada."
+      },
+      {
+        "title": "Propuesta con alcance",
+        "body": "Recibes un plan estructurado con fases de entrega y estimación de costes."
+      },
+      {
+        "title": "Build y revisiones",
+        "body": "La implementación sigue el alcance acordado, con revisiones por hitos y comunicación clara."
+      },
+      {
+        "title": "Lanzamiento y soporte",
+        "body": "Tras el handover, el soporte mantiene la plataforma estable mientras el negocio evoluciona."
+      }
+    ]
+  },
+  "cta": {
+    "title": "¿Necesitas software que encaje con tus operaciones reales?",
+    "description": "Empieza con Strategic Discovery y recibe un plan claro, validado técnicamente, antes de implementar.",
+    "primary": "Empezar con Discovery",
+    "secondary": "Hablar del proyecto"
+  }
+},
+"service_detail_page_v2": {
+  "back_button": "Volver a Servicios",
+  "error_title": "Error",
+  "error_message": "No se pudieron cargar los detalles del servicio. Inténtalo de nuevo.",
+  "not_found": "No se encontró el servicio.",
+  "price_label_from": "Desde",
+  "price_label_fixed": "Precio fijo",
+  "timeline_label": "Plazo típico",
+  "fit_label": "Mejor encaje",
+  "includes_title": "Qué incluye este servicio",
+  "solves_title": "Qué problemas resuelve",
+  "process_title": "Cómo funciona la colaboración",
+  "pricing_title": "Precio y alcance",
+  "support_label": "Soporte y mantenimiento",
+  "pricing_scope_note": "El precio final del build se define según el alcance. La propuesta depende de requisitos, integraciones y complejidad de la entrega.",
+  "details_map": {
+    "strategic-discovery-session": {
+      "eyebrow": "Sesión Strategic Discovery",
+      "fit": "Equipos que necesitan alcance claro antes de comprometerse con un build",
+      "includes_intro": "Discovery es un workshop estratégico de pago, no una llamada comercial básica. Entrega resultados concretos que puedes usar de inmediato.",
+      "solves": [
+        "Evita alcances difusos y cambios costosos durante el proyecto.",
+        "Alinea prioridades de negocio con decisiones técnicas de implementación.",
+        "Define una dirección clara de entrega antes de contratos y desarrollo."
+      ],
+      "process": [
+        {
+          "title": "Preparación",
+          "body": "Recogemos contexto sobre objetivos, usuarios, límites y sistemas actuales."
+        },
+        {
+          "title": "Sesión de trabajo",
+          "body": "En 90 minutos mapeamos prioridades, flujos y límites de implementación."
+        },
+        {
+          "title": "Hoja de ruta",
+          "body": "Recibes arquitectura recomendada, fases y prioridades de entrega."
+        },
+        {
+          "title": "Propuesta",
+          "body": "Recibes una propuesta con alcance, y la tarifa Discovery se acredita si continuamos."
+        }
+      ],
+      "pricing_points": [
+        "Discovery es un servicio de precio fijo y el primer paso obligatorio.",
+        "Si el proyecto continúa, Discovery se acredita al presupuesto del build."
+      ],
+      "support_price": "No aplica antes del build",
+      "cta_primary": "Reservar Strategic Discovery",
+      "cta_secondary": "Ver stacks de servicio"
+    },
+    "foundation-stack": {
+      "eyebrow": "Foundation Stack",
+      "fit": "Negocios de servicios que necesitan una base digital sólida y creíble",
+      "includes_intro": "Foundation ofrece una arquitectura web a medida, rápida y mantenible, pensada para la posición del negocio y no para las limitaciones de una plantilla.",
+      "solves": [
+        "Sitios basados en plantillas lentos y frágiles, difíciles de mantener.",
+        "Flujos de contenido desordenados que bloquean una publicación constante.",
+        "Una base técnica débil que afecta la confianza y la conversión."
+      ],
+      "process": [
+        {
+          "title": "Discovery y alcance",
+          "body": "Definimos la arquitectura, el modelo de contenido y el alcance técnico para el lanzamiento."
+        },
+        {
+          "title": "Diseño de sistema",
+          "body": "Estructuramos frontend, backend y CMS para facilitar el mantenimiento."
+        },
+        {
+          "title": "Build y QA",
+          "body": "La implementación y las pruebas se enfocan en rendimiento y preparación para la conversión."
+        },
+        {
+          "title": "Lanzamiento y handover",
+          "body": "Publicamos en producción con documentación y onboarding para soporte."
+        }
+      ],
+      "pricing_points": [
+        "El build empieza desde €7,500, según el alcance.",
+        "Soporte y mantenimiento desde €200/mes."
+      ],
+      "support_price": "Desde €200/mes",
+      "cta_primary": "Definir Foundation Scope",
+      "cta_secondary": "Comparar stacks"
+    },
+    "commerce-stack": {
+      "eyebrow": "Commerce Stack",
+      "fit": "Marcas que necesitan flujos de comercio personalizados y una operación sólida",
+      "includes_intro": "Commerce Stack amplía Foundation con checkout a medida, integraciones operativas y workflows administrativos diseñados para ventas reales.",
+      "solves": [
+        "Límites de storefront que bloquean checkout o fulfilment personalizado.",
+        "Operación desconectada entre productos, pedidos y clientes.",
+        "Setups basados en plugins que fallan cuando crece el volumen transaccional."
+      ],
+      "process": [
+        {
+          "title": "Discovery y modelo",
+          "body": "Definimos requisitos de producto, checkout, fulfilment y operación administrativa."
+        },
+        {
+          "title": "Arquitectura de comercio",
+          "body": "Mapeamos pagos, datos y flujos operativos dentro de un sistema coherente."
+        },
+        {
+          "title": "Build de integraciones",
+          "body": "Implementamos y probamos checkout, catálogo, cuentas y operaciones administrativas."
+        },
+        {
+          "title": "Preparación de lanzamiento",
+          "body": "Cerramos QA transaccional, handover y configuración de soporte."
+        }
+      ],
+      "pricing_points": [
+        "El build empieza desde €12,000 según catálogo, checkout e integraciones.",
+        "Soporte y mantenimiento desde €400/mes."
+      ],
+      "support_price": "Desde €400/mes",
+      "cta_primary": "Definir Commerce Build",
+      "cta_secondary": "Comparar stacks"
+    },
+    "application-stack": {
+      "eyebrow": "Application Stack",
+      "fit": "Negocios que desarrollan productos de software con workflows, permisos y dashboards",
+      "includes_intro": "Application Stack está pensado para sistemas a nivel de producto, donde la arquitectura, los permisos y la lógica de negocio deben sostener un uso operativo continuo.",
+      "solves": [
+        "Flujos manuales o fragmentados que no escalan.",
+        "Falta de control por roles y de aplicación consistente de reglas de negocio.",
+        "Necesidad de una arquitectura de aplicación, no de patrones propios de una web de marketing."
+      ],
+      "process": [
+        {
+          "title": "Discovery y product mapping",
+          "body": "Definimos usuarios, permisos, workflows principales y requisitos del sistema."
+        },
+        {
+          "title": "Plan de arquitectura",
+          "body": "Diseñamos el modelo de datos, la estructura de API y los límites de servicio para crecer con solidez."
+        },
+        {
+          "title": "Implementación de producto",
+          "body": "Construimos módulos de dashboard, workflows y lógica de negocio."
+        },
+        {
+          "title": "Lanzamiento y optimización",
+          "body": "Desplegamos con monitorización y soporte para mantener la estabilidad."
+        }
+      ],
+      "pricing_points": [
+        "El build empieza desde €20,000 según la complejidad y la profundidad funcional.",
+        "Soporte y mantenimiento desde €600/mes."
+      ],
+      "support_price": "Desde €600/mes",
+      "cta_primary": "Definir Application Build",
+      "cta_secondary": "Comparar stacks"
+    }
+  }
+},
 "about_page": {
   "seo_title": "Sobre Miss Bott | Desarrollo web a medida liderado por fundadora",
   "seo_description": "Descubre quién está detrás de Miss Bott, cómo se desarrollan los proyectos y por qué las soluciones a medida con Django y React son ideales para negocios que han superado las plataformas de plantillas.",

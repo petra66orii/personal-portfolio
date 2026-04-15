@@ -1,14 +1,17 @@
 import React from "react";
 import ServicesSection from "../components/ServicesSection";
 import SEO from "../components/SEO";
+import { useTranslation } from "react-i18next";
 
 const Services: React.FC = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SEO
-        title="Solutions for Creatives: Web Design & E-Commerce | Miss Bott"
-        description="Specialized web design and development solutions for artists, photographers, and creative professionals. Discover packages for digital portfolios, e-commerce, and more."
-        keywords="web design for artists, photographer portfolio websites, e-commerce for creatives, custom websites Ireland, portfolio websites for designers, web developer for artists"
+        title={t("services_page_v2.seo_title")}
+        description={t("services_page_v2.seo_description")}
+        keywords={t("services_page_v2.seo_keywords")}
       />
       <div className="min-h-screen">
         <ServicesSection />
