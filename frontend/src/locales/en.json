@@ -54,14 +54,18 @@
     {
       "id": 2,
       "quote": "Working with Miss Bott was a game-changer. Our new portfolio site has already led to two major commissions. Truly a professional and intuitive partner.",
-      "name": "CMD Artistry",
+      "name": "CM Artistry",
       "company": "Mural Painter"
     }
   ]
 },
   "projects": {
-    "featured_title": "Featured Projects",
-    "other_title": "Other Projects",
+    "featured_title": "Flagship Case Study",
+    "featured_intro": "OpenEire is the most advanced project in the portfolio: custom licensing, protected delivery, gated galleries, and print fulfilment all living in one platform.",
+    "featured_value_label": "Why this build matters",
+    "other_kicker": "More Project Work",
+    "other_title": "Selected Case Studies",
+    "other_intro": "Three additional projects showing travel planning, commerce operations, and visual presentation built with the same product-thinking approach.",
     "none_found": "No projects found. Make sure the backend server is running.",
     "read_more": "Read More",
     "read_less": "Read Less",
@@ -70,15 +74,15 @@
   },
   "project_card": {
   "alt_text": "{{title}} screenshot",
-  "fallback_description": "A featured project showcasing modern web development.",
+  "fallback_description": "A custom project showing how modern web development can support real business workflows.",
   "link_text": "View Case Study"
 },
   "project_detail_page": {
   "back_button": "Back to Home",
   "case_study_title": "Case Study",
   "challenge_title": "The Challenge",
-  "solution_title": "My Solution",
-  "result_title": "The Result",
+  "solution_title": "The Solution",
+  "result_title": "The Outcome",
   "tech_stack_title": "Tech Stack",
   "links_title": "Project Links",
   "live_link": "View Live Site",
@@ -257,6 +261,156 @@
         "body": "If your business has real workflow complexity, we can scope what a custom platform should actually do before you waste more time forcing the wrong stack to behave.",
         "primary": "Book a Discovery Call",
         "secondary": "See the Solution Stacks"
+      }
+    },
+    "timeless_travel": {
+      "card_label": "Authenticated planning platform",
+      "card_summary": "A custom travel product that combines publishing, personal planning tools, profiles, and visibility rules inside one logged-in experience.",
+      "seo": {
+        "title": "Timeless Travel Case Study | Travel Planning and Publishing Platform | Miss Bott",
+        "description": "Explore Timeless Travel, a custom Django and React platform that combines trip planning tools, user profiles, publishing workflows, and visibility controls in one product.",
+        "keywords": "Timeless Travel case study, travel planning platform, Django React product, publishing workflows, checklist app, Miss Bott"
+      },
+      "hero_eyebrow": "Selected Case Study",
+      "summary": "Timeless Travel is not just a travel blog. It is an authenticated content and planning platform that brings blog publishing, personal organisation, and account-aware user flows into one product.",
+      "challenge": "Timeless Travel needed to support more than inspirational travel content. The product had to give authenticated users a place to manage checklists and tasks, publish blog posts, maintain profiles, and control how content moved between draft, private, and visible states.",
+      "solution": "The platform was rebuilt with a React frontend on top of Django so planning tools, profile-aware content, and publishing workflows could live inside one coherent application. That created a more modern experience while keeping structured planning and editorial content connected instead of splitting them across separate tools.",
+      "result": "Timeless Travel now reads as a workflow product rather than a simple blog. It demonstrates account systems, role-aware experiences, publishing rules, and planning features working together in one custom build.",
+      "snapshot": {
+        "title": "Project snapshot",
+        "items": [
+          {
+            "label": "Project type",
+            "value": "Travel planning and content platform"
+          },
+          {
+            "label": "Core capability",
+            "value": "Blog publishing, checklists, tasks, profiles, and visibility workflows"
+          },
+          {
+            "label": "What it shows",
+            "value": "How one product can support both structured planning and user-generated content"
+          }
+        ]
+      },
+      "demonstrates": {
+        "eyebrow": "What this build proves",
+        "title": "Why this project matters",
+        "intro": "Timeless Travel is a strong example of a content-led product that also has real workflow depth. The value is in how planning and publishing sit inside the same authenticated system.",
+        "items": [
+          {
+            "title": "Account-aware product design",
+            "body": "The platform demonstrates how profiles, permissions, and logged-in states can shape the user experience beyond a basic public content site."
+          },
+          {
+            "title": "Publishing workflows beyond a blog",
+            "body": "Drafts, visibility controls, and role-based behaviour show how editorial features become more useful when they are treated as part of a product workflow."
+          },
+          {
+            "title": "Planning tools in the same system",
+            "body": "Checklists and tasks turn the platform into something more practical than a travel journal, showing how structured features can live alongside content without feeling bolted on."
+          }
+        ]
+      }
+    },
+    "honeypot": {
+      "card_label": "Custom commerce system",
+      "card_summary": "A Django and React commerce build that combines checkout, customer accounts, reviews, content, and admin operations inside one storefront system.",
+      "seo": {
+        "title": "Honeypot Case Study | Custom E-Commerce Platform | Miss Bott",
+        "description": "See how Honeypot combines product catalogue, Stripe checkout, customer accounts, reviews, content, and admin workflows inside one custom commerce platform.",
+        "keywords": "Honeypot case study, custom ecommerce platform, Django React commerce, Stripe checkout, ecommerce admin workflows, Miss Bott"
+      },
+      "hero_eyebrow": "Selected Case Study",
+      "summary": "Honeypot is more than an online shop. It is a custom commerce system that brings selling, customer experience, content, and store operations together inside one product.",
+      "challenge": "Honeypot needed to function as more than a product catalogue with checkout. The platform had to support Stripe payments, customer accounts with order history, product reviews, blog content, comments, and an admin layer capable of handling products, orders, users, and day-to-day store management.",
+      "solution": "The build uses Django and React to keep customer-facing shopping flows and operational admin tooling inside the same system. Catalogue management, checkout, account handling, reviews, and content workflows were designed to work together as one commerce product rather than as disconnected features.",
+      "result": "Honeypot demonstrates how a custom commerce platform can support both sales and operations. It shows the depth behind a usable store: not just purchasing, but the account, content, moderation, and admin layers that keep the business running.",
+      "snapshot": {
+        "title": "Project snapshot",
+        "items": [
+          {
+            "label": "Project type",
+            "value": "Full e-commerce platform"
+          },
+          {
+            "label": "Core capability",
+            "value": "Stripe checkout, customer accounts, reviews, blog content, and store administration"
+          },
+          {
+            "label": "What it shows",
+            "value": "How custom builds can support both selling and the operational side of commerce"
+          }
+        ]
+      },
+      "demonstrates": {
+        "eyebrow": "What this build proves",
+        "title": "Why this project matters",
+        "intro": "Honeypot is a good example of commerce architecture with more depth than a simple storefront. It shows how the customer side and the admin side need to work together.",
+        "items": [
+          {
+            "title": "Commerce plus operations",
+            "body": "The project demonstrates that a store is not only about listing products. Orders, reviews, moderation, and admin workflows are part of the real product."
+          },
+          {
+            "title": "Customer accounts with useful depth",
+            "body": "Profiles and order history make the customer area feel like part of a working commerce system, not just a checkout session."
+          },
+          {
+            "title": "Content and selling in one platform",
+            "body": "Blog content, comments, and product discovery live alongside checkout and account flows, which shows how commerce sites often need editorial and community layers as well."
+          }
+        ]
+      }
+    },
+    "cm_artistry": {
+      "card_label": "Content-managed portfolio site",
+      "card_summary": "A visual-first brochure site with gallery, blog, contact flows, and Wagtail editing built for a creative business that needs polished presentation.",
+      "seo": {
+        "title": "CM Artistry Case Study | Visual Portfolio Website with Wagtail | Miss Bott",
+        "description": "Discover CM Artistry, a polished portfolio and brochure-style site with gallery, blog, contact flows, and Wagtail-powered content management.",
+        "keywords": "CM Artistry case study, Wagtail portfolio site, brochure website, creative business website, gallery website, Miss Bott"
+      },
+      "hero_eyebrow": "Selected Case Study",
+      "summary": "CM Artistry is intentionally simpler than the larger application builds, but it is still a strong example of a polished, visual-first website with structured content management behind it.",
+      "challenge": "CM Artistry needed a clean, visual-first site that could present mural work professionally while still being easy to maintain. The brief called for a gallery, blog, and contact flow, supported by an editor experience that would keep updates manageable without turning the site into a custom admin burden.",
+      "solution": "The project was built as a compact Django and React website with Wagtail powering the editable content layer. That gave the site a clear presentation for visitors while keeping imagery, written content, and enquiry pages structured and easy to update.",
+      "result": "CM Artistry is a smaller project, but it clearly demonstrates design-led presentation, gallery handling, and practical content management for a creative business website.",
+      "snapshot": {
+        "title": "Project snapshot",
+        "items": [
+          {
+            "label": "Project type",
+            "value": "Visual brochure and portfolio website"
+          },
+          {
+            "label": "Core capability",
+            "value": "Gallery presentation, blog content, contact flow, and Wagtail editing"
+          },
+          {
+            "label": "What it shows",
+            "value": "How a simpler site can still benefit from structured content and thoughtful UX"
+          }
+        ]
+      },
+      "demonstrates": {
+        "eyebrow": "What this build proves",
+        "title": "Why this project matters",
+        "intro": "CM Artistry is a reminder that not every project needs application complexity to be well executed. The strength here is in presentation, clarity, and maintainable content workflows.",
+        "items": [
+          {
+            "title": "Design-led presentation",
+            "body": "The project shows how a visual business can be presented clearly without overcrowding the experience or losing the work behind decorative design choices."
+          },
+          {
+            "title": "Editable content without clutter",
+            "body": "Wagtail gives the site a practical editing layer so the business can update content, gallery pages, and blog material without rebuilding the front end."
+          },
+          {
+            "title": "A simpler architecture used well",
+            "body": "This build proves that a smaller brochure-style site can still feel intentional, structured, and professional when the content model and user journey are handled carefully."
+          }
+        ]
       }
     }
 },

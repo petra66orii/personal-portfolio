@@ -1,0 +1,109 @@
+from django.db import migrations
+
+
+def refresh_case_studies(apps, schema_editor):
+    Project = apps.get_model("portfolio", "Project")
+
+    projects = [
+        {
+            "pk": 4,
+            "defaults": {
+                "title": "OpenEire Studios",
+                "description_en": "A custom Django and React platform for selling licensed drone media, managing protected galleries, and handling both digital and physical fulfilment.",
+                "description_ro": "O platformă custom Django și React pentru vânzarea de media aeriană licențiată, gestionarea galeriilor protejate și livrarea atât a produselor digitale, cât și fizice.",
+                "description_es": "Una plataforma a medida con Django y React para vender contenido aéreo con licencia, gestionar galerías protegidas y coordinar la entrega de productos digitales y físicos.",
+                "tech_stack": "Django, Django REST Framework, React, TypeScript, PostgreSQL, Stripe, Cloudflare R2, Redis",
+                "repo_link": "",
+                "live_link": "",
+                "featured": True,
+                "client_challenge_en": "OpenEire needed more than a brochure site. The platform had to support rights-managed licensing, gated digital delivery, print fulfilment, and an admin workflow that could safely handle protected media assets.",
+                "client_challenge_ro": "OpenEire avea nevoie de mai mult decât un simplu site de prezentare. Platforma trebuia să susțină licențiere rights-managed, livrare digitală securizată, gestionarea comenzilor de print și un flux administrativ sigur pentru conținut media protejat.",
+                "client_challenge_es": "OpenEire necesitaba algo más que una web de presentación. La plataforma debía soportar licencias rights-managed, entrega digital protegida, gestión de impresiones y un flujo administrativo seguro para contenido multimedia protegido.",
+                "my_solution_en": "I designed a full-stack commerce application with Django as the business logic core and React as the client layer. The system coordinates licensing, secure asset delivery, print orders, payments, and AI-assisted admin support through one custom architecture.",
+                "my_solution_ro": "Am proiectat o aplicație full-stack de e-commerce, cu Django ca nucleu al logicii de business și React ca strat de interfață. Sistemul coordonează licențierea, livrarea securizată a fișierelor, comenzile de print, plățile și suportul administrativ asistat de AI într-o singură arhitectură custom.",
+                "my_solution_es": "Diseñé una aplicación full-stack de e-commerce con Django como núcleo de la lógica de negocio y React como capa de cliente. El sistema coordina licencias, entrega segura de archivos, pedidos de impresión, pagos y soporte administrativo asistido por IA dentro de una única arquitectura a medida.",
+                "the_result_en": "OpenEire now has a platform built around its real business model instead of forcing that model into a template. It demonstrates how custom software can support protected content, complex product flows, and future growth.",
+                "the_result_ro": "OpenEire are acum o platformă construită în jurul modelului său real de business, nu forțată într-un șablon. Proiectul demonstrează cum software-ul custom poate susține conținut protejat, fluxuri complexe de produse și creștere pe termen lung.",
+                "the_result_es": "OpenEire ahora cuenta con una plataforma construida alrededor de su modelo real de negocio, en lugar de forzarlo a encajar en una plantilla. El proyecto demuestra cómo el software a medida puede soportar contenido protegido, flujos de producto complejos y crecimiento a largo plazo.",
+            },
+        },
+        {
+            "pk": 3,
+            "defaults": {
+                "title": "Timeless Travel",
+                "description_en": "A custom travel planning and blogging platform that combines trip organisation, publishing workflows, and user accounts.",
+                "description_ro": "O platformă custom pentru planificare și blogging de călătorii, care combină organizarea excursiilor, fluxurile de publicare și conturile de utilizator.",
+                "description_es": "Una plataforma a medida para planificación de viajes y blogging que combina organización de itinerarios, flujos de publicación y cuentas de usuario.",
+                "tech_stack": "React, Django, Django REST Framework, PostgreSQL",
+                "repo_link": "https://github.com/petra6forii/timeless-travel",
+                "live_link": "https://timeless-travel-afb7ff57b74e.herokuapp.com/",
+                "featured": True,
+                "client_challenge_en": "The platform needed to do more than publish travel posts. It had to support role-based authentication, draft content, visibility controls, travel checklists, tasks, and user profiles in one coherent experience.",
+                "client_challenge_ro": "Platforma trebuia să facă mai mult decât să publice articole de călătorie. Trebuia să susțină autentificare bazată pe roluri, conținut draft, controale de vizibilitate, checkliste de călătorie, sarcini și profiluri de utilizator într-o experiență coerentă.",
+                "client_challenge_es": "La plataforma necesitaba hacer más que publicar artículos de viaje. Tenía que soportar autenticación basada en roles, contenido en borrador, controles de visibilidad, listas de viaje, tareas y perfiles de usuario en una experiencia coherente.",
+                "my_solution_en": "I built a React frontend on top of Django so checklists, tasks, blog posts, drafts, and user profiles all live in one application. That keeps planning and publishing together instead of scattering them across separate tools.",
+                "my_solution_ro": "Am construit un frontend React peste Django, astfel încât checklistele, sarcinile, articolele de blog, drafturile și profilurile de utilizator să existe toate într-o singură aplicație. Asta păstrează planificarea și publicarea împreună, în loc să le împrăștie în instrumente separate.",
+                "my_solution_es": "Construí un frontend en React sobre Django para que listas, tareas, publicaciones, borradores y perfiles de usuario vivan en una sola aplicación. Eso mantiene la planificación y la publicación juntas en lugar de dispersarlas en herramientas separadas.",
+                "the_result_en": "Timeless Travel demonstrates how a custom platform can bring planning, publishing, and account management together without forcing users into separate systems.",
+                "the_result_ro": "Timeless Travel arată cum o platformă custom poate reuni planificarea, publicarea și gestionarea conturilor fără a forța utilizatorii să treacă prin sisteme separate.",
+                "the_result_es": "Timeless Travel demuestra cómo una plataforma a medida puede reunir planificación, publicación y gestión de cuentas sin obligar a los usuarios a trabajar en sistemas separados.",
+            },
+        },
+        {
+            "pk": 2,
+            "defaults": {
+                "title": "Honeypot",
+                "description_en": "A custom e-commerce platform for honey and honey-based products with checkout, content, and admin operations built into one system.",
+                "description_ro": "O platformă custom de e-commerce pentru miere și produse pe bază de miere, cu checkout, conținut și operațiuni de administrare integrate într-un singur sistem.",
+                "description_es": "Una plataforma de comercio electrónico a medida para miel y productos derivados, con checkout, contenido y operaciones administrativas en un solo sistema.",
+                "tech_stack": "React, Django, Django REST Framework, PostgreSQL, Stripe API",
+                "repo_link": "https://github.com/petra6forii/honeypot",
+                "live_link": "https://honeypot-6aa199604c8f.herokuapp.com/",
+                "featured": True,
+                "client_challenge_en": "The site needed to be more than a storefront. It had to support Stripe checkout, product reviews, blog content, customer profiles with order history, and an admin dashboard for day-to-day operations.",
+                "client_challenge_ro": "Site-ul trebuia să fie mai mult decât o vitrină de produse. Trebuia să susțină Stripe checkout, recenzii pentru produse, conținut de blog, profiluri de client cu istoric de comenzi și un panou de administrare pentru operațiunile de zi cu zi.",
+                "client_challenge_es": "El sitio necesitaba ser más que un escaparate. Tenía que soportar Stripe checkout, reseñas de productos, contenido de blog, perfiles de cliente con historial de pedidos y un panel de administración para la operativa diaria.",
+                "my_solution_en": "I built a custom commerce application with Django and a React frontend so shopping, content, customer accounts, and admin workflows all sit inside one controlled system.",
+                "my_solution_ro": "Am construit o aplicație custom de comerț cu Django și un frontend React, astfel încât cumpărăturile, conținutul, conturile de client și fluxurile de administrare să stea toate într-un singur sistem controlat.",
+                "my_solution_es": "Construí una aplicación de comercio a medida con Django y un frontend en React para que compras, contenido, cuentas de cliente y flujos administrativos vivan dentro de un único sistema controlado.",
+                "the_result_en": "Honeypot shows how a custom commerce build can support both customer-facing selling and the operational side of running a store.",
+                "the_result_ro": "Honeypot arată cum un proiect de comerț custom poate susține atât vânzarea către clienți, cât și partea operațională a administrării unui magazin.",
+                "the_result_es": "Honeypot muestra cómo una solución de comercio a medida puede sostener tanto la venta de cara al cliente como la parte operativa de gestionar una tienda.",
+            },
+        },
+        {
+            "pk": 1,
+            "defaults": {
+                "title": "CM Artistry",
+                "description_en": "A brochure-style portfolio site for a mural artist, designed as a visual-first case study with Wagtail content management.",
+                "description_ro": "Un site de prezentare pentru un artist mural, conceput ca studiu de caz vizual, cu management de conținut prin Wagtail.",
+                "description_es": "Un sitio tipo folleto para una artista mural, diseñado como un caso visual con gestión de contenidos mediante Wagtail.",
+                "tech_stack": "React, Django, Wagtail CMS, Tailwind",
+                "repo_link": "",
+                "live_link": "",
+                "featured": True,
+                "client_challenge_en": "The site needed a clean, visual-first way to present murals, a blog, a gallery, and contact details, while keeping content easy to update through Wagtail.",
+                "client_challenge_ro": "Site-ul avea nevoie de o modalitate clară, orientată vizual, de a prezenta muralurile, blogul, galeria și datele de contact, păstrând în același timp conținutul ușor de actualizat prin Wagtail.",
+                "client_challenge_es": "El sitio necesitaba una forma limpia y visual de presentar los murales, el blog, la galería y los datos de contacto, manteniendo el contenido fácil de actualizar mediante Wagtail.",
+                "my_solution_en": "I built a compact Django and React site with Wagtail handling the editable content layer, so the gallery, blog, and contact page stay straightforward for both visitors and editors.",
+                "my_solution_ro": "Am construit un site compact Django și React, cu Wagtail pentru stratul de conținut editabil, astfel încât galeria, blogul și pagina de contact să rămână simple atât pentru vizitatori, cât și pentru editori.",
+                "my_solution_es": "Construí un sitio compacto con Django y React, usando Wagtail para la capa de contenido editable, de modo que la galería, el blog y la página de contacto siguieran siendo sencillos tanto para visitantes como para editores.",
+                "the_result_en": "CM Artistry is a polished, content-managed portfolio site that presents the work clearly and keeps future updates simple.",
+                "the_result_ro": "CM Artistry este un site de portofoliu rafinat, gestionat prin CMS, care prezintă lucrarea clar și păstrează actualizările viitoare simple.",
+                "the_result_es": "CM Artistry es un sitio de portafolio pulido y gestionado por contenido, que presenta el trabajo con claridad y mantiene las futuras actualizaciones simples.",
+            },
+        },
+    ]
+
+    for project in projects:
+        Project.objects.update_or_create(pk=project["pk"], defaults=project["defaults"])
+
+
+class Migration(migrations.Migration):
+    dependencies = [
+        ("portfolio", "0026_seed_openeire_flagship_project"),
+    ]
+
+    operations = [
+        migrations.RunPython(refresh_case_studies, migrations.RunPython.noop),
+    ]

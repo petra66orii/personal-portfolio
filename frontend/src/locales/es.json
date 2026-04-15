@@ -46,17 +46,21 @@
         "name": "OpenEire Studios",
         "company": "Negocio de Videografía con Drones"
       },
-      {
-        "id": 2,
-        "quote": "Trabajar con Miss Bott fue un cambio radical. Nuestro nuevo portafolio ya ha generado dos comisiones importantes. Un socio verdaderamente profesional e intuitivo.",
-        "name": "CMD Artistry",
-        "company": "Pintor Muralista"
-      }
+    {
+      "id": 2,
+      "quote": "Trabajar con Miss Bott fue un cambio radical. Nuestro nuevo portafolio ya ha generado dos comisiones importantes. Un socio verdaderamente profesional e intuitivo.",
+      "name": "CM Artistry",
+      "company": "Pintor Muralista"
+    }
     ]
   },
   "projects": {
-    "featured_title": "Proyectos Destacados",
-    "other_title": "Otros Proyectos",
+    "featured_title": "Caso de estudio insignia",
+    "featured_intro": "OpenEire es el proyecto más avanzado del portafolio: licencias a medida, entrega protegida, galerías restringidas y fulfilment de impresiones en una sola plataforma.",
+    "featured_value_label": "Por qué importa este build",
+    "other_kicker": "Más proyectos",
+    "other_title": "Casos de estudio seleccionados",
+    "other_intro": "Tres proyectos adicionales que muestran cómo el mismo enfoque orientado al producto se adapta a la planificación de viajes, el comercio y la presentación visual.",
     "none_found": "No se encontraron proyectos. Asegúrate de que el servidor backend esté funcionando.",
     "read_more": "Leer Más",
     "read_less": "Leer Menos",
@@ -65,14 +69,14 @@
   },
   "project_card": {
     "alt_text": "Captura de pantalla de {{title}}",
-    "fallback_description": "Un proyecto destacado que muestra el desarrollo web moderno.",
+    "fallback_description": "Un proyecto a medida que muestra cómo el desarrollo web moderno puede sostener flujos reales de negocio.",
     "link_text": "Ver Caso de Estudio"
   },
   "project_detail_page": {
     "back_button": "Volver al Inicio",
     "case_study_title": "Caso de Estudio",
     "challenge_title": "El Desafío",
-    "solution_title": "Mi Solución",
+    "solution_title": "La Solución",
     "result_title": "El Resultado",
     "tech_stack_title": "Tecnologías Utilizadas",
     "links_title": "Enlaces del Proyecto",
@@ -253,6 +257,156 @@
       "primary": "Reserva una llamada de descubrimiento",
       "secondary": "Ver los stacks de soluciones"
     }
+  },
+"timeless_travel": {
+  "card_label": "Plataforma de planificación con acceso autenticado",
+  "card_summary": "Un producto de viajes a medida que reúne publicación, herramientas personales de organización, perfiles y reglas de visibilidad dentro de una sola experiencia basada en cuenta.",
+  "seo": {
+    "title": "Caso de estudio Timeless Travel | Plataforma de planificación y publicación de viajes | Miss Bott",
+    "description": "Descubre Timeless Travel, una plataforma a medida con Django y React que combina herramientas de planificación, perfiles de usuario, flujos editoriales y controles de visibilidad en un solo producto.",
+    "keywords": "caso de estudio Timeless Travel, plataforma de planificación de viajes, producto Django React, flujos editoriales, app de checklist, Miss Bott"
+  },
+  "hero_eyebrow": "Caso de estudio seleccionado",
+  "summary": "Timeless Travel no es solo un blog de viajes. Es una plataforma de contenido y planificación basada en cuenta, que reúne publicación, organización personal y flujos de usuario ligados a la autenticación dentro de un mismo producto.",
+  "challenge": "Timeless Travel necesitaba hacer más que alojar contenido inspiracional sobre viajes. El producto debía ofrecer a los usuarios autenticados un espacio para gestionar listas y tareas, publicar entradas, mantener sus perfiles y controlar cómo el contenido pasaba entre estados de borrador, privado y visible.",
+  "solution": "La plataforma se reconstruyó con un frontend en React sobre Django para que las herramientas de planificación, el contenido ligado al perfil y los flujos editoriales convivieran dentro de una sola aplicación coherente. Eso creó una experiencia más moderna, manteniendo conectadas la planificación estructurada y la parte editorial, en lugar de repartirlas entre herramientas separadas.",
+  "result": "Timeless Travel ahora se percibe más como un producto construido alrededor de flujos reales de uso que como un simple blog. Demuestra cómo los sistemas de cuenta, las experiencias según rol, las reglas de publicación y las funciones de planificación pueden trabajar juntas dentro de una solución a medida.",
+  "snapshot": {
+    "title": "Resumen rápido",
+    "items": [
+      {
+        "label": "Tipo de proyecto",
+        "value": "Plataforma de planificación y contenido para viajes"
+      },
+      {
+        "label": "Capacidad principal",
+        "value": "Publicación de blog, listas, tareas, perfiles y flujos de visibilidad"
+      },
+      {
+        "label": "Lo que demuestra",
+        "value": "Cómo un solo producto puede sostener tanto planificación estructurada como contenido generado por usuarios"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Lo que demuestra este proyecto",
+    "title": "Por qué importa",
+    "intro": "Timeless Travel es un buen ejemplo de producto centrado en contenido, pero con profundidad real a nivel de flujo de trabajo. Su valor está en cómo planificación y publicación conviven dentro del mismo sistema autenticado.",
+    "items": [
+      {
+        "title": "Diseño de producto basado en cuentas",
+        "body": "La plataforma muestra cómo perfiles, permisos y estados de autenticación pueden dar forma a la experiencia más allá de un simple sitio público de contenido."
+      },
+      {
+        "title": "Flujos editoriales más allá de un blog",
+        "body": "Los borradores, controles de visibilidad y comportamientos por rol muestran cómo las funciones editoriales ganan valor cuando se tratan como parte de un flujo de producto."
+      },
+      {
+        "title": "Herramientas de planificación en el mismo sistema",
+        "body": "Las listas y tareas convierten la plataforma en algo más útil que un diario de viajes y muestran cómo las funciones estructuradas pueden convivir con el contenido sin parecer añadidos forzados."
+      }
+    ]
+  }
+},
+"honeypot": {
+  "card_label": "Sistema de e-commerce a medida",
+  "card_summary": "Una solución de e-commerce con Django y React que combina checkout, cuentas de cliente, reseñas, contenido y operaciones administrativas dentro de un único sistema de tienda.",
+  "seo": {
+    "title": "Caso de estudio Honeypot | Plataforma de e-commerce a medida | Miss Bott",
+    "description": "Descubre cómo Honeypot reúne catálogo de productos, checkout con Stripe, cuentas de cliente, reseñas, contenido y flujos administrativos dentro de una sola plataforma de e-commerce a medida.",
+    "keywords": "caso de estudio Honeypot, plataforma ecommerce a medida, Django React commerce, Stripe checkout, flujos administrativos ecommerce, Miss Bott"
+  },
+  "hero_eyebrow": "Caso de estudio seleccionado",
+  "summary": "Honeypot es más que una tienda online. Es un sistema de e-commerce a medida que reúne venta, experiencia del cliente, contenido y operaciones internas dentro de un solo producto.",
+  "challenge": "Honeypot necesitaba funcionar como algo más que un catálogo con checkout. La plataforma debía soportar pagos con Stripe, cuentas de cliente con historial de pedidos, reseñas, blog, comentarios y una capa administrativa capaz de gestionar productos, pedidos, usuarios y la operativa diaria de la tienda.",
+  "solution": "La solución utiliza Django y React para mantener dentro del mismo sistema tanto los flujos de compra orientados al cliente como las herramientas administrativas necesarias para la operación. La gestión del catálogo, el checkout, las cuentas, las reseñas y el contenido se diseñaron para funcionar juntas como un único producto de e-commerce, no como funciones aisladas.",
+  "result": "Honeypot demuestra cómo una plataforma de e-commerce a medida puede sostener tanto las ventas como la operativa del negocio. Muestra la profundidad que hay detrás de una tienda realmente funcional: no solo la compra, sino también las capas de cuenta, contenido, moderación y administración que mantienen el negocio en marcha.",
+  "snapshot": {
+    "title": "Resumen rápido",
+    "items": [
+      {
+        "label": "Tipo de proyecto",
+        "value": "Plataforma completa de e-commerce"
+      },
+      {
+        "label": "Capacidad principal",
+        "value": "Checkout con Stripe, cuentas de cliente, reseñas, contenido de blog y administración de tienda"
+      },
+      {
+        "label": "Lo que demuestra",
+        "value": "Cómo las soluciones a medida pueden sostener tanto la venta como el lado operativo del comercio"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Lo que demuestra este proyecto",
+    "title": "Por qué importa",
+    "intro": "Honeypot es un buen ejemplo de arquitectura de e-commerce con más profundidad que una simple tienda online. Muestra cómo deben trabajar juntas la parte visible para el cliente y la parte administrativa.",
+    "items": [
+      {
+        "title": "Comercio más operaciones",
+        "body": "El proyecto demuestra que una tienda no consiste solo en listar productos. Pedidos, reseñas, moderación y flujos administrativos forman parte del producto real."
+      },
+      {
+        "title": "Cuentas de cliente con utilidad real",
+        "body": "Los perfiles y el historial de pedidos hacen que el área de cliente se sienta como parte de un sistema de e-commerce funcional, no solo como una sesión de checkout."
+      },
+      {
+        "title": "Contenido y venta en la misma plataforma",
+        "body": "El blog, los comentarios y el descubrimiento de productos conviven con el checkout y las cuentas, lo que muestra cómo los sitios de e-commerce suelen necesitar también una capa editorial o comunitaria."
+      }
+    ]
+  }
+},
+"cm_artistry": {
+  "card_label": "Sitio de portafolio con gestión de contenido",
+  "card_summary": "Un sitio de presentación centrado en lo visual, con galería, blog, contacto y edición en Wagtail, creado para un negocio creativo que necesita una presentación cuidada.",
+  "seo": {
+    "title": "Caso de estudio CM Artistry | Sitio de portafolio visual con Wagtail | Miss Bott",
+    "description": "Descubre CM Artistry, un sitio de portafolio y presentación cuidado, con galería, blog, contacto y gestión de contenido con Wagtail.",
+    "keywords": "caso de estudio CM Artistry, sitio de portafolio Wagtail, brochure website, web para negocio creativo, galería online, Miss Bott"
+  },
+  "hero_eyebrow": "Caso de estudio seleccionado",
+  "summary": "CM Artistry es intencionadamente más simple que los proyectos de aplicación más grandes, pero sigue siendo un ejemplo sólido de sitio visual, bien presentado y respaldado por una gestión de contenido estructurada.",
+  "challenge": "CM Artistry necesitaba un sitio limpio y visual que presentara el trabajo mural de forma profesional y siguiera siendo fácil de mantener. El encargo pedía galería, blog y flujo de contacto, apoyados por una experiencia editorial que mantuviera las actualizaciones simples sin convertir el sitio en una carga administrativa.",
+  "solution": "El proyecto se construyó como un sitio compacto con Django y React, con Wagtail alimentando la capa de contenido editable. Eso permitió una presentación clara para visitantes y, al mismo tiempo, una estructura práctica para imágenes, contenido escrito y páginas de contacto.",
+  "result": "CM Artistry es un proyecto más pequeño, pero demuestra con claridad una presentación guiada por el diseño, una buena gestión de galerías y una administración práctica del contenido para la web de un negocio creativo.",
+  "snapshot": {
+    "title": "Resumen rápido",
+    "items": [
+      {
+        "label": "Tipo de proyecto",
+        "value": "Sitio visual de presentación y portafolio"
+      },
+      {
+        "label": "Capacidad principal",
+        "value": "Presentación de galería, contenido de blog, flujo de contacto y edición con Wagtail"
+      },
+      {
+        "label": "Lo que demuestra",
+        "value": "Cómo un sitio más simple también puede beneficiarse de contenido estructurado y una UX bien pensada"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Lo que demuestra este proyecto",
+    "title": "Por qué importa",
+    "intro": "CM Artistry recuerda que no todos los proyectos necesitan la complejidad de una aplicación para estar bien resueltos. La fortaleza aquí está en la presentación, la claridad y unos flujos de contenido fáciles de mantener.",
+    "items": [
+      {
+        "title": "Presentación guiada por el diseño",
+        "body": "El proyecto muestra cómo un negocio visual puede presentarse con claridad sin sobrecargar la experiencia ni esconder el trabajo detrás de decisiones decorativas."
+      },
+      {
+        "title": "Contenido editable sin desorden",
+        "body": "Wagtail aporta una capa práctica de edición para que el negocio pueda actualizar contenido, galería y artículos sin rehacer el frontend."
+      },
+      {
+        "title": "Una arquitectura más simple bien aprovechada",
+        "body": "Este proyecto demuestra que un sitio de presentación más compacto también puede sentirse intencional, estructurado y profesional cuando el modelo de contenido y el recorrido del usuario se trabajan con cuidado."
+      }
+    ]
+  }
   }
 },
   "cta": {

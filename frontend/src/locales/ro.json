@@ -49,14 +49,18 @@
     {
       "id": 2,
       "quote": "Colaborarea cu Miss Bott a schimbat totul. Noul nostru portofoliu online a generat deja două contracte majore. Un partener cu adevărat profesionist și intuitiv.",
-      "name": "CMD Artistry",
+      "name": "CM Artistry",
       "company": "Pictor Muralist"
     }
   ]
 },
   "projects": {
-    "featured_title": "Proiecte Recomandate",
-    "other_title": "Alte Proiecte",
+    "featured_title": "Studiu de caz flagship",
+    "featured_intro": "OpenEire este cel mai avansat proiect din portofoliu: licențiere personalizată, livrare protejată, galerii restricționate și fulfilment pentru printuri, toate într-o singură platformă.",
+    "featured_value_label": "De ce contează acest build",
+    "other_kicker": "Mai multe proiecte",
+    "other_title": "Studii de caz selectate",
+    "other_intro": "Trei proiecte suplimentare care arată cum aceeași abordare orientată pe produs se adaptează la planificare de călătorii, comerț și prezentare vizuală.",
     "none_found": "Niciun proiect găsit. Asigură-te că serverul backend rulează.",
     "read_more": "Citește mai mult",
     "read_less": "Citește mai puțin",
@@ -65,14 +69,14 @@
   },
   "project_card": {
   "alt_text": "Captură de ecran {{title}}",
-  "fallback_description": "Un proiect recomandat ce demonstrează dezvoltare web modernă.",
+  "fallback_description": "Un proiect custom care arată cum dezvoltarea web modernă poate susține fluxuri reale de business.",
   "link_text": "Vezi Studiul de Caz"
 },
   "project_detail_page": {
   "back_button": "Înapoi Acasă",
   "case_study_title": "Studiu de Caz",
   "challenge_title": "Provocarea",
-  "solution_title": "Soluția Mea",
+  "solution_title": "Soluția",
   "result_title": "Rezultatul",
   "tech_stack_title": "Tehnologii Folosite",
   "links_title": "Linkuri Proiect",
@@ -261,7 +265,157 @@
       "primary": "Programează o discuție",
       "secondary": "Vezi soluțiile"
     }
+  },
+"timeless_travel": {
+  "card_label": "Platformă de planificare cu autentificare",
+  "card_summary": "Un produs custom pentru călătorii care combină publicarea, instrumentele personale de organizare, profilurile și regulile de vizibilitate într-o singură experiență bazată pe cont.",
+  "seo": {
+    "title": "Studiu de caz Timeless Travel | Platformă de planificare și publicare pentru călătorii | Miss Bott",
+    "description": "Descoperă Timeless Travel, o platformă custom Django și React care combină instrumente de planificare, profiluri de utilizator, fluxuri editoriale și controale de vizibilitate într-un singur produs.",
+    "keywords": "studiu de caz Timeless Travel, platformă de planificare pentru călătorii, produs Django React, fluxuri editoriale, aplicație checklist, Miss Bott"
+  },
+  "hero_eyebrow": "Studiu de caz selectat",
+  "summary": "Timeless Travel nu este doar un blog de călătorii. Este o platformă de conținut și planificare bazată pe cont, care aduce laolaltă publicarea, organizarea personală și fluxurile de utilizare dependente de autentificare.",
+  "challenge": "Timeless Travel trebuia să facă mai mult decât să găzduiască articole inspiraționale despre călătorii. Produsul avea nevoie să le ofere utilizatorilor autentificați un spațiu în care să își gestioneze checklisturile și taskurile, să publice articole, să își administreze profilurile și să controleze modul în care conținutul trece între draft, privat și vizibil.",
+  "solution": "Platforma a fost reconstruită cu un frontend React peste Django, astfel încât instrumentele de planificare, conținutul legat de profil și fluxurile editoriale să poată trăi într-o singură aplicație coerentă. Rezultatul este o experiență mai modernă, care păstrează planificarea structurată și conținutul editorial conectate, în loc să le împrăștie în tool-uri separate.",
+  "result": "Timeless Travel se prezintă acum mai degrabă ca un produs construit în jurul unor fluxuri reale de utilizare, nu ca un simplu blog. Demonstrează cum pot lucra împreună sistemele de cont, experiențele bazate pe roluri, regulile de publicare și funcțiile de planificare într-un build custom.",
+  "snapshot": {
+    "title": "Pe scurt",
+    "items": [
+      {
+        "label": "Tip proiect",
+        "value": "Platformă de planificare și conținut pentru călătorii"
+      },
+      {
+        "label": "Capabilitate principală",
+        "value": "Publicare de articole, checklisturi, taskuri, profiluri și fluxuri de vizibilitate"
+      },
+      {
+        "label": "Ce demonstrează",
+        "value": "Cum un singur produs poate susține atât planificare structurată, cât și conținut generat de utilizatori"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Ce demonstrează acest proiect",
+    "title": "De ce contează",
+    "intro": "Timeless Travel este un exemplu solid de produs orientat pe conținut, dar cu profunzime reală la nivel de workflow. Valoarea stă în felul în care planificarea și publicarea coexistă în același sistem autentificat.",
+    "items": [
+      {
+        "title": "Design de produs construit în jurul contului",
+        "body": "Platforma arată cum profilurile, permisiunile și stările de autentificare pot modela experiența utilizatorului dincolo de un simplu site public de conținut."
+      },
+      {
+        "title": "Fluxuri editoriale dincolo de un blog",
+        "body": "Drafturile, controalele de vizibilitate și comportamentul bazat pe roluri arată cum funcțiile editoriale devin mai utile atunci când sunt tratate ca parte dintr-un workflow de produs."
+      },
+      {
+        "title": "Instrumente de planificare în același sistem",
+        "body": "Checklisturile și taskurile transformă platforma în ceva mai practic decât un jurnal de călătorii și arată cum funcțiile structurate pot sta lângă conținut fără să pară adăugate forțat."
+      }
+    ]
   }
+},
+"honeypot": {
+  "card_label": "Sistem custom de e-commerce",
+  "card_summary": "Un build de e-commerce cu Django și React care combină checkout-ul, conturile de client, recenziile, conținutul și operațiunile administrative într-un singur sistem de storefront.",
+  "seo": {
+    "title": "Studiu de caz Honeypot | Platformă custom de e-commerce | Miss Bott",
+    "description": "Vezi cum Honeypot combină catalogul de produse, checkout-ul Stripe, conturile de client, recenziile, conținutul și fluxurile administrative într-o singură platformă custom de e-commerce.",
+    "keywords": "studiu de caz Honeypot, platformă custom ecommerce, Django React commerce, Stripe checkout, fluxuri administrative ecommerce, Miss Bott"
+  },
+  "hero_eyebrow": "Studiu de caz selectat",
+  "summary": "Honeypot este mai mult decât un magazin online. Este un sistem custom de e-commerce care aduce laolaltă vânzarea, experiența clientului, conținutul și operațiunile magazinului într-un singur produs.",
+  "challenge": "Honeypot trebuia să funcționeze ca mai mult decât un simplu catalog de produse cu checkout. Platforma avea nevoie de plăți prin Stripe, conturi de client cu istoric de comenzi, recenzii, blog, comentarii și un strat administrativ capabil să gestioneze produse, comenzi, utilizatori și operațiunile zilnice ale magazinului.",
+  "solution": "Build-ul folosește Django și React pentru a păstra în același sistem atât fluxurile de cumpărare orientate spre client, cât și instrumentele administrative necesare în operare. Administrarea catalogului, checkout-ul, conturile, recenziile și conținutul au fost gândite să lucreze împreună ca un singur produs de e-commerce, nu ca funcții separate.",
+  "result": "Honeypot demonstrează cum o platformă custom de e-commerce poate susține atât vânzările, cât și operațiunile din spate. Arată profunzimea din spatele unui magazin cu adevărat funcțional: nu doar cumpărarea, ci și straturile de cont, conținut, moderare și administrare care țin business-ul în mișcare.",
+  "snapshot": {
+    "title": "Pe scurt",
+    "items": [
+      {
+        "label": "Tip proiect",
+        "value": "Platformă completă de e-commerce"
+      },
+      {
+        "label": "Capabilitate principală",
+        "value": "Checkout Stripe, conturi de client, recenzii, conținut de blog și administrare de magazin"
+      },
+      {
+        "label": "Ce demonstrează",
+        "value": "Cum build-urile custom pot susține atât vânzarea, cât și partea operațională a comerțului"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Ce demonstrează acest proiect",
+    "title": "De ce contează",
+    "intro": "Honeypot este un exemplu bun de arhitectură de e-commerce cu mai multă profunzime decât un simplu storefront. Arată cum trebuie să lucreze împreună partea de client și partea administrativă.",
+    "items": [
+      {
+        "title": "Comerț plus operațiuni",
+        "body": "Proiectul arată că un magazin nu înseamnă doar listarea produselor. Comenzile, recenziile, moderarea și workflow-urile administrative fac parte din produsul real."
+      },
+      {
+        "title": "Conturi de client cu utilitate reală",
+        "body": "Profilurile și istoricul comenzilor fac ca zona de client să se simtă ca parte dintr-un sistem de e-commerce funcțional, nu doar ca o sesiune de checkout."
+      },
+      {
+        "title": "Conținut și vânzare în aceeași platformă",
+        "body": "Conținutul de blog, comentariile și descoperirea produselor coexistă cu checkout-ul și conturile, ceea ce arată cum site-urile de e-commerce au adesea nevoie și de un strat editorial sau comunitar."
+      }
+    ]
+  }
+},
+"cm_artistry": {
+  "card_label": "Site de portofoliu cu management de conținut",
+  "card_summary": "Un site de prezentare orientat vizual, cu galerie, blog, contact și editare în Wagtail, construit pentru un business creativ care are nevoie de o prezentare rafinată.",
+  "seo": {
+    "title": "Studiu de caz CM Artistry | Website de portofoliu vizual cu Wagtail | Miss Bott",
+    "description": "Descoperă CM Artistry, un site de portofoliu și prezentare, rafinat, cu galerie, blog, contact și management de conținut prin Wagtail.",
+    "keywords": "studiu de caz CM Artistry, site portofoliu Wagtail, website de prezentare, site pentru business creativ, galerie online, Miss Bott"
+  },
+  "hero_eyebrow": "Studiu de caz selectat",
+  "summary": "CM Artistry este intenționat mai simplu decât build-urile de aplicație mai mari, dar rămâne un exemplu puternic de site vizual, bine prezentat, cu management de conținut structurat în spate.",
+  "challenge": "CM Artistry avea nevoie de un site curat, orientat vizual, care să prezinte profesionist lucrările murale și să rămână ușor de întreținut. Brief-ul cerea galerie, blog și flux de contact, susținute de o experiență editorială care să păstreze actualizările simple, fără să transforme site-ul într-o povară administrativă.",
+  "solution": "Proiectul a fost construit ca un website compact Django și React, cu Wagtail pentru stratul de conținut editabil. Asta a oferit o prezentare clară pentru vizitatori și, în același timp, o structură practică pentru imagini, conținut scris și pagini de contact.",
+  "result": "CM Artistry este un proiect mai mic, dar demonstrează clar o prezentare orientată pe design, gestionarea galeriilor și administrarea practică a conținutului pentru un website de business creativ.",
+  "snapshot": {
+    "title": "Pe scurt",
+    "items": [
+      {
+        "label": "Tip proiect",
+        "value": "Website vizual de prezentare și portofoliu"
+      },
+      {
+        "label": "Capabilitate principală",
+        "value": "Prezentare galerie, conținut de blog, flux de contact și editare în Wagtail"
+      },
+      {
+        "label": "Ce demonstrează",
+        "value": "Cum un site mai simplu poate beneficia totuși de conținut structurat și de un UX atent gândit"
+      }
+    ]
+  },
+  "demonstrates": {
+    "eyebrow": "Ce demonstrează acest proiect",
+    "title": "De ce contează",
+    "intro": "CM Artistry arată că nu orice proiect are nevoie de complexitatea unei aplicații pentru a fi bine executat. Punctul forte aici este prezentarea, claritatea și fluxurile de conținut ușor de întreținut.",
+    "items": [
+      {
+        "title": "Prezentare ghidată de design",
+        "body": "Proiectul arată cum un business vizual poate fi prezentat clar fără să aglomereze experiența sau să ascundă lucrarea în spatele unor alegeri decorative."
+      },
+      {
+        "title": "Conținut editabil fără aglomerație",
+        "body": "Wagtail oferă un strat practic de editare, astfel încât business-ul să poată actualiza conținutul, galeria și articolele fără să reconstruiască front-end-ul."
+      },
+      {
+        "title": "O arhitectură simplă folosită bine",
+        "body": "Acest build demonstrează că un site de prezentare mai compact poate fi totuși intenționat, structurat și profesionist atunci când modelul de conținut și traseul utilizatorului sunt gândite atent."
+      }
+    ]
+  }
+}
 },
   "cta": {
     "title": "Ești gata să depășești limitările șabloanelor?",

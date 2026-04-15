@@ -134,7 +134,7 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
         image={getImageUrl(project.image)}
       />
 
-      <main className="min-h-screen p-6">
+      <main className="min-h-screen p-3 sm:p-6">
         <div className="max-w-6xl mx-auto">
           <Link
             to="/"
@@ -143,60 +143,60 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             <ArrowLeft size={16} /> {t("project_detail_page.back_button")}
           </Link>
 
-          <div className="glassmorphism backdrop-blur-sm rounded-lg shadow-xl p-6 md:p-12 border overflow-hidden">
+          <div className="glassmorphism backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-6 md:p-12 border overflow-hidden">
             <ScrollAnimator>
-              <section className="pb-12 border-b border-secondary/20">
+              <section className="pb-8 sm:pb-12 border-b border-secondary/20">
                 <p className="text-sm uppercase tracking-[0.2em] secondary font-semibold mb-4">
                   {copy.hero.eyebrow}
                 </p>
-                <div className="grid lg:grid-cols-[1.5fr_0.9fr] gap-10 items-start">
+                <div className="grid lg:grid-cols-[1.5fr_0.9fr] gap-6 sm:gap-10 items-start">
                   <div>
-                    <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+                    <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-5 sm:mb-6">
                       {copy.hero.title}
                     </h1>
-                    <p className="text-lg text-secondary max-w-3xl leading-relaxed mb-8">
+                    <p className="text-base sm:text-lg text-secondary max-w-3xl leading-relaxed mb-6 sm:mb-8">
                       {copy.hero.summary}
                     </p>
 
-                    <div className="flex flex-wrap gap-3 mb-8">
+                    <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 sm:mb-8">
                       {stackItems.map((item) => (
                         <span
                           key={item}
-                          className="px-3 py-1.5 rounded-full text-sm bg-primary/10 text-primary border border-secondary/20"
+                          className="px-3 py-1.5 rounded-full text-xs sm:text-sm bg-primary/10 text-primary border border-secondary/20"
                         >
                           {item}
                         </span>
                       ))}
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                       <Link
                         to="/quote"
-                        className="inline-flex items-center justify-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="inline-flex items-center justify-center px-5 sm:px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                       >
                         {copy.hero.primaryCta}
                         <ArrowRight size={16} className="ml-2" />
                       </Link>
                       <Link
                         to="/services"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
+                        className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
                       >
                         {copy.hero.secondaryCta}
                       </Link>
                     </div>
                   </div>
 
-                  <div className="glassmorphism rounded-2xl p-6 border border-secondary/20 shadow-lg">
-                    <h2 className="text-xl font-semibold text-primary mb-5">
+                  <div className="glassmorphism rounded-2xl p-4 sm:p-6 border border-secondary/20 shadow-lg">
+                    <h2 className="text-lg sm:text-xl font-semibold text-primary mb-4 sm:mb-5">
                       {project.title}
                     </h2>
-                    <dl className="space-y-4">
+                    <dl className="space-y-3 sm:space-y-4">
                       {copy.hero.facts.map((fact) => (
-                        <div key={fact.label} className="border-b border-secondary/15 pb-4 last:border-b-0 last:pb-0">
+                        <div key={fact.label} className="border-b border-secondary/15 pb-3 sm:pb-4 last:border-b-0 last:pb-0">
                           <dt className="text-xs uppercase tracking-[0.16em] text-secondary mb-1">
                             {fact.label}
                           </dt>
-                          <dd className="text-primary font-medium">{fact.value}</dd>
+                          <dd className="text-primary font-medium leading-relaxed text-sm sm:text-base">{fact.value}</dd>
                         </div>
                       ))}
                     </dl>
@@ -206,16 +206,16 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.05}>
-              <section className="py-12 border-b border-secondary/20">
-                <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10">
+              <section className="py-8 sm:py-12 border-b border-secondary/20">
+                <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-6 sm:gap-10">
                   <div>
                     <p className="text-sm uppercase tracking-[0.18em] secondary font-semibold mb-3">
                       {copy.overview.label}
                     </p>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-5">
+                    <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 sm:mb-5">
                       {copy.overview.title}
                     </h2>
-                    <p className="text-lg text-secondary leading-relaxed mb-4">
+                    <p className="text-base sm:text-lg text-secondary leading-relaxed mb-4">
                       {project.description}
                     </p>
                     {copy.overview.paragraphs.map((paragraph) => (
@@ -232,12 +232,12 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
                     {copy.overview.statCards.map((card) => (
                       <div
                         key={card.label}
-                        className="glassmorphism rounded-2xl p-5 border border-secondary/20"
+                        className="glassmorphism rounded-2xl p-4 sm:p-5 border border-secondary/20"
                       >
                         <p className="text-xs uppercase tracking-[0.16em] text-secondary mb-2">
                           {card.label}
                         </p>
-                        <p className="text-primary text-lg font-semibold leading-snug">
+                        <p className="text-primary text-base sm:text-lg font-semibold leading-snug">
                           {card.value}
                         </p>
                       </div>
@@ -248,8 +248,8 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.1}>
-              <section className="py-12 border-b border-secondary/20">
-                <div className="grid lg:grid-cols-2 gap-8">
+              <section className="py-8 sm:py-12 border-b border-secondary/20">
+                <div className="grid lg:grid-cols-2 gap-6 sm:gap-8">
                   <SectionCard
                     eyebrow={copy.challenge.label}
                     title={copy.challenge.title}
@@ -269,32 +269,32 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.15}>
-              <section className="py-12 border-b border-secondary/20">
+              <section className="py-8 sm:py-12 border-b border-secondary/20">
                 <p className="text-sm uppercase tracking-[0.18em] secondary font-semibold mb-3 text-center">
                   {copy.highlights.label}
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 text-center">
+                <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 text-center">
                   {copy.highlights.title}
                 </h2>
-                <p className="text-secondary text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                <p className="text-sm sm:text-base text-secondary text-center max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                   {copy.highlights.intro}
                 </p>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                   {copy.highlights.items.map((item, index) => {
                     const Icon = highlightIcons[index % highlightIcons.length];
                     return (
                       <div
                         key={item.title}
-                        className="glassmorphism rounded-2xl p-6 border border-secondary/20 shadow-lg"
+                        className="glassmorphism rounded-2xl p-5 sm:p-6 border border-secondary/20 shadow-lg"
                       >
                         <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                           <Icon className="text-primary" size={22} />
                         </div>
-                        <h3 className="text-xl font-semibold text-primary mb-3">
+                        <h3 className="text-lg sm:text-xl font-semibold text-primary mb-3">
                           {item.title}
                         </h3>
-                        <p className="text-secondary leading-relaxed mb-4">
+                        <p className="text-sm sm:text-base text-secondary leading-relaxed mb-4">
                           {item.body}
                         </p>
                         {item.tags && item.tags.length > 0 && (
@@ -317,14 +317,14 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.2}>
-              <section className="py-12 border-b border-secondary/20">
+              <section className="py-8 sm:py-12 border-b border-secondary/20">
                 <p className="text-sm uppercase tracking-[0.18em] secondary font-semibold mb-3 text-center">
                   {copy.technical_snapshot.label}
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 text-center">
+                <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 text-center">
                   {copy.technical_snapshot.title}
                 </h2>
-                <p className="text-secondary text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                <p className="text-sm sm:text-base text-secondary text-center max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                   {copy.technical_snapshot.intro}
                 </p>
 
@@ -334,10 +334,10 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
                     return (
                       <div
                         key={card.title}
-                        className="rounded-2xl border border-secondary/20 bg-surface/60 p-5"
+                        className="rounded-2xl border border-secondary/20 bg-surface/60 p-4 sm:p-5"
                       >
                         <Icon className="text-primary mb-4" size={22} />
-                        <h3 className="text-lg font-semibold text-primary mb-2">
+                        <h3 className="text-base sm:text-lg font-semibold text-primary mb-2">
                           {card.title}
                         </h3>
                         <p className="text-sm text-secondary leading-relaxed">
@@ -351,28 +351,28 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.25}>
-              <section className="py-12 border-b border-secondary/20">
+              <section className="py-8 sm:py-12 border-b border-secondary/20">
                 <p className="text-sm uppercase tracking-[0.18em] secondary font-semibold mb-3 text-center">
                   {copy.client_value.label}
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 text-center">
+                <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4 text-center">
                   {copy.client_value.title}
                 </h2>
-                <p className="text-secondary text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+                <p className="text-sm sm:text-base text-secondary text-center max-w-3xl mx-auto mb-8 sm:mb-10 leading-relaxed">
                   {project.the_result || copy.client_value.intro}
                 </p>
 
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-5 sm:gap-6">
                   {copy.client_value.items.map((item) => (
                     <div
                       key={item.title}
-                      className="glassmorphism rounded-2xl p-6 border border-secondary/20"
+                      className="glassmorphism rounded-2xl p-5 sm:p-6 border border-secondary/20"
                     >
                       <CheckCircle2 className="text-primary mb-4" size={22} />
-                      <h3 className="text-xl font-semibold text-primary mb-3">
+                      <h3 className="text-lg sm:text-xl font-semibold text-primary mb-3">
                         {item.title}
                       </h3>
-                      <p className="text-secondary leading-relaxed">{item.body}</p>
+                      <p className="text-sm sm:text-base text-secondary leading-relaxed">{item.body}</p>
                     </div>
                   ))}
                 </div>
@@ -380,26 +380,26 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
             </ScrollAnimator>
 
             <ScrollAnimator delay={0.3}>
-              <section className="pt-12">
-                <div className="glassmorphism rounded-3xl p-8 md:p-10 border border-secondary/20 text-center">
-                  <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
+              <section className="pt-8 sm:pt-12">
+                <div className="glassmorphism rounded-3xl p-5 sm:p-8 md:p-10 border border-secondary/20 text-center">
+                  <h2 className="text-2xl sm:text-4xl font-bold text-primary mb-4">
                     {copy.cta.title}
                   </h2>
-                  <p className="text-secondary text-lg leading-relaxed max-w-3xl mx-auto mb-8">
+                  <p className="text-sm sm:text-lg text-secondary leading-relaxed max-w-3xl mx-auto mb-6 sm:mb-8">
                     {copy.cta.body}
                   </p>
 
-                  <div className="flex flex-col sm:flex-row justify-center gap-4">
+                  <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                     <Link
                       to="/quote"
-                      className="inline-flex items-center justify-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="inline-flex items-center justify-center px-5 sm:px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
                     >
                       {copy.cta.primary}
                       <ArrowRight size={16} className="ml-2" />
                     </Link>
                     <Link
                       to="/services"
-                      className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
+                      className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
                     >
                       {copy.cta.secondary}
                     </Link>
@@ -408,7 +408,7 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
                         href={project.live_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
+                        className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
                       >
                         <ExternalLink size={16} className="mr-2" />
                         {t("project_detail_page.live_link")}
@@ -419,7 +419,7 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
                         href={project.repo_link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
+                        className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
                       >
                         <Github size={16} className="mr-2" />
                         {t("project_detail_page.repo_link")}
@@ -451,26 +451,26 @@ const SectionCard = ({
   items,
   icons,
 }: SectionCardProps) => (
-  <div className="glassmorphism rounded-3xl p-6 md:p-8 border border-secondary/20">
+  <div className="glassmorphism rounded-3xl p-5 sm:p-6 md:p-8 border border-secondary/20">
     <p className="text-sm uppercase tracking-[0.18em] secondary font-semibold mb-3">
       {eyebrow}
     </p>
-    <h2 className="text-3xl font-bold text-primary mb-4">{title}</h2>
-    <p className="text-secondary leading-relaxed mb-8">{intro}</p>
+    <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-4">{title}</h2>
+    <p className="text-sm sm:text-base text-secondary leading-relaxed mb-6 sm:mb-8">{intro}</p>
 
-    <div className="space-y-5">
+    <div className="space-y-4 sm:space-y-5">
       {items.map((item, index) => {
         const Icon = icons[index % icons.length];
         return (
           <div key={item.title} className="flex gap-4 items-start">
-            <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
               <Icon className="text-primary" size={20} />
             </div>
             <div>
-              <h3 className="text-lg font-semibold text-primary mb-1.5">
+              <h3 className="text-base sm:text-lg font-semibold text-primary mb-1.5">
                 {item.title}
               </h3>
-              <p className="text-secondary leading-relaxed">{item.body}</p>
+              <p className="text-sm sm:text-base text-secondary leading-relaxed">{item.body}</p>
             </div>
           </div>
         );

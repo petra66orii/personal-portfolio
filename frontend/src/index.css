@@ -87,6 +87,12 @@ body {
   background-image: linear-gradient(rgba(30, 41, 59, 0.3), rgba(30, 41, 59, 0.3));
 }
 
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
 #background-canvas {
   position: fixed;
   top: 0;
