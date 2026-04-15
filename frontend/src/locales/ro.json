@@ -3,11 +3,121 @@
     "and": "și"
   },
   "navbar": {
-    "about": "Acasă",
+    "home": "Acasă",
+    "about": "Despre",
     "services": "Soluții",
     "blog": "Resurse",
     "contact": "Contact"
   },
+"about_page": {
+  "seo_title": "Despre Miss Bott | Dezvoltare web custom, founder-led",
+  "seo_description": "Află cine este în spatele Miss Bott, cum sunt livrate proiectele și de ce build-urile custom cu Django și React sunt potrivite pentru afaceri care au depășit platformele template.",
+  "hero": {
+    "eyebrow": "Despre Miss Bott",
+    "title": "Software construit de fondator pentru afaceri care au depășit template-urile.",
+    "summary": "Miss Bott construiește platforme digitale custom pentru afaceri care au nevoie de mai mult decât un design frumos. Accentul este pe arhitectură curată, fluxuri practice și sisteme care pot susține creșterea fără să ajungă un patchwork de plugin-uri.",
+    "fit_label": "Potrivire bună dacă",
+    "fit_points": [
+      "Ai nevoie de un produs sau de o platformă reală, nu doar de un redesign.",
+      "Vrei claritate strategică și scop bine definit înainte să înceapă dezvoltarea.",
+      "Apreciezi colaborarea directă cu fondatorul și asumarea tehnică."
+    ]
+  },
+  "mission": {
+    "eyebrow": "Misiune și mod de lucru",
+    "title": "Construit pentru echipe care au nevoie de arhitectură, nu de improvizații.",
+    "body": "Misiunea este simplă: înlocuirea stack-urilor fragile bazate pe template-uri cu sisteme custom gândite în jurul modului real în care funcționează afacerea ta. Asta include traseele clienților, fluxurile interne, integrările și mentenanța pe termen lung.",
+    "side_intro": "Fiecare proiect începe cu o Sesiune Strategică de Descoperire plătită, pentru a clarifica scopul, constrângerile și prioritățile înainte de implementare.",
+    "side_points": [
+      "Studio founder-led, bazat în Irlanda.",
+      "Livrare pentru clienți internaționali.",
+      "Model de lucru bazat pe discovery."
+    ]
+  },
+  "status": {
+    "live_label": "Momentan accept proiecte noi",
+    "response_label": "Răspund fiecărei solicitări în maximum 24 de ore, în zilele lucrătoare."
+  },
+  "trust": {
+    "eyebrow": "Semnale de încredere",
+    "title": "Model de lucru clar. Livrare transparentă.",
+    "intro": "Scopul este o colaborare predictibilă: scop clar, comunicare clară și standarde moderne de inginerie de la discovery până la lansare.",
+    "cards": [
+      {
+        "icon": "location",
+        "label": "Locație",
+        "value": "Republica Irlanda",
+        "sub": "Business bazat în UE, cu livrare aliniată la cerințele GDPR."
+      },
+      {
+        "icon": "years",
+        "label": "Business independent",
+        "value": "Activ din 2025",
+        "sub": "Practică founder-led, cu partea de conformitate gestionată împreună cu un contabil."
+      },
+      {
+        "icon": "stack",
+        "label": "Stack principal",
+        "value": "Django, React, PostgreSQL",
+        "sub": "DRF APIs, Vite, Tailwind, Stripe, Redis, Cloudflare R2."
+      },
+      {
+        "icon": "response",
+        "label": "Timp de răspuns",
+        "value": "În maximum o zi lucrătoare",
+        "sub": "Comunicare structurată și ritm de lucru predictibil."
+      },
+      {
+        "icon": "engagement",
+        "label": "Cum sunt structurate proiectele",
+        "value": "Milestone-uri cu preț fix",
+        "sub": "Discovery definește scopul, apoi implementarea urmează un plan clar."
+      },
+      {
+        "icon": "markets",
+        "label": "Piețe deservite",
+        "value": "Irlanda, UK, SUA, Canada",
+        "sub": "Colaborare internațională susținută pe mai multe fusuri orare."
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Perspectiva fondatorului",
+    "title": "De ce există Miss Bott",
+    "summary": "Miss Bott a fost construită pentru a reduce diferența dintre site-uri care arată bine și software care chiar susține operațiunile de business. Nu este despre funcționalități adăugate la întâmplare, ci despre sistemul potrivit, cu constrângerile potrivite, pentru etapa potrivită de creștere.",
+    "points": [
+      {
+        "title": "Parteneriat tehnic direct",
+        "body": "Lucrezi direct cu fondatorul din discovery până la livrare, astfel încât deciziile rămân rapide, iar contextul tehnic nu se pierde în handoff-uri."
+      },
+      {
+        "title": "Inginerie ancorată în business",
+        "body": "Arhitectura este gândită pentru cazuri reale de utilizare: clienți, operațiuni, echipe administrative și evoluția produsului."
+      },
+      {
+        "title": "Claritate, nu teatru de agenție",
+        "body": "Fără procese umflate inutil. Primești comunicare practică, compromisuri explicate onest și un plan de build care poate fi livrat și menținut."
+      }
+    ]
+  },
+  "qualifications": {
+    "eyebrow": "Calificări",
+    "title": "Pregătire formală care susține livrarea practică",
+    "provider": "Code Institute",
+    "provider_sub": "codeinstitute.net",
+    "diploma": "Diplomă în Full Stack Software Development (E-commerce Applications)",
+    "awarded": "Acordată: Mai 2025",
+    "grade": "Calificativ: Merit",
+    "credit": "Creditată de UWS: SCQF Level 8, 60 de credite",
+    "badge": "Merit"
+  },
+  "cta": {
+    "title": "Ai nevoie de o platformă care să susțină creștere reală?",
+    "body": "Dacă stack-ul actual încetinește deciziile de produs, operațiunile sau experiența clientului, putem defini arhitectura potrivită înainte de implementare.",
+    "primary": "Rezervă o Sesiune de Descoperire",
+    "secondary": "Explorează soluțiile"
+  }
+},
 "home": {
     "title": "Ai Depășit WordPress sau Squarespace?",
     "subtitle": "Construiește un site care chiar se potrivește cu afacerea ta.",

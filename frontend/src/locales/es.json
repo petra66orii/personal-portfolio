@@ -3,11 +3,121 @@
     "and": "y"
   },
   "navbar": {
-    "about": "Inicio",
+    "home": "Inicio",
+    "about": "Sobre Miss Bott",
     "services": "Soluciones",
     "blog": "Artículos",
     "contact": "Contacto"
   },
+"about_page": {
+  "seo_title": "Sobre Miss Bott | Desarrollo web a medida liderado por fundadora",
+  "seo_description": "Descubre quién está detrás de Miss Bott, cómo se desarrollan los proyectos y por qué las soluciones a medida con Django y React son ideales para negocios que han superado las plataformas de plantillas.",
+  "hero": {
+    "eyebrow": "Sobre Miss Bott",
+    "title": "Software creado por la fundadora para empresas que han superado las plantillas.",
+    "summary": "Miss Bott desarrolla plataformas digitales a medida para negocios que necesitan algo más que un diseño atractivo. El enfoque está en una arquitectura sólida, flujos prácticos y sistemas capaces de crecer sin depender de parches ni plugins improvisados.",
+    "fit_label": "Encaja bien si",
+    "fit_points": [
+      "Necesitas un producto o plataforma real, no solo un rediseño.",
+      "Buscas claridad estratégica antes de empezar a desarrollar.",
+      "Valoras trabajar directamente con la fundadora y contar con responsabilidad técnica real."
+    ]
+  },
+  "mission": {
+    "eyebrow": "Misión y forma de trabajo",
+    "title": "Pensado para equipos que necesitan arquitectura, no soluciones temporales.",
+    "body": "La misión es clara: sustituir stacks frágiles basados en plantillas por sistemas a medida diseñados alrededor de cómo funciona realmente tu negocio. Esto incluye recorridos de cliente, operaciones internas, integraciones y mantenimiento a largo plazo.",
+    "side_intro": "Cada proyecto comienza con una Sesión Estratégica de Descubrimiento de pago, donde se definen alcance, limitaciones y prioridades antes de construir.",
+    "side_points": [
+      "Estudio liderado por fundadora, con base en Irlanda.",
+      "Entrega para clientes internacionales.",
+      "Modelo de trabajo basado en discovery."
+    ]
+  },
+  "status": {
+    "live_label": "Actualmente aceptando nuevos proyectos",
+    "response_label": "Todas las consultas reciben respuesta en un máximo de 24 horas en días laborables."
+  },
+  "trust": {
+    "eyebrow": "Señales de confianza",
+    "title": "Modelo de trabajo claro. Entrega transparente.",
+    "intro": "El objetivo es una colaboración predecible: alcance definido, comunicación directa y estándares modernos de ingeniería desde discovery hasta lanzamiento.",
+    "cards": [
+      {
+        "icon": "location",
+        "label": "Ubicación",
+        "value": "República de Irlanda",
+        "sub": "Negocio basado en la UE, con cumplimiento de GDPR integrado desde el inicio."
+      },
+      {
+        "icon": "years",
+        "label": "Negocio independiente",
+        "value": "Activo desde 2025",
+        "sub": "Práctica liderada por la fundadora, con cumplimiento gestionado junto a asesoría contable."
+      },
+      {
+        "icon": "stack",
+        "label": "Stack principal",
+        "value": "Django, React, PostgreSQL",
+        "sub": "DRF APIs, Vite, Tailwind, Stripe, Redis y Cloudflare R2."
+      },
+      {
+        "icon": "response",
+        "label": "Tiempo de respuesta",
+        "value": "En un día laborable",
+        "sub": "Comunicación clara y ritmo de trabajo consistente."
+      },
+      {
+        "icon": "engagement",
+        "label": "Cómo se estructuran los proyectos",
+        "value": "Hitos con precio cerrado",
+        "sub": "El discovery define el alcance y la entrega sigue un plan claro."
+      },
+      {
+        "icon": "markets",
+        "label": "Mercados",
+        "value": "Irlanda, Reino Unido, EE. UU., Canadá",
+        "sub": "Colaboración internacional adaptada a distintos husos horarios."
+      }
+    ]
+  },
+  "founder": {
+    "eyebrow": "Perspectiva de la fundadora",
+    "title": "Por qué existe Miss Bott",
+    "summary": "Miss Bott nace para cerrar la brecha entre webs atractivas y software que realmente sostiene las operaciones de un negocio. No se trata de añadir funcionalidades sin criterio, sino de diseñar el sistema adecuado para la etapa real de crecimiento.",
+    "points": [
+      {
+        "title": "Socio técnico directo",
+        "body": "Trabajas directamente con la fundadora desde discovery hasta la entrega, lo que permite decisiones rápidas y evita la pérdida de contexto técnico."
+      },
+      {
+        "title": "Ingeniería orientada al negocio",
+        "body": "La arquitectura se diseña en torno a casos reales: clientes, operaciones, equipos internos y evolución futura del producto."
+      },
+      {
+        "title": "Claridad en lugar de teatro de agencia",
+        "body": "Sin procesos inflados ni capas innecesarias. Obtienes comunicación directa, decisiones claras y un plan ejecutable y mantenible."
+      }
+    ]
+  },
+  "qualifications": {
+    "eyebrow": "Formación",
+    "title": "Formación formal que respalda la ejecución práctica",
+    "provider": "Code Institute",
+    "provider_sub": "codeinstitute.net",
+    "diploma": "Diploma en Full Stack Software Development (E-commerce Applications)",
+    "awarded": "Otorgado: mayo de 2025",
+    "grade": "Calificación: Merit",
+    "credit": "Acreditado por UWS: SCQF Level 8, 60 créditos",
+    "badge": "Merit"
+  },
+  "cta": {
+    "title": "¿Necesitas una plataforma preparada para crecer de verdad?",
+    "body": "Si tu stack actual está frenando decisiones de producto, operaciones o la experiencia del cliente, podemos definir la arquitectura adecuada antes de construir.",
+    "primary": "Reservar una sesión de descubrimiento",
+    "secondary": "Explorar soluciones"
+  }
+},
 "home": {
     "title": "¿Has superado WordPress o Squarespace? Construye un sitio web que se adapte realmente a tu negocio.",
     "subtitle": "Construye un sitio web que realmente se adapte a tu negocio.",

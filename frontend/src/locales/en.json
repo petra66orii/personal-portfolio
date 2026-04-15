@@ -3,10 +3,120 @@
     "and": "and"
   },
   "navbar": {
-    "about": "Home",
+    "home": "Home",
+    "about": "About",
     "services": "Solutions",
     "blog": "Insights",
     "contact": "Contact"
+  },
+"about_page": {
+    "seo_title": "About Miss Bott | Founder-led Custom Web Development",
+    "seo_description": "Learn who is behind Miss Bott, how projects are run, and why founder-led custom Django and React builds are designed for businesses that have outgrown template platforms.",
+    "hero": {
+      "eyebrow": "About Miss Bott",
+      "title": "Founder-led software for businesses that have outgrown the template.",
+      "summary": "Miss Bott builds custom digital platforms for businesses that need more than a polished theme. The focus is clean architecture, practical workflows, and systems that can keep up with growth without becoming plugin patchwork.",
+      "fit_label": "Best fit",
+      "fit_points": [
+        "You need a real product or platform, not just a redesign.",
+        "You want strategic scope before development starts.",
+        "You value direct founder collaboration and technical ownership."
+      ]
+    },
+    "mission": {
+      "eyebrow": "Mission and approach",
+      "title": "Built for teams that need architecture, not workarounds.",
+      "body": "The mission is straightforward: replace fragile template stacks with custom systems designed around how your business actually operates. That includes customer journeys, internal workflows, integrations, and long-term maintainability.",
+      "side_intro": "Every build starts with a paid Strategic Discovery Session so scope, constraints, and priorities are clear before implementation.",
+      "side_points": [
+        "Ireland-based founder studio.",
+        "Global client delivery.",
+        "Discovery-first project model."
+      ]
+    },
+    "status": {
+      "live_label": "Currently accepting new clients",
+      "response_label": "Every enquiry is answered within 24 hours during business days."
+    },
+    "trust": {
+      "eyebrow": "Trust signals",
+      "title": "Clear operating model. Transparent delivery.",
+      "intro": "The goal is to make working together predictable: clear scope, clear communication, and modern engineering standards from discovery through launch.",
+      "cards": [
+        {
+          "icon": "location",
+          "label": "Location",
+          "value": "Republic of Ireland",
+          "sub": "EU-based business with GDPR-aware delivery by default."
+        },
+        {
+          "icon": "years",
+          "label": "Independent business",
+          "value": "Operating since 2025",
+          "sub": "Founder-led practice with accountant-managed compliance."
+        },
+        {
+          "icon": "stack",
+          "label": "Core stack",
+          "value": "Django, React, PostgreSQL",
+          "sub": "DRF APIs, Vite, Tailwind, Stripe, Redis, Cloudflare R2."
+        },
+        {
+          "icon": "response",
+          "label": "Response time",
+          "value": "Within one business day",
+          "sub": "Structured communication with dependable turnaround."
+        },
+        {
+          "icon": "engagement",
+          "label": "How projects run",
+          "value": "Scoped, fixed-price milestones",
+          "sub": "Discovery defines scope first, then delivery follows a clear plan."
+        },
+        {
+          "icon": "markets",
+          "label": "Client markets",
+          "value": "Ireland, UK, USA, Canada",
+          "sub": "International collaboration supported across time zones."
+        }
+      ]
+    },
+    "founder": {
+      "eyebrow": "Founder perspective",
+      "title": "Why Miss Bott exists",
+      "summary": "Miss Bott was built to close the gap between pretty websites and software that genuinely supports business operations. The focus is not shipping features for the sake of features, but building the right system with the right constraints for the right stage of growth.",
+      "points": [
+        {
+          "title": "Direct technical partnership",
+          "body": "You work directly with the founder from discovery to delivery, so decisions stay fast and technical context is never lost in handoffs."
+        },
+        {
+          "title": "Business-aware engineering",
+          "body": "Architecture is designed around real use cases: customers, operations, admin teams, and future product evolution."
+        },
+        {
+          "title": "Clarity over agency theatre",
+          "body": "No bloated process layers. You get practical communication, honest trade-offs, and a build plan that can be executed and maintained."
+        }
+      ]
+    },
+    "qualifications": {
+      "eyebrow": "Qualifications",
+      "title": "Formal training supporting practical delivery",
+      "provider": "Code Institute",
+      "provider_sub": "codeinstitute.net",
+      "diploma": "Diploma in Full Stack Software Development (E-commerce Applications)",
+      "awarded": "Awarded: May 2025",
+      "grade": "Grade: Merit",
+      "credit": "Credit-rated by UWS: SCQF Level 8, 60 credits",
+      "badge": "Merit"
+    },
+    "cta": {
+      "title": "Need a platform that can handle real growth?",
+      "body": "If your current stack is slowing down product decisions, operations, or customer experience, we can define the right architecture before development starts.",
+      "primary": "Book a Discovery Call",
+      "secondary": "Explore Solutions"
+    }
   },
 "home": {
     "title": "Outgrown WordPress or Squarespace?",

@@ -10,7 +10,7 @@ const NavItem = ({ to, label, onClick }: Props) => (
   <NavLink
     to={to}
     onClick={onClick}
-    className="group inline-block px-1 py-0.5 text-lg font-medium relative transition-colors duration-200"
+    className="group inline-block whitespace-nowrap px-1 py-0.5 text-base xl:text-lg font-medium relative transition-colors duration-200"
   >
     {({ isActive }: { isActive: boolean }) => (
       <span className="relative inline-block">

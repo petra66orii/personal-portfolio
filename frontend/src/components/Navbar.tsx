@@ -34,9 +34,14 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
           </Link>
 
           {/* Desktop links */}
-          <div className="hidden md:flex space-x-6 items-center text-navbar">
+          <div className="hidden lg:flex space-x-4 xl:space-x-6 items-center text-navbar">
             <NavItem
               to="/"
+              label={t("navbar.home")}
+              onClick={() => setIsOpen(false)}
+            />
+            <NavItem
+              to="/about"
               label={t("navbar.about")}
               onClick={() => setIsOpen(false)}
             />
@@ -64,7 +69,7 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-4">
             <ThemeToggleButton isDark={isDark} setIsDark={setIsDark} />
             <button
               onClick={() => setIsOpen((prev) => !prev)}
@@ -78,9 +83,14 @@ const Navbar = ({ isDark, setIsDark }: NavbarProps) => {
 
         {/* Mobile dropdown */}
         {isOpen && (
-          <div className="md:hidden mt-2 pb-4 space-y-2 flex flex-col">
+          <div className="lg:hidden mt-2 pb-4 space-y-2 flex flex-col">
             <NavItem
               to="/"
+              label={t("navbar.home")}
+              onClick={() => setIsOpen(false)}
+            />
+            <NavItem
+              to="/about"
               label={t("navbar.about")}
               onClick={() => setIsOpen(false)}
             />
