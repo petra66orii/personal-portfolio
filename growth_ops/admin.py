@@ -18,6 +18,66 @@ from .models import (
 )
 
 
+class DraftV3PriorityFilter(admin.SimpleListFilter):
+    title = "V3 Priority"
+    parameter_name = "v3_priority"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("high", "High"),
+            ("medium", "Medium"),
+            ("low", "Low"),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() not in {"high", "medium", "low"}:
+            return queryset
+        return queryset.filter(evidence_check__v3_decision__priority=self.value())
+
+
+class DraftV3OfferTypeFilter(admin.SimpleListFilter):
+    title = "V3 Offer"
+    parameter_name = "v3_offer"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("conversion_fix", "Conversion Fix"),
+            ("performance_sprint", "Performance Sprint"),
+            ("trust_rebuild", "Trust Rebuild"),
+            ("seo_hygiene", "SEO Hygiene"),
+            ("general_audit", "General Audit"),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() not in {
+            "conversion_fix",
+            "performance_sprint",
+            "trust_rebuild",
+            "seo_hygiene",
+            "general_audit",
+        }:
+            return queryset
+        return queryset.filter(evidence_check__v3_decision__offer_type=self.value())
+
+
+class DraftReadinessFilter(admin.SimpleListFilter):
+    title = "Readiness"
+    parameter_name = "v35_readiness"
+
+    def lookups(self, request, model_admin):
+        return (
+            ("ready", "Ready"),
+            ("pending", "Pending"),
+        )
+
+    def queryset(self, request, queryset):
+        if self.value() == "ready":
+            return queryset.filter(evidence_check__v35_readiness__status="ready")
+        if self.value() == "pending":
+            return queryset.exclude(evidence_check__v35_readiness__status="ready")
+        return queryset
+
+
 class ContactInline(admin.TabularInline):
     model = Contact
     extra = 0
@@ -37,9 +97,9 @@ class LeadAdmin(admin.ModelAdmin):
 
 @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ("name", "email", "lead", "role", "created_at")
+    list_display = ("name", "email", "phone", "lead", "role", "created_at")
     search_fields = ("name", "email", "phone", "linkedin_url")
-    list_filter = ("created_at",)
+    list_filter = ("role", "created_at")
     autocomplete_fields = ("lead",)
     readonly_fields = ("created_at",)
 
@@ -98,15 +158,52 @@ class OutboundDraftAdmin(admin.ModelAdmin):
         "contact",
         "channel",
         "sequence_step",
+        "v3_priority",
+        "v3_offer_type",
+        "v35_readiness",
+        "model",
+        "prompt_version",
         "approval_status",
         "approved_at",
         "created_at",
     )
     search_fields = ("lead__company_name", "contact__email", "subject", "body")
-    list_filter = ("approval_status", "channel", "sequence_step", "created_at")
+    list_filter = (
+        "approval_status",
+        "channel",
+        "sequence_step",
+        DraftV3PriorityFilter,
+        DraftV3OfferTypeFilter,
+        DraftReadinessFilter,
+        "created_at",
+    )
     readonly_fields = ("created_at", "updated_at", "approved_at", "approved_by")
     autocomplete_fields = ("lead", "contact", "approved_by")
     actions = [approve_outbound_drafts, reject_outbound_drafts]
+
+    @admin.display(description="V3 Priority")
+    def v3_priority(self, obj: OutboundDraft) -> str:
+        evidence_check = obj.evidence_check if isinstance(obj.evidence_check, dict) else {}
+        decision = evidence_check.get("v3_decision")
+        if not isinstance(decision, dict):
+            return "-"
+        return str(decision.get("priority") or "-")
+
+    @admin.display(description="V3 Offer")
+    def v3_offer_type(self, obj: OutboundDraft) -> str:
+        evidence_check = obj.evidence_check if isinstance(obj.evidence_check, dict) else {}
+        decision = evidence_check.get("v3_decision")
+        if not isinstance(decision, dict):
+            return "-"
+        return str(decision.get("offer_type") or "-")
+
+    @admin.display(description="V3.5 Readiness")
+    def v35_readiness(self, obj: OutboundDraft) -> str:
+        evidence_check = obj.evidence_check if isinstance(obj.evidence_check, dict) else {}
+        readiness = evidence_check.get("v35_readiness")
+        if not isinstance(readiness, dict):
+            return "pending"
+        return str(readiness.get("status") or "pending")
 
 
 @admin.register(OutboundSend)

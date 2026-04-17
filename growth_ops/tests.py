@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import os
+from io import StringIO
 from unittest.mock import Mock, patch
 
+from django.core.management import call_command
 from django.test import SimpleTestCase, override_settings
 from django.utils import timezone
 from rest_framework.test import APITestCase
@@ -19,7 +21,11 @@ from growth_ops.models import (
     WebsiteReport,
 )
 from growth_ops.services.evidence_checker import check_proof_points
+from growth_ops.services.contact_enrichment import upsert_contacts_for_lead
+from growth_ops.services.contact_finder import extract_contact_candidates
 from growth_ops.services.llm_gateway import LLMGatewayClient
+from growth_ops.services.outreach_readiness import classify_draft_readiness
+from growth_ops.services.scoring_pipeline import run_outreach_for_lead
 
 
 @override_settings(
@@ -177,7 +183,9 @@ class GrowthOpsAPITests(APITestCase):
 
         score = LeadScore.objects.get(id=response.data["id"])
         self.assertEqual(score.bucket, "A")
-        self.assertEqual(score.score, 100)
+        self.assertEqual(score.score, 10)
+        self.assertEqual(score.recommendation["quality_score"], 10)
+        self.assertEqual(score.recommendation["opportunity_score"], 90)
         self.assertIn("LOW_MOBILE_PERFORMANCE", score.reason_codes)
         self.assertIn("HIGH_LCP", score.reason_codes)
         self.assertIn("CTA_CLARITY_POOR", score.reason_codes)
@@ -193,6 +201,404 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(duplicate_response.status_code, 200)
         self.assertEqual(duplicate_response.data["id"], response.data["id"])
         self.assertEqual(LeadScore.objects.filter(lead=lead).count(), 1)
+
+    def test_v3_outreach_draft_create_and_reuse(self):
+        lead = Lead.objects.create(
+            company_name="Opportunity Co",
+            website_url="https://opportunity.example",
+            industry="Ecommerce",
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "weak",
+                "performance": {"score": 72, "lcp_ms": 2200, "rating": "needs_improvement"},
+                "trust": {"score": 3, "max_score": 5, "rating": "moderate"},
+                "seo": {"issues": ["Meta description missing"]},
+                "findings": [
+                    {
+                        "title": "Homepage call-to-action is weak",
+                        "diagnosis": "CTA message is not specific.",
+                        "business_impact": "Users may not know the next step.",
+                        "severity": "medium",
+                    }
+                ],
+            },
+            summary="CTA needs improvement",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=68,
+            bucket="A",
+            reason_codes=["CTA_CLARITY_POOR"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        result_1 = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result_1["should_contact"])
+        self.assertEqual(result_1["priority"], "high")
+        self.assertTrue(result_1["draft_created"])
+        self.assertFalse(result_1["draft_reused"])
+        created_draft = OutboundDraft.objects.get(id=result_1["draft_id"])
+        self.assertEqual(created_draft.model, "deterministic_rules_v3")
+        self.assertEqual(created_draft.evidence_check["v3_decision"]["offer_type"], "conversion_fix")
+
+        result_2 = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result_2["should_contact"])
+        self.assertFalse(result_2["draft_created"])
+        self.assertTrue(result_2["draft_reused"])
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead).count(), 1)
+
+    def test_v3_outreach_skips_low_score(self):
+        lead = Lead.objects.create(
+            company_name="Low Priority Co",
+            website_url="https://low-priority.example",
+            industry="Ecommerce",
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "weak",
+                "performance": {"score": 48, "lcp_ms": 4200, "rating": "poor"},
+                "trust": {"score": 1, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": ["robots.txt missing", "sitemap missing"]},
+                "findings": [],
+            },
+            summary="Low quality site",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=30,
+            bucket="C",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "low_priority"},
+        )
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertFalse(result["should_contact"])
+        self.assertTrue(result["draft_skipped"])
+        self.assertIsNone(result["draft_id"])
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead).count(), 0)
+
+    def test_contact_finder_extracts_emails_phones_links_and_social(self):
+        html = """
+        <html>
+          <body>
+            <a href="mailto:info@example.com">Email us</a>
+            <a href="tel:+353871234567">Call</a>
+            <a href="/join">Join now</a>
+            <a href="/free-trial">Book free trial</a>
+            <a href="/contact">Contact</a>
+            <a href="https://www.linkedin.com/company/example">LinkedIn</a>
+            <p>Backup email: hello@example.com</p>
+          </body>
+        </html>
+        """
+        result = extract_contact_candidates(
+            homepage_html=html,
+            website_url="https://example.com",
+        )
+        self.assertEqual(result["best_email"], "info@example.com")
+        self.assertIn("info@example.com", result["emails"])
+        self.assertIn("hello@example.com", result["emails"])
+        self.assertEqual(result["best_phone"], "+353871234567")
+        self.assertEqual(result["selected_contact_link"], "https://example.com/contact")
+        self.assertIn("https://example.com/contact", result["contact_links"])
+        self.assertIn("https://example.com/join", result["contact_links"])
+        self.assertIn("https://example.com/free-trial", result["contact_links"])
+        self.assertIn("linkedin", result["social_links"])
+
+    @patch("growth_ops.services.contact_finder.fetch_url")
+    def test_contact_finder_contact_page_fallback_extracts_email_from_multiple_candidates(self, mock_fetch_url):
+        from growth_ops.services.contact_finder import enrich_with_contact_page
+
+        homepage_html = '<a href="/join">Join</a><a href="/free-trial">Trial</a><a href="/locations">Locations</a>'
+        base = extract_contact_candidates(homepage_html=homepage_html, website_url="https://fallback.example")
+        self.assertEqual(base["emails"], [])
+
+        mock_fetch_url.side_effect = [
+            {
+                "exists": True,
+                "status_code": 200,
+                "requested_url": "https://fallback.example/join",
+                "body": '<div><a href="/locations">Locations</a></div>',
+            },
+            {
+                "exists": True,
+                "status_code": 200,
+                "requested_url": "https://fallback.example/free-trial",
+                "body": '<a href="mailto:hello@fallback.example">Email</a>',
+            },
+        ]
+        enriched = enrich_with_contact_page(
+            candidates=base,
+            website_url="https://fallback.example",
+        )
+        self.assertIn("hello@fallback.example", enriched["emails"])
+        self.assertEqual(enriched["best_email"], "hello@fallback.example")
+        self.assertEqual(mock_fetch_url.call_count, 2)
+
+    def test_contact_enrichment_upserts_without_duplicates(self):
+        lead = Lead.objects.create(company_name="Contacts Co", website_url="https://contacts.example")
+        extracted = {
+            "emails": ["info@contacts.example", "hello@contacts.example"],
+            "phones": ["+353861234567"],
+            "social_links": {"linkedin": "https://www.linkedin.com/company/contacts"},
+            "best_email": "info@contacts.example",
+            "best_phone": "+353861234567",
+        }
+
+        first = upsert_contacts_for_lead(lead=lead, extracted_contacts=extracted)
+        self.assertEqual(first["contacts_created"], 2)
+        self.assertEqual(first["contacts_reused"], 0)
+        self.assertIsNotNone(first["primary_contact"])
+        self.assertEqual(first["primary_contact"].email, "info@contacts.example")
+
+        second = upsert_contacts_for_lead(lead=lead, extracted_contacts=extracted)
+        self.assertEqual(second["contacts_created"], 0)
+        self.assertGreaterEqual(second["contacts_reused"], 1)
+        self.assertEqual(lead.contacts.count(), 2)
+
+    def test_outreach_readiness_ready_when_contact_email_exists(self):
+        lead = Lead.objects.create(company_name="Ready Co", website_url="https://ready.example")
+        contact = lead.contacts.create(email="info@ready.example", role="website-derived")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            contact=contact,
+            channel="email",
+            subject="Test",
+            body="Test body",
+        )
+        readiness = classify_draft_readiness(
+            draft=draft,
+            primary_contact=contact,
+            extracted_contacts={"best_email": "info@ready.example"},
+        )
+        self.assertEqual(readiness["status"], "ready")
+        self.assertEqual(readiness["contactability_type"], "email")
+
+    def test_outreach_readiness_pending_without_email(self):
+        lead = Lead.objects.create(company_name="Pending Co", website_url="https://pending.example")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            channel="email",
+            subject="Test",
+            body="Test body",
+        )
+        readiness = classify_draft_readiness(
+            draft=draft,
+            primary_contact=None,
+            extracted_contacts={"best_email": ""},
+        )
+        self.assertEqual(readiness["status"], "pending")
+        self.assertEqual(readiness["contactability_type"], "none")
+
+    def test_outreach_readiness_ready_with_selected_email_metadata(self):
+        lead = Lead.objects.create(company_name="Meta Ready Co", website_url="https://metaready.example")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            channel="email",
+            subject="Test",
+            body="Test body",
+        )
+        readiness = classify_draft_readiness(
+            draft=draft,
+            primary_contact=None,
+            extracted_contacts={"best_email": "info@metaready.example"},
+        )
+        self.assertEqual(readiness["status"], "ready")
+        self.assertEqual(readiness["contactability_type"], "email")
+
+    def test_outreach_readiness_ready_with_phone(self):
+        lead = Lead.objects.create(company_name="Phone Ready Co", website_url="https://phoneready.example")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            channel="email",
+            subject="Test",
+            body="Test body",
+        )
+        readiness = classify_draft_readiness(
+            draft=draft,
+            primary_contact=None,
+            extracted_contacts={"best_phone": "+353861234567", "contact_links": []},
+        )
+        self.assertEqual(readiness["status"], "ready")
+        self.assertEqual(readiness["contactability_type"], "phone")
+
+    def test_outreach_readiness_ready_with_contact_link(self):
+        lead = Lead.objects.create(company_name="Link Ready Co", website_url="https://linkready.example")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            channel="email",
+            subject="Test",
+            body="Test body",
+        )
+        readiness = classify_draft_readiness(
+            draft=draft,
+            primary_contact=None,
+            extracted_contacts={
+                "best_email": "",
+                "best_phone": "",
+                "selected_contact_link": "https://linkready.example/join",
+                "contact_links": ["https://linkready.example/join"],
+            },
+        )
+        self.assertEqual(readiness["status"], "ready")
+        self.assertEqual(readiness["contactability_type"], "contact_link")
+
+    def test_v35_outreach_rerun_is_idempotent_for_draft_and_contact(self):
+        lead = Lead.objects.create(
+            company_name="Idempotent Co",
+            website_url="https://idempotent.example",
+            industry="Ecommerce",
+        )
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="homepage_html_snippet",
+            url=lead.website_url,
+            tool="python_requests",
+            payload={
+                "exists": True,
+                "status_code": 200,
+                "requested_url": lead.website_url,
+                "body": '<a href="mailto:info@idempotent.example">Contact</a>',
+            },
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "weak",
+                "performance": {"score": 72, "lcp_ms": 2300, "rating": "needs_improvement"},
+                "trust": {"score": 3, "max_score": 5, "rating": "moderate"},
+                "seo": {"issues": []},
+                "findings": [
+                    {
+                        "title": "Homepage call-to-action is weak",
+                        "diagnosis": "CTA is not explicit.",
+                        "business_impact": "Users may drop before enquiring.",
+                        "severity": "medium",
+                    }
+                ],
+            },
+            summary="CTA needs improvement",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=70,
+            bucket="A",
+            reason_codes=["CTA_CLARITY_POOR"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        first = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        second = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+
+        self.assertTrue(first["draft_created"])
+        self.assertTrue(second["draft_reused"])
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead).count(), 1)
+        self.assertEqual(lead.contacts.filter(email="info@idempotent.example").count(), 1)
+        draft = OutboundDraft.objects.get(lead=lead)
+        self.assertEqual(draft.evidence_check["v35_readiness"]["status"], "ready")
+        self.assertEqual(draft.contact.email, "info@idempotent.example")
+
+    def test_outreach_queue_includes_ready_drafts(self):
+        lead = Lead.objects.create(company_name="Queue Ready Co", website_url="https://readyq.example")
+        draft = OutboundDraft.objects.create(
+            lead=lead,
+            channel="email",
+            subject="Ready draft",
+            body="Body",
+            evidence_check={
+                "v3_decision": {"priority": "high"},
+                "v35_readiness": {"status": "ready", "reason": "linked_contact_email_available"},
+                "selected_email": "info@readyq.example",
+            },
+        )
+
+        out = StringIO()
+        call_command("run_outreach_queue", limit=10, stdout=out)
+        output = out.getvalue()
+        self.assertIn(f"draft_id={draft.id}", output)
+        self.assertIn("drafts_considered: 1", output)
+        self.assertIn("drafts_ready: 1", output)
+
+    def test_outreach_queue_excludes_pending_when_ready_only(self):
+        lead_pending = Lead.objects.create(company_name="Queue Pending Co", website_url="https://pendingq.example")
+        pending_draft = OutboundDraft.objects.create(
+            lead=lead_pending,
+            channel="email",
+            subject="Pending draft",
+            body="Body",
+            evidence_check={
+                "v3_decision": {"priority": "high"},
+                "v35_readiness": {"status": "pending", "reason": "no_usable_email_found"},
+            },
+        )
+        lead_ready = Lead.objects.create(company_name="Queue Ready 2 Co", website_url="https://ready2.example")
+        ready_draft = OutboundDraft.objects.create(
+            lead=lead_ready,
+            channel="email",
+            subject="Ready draft 2",
+            body="Body",
+            evidence_check={
+                "v3_decision": {"priority": "medium"},
+                "v35_readiness": {"status": "ready", "reason": "extracted_email_available"},
+                "selected_email": "hello@ready2.example",
+            },
+        )
+
+        out = StringIO()
+        call_command("run_outreach_queue", limit=10, stdout=out)
+        output = out.getvalue()
+        self.assertIn(f"draft_id={ready_draft.id}", output)
+        self.assertNotIn(f"draft_id={pending_draft.id}", output)
+        self.assertIn("drafts_ready: 1", output)
+        self.assertIn("drafts_pending: 1", output)
+
+    def test_outreach_queue_includes_ready_via_contact_link(self):
+        lead_pending = Lead.objects.create(company_name="Queue Pending Link Co", website_url="https://pending-link.example")
+        pending_draft = OutboundDraft.objects.create(
+            lead=lead_pending,
+            channel="email",
+            subject="Pending link draft",
+            body="Body",
+            evidence_check={
+                "v3_decision": {"priority": "high"},
+                "v35_readiness": {"status": "pending", "reason": "no_usable_contact_route_found"},
+            },
+        )
+        lead_ready = Lead.objects.create(company_name="Queue Ready Link Co", website_url="https://ready-link.example")
+        ready_draft = OutboundDraft.objects.create(
+            lead=lead_ready,
+            channel="email",
+            subject="Ready link draft",
+            body="Body",
+            evidence_check={
+                "v3_decision": {"priority": "medium"},
+                "v35_readiness": {
+                    "status": "ready",
+                    "reason": "contact_link_route_available",
+                    "contactability_type": "contact_link",
+                },
+                "selected_contact_link": "https://ready-link.example/free-trial",
+            },
+        )
+
+        out = StringIO()
+        call_command("run_outreach_queue", limit=10, stdout=out)
+        output = out.getvalue()
+        self.assertIn(f"draft_id={ready_draft.id}", output)
+        self.assertNotIn(f"draft_id={pending_draft.id}", output)
+        self.assertIn("contact=https://ready-link.example/free-trial", output)
 
     def test_queue_filtering(self):
         lead = Lead.objects.create(company_name="Queue Co", website_url="https://queue.example")
