@@ -23,9 +23,11 @@ from growth_ops.models import (
 from growth_ops.services.evidence_checker import check_proof_points
 from growth_ops.services.contact_enrichment import upsert_contacts_for_lead
 from growth_ops.services.contact_finder import extract_contact_candidates
-from growth_ops.services.llm_gateway import LLMGatewayClient
+from growth_ops.services.llm_gateway import LLMGatewayClient, LLMGatewayError
+from growth_ops.services.reporting import build_report_payload
 from growth_ops.services.outreach_readiness import classify_draft_readiness
-from growth_ops.services.scoring_pipeline import run_outreach_for_lead
+from growth_ops.services.scoring import compute_lead_score
+from growth_ops.services.scoring_pipeline import run_outreach_for_lead, run_report_and_score_for_lead
 
 
 @override_settings(
@@ -183,9 +185,13 @@ class GrowthOpsAPITests(APITestCase):
 
         score = LeadScore.objects.get(id=response.data["id"])
         self.assertEqual(score.bucket, "A")
-        self.assertEqual(score.score, 10)
-        self.assertEqual(score.recommendation["quality_score"], 10)
-        self.assertEqual(score.recommendation["opportunity_score"], 90)
+        self.assertGreaterEqual(score.score, 70)
+        self.assertEqual(score.recommendation["score_semantics"], "outreach_opportunity")
+        self.assertEqual(score.recommendation["outreach_score"], score.score)
+        self.assertEqual(
+            score.recommendation["quality_score"] + score.recommendation["opportunity_score"],
+            100,
+        )
         self.assertIn("LOW_MOBILE_PERFORMANCE", score.reason_codes)
         self.assertIn("HIGH_LCP", score.reason_codes)
         self.assertIn("CTA_CLARITY_POOR", score.reason_codes)
@@ -201,6 +207,156 @@ class GrowthOpsAPITests(APITestCase):
         self.assertEqual(duplicate_response.status_code, 200)
         self.assertEqual(duplicate_response.data["id"], response.data["id"])
         self.assertEqual(LeadScore.objects.filter(lead=lead).count(), 1)
+
+    def test_scoring_semantics_high_outreach_maps_to_a_high(self):
+        lead = Lead.objects.create(
+            company_name="High Outreach Co",
+            website_url="https://high-outreach.example",
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "missing",
+                "performance": {"score": 40, "lcp_ms": 4500},
+                "trust": {"rating": "weak", "score": 1, "max_score": 5},
+                "seo": {"issues": ["robots missing"]},
+                "technical": {"issues": []},
+                "findings": [],
+            },
+            summary="High opportunity",
+        )
+        result = compute_lead_score(lead=lead, report_obj=report)
+
+        self.assertGreaterEqual(result.score, 70)
+        self.assertEqual(result.bucket, "A")
+        self.assertEqual(result.recommendation["priority"], "high")
+        self.assertEqual(result.recommendation["score_semantics"], "outreach_opportunity")
+        self.assertEqual(result.recommendation["outreach_score"], result.score)
+
+    def test_scoring_semantics_medium_outreach_maps_to_b_medium(self):
+        lead = Lead.objects.create(
+            company_name="Medium Outreach Co",
+            website_url="",
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "clear",
+                "performance": {"score": None, "lcp_ms": None},
+                "trust": {"rating": "moderate", "score": 3, "max_score": 5},
+                "seo": {"issues": []},
+                "technical": {"issues": []},
+                "findings": [],
+            },
+            summary="Medium opportunity",
+        )
+        result = compute_lead_score(lead=lead, report_obj=report)
+
+        self.assertGreaterEqual(result.score, 35)
+        self.assertLessEqual(result.score, 69)
+        self.assertEqual(result.bucket, "B")
+        self.assertEqual(result.recommendation["priority"], "medium")
+        self.assertEqual(result.recommendation["outreach_score"], result.score)
+
+    def test_scoring_semantics_low_outreach_maps_to_c_low(self):
+        lead = Lead.objects.create(
+            company_name="Low Outreach Co",
+            website_url="https://low-outreach.example",
+            industry="ecommerce",
+        )
+        lead.contacts.create(email="owner@low-outreach.example")
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="pagespeed_json",
+            url=lead.website_url,
+            tool="pagespeed_api",
+            payload={"performance_score": 95, "lcp_ms": 1200},
+        )
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="sitemap_xml",
+            url=f"{lead.website_url}/sitemap.xml",
+            tool="python_requests",
+            payload={"exists": True, "status_code": 200},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "clear",
+                "performance": {"score": 95, "lcp_ms": 1200},
+                "trust": {"rating": "strong", "score": 5, "max_score": 5},
+                "seo": {"issues": []},
+                "technical": {"issues": []},
+                "findings": [],
+            },
+            summary="Low opportunity",
+        )
+        result = compute_lead_score(lead=lead, report_obj=report)
+
+        self.assertLess(result.score, 35)
+        self.assertEqual(result.bucket, "C")
+        self.assertEqual(result.recommendation["priority"], "low")
+        self.assertEqual(result.recommendation["outreach_score"], result.score)
+
+    def test_scoring_polished_but_weak_cta_and_contact_is_b_contactable(self):
+        lead = Lead.objects.create(
+            company_name="Polished but Leaky Co",
+            website_url="https://polished-leaky.example",
+            industry="fitness",
+        )
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="sitemap_xml",
+            url=f"{lead.website_url}/sitemap.xml",
+            tool="python_requests",
+            payload={"exists": True, "status_code": 200},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "weak",
+                "cta": {"has_contact_method": False},
+                "performance": {"score": 88, "lcp_ms": 2300},
+                "trust": {"rating": "moderate", "score": 3, "max_score": 5, "has_contact_info": False},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "issues": []},
+                "findings": [
+                    {
+                        "title": "Homepage call-to-action is weak",
+                        "diagnosis": "CTA message is not specific enough.",
+                        "business_impact": "Visitors may not take the next step.",
+                        "severity": "medium",
+                    },
+                    {
+                        "title": "No visible contact method on homepage",
+                        "diagnosis": "No clear contact route.",
+                        "business_impact": "Can reduce enquiries.",
+                        "severity": "high",
+                    },
+                ],
+            },
+            summary="Polished site with conversion/contact leak.",
+        )
+        result = compute_lead_score(lead=lead, report_obj=report)
+
+        self.assertEqual(result.bucket, "B")
+        self.assertEqual(result.recommendation["priority"], "medium")
+        self.assertGreaterEqual(result.score, 35)
+        self.assertLessEqual(result.score, 69)
+        self.assertIn("CTA_CLARITY_POOR", result.reason_codes)
+        self.assertIn("NO_VISIBLE_CONTACT_METHOD", result.reason_codes)
 
     def test_v3_outreach_draft_create_and_reuse(self):
         lead = Lead.objects.create(
@@ -231,7 +387,7 @@ class GrowthOpsAPITests(APITestCase):
         )
         score = LeadScore.objects.create(
             lead=lead,
-            score=68,
+            score=72,
             bucket="A",
             reason_codes=["CTA_CLARITY_POOR"],
             recommendation={"offer_type": "aggressive_outreach"},
@@ -285,6 +441,585 @@ class GrowthOpsAPITests(APITestCase):
         self.assertTrue(result["draft_skipped"])
         self.assertIsNone(result["draft_id"])
         self.assertEqual(OutboundDraft.objects.filter(lead=lead).count(), 0)
+
+    def test_v3_outreach_respects_legacy_opportunity_score_for_bucketing(self):
+        lead = Lead.objects.create(
+            company_name="Legacy Semantics Co",
+            website_url="https://legacy-semantics.example",
+            industry="Ecommerce",
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[],
+            report={
+                "cta_clarity": "weak",
+                "performance": {"score": 48, "lcp_ms": 4200, "rating": "poor"},
+                "trust": {"score": 1, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": ["robots.txt missing", "sitemap missing"]},
+                "findings": [],
+            },
+            summary="Low quality site",
+        )
+        # Legacy inconsistent-style record:
+        # score is quality-like while recommendation carries opportunity_score.
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=64,
+            bucket="C",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={
+                "offer_type": "low_priority",
+                "priority": "low",
+                "quality_score": 64,
+                "opportunity_score": 36,
+            },
+        )
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        # Recalibrated model treats opportunity_score=36 as medium/contactable.
+        self.assertTrue(result["should_contact"])
+        self.assertFalse(result["draft_skipped"])
+        self.assertEqual(result["priority"], "medium")
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_llm_draft_falls_back_to_deterministic_when_gateway_unavailable(self, mock_draft_email):
+        mock_draft_email.side_effect = LLMGatewayError("llm_gateway_request_failed:/v1/draft-email")
+        lead = Lead.objects.create(
+            company_name="Fallback Draft Co",
+            website_url="https://fallback-draft.example",
+            industry="Ecommerce",
+            market="IE",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "Performance is below target",
+                "cta_clarity": "weak",
+                "performance": {"score": 45, "lcp_ms": 3800, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": ["Meta description missing"]},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [
+                    {
+                        "title": "Mobile performance is poor",
+                        "diagnosis": "Slow pages",
+                        "business_impact": "Can reduce enquiries",
+                        "severity": "high",
+                    }
+                ],
+            },
+            summary="Performance is below target",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=70,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result["draft_created"])
+        draft = OutboundDraft.objects.get(id=result["draft_id"])
+        self.assertEqual(draft.evidence_check["draft_generation_mode"], "deterministic")
+        self.assertTrue(draft.evidence_check["llm_fallback_used"])
+        self.assertEqual(draft.model, "deterministic_rules_v3")
+        self.assertEqual(draft.proof_points, [])
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.check_email")
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_uses_gateway_draft_and_checker_when_valid(self, mock_draft_email, mock_check_email):
+        lead = Lead.objects.create(
+            company_name="Gateway Draft Co",
+            website_url="https://gateway-draft.example",
+            industry="Ecommerce",
+            market="US",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "Performance is below target",
+                "cta_clarity": "weak",
+                "performance": {"score": 45, "lcp_ms": 3800, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [
+                    {
+                        "title": "Mobile performance is poor",
+                        "diagnosis": "Slow pages",
+                        "business_impact": "Can reduce enquiries",
+                        "severity": "high",
+                    }
+                ],
+            },
+            summary="Performance is below target",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=71,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        draft_proof_points = [
+            {
+                "claim": "Your mobile performance score is 45.",
+                "evidence_id": str(evidence.id),
+                "evidence_path": "performance_score",
+                "quoted_value": "45",
+            }
+        ]
+        mock_draft_email.return_value = {
+            "subject": "Quick performance fix for Gateway Draft Co",
+            "body": "Your mobile performance score is 45, which can reduce enquiry conversion.",
+            "proof_points": draft_proof_points,
+            "risk_flags": [],
+            "model": "gateway-model-draft",
+            "prompt_name": "outreach_writer",
+            "prompt_version": "2026-04-17.1",
+        }
+        mock_check_email.return_value = {
+            "subject": "Quick performance fix for Gateway Draft Co",
+            "body": "Your mobile performance score is 45, which often reduces enquiry conversion.",
+            "proof_points": draft_proof_points,
+            "notes": ["softened claim phrasing"],
+            "model": "gateway-model-check",
+            "prompt_name": "evidence_checker",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result["draft_created"])
+        draft = OutboundDraft.objects.get(id=result["draft_id"])
+        self.assertEqual(draft.evidence_check["draft_generation_mode"], "llm_draft_checked")
+        self.assertFalse(draft.evidence_check["llm_fallback_used"])
+        self.assertEqual(draft.evidence_check["llm_prompt_name"], "evidence_checker")
+        self.assertEqual(draft.model, "gateway-model-check")
+        self.assertEqual(len(draft.proof_points), 1)
+        self.assertIn("LLM_CHECKED", draft.risk_flags)
+        self.assertTrue(mock_check_email.called)
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.check_email")
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_evidence_checker_rewrite_persists_safely(self, mock_draft_email, mock_check_email):
+        lead = Lead.objects.create(
+            company_name="Rewrite Draft Co",
+            website_url="https://rewrite-draft.example",
+            industry="Ecommerce",
+            market="RO",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "Performance is below target",
+                "cta_clarity": "weak",
+                "performance": {"score": 45, "lcp_ms": 3800, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [
+                    {
+                        "title": "Mobile performance is poor",
+                        "diagnosis": "Slow pages",
+                        "business_impact": "Can reduce enquiries",
+                        "severity": "high",
+                    }
+                ],
+            },
+            summary="Performance is below target",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=72,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        supported_points = [
+            {
+                "claim": "Your mobile performance score is 45.",
+                "evidence_id": str(evidence.id),
+                "evidence_path": "performance_score",
+                "quoted_value": "45",
+            }
+        ]
+        mock_draft_email.return_value = {
+            "subject": "Quick fix for Rewrite Draft Co",
+            "body": "Your mobile performance score is 45 and revenue dropped 40% last month.",
+            "proof_points": supported_points,
+            "risk_flags": [],
+            "model": "gateway-model-draft",
+            "prompt_name": "outreach_writer",
+            "prompt_version": "2026-04-17.1",
+        }
+        rewritten_body = "Your mobile performance score is 45 and this can reduce enquiry conversion."
+        mock_check_email.return_value = {
+            "subject": "Quick fix for Rewrite Draft Co",
+            "body": rewritten_body,
+            "proof_points": supported_points,
+            "notes": ["removed unsupported revenue claim"],
+            "model": "gateway-model-check",
+            "prompt_name": "evidence_checker",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        draft = OutboundDraft.objects.get(id=result["draft_id"])
+        self.assertEqual(draft.body, rewritten_body)
+        self.assertEqual(draft.evidence_check["claim_check"]["status"], "ok")
+        self.assertIn("removed unsupported revenue claim", draft.evidence_check["claim_check"]["notes"])
+        self.assertEqual(len(draft.proof_points), 1)
+
+    @patch("growth_ops.services.reporting.LLMGatewayClient.report")
+    def test_v2_report_enhancement_falls_back_safely_when_gateway_unavailable(self, mock_report):
+        mock_report.side_effect = LLMGatewayError("llm_gateway_request_failed:/v1/report")
+        lead = Lead.objects.create(
+            company_name="Fallback Report Co",
+            website_url="https://fallback-report.example",
+            status="evidence_collected",
+        )
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="homepage_html_snippet",
+            url=lead.website_url,
+            tool="python_requests",
+            payload={"exists": True, "status_code": 200, "requested_url": lead.website_url, "body": "<html><body>No CTA</body></html>"},
+        )
+
+        result = run_report_and_score_for_lead(lead, force=False)
+        report_obj = WebsiteReport.objects.get(id=result["report_id"])
+        provenance = report_obj.report.get("_provenance", {})
+        self.assertEqual(provenance.get("report_generation_mode"), "deterministic")
+        self.assertTrue(provenance.get("llm_fallback_used"))
+        for key in ("summary", "cta_clarity", "performance", "seo", "technical", "trust", "findings"):
+            self.assertIn(key, report_obj.report)
+
+    @patch("growth_ops.services.reporting.LLMGatewayClient.report")
+    def test_v2_report_enhancement_preserves_required_shape(self, mock_report):
+        lead = Lead.objects.create(
+            company_name="Enhanced Report Co",
+            website_url="https://enhanced-report.example",
+            status="evidence_collected",
+        )
+        homepage = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="homepage_html_snippet",
+            url=lead.website_url,
+            tool="python_requests",
+            payload={"exists": True, "status_code": 200, "requested_url": lead.website_url, "body": "<html><body><h1>Home</h1></body></html>"},
+        )
+        deterministic = build_report_payload(lead=lead, evidence=[homepage])
+        deterministic_severities = [item["severity"] for item in deterministic.get("findings", []) if isinstance(item, dict)]
+
+        mock_report.return_value = {
+            "executive_summary": "LLM-enhanced executive summary.",
+            "findings": [
+                {
+                    "title": "LLM Reworded Finding",
+                    "severity": "critical",
+                    "diagnosis": "LLM diagnosis wording.",
+                    "business_impact": "LLM business impact wording.",
+                    "recommendation": "LLM recommendation.",
+                    "evidence_refs": [],
+                }
+            ],
+            "quick_wins": [],
+            "confidence": "medium",
+            "model": "gateway-report-model",
+            "prompt_name": "website_reporter",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        result = run_report_and_score_for_lead(lead, force=False)
+        report_obj = WebsiteReport.objects.get(id=result["report_id"])
+        self.assertEqual(report_obj.report.get("summary"), "LLM-enhanced executive summary.")
+        for key in ("cta_clarity", "performance", "seo", "technical", "trust", "findings"):
+            self.assertIn(key, report_obj.report)
+        persisted_severities = [item["severity"] for item in report_obj.report.get("findings", []) if isinstance(item, dict)]
+        self.assertEqual(persisted_severities, deterministic_severities)
+        provenance = report_obj.report.get("_provenance", {})
+        self.assertEqual(provenance.get("report_generation_mode"), "llm_enhanced")
+        self.assertFalse(provenance.get("llm_fallback_used"))
+
+    @patch("growth_ops.services.reporting.LLMGatewayClient.report")
+    def test_v2_report_dedupe_reuses_when_llm_output_unchanged(self, mock_report):
+        lead = Lead.objects.create(
+            company_name="Report Reuse Co",
+            website_url="https://report-reuse.example",
+            status="evidence_collected",
+        )
+        WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="homepage_html_snippet",
+            url=lead.website_url,
+            tool="python_requests",
+            payload={"exists": True, "status_code": 200, "requested_url": lead.website_url, "body": "<html><body><h1>Reuse</h1></body></html>"},
+        )
+        mock_report.return_value = {
+            "executive_summary": "Stable summary output.",
+            "findings": [],
+            "quick_wins": [],
+            "confidence": "medium",
+            "model": "gateway-report-model",
+            "prompt_name": "website_reporter",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        first = run_report_and_score_for_lead(lead, force=False)
+        second = run_report_and_score_for_lead(lead, force=False)
+        self.assertTrue(first["report_created"])
+        self.assertTrue(second["report_reused"])
+        self.assertEqual(WebsiteReport.objects.filter(lead=lead).count(), 1)
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.check_email")
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_draft_dedupe_reuses_when_llm_output_unchanged(self, mock_draft_email, mock_check_email):
+        lead = Lead.objects.create(
+            company_name="Draft Reuse Co",
+            website_url="https://draft-reuse.example",
+            industry="Ecommerce",
+            market="US",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "Performance is below target",
+                "cta_clarity": "weak",
+                "performance": {"score": 45, "lcp_ms": 3800, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [
+                    {
+                        "title": "Mobile performance is poor",
+                        "diagnosis": "Slow pages",
+                        "business_impact": "Can reduce enquiries",
+                        "severity": "high",
+                    }
+                ],
+            },
+            summary="Performance is below target",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=72,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        supported_points = [
+            {
+                "claim": "Your mobile performance score is 45.",
+                "evidence_id": str(evidence.id),
+                "evidence_path": "performance_score",
+                "quoted_value": "45",
+            }
+        ]
+        mock_draft_email.return_value = {
+            "subject": "Quick speed fix for Draft Reuse Co",
+            "body": "Your mobile performance score is 45 and this can reduce enquiries.",
+            "proof_points": supported_points,
+            "risk_flags": [],
+            "model": "gateway-model-draft",
+            "prompt_name": "outreach_writer",
+            "prompt_version": "2026-04-17.1",
+        }
+        mock_check_email.return_value = {
+            "subject": "Quick speed fix for Draft Reuse Co",
+            "body": "Your mobile performance score is 45 and this can reduce enquiries.",
+            "proof_points": supported_points,
+            "notes": [],
+            "model": "gateway-model-check",
+            "prompt_name": "evidence_checker",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        first = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        second = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(first["draft_created"])
+        self.assertTrue(second["draft_reused"])
+        self.assertEqual(OutboundDraft.objects.filter(lead=lead).count(), 1)
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.check_email")
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_uses_seeded_supported_proof_points_when_llm_points_are_invalid(self, mock_draft_email, mock_check_email):
+        lead = Lead.objects.create(
+            company_name="Seeded Proof Co",
+            website_url="https://seeded-proof.example",
+            industry="Ecommerce",
+            market="IE",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={"performance_score": 45, "lcp_ms": 3800},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "Performance is below target",
+                "cta_clarity": "weak",
+                "performance": {"score": 45, "lcp_ms": 3800, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [
+                    {
+                        "title": "Mobile performance is poor",
+                        "diagnosis": "Slow pages",
+                        "business_impact": "Can reduce enquiries",
+                        "severity": "high",
+                    }
+                ],
+            },
+            summary="Performance is below target",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=74,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        mock_draft_email.return_value = {
+            "subject": "Quick performance fix for Seeded Proof Co",
+            "body": "Your performance score dropped and likely reduced conversions.",
+            "proof_points": [
+                {
+                    "claim": "Performance score is 44.",
+                    "evidence_id": str(evidence.id),
+                    "evidence_path": "performance_score",
+                    "quoted_value": "44",
+                }
+            ],
+            "risk_flags": [],
+            "model": "gateway-model-draft",
+            "prompt_name": "outreach_writer",
+            "prompt_version": "2026-04-17.1",
+        }
+        mock_check_email.return_value = {
+            "subject": "Quick performance fix for Seeded Proof Co",
+            "body": "Detected mobile performance score value is 45, which can reduce enquiries.",
+            "proof_points": [],
+            "notes": ["rewritten to use supported proof points"],
+            "model": "gateway-model-check",
+            "prompt_name": "evidence_checker",
+            "prompt_version": "2026-04-17.1",
+        }
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result["draft_created"])
+        draft = OutboundDraft.objects.get(id=result["draft_id"])
+        self.assertEqual(draft.evidence_check["draft_generation_mode"], "llm_draft_checked")
+        self.assertFalse(draft.evidence_check["llm_fallback_used"])
+        self.assertEqual(draft.evidence_check["llm_prompt_name"], "evidence_checker")
+        self.assertEqual(len(draft.proof_points), 1)
+        self.assertEqual(draft.proof_points[0]["evidence_id"], str(evidence.id))
+        self.assertEqual(draft.proof_points[0]["evidence_path"], "performance_score")
+        self.assertIn("LLM_PROOF_POINTS_SEEDED", draft.risk_flags)
+
+        sent_payload = mock_draft_email.call_args.args[0]
+        self.assertIn("Verified proof points", sent_payload["report_summary"])
+
+    @patch("growth_ops.services.email_builder.LLMGatewayClient.draft_email")
+    def test_v3_falls_back_when_supported_seed_proof_points_cannot_be_built(self, mock_draft_email):
+        lead = Lead.objects.create(
+            company_name="No Seeds Co",
+            website_url="https://no-seeds.example",
+            industry="Ecommerce",
+            market="US",
+        )
+        evidence = WebsiteEvidence.objects.create(
+            lead=lead,
+            evidence_type="lighthouse_json",
+            url=lead.website_url,
+            tool="pagespeed",
+            payload={},
+        )
+        report = WebsiteReport.objects.create(
+            lead=lead,
+            model="rules_v1",
+            prompt_version="growth_report_v2_rules_1",
+            evidence_ids=[str(evidence.id)],
+            report={
+                "summary": "No reliable performance values available",
+                "cta_clarity": "weak",
+                "performance": {"score": None, "lcp_ms": None, "rating": "poor"},
+                "trust": {"score": 2, "max_score": 5, "rating": "weak"},
+                "seo": {"issues": []},
+                "technical": {"has_https": True, "platform_signals": [], "issues": []},
+                "findings": [],
+            },
+            summary="No reliable performance values available",
+        )
+        score = LeadScore.objects.create(
+            lead=lead,
+            score=66,
+            bucket="A",
+            reason_codes=["LOW_MOBILE_PERFORMANCE"],
+            recommendation={"offer_type": "aggressive_outreach"},
+        )
+
+        result = run_outreach_for_lead(lead, report_obj=report, score_obj=score, force=False)
+        self.assertTrue(result["draft_created"])
+        draft = OutboundDraft.objects.get(id=result["draft_id"])
+        self.assertEqual(draft.evidence_check["draft_generation_mode"], "deterministic")
+        self.assertTrue(draft.evidence_check["llm_fallback_used"])
+        self.assertIn("missing_supported_proof_points_for_draft_payload", draft.evidence_check["llm_fallback_reason"])
+        self.assertEqual(draft.proof_points, [])
+        self.assertFalse(mock_draft_email.called)
 
     def test_contact_finder_extracts_emails_phones_links_and_social(self):
         html = """
@@ -1041,6 +1776,25 @@ class LLMGatewayClientTests(SimpleTestCase):
         mock_post.assert_called_once_with(
             "http://gateway.test/v1/draft-email",
             json={"lead_id": 1},
+            headers={"X-LLM-GATEWAY-KEY": "test-gateway-key"},
+            timeout=5,
+        )
+
+    @patch("growth_ops.services.llm_gateway.requests.post")
+    def test_client_report_uses_report_endpoint(self, mock_post):
+        mock_response = Mock()
+        mock_response.raise_for_status.return_value = None
+        mock_response.json.return_value = {"ok": True}
+        mock_post.return_value = mock_response
+
+        with patch.dict(os.environ, {"LLM_GATEWAY_API_KEY": "test-gateway-key"}, clear=False):
+            client = LLMGatewayClient(base_url="http://gateway.test", timeout_seconds=5)
+            response = client.report({"lead_id": 9})
+
+        self.assertEqual(response, {"ok": True})
+        mock_post.assert_called_once_with(
+            "http://gateway.test/v1/report",
+            json={"lead_id": 9},
             headers={"X-LLM-GATEWAY-KEY": "test-gateway-key"},
             timeout=5,
         )

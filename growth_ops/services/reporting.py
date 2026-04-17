@@ -8,6 +8,7 @@ from urllib.parse import urljoin, urlparse
 from django.db import transaction
 
 from growth_ops.models import Lead, WebsiteEvidence, WebsiteReport
+from growth_ops.services.llm_gateway import LLMGatewayClient, LLMGatewayError
 
 RULES_REPORT_MODEL = "rules_v1"
 RULES_REPORT_PROMPT_VERSION = "growth_report_v2_rules_1"
@@ -94,6 +95,7 @@ BUSINESS_IMPACT_KEYWORDS = {
     "engagement": 1,
     "seo": 1,
 }
+REPORT_REQUIRED_KEYS = {"summary", "cta_clarity", "performance", "seo", "technical", "trust", "findings"}
 
 
 def _canonical_json(value: Any) -> str:
@@ -993,6 +995,215 @@ def build_report_payload(*, lead: Lead, evidence: list[WebsiteEvidence]) -> dict
         },
         "findings": prioritized_findings,
     }
+
+
+def _normalize_market_for_llm(market: str) -> str:
+    parsed = str(market or "").strip().upper()
+    if parsed in {"IE", "RO", "US", "OTHER"}:
+        return parsed
+    return "OTHER"
+
+
+def _flatten_scalar_paths_for_llm(payload: Any, *, max_items: int = 20) -> list[tuple[str, str]]:
+    flattened: list[tuple[str, str]] = []
+
+    def walk(node: Any, path: str) -> None:
+        if len(flattened) >= max_items:
+            return
+        if isinstance(node, dict):
+            for key, value in node.items():
+                next_path = f"{path}.{key}" if path else str(key)
+                walk(value, next_path)
+            return
+        if isinstance(node, list):
+            return
+        if node is None:
+            return
+        flattened.append((path, str(node)))
+
+    walk(payload, "")
+    return flattened
+
+
+def _build_report_evidence_refs_for_llm(evidence: list[WebsiteEvidence]) -> list[dict[str, str]]:
+    refs: list[dict[str, str]] = []
+    for evidence_item in evidence:
+        scalar_paths = _flatten_scalar_paths_for_llm(evidence_item.payload, max_items=12)
+        if scalar_paths:
+            for path, value in scalar_paths:
+                refs.append(
+                    {
+                        "evidence_id": str(evidence_item.id),
+                        "evidence_type": evidence_item.evidence_type,
+                        "evidence_path": path or "payload",
+                        "evidence_excerpt": value[:500],
+                    }
+                )
+        else:
+            refs.append(
+                {
+                    "evidence_id": str(evidence_item.id),
+                    "evidence_type": evidence_item.evidence_type,
+                    "evidence_path": "payload",
+                    "evidence_excerpt": json.dumps(evidence_item.payload, ensure_ascii=True)[:500],
+                }
+            )
+    return refs[:200]
+
+
+def _normalize_llm_findings_for_deterministic(
+    deterministic_findings: Any,
+    llm_findings: Any,
+) -> list[dict[str, Any]]:
+    if not isinstance(deterministic_findings, list):
+        return []
+    normalized: list[dict[str, Any]] = []
+    parsed_llm_findings = llm_findings if isinstance(llm_findings, list) else []
+
+    for idx, deterministic_item in enumerate(deterministic_findings):
+        if not isinstance(deterministic_item, dict):
+            continue
+        merged = dict(deterministic_item)
+        llm_item = parsed_llm_findings[idx] if idx < len(parsed_llm_findings) else None
+        if isinstance(llm_item, dict):
+            llm_title = str(llm_item.get("title") or "").strip()
+            llm_diagnosis = str(llm_item.get("diagnosis") or "").strip()
+            llm_business_impact = str(llm_item.get("business_impact") or "").strip()
+            if llm_title:
+                merged["title"] = llm_title[:200]
+            if llm_diagnosis:
+                merged["diagnosis"] = llm_diagnosis[:1200]
+            if llm_business_impact:
+                merged["business_impact"] = llm_business_impact[:1200]
+        # Severity remains deterministic in code, never LLM-assigned.
+        merged["severity"] = str(deterministic_item.get("severity") or "medium").strip().lower()
+        if merged["severity"] not in {"high", "medium", "low"}:
+            merged["severity"] = "medium"
+        normalized.append(merged)
+    return normalized
+
+
+def _with_report_provenance(
+    report_payload: dict[str, Any],
+    *,
+    mode: str,
+    prompt_name: str,
+    prompt_version: str,
+    fallback_used: bool,
+    fallback_reason: str = "",
+) -> dict[str, Any]:
+    out = dict(report_payload)
+    provenance = out.get("_provenance")
+    base_provenance = provenance if isinstance(provenance, dict) else {}
+    base_provenance.update(
+        {
+            "report_generation_mode": mode,
+            "llm_prompt_name": prompt_name,
+            "llm_prompt_version": prompt_version,
+            "llm_fallback_used": bool(fallback_used),
+            "llm_fallback_reason": fallback_reason[:255],
+        }
+    )
+    out["_provenance"] = base_provenance
+    return out
+
+
+def enhance_report_with_llm(
+    *,
+    lead: Lead,
+    evidence: list[WebsiteEvidence],
+    deterministic_report: dict[str, Any],
+) -> dict[str, Any]:
+    deterministic = dict(deterministic_report)
+    missing_keys = [key for key in REPORT_REQUIRED_KEYS if key not in deterministic]
+    if missing_keys:
+        return _with_report_provenance(
+            deterministic,
+            mode="deterministic",
+            prompt_name="",
+            prompt_version="",
+            fallback_used=True,
+            fallback_reason=f"missing_required_keys:{','.join(sorted(missing_keys))}",
+        )
+
+    evidence_refs = _build_report_evidence_refs_for_llm(evidence)
+    if not evidence_refs:
+        return _with_report_provenance(
+            deterministic,
+            mode="deterministic",
+            prompt_name="",
+            prompt_version="",
+            fallback_used=True,
+            fallback_reason="missing_evidence_for_llm",
+        )
+
+    if not str(lead.website_url or "").strip():
+        return _with_report_provenance(
+            deterministic,
+            mode="deterministic",
+            prompt_name="",
+            prompt_version="",
+            fallback_used=True,
+            fallback_reason="missing_website_url",
+        )
+
+    request_payload = {
+        "lead_id": int(lead.id),
+        "company_name": str(lead.company_name or "").strip()[:255],
+        "website_url": str(lead.website_url or "").strip()[:500],
+        "market": _normalize_market_for_llm(lead.market),
+        "industry": str(lead.industry or "").strip()[:120] or None,
+        "objective": "Improve executive summary and finding phrasing while preserving deterministic structure and evidence grounding.",
+        "evidence": evidence_refs,
+        "context": {
+            "deterministic_report": deterministic,
+            "constraints": {
+                "preserve_structure": True,
+                "do_not_add_unsupported_claims": True,
+                "improve_summary_and_readability_only": True,
+            },
+        },
+    }
+
+    try:
+        llm = LLMGatewayClient()
+        llm_response = llm.report(request_payload)
+        if not isinstance(llm_response, dict):
+            raise ValueError("llm_report_invalid_shape")
+
+        enhanced = dict(deterministic)
+        llm_summary = str(llm_response.get("executive_summary") or llm_response.get("summary") or "").strip()
+        if llm_summary:
+            enhanced["summary"] = llm_summary[:2000]
+
+        enhanced["findings"] = _normalize_llm_findings_for_deterministic(
+            deterministic.get("findings"),
+            llm_response.get("findings"),
+        )
+        # keep deterministic findings when normalization produced none unexpectedly
+        if not enhanced["findings"] and isinstance(deterministic.get("findings"), list):
+            enhanced["findings"] = list(deterministic.get("findings") or [])
+
+        post_missing = [key for key in REPORT_REQUIRED_KEYS if key not in enhanced]
+        if post_missing:
+            raise ValueError(f"llm_report_missing_required_keys:{','.join(sorted(post_missing))}")
+
+        return _with_report_provenance(
+            enhanced,
+            mode="llm_enhanced",
+            prompt_name=str(llm_response.get("prompt_name") or "").strip()[:128],
+            prompt_version=str(llm_response.get("prompt_version") or "").strip()[:64],
+            fallback_used=False,
+        )
+    except (LLMGatewayError, ValueError, TypeError, KeyError) as exc:
+        return _with_report_provenance(
+            deterministic,
+            mode="deterministic",
+            prompt_name="",
+            prompt_version="",
+            fallback_used=True,
+            fallback_reason=str(exc),
+        )
 
 
 @transaction.atomic

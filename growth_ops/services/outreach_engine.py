@@ -3,6 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 from growth_ops.models import Lead, LeadScore
+from growth_ops.services.scoring import bucket_for_outreach_score, priority_for_bucket
 
 
 def _findings_from_report(report_payload: dict[str, Any]) -> list[dict[str, Any]]:
@@ -104,22 +105,39 @@ def _reason_summary(
     return "; ".join(top_titles)
 
 
+def _as_int(value: Any) -> int | None:
+    try:
+        if value is None:
+            return None
+        return int(round(float(value)))
+    except (TypeError, ValueError):
+        return None
+
+
+def _resolved_outreach_score(score_obj: LeadScore) -> int:
+    recommendation = score_obj.recommendation if isinstance(score_obj.recommendation, dict) else {}
+    # New canonical field.
+    recommendation_score = _as_int(recommendation.get("outreach_score"))
+    if recommendation_score is not None:
+        return max(0, min(recommendation_score, 100))
+    # Backward compatibility for older records.
+    legacy_opportunity = _as_int(recommendation.get("opportunity_score"))
+    if legacy_opportunity is not None:
+        return max(0, min(legacy_opportunity, 100))
+    # Final fallback.
+    return max(0, min(_as_int(score_obj.score) or 0, 100))
+
+
 def classify_outreach_opportunity(
     *,
     lead: Lead,
     report_payload: dict[str, Any],
     score_obj: LeadScore,
 ) -> dict[str, Any]:
-    score = int(score_obj.score or 0)
-    if score >= 60:
-        should_contact = True
-        priority = "high"
-    elif score >= 45:
-        should_contact = True
-        priority = "medium"
-    else:
-        should_contact = False
-        priority = "low"
+    outreach_score = _resolved_outreach_score(score_obj)
+    bucket = bucket_for_outreach_score(outreach_score)
+    priority = priority_for_bucket(bucket)
+    should_contact = bucket in {"A", "B"}
 
     findings = _findings_from_report(report_payload)
     cta_weak = _is_cta_weak(report_payload)
@@ -152,9 +170,11 @@ def classify_outreach_opportunity(
     return {
         "should_contact": should_contact,
         "priority": priority,
+        "bucket": bucket,
         "offer_type": offer_type,
         "angle": angle,
         "reason_summary": summary,
-        "score": score,
+        "score": outreach_score,
+        "score_semantics": "outreach_opportunity",
         "lead_id": lead.id,
     }

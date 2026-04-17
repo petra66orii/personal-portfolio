@@ -16,6 +16,7 @@ from growth_ops.services.reporting import (
     RULES_REPORT_MODEL,
     RULES_REPORT_PROMPT_VERSION,
     build_report_payload,
+    enhance_report_with_llm,
     get_latest_evidence_for_lead,
     upsert_report,
 )
@@ -138,6 +139,8 @@ def run_outreach_for_lead(
         report_payload=report_payload,
         score_obj=resolved_score,
         decision=decision,
+        report_obj=resolved_report,
+        sequence_step=1,
     )
     draft, draft_created = upsert_outbound_draft(
         lead=lead,
@@ -225,6 +228,13 @@ def run_outreach_for_lead(
         "readiness_reason": readiness.get("reason", ""),
         "contactability_type": readiness.get("contactability_type", "none"),
     }
+    evidence_check["draft_generation_mode"] = str(email_payload.get("draft_generation_mode") or "deterministic")
+    evidence_check["llm_prompt_name"] = str(email_payload.get("llm_prompt_name") or "")
+    evidence_check["llm_prompt_version"] = str(email_payload.get("llm_prompt_version") or "")
+    evidence_check["llm_fallback_used"] = bool(email_payload.get("llm_fallback_used", False))
+    evidence_check["llm_fallback_reason"] = str(email_payload.get("llm_fallback_reason") or "")
+    claim_check = email_payload.get("claim_check")
+    evidence_check["claim_check"] = claim_check if isinstance(claim_check, dict) else {}
     # Keep explicit keys at root for fast inspection from admin/queue tooling.
     evidence_check["extracted_emails"] = extracted_emails
     evidence_check["extracted_phones"] = extracted_phones
@@ -249,6 +259,8 @@ def run_outreach_for_lead(
         "draft_created": draft_created,
         "draft_reused": not draft_created,
         "draft_skipped": False,
+        "draft_generation_mode": str(email_payload.get("draft_generation_mode") or "deterministic"),
+        "llm_fallback_used": bool(email_payload.get("llm_fallback_used", False)),
         "readiness_status": readiness.get("status", "pending"),
         "readiness_reason": readiness.get("reason", ""),
         "contacts_created": int(contact_summary.get("contacts_created") or 0),
@@ -266,7 +278,12 @@ def run_report_and_score_for_lead(
     evidence = get_latest_evidence_for_lead(lead)
     evidence_ids = [item.id for item in evidence]
 
-    report_payload = build_report_payload(lead=lead, evidence=evidence)
+    deterministic_report_payload = build_report_payload(lead=lead, evidence=evidence)
+    report_payload = enhance_report_with_llm(
+        lead=lead,
+        evidence=evidence,
+        deterministic_report=deterministic_report_payload,
+    )
     report_summary = str(report_payload.get("summary") or "").strip()
     report_obj, report_created = upsert_report(
         lead=lead,

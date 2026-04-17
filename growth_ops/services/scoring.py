@@ -16,12 +16,18 @@ REASON_HIGH_LCP = "HIGH_LCP"
 REASON_FAST_LCP = "FAST_LCP"
 REASON_CTA_POOR = "CTA_CLARITY_POOR"
 REASON_CTA_MODERATE = "CTA_CLARITY_MODERATE"
+REASON_NO_VISIBLE_CONTACT_METHOD = "NO_VISIBLE_CONTACT_METHOD"
+REASON_NO_HTTPS = "NO_HTTPS"
 REASON_SITEMAP_MISSING = "SITEMAP_MISSING"
 REASON_TEMPLATE_LIMIT = "TEMPLATE_CMS_LIMITATION_SIGNAL"
-REASON_TRUST_LOW = "TRUST_SIGNALS_LOW"
+REASON_TRUST_LOW = "TRUST_SIGNALS_WEAK"
 REASON_TRUST_STRONG = "TRUST_SIGNALS_STRONG"
 REASON_CONTACT_EMAIL = "CONTACT_EMAIL_PRESENT"
 REASON_INDUSTRY_FIT = "INDUSTRY_FIT"
+# Calibrated for outreach operations:
+# A: strongest opportunity, B: worth contacting, C: skip for now.
+OUTREACH_BUCKET_A_MIN = 70
+OUTREACH_BUCKET_B_MIN = 35
 
 
 @dataclass(frozen=True)
@@ -30,6 +36,31 @@ class ScoreResult:
     bucket: str
     reason_codes: list[str]
     recommendation: dict[str, Any]
+
+
+def _normalize_score_0_100(value: Any) -> int:
+    parsed = _to_float(value)
+    if parsed is None:
+        return 0
+    return max(0, min(int(round(parsed)), 100))
+
+
+def bucket_for_outreach_score(score: int) -> str:
+    normalized = _normalize_score_0_100(score)
+    if normalized >= OUTREACH_BUCKET_A_MIN:
+        return "A"
+    if normalized >= OUTREACH_BUCKET_B_MIN:
+        return "B"
+    return "C"
+
+
+def priority_for_bucket(bucket: str) -> str:
+    normalized = str(bucket or "").strip().upper()
+    if normalized == "A":
+        return "high"
+    if normalized == "B":
+        return "medium"
+    return "low"
 
 
 def _int_setting(name: str, default: int) -> int:
@@ -192,20 +223,48 @@ def _extract_trust_rating(report_obj: WebsiteReport | None) -> str:
     return "weak"
 
 
+def _extract_has_contact_method(report_obj: WebsiteReport | None) -> bool | None:
+    payload = _report_payload(report_obj)
+    cta = payload.get("cta")
+    if isinstance(cta, dict):
+        value = cta.get("has_contact_method")
+        if isinstance(value, bool):
+            return value
+    trust = payload.get("trust")
+    if isinstance(trust, dict):
+        value = trust.get("has_contact_info")
+        if isinstance(value, bool):
+            return value
+    return None
+
+
+def _extract_has_https(report_obj: WebsiteReport | None, lead: Lead) -> bool | None:
+    payload = _report_payload(report_obj)
+    technical = payload.get("technical")
+    if isinstance(technical, dict):
+        value = technical.get("has_https")
+        if isinstance(value, bool):
+            return value
+    website_url = str(lead.website_url or "").strip().lower()
+    if website_url:
+        return website_url.startswith("https://")
+    return None
+
+
 def _cta_weight_for_site_type(site_type: str) -> dict[str, int]:
     if site_type == "institutional":
-        return {"missing": -6, "weak": -4, "moderate": -2, "clear": 2}
+        return {"missing": -10, "weak": -7, "moderate": -3, "clear": 1}
     if site_type == "chain":
-        return {"missing": -10, "weak": -7, "moderate": -3, "clear": 4}
-    return {"missing": -15, "weak": -10, "moderate": -4, "clear": 6}
+        return {"missing": -13, "weak": -9, "moderate": -4, "clear": 2}
+    return {"missing": -15, "weak": -10, "moderate": -5, "clear": 2}
 
 
 def _trust_weight_for_site_type(site_type: str) -> dict[str, int]:
     if site_type == "institutional":
-        return {"weak": -10, "moderate": -3, "strong": 8}
+        return {"weak": -8, "moderate": 0, "strong": 4}
     if site_type == "chain":
-        return {"weak": -8, "moderate": -2, "strong": 4}
-    return {"weak": -6, "moderate": -2, "strong": 2}
+        return {"weak": -10, "moderate": 0, "strong": 3}
+    return {"weak": -10, "moderate": 0, "strong": 2}
 
 
 def compute_lead_score(*, lead: Lead, report_obj: WebsiteReport | None = None) -> ScoreResult:
@@ -236,16 +295,16 @@ def compute_lead_score(*, lead: Lead, report_obj: WebsiteReport | None = None) -
     score = 50
 
     if lead.website_url:
-        score += 10
+        score += 5
         reason_codes.append(REASON_HAS_WEBSITE)
 
     if lead.contacts.exclude(email="").exists():
-        score += 5
+        score += 3
         reason_codes.append(REASON_CONTACT_EMAIL)
 
     industry = (lead.industry or "").lower()
     if industry and any(keyword in industry for keyword in fit_industries):
-        score += 5
+        score += 2
         reason_codes.append(REASON_INDUSTRY_FIT)
 
     site_type = _extract_site_type(report_obj)
@@ -289,20 +348,20 @@ def compute_lead_score(*, lead: Lead, report_obj: WebsiteReport | None = None) -
         lcp_ms = report_lcp_ms if lcp_ms is None else max(lcp_ms, report_lcp_ms)
 
     if perf_score is not None and perf_score < performance_threshold:
-        score -= 20
+        score -= 16
         reason_codes.append(REASON_LOW_MOBILE_PERF)
     elif perf_score is not None and perf_score < 90:
         score -= 5
         reason_codes.append(REASON_MOBILE_PERF_NEEDS_IMPROVEMENT)
     elif perf_score is not None:
-        score += 10
+        score += 6
         reason_codes.append(REASON_HIGH_MOBILE_PERF)
 
     if lcp_ms is not None and lcp_ms > lcp_threshold_ms:
         score -= 10
         reason_codes.append(REASON_HIGH_LCP)
     elif lcp_ms is not None and lcp_ms < 1500:
-        score += 5
+        score += 3
         reason_codes.append(REASON_FAST_LCP)
 
     cta_clarity = _extract_cta_clarity(report_obj)
@@ -318,6 +377,26 @@ def compute_lead_score(*, lead: Lead, report_obj: WebsiteReport | None = None) -
         reason_codes.append(REASON_CTA_POOR)
     elif cta_clarity == "clear":
         score += cta_weights["clear"]
+
+    has_contact_method = _extract_has_contact_method(report_obj)
+    if has_contact_method is False:
+        if site_type == "institutional":
+            score -= 6
+        elif site_type == "chain":
+            score -= 7
+        else:
+            score -= 8
+        reason_codes.append(REASON_NO_VISIBLE_CONTACT_METHOD)
+
+    has_https = _extract_has_https(report_obj, lead)
+    if has_https is False:
+        if site_type == "institutional":
+            score -= 8
+        elif site_type == "chain":
+            score -= 9
+        else:
+            score -= 10
+        reason_codes.append(REASON_NO_HTTPS)
 
     if not has_sitemap_evidence or sitemap_marked_missing:
         score -= 8
@@ -338,44 +417,50 @@ def compute_lead_score(*, lead: Lead, report_obj: WebsiteReport | None = None) -
         score += trust_weights["strong"]
         reason_codes.append(REASON_TRUST_STRONG)
 
-    quality_score = max(0, min(int(score), 100))
-    opportunity_score = 100 - quality_score
+    quality_score = _normalize_score_0_100(score)
+    outreach_score = 100 - quality_score
+    bucket = bucket_for_outreach_score(outreach_score)
+    priority = priority_for_bucket(bucket)
 
-    if opportunity_score >= 65:
-        bucket = "A"
+    if bucket == "A":
         recommendation = {
             "offer_type": "aggressive_outreach",
             "label": "Aggressive outreach",
-            "priority": "high",
+            "priority": priority,
             "outreach_mode": "aggressive",
+            "score_semantics": "outreach_opportunity",
+            "outreach_score": outreach_score,
+            # Alias retained for backward compatibility.
+            "opportunity_score": outreach_score,
             "quality_score": quality_score,
-            "opportunity_score": opportunity_score,
         }
-    elif 40 <= opportunity_score <= 64:
-        bucket = "B"
+    elif bucket == "B":
         recommendation = {
             "offer_type": "moderate_outreach",
             "label": "Moderate outreach",
-            "priority": "medium",
+            "priority": priority,
             "outreach_mode": "moderate",
+            "score_semantics": "outreach_opportunity",
+            "outreach_score": outreach_score,
+            "opportunity_score": outreach_score,
             "quality_score": quality_score,
-            "opportunity_score": opportunity_score,
         }
     else:
-        bucket = "C"
         recommendation = {
             "offer_type": "low_priority",
             "label": "Low priority",
-            "priority": "low",
+            "priority": priority,
             "outreach_mode": "low",
+            "score_semantics": "outreach_opportunity",
+            "outreach_score": outreach_score,
+            "opportunity_score": outreach_score,
             "quality_score": quality_score,
-            "opportunity_score": opportunity_score,
         }
 
     # Preserve stable reason ordering and remove accidental duplicates.
     deduped_reasons = list(dict.fromkeys(reason_codes))
     return ScoreResult(
-        score=quality_score,
+        score=outreach_score,
         bucket=bucket,
         reason_codes=deduped_reasons,
         recommendation=recommendation,

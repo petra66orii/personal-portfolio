@@ -53,3 +53,6 @@ class LLMGatewayClient:
 
     def check_email(self, payload: dict[str, Any]) -> dict[str, Any]:
         return self._post("/v1/check-email", payload)
+
+    def report(self, payload: dict[str, Any]) -> dict[str, Any]:
+        return self._post("/v1/report", payload)
