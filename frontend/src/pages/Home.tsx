@@ -81,7 +81,6 @@ const Home = () => {
       <SEO
         title={t("seo.home_title")}
         description={t("seo.home_description")}
-        keywords={t("seo.home_keywords")}
         type="website"
         image="/assets/logos/social-logo.png"
       />

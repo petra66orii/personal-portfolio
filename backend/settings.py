@@ -61,6 +61,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'portfolio.middleware.CanonicalUrlMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -72,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'portfolio.middleware.AdminAccessMiddleware',  # Custom middleware to protect admin URL
+    'portfolio.middleware.IndexingDirectivesMiddleware',
 ]
 
 ROOT_URLCONF = 'backend.urls'

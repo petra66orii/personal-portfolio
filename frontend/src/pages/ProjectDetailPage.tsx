@@ -24,7 +24,6 @@ type SupportingCaseStudyCopy = {
   seo: {
     title: string;
     description: string;
-    keywords: string;
   };
   hero_eyebrow: string;
   summary: string;
@@ -131,7 +130,6 @@ const ProjectDetailPage: React.FC = () => {
           project.client_challenge ||
           project.description
         }
-        keywords={supportingCopy?.seo.keywords || project.tech_stack}
         type="article"
         image={project.image}
       />

@@ -93,7 +93,6 @@ const About = () => {
       <SEO
         title={copy.seo_title}
         description={copy.seo_description}
-        keywords="about Miss Bott, founder-led web studio, custom Django React development, strategic discovery session, Ireland web developer"
         type="website"
       />
 

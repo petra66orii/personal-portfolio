@@ -11,7 +11,6 @@ const Services: React.FC = () => {
       <SEO
         title={t("services_page_v2.seo_title")}
         description={t("services_page_v2.seo_description")}
-        keywords={t("services_page_v2.seo_keywords")}
       />
       <div className="min-h-screen">
         <ServicesSection />

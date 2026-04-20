@@ -4,18 +4,20 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.views.static import serve
 from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
 from django.http import HttpResponse
 from .views import permission_denied_view
 from portfolio import views
+from . import views as backend_views
 from django.contrib.sitemaps.views import index as sitemap_index
 from django.contrib.sitemaps.views import sitemap as sitemap_view
 
-from portfolio.sitemaps import StaticViewSitemap, BlogPostSitemap, ProjectSitemap
+from portfolio.sitemaps import StaticViewSitemap, BlogPostSitemap, ServiceSitemap
 
 sitemaps = {
     "static": StaticViewSitemap,
     "blog": BlogPostSitemap,
-    "projects": ProjectSitemap,
+    "services": ServiceSitemap,
 }
 
 handler403 = permission_denied_view
@@ -23,6 +25,8 @@ handler403 = permission_denied_view
 def robots_txt(request):
     lines = [
         "User-agent: *",
+        "Disallow: /admin/",
+        "Disallow: /api/",
         "Allow: /",
         "Sitemap: https://missbott.online/sitemap.xml",
     ]
@@ -66,14 +70,12 @@ urlpatterns = [
     path("api/growth/", include("growth_ops.urls")),
     path('api/', include('portfolio.urls')),
     path("api/audits/from-n8n/", views.run_audit_from_n8n, name="run_audit_from_n8n"),
-    path("", react_app, name="home"),
-    path("services", react_app, name="services"),
-    path("services/strategic-discovery-session", react_app, name="service_discovery"),
-    path("services/foundation-stack", react_app, name="service_foundation"),
-    path("services/commerce-stack", react_app, name="service_commerce"),
-    path("services/application-stack", react_app, name="service_application"),
-    path("blog", react_app, name="blog_index"),
-    path("contact", react_app, name="contact"),
+    path(
+        "web-developer-ireland",
+        RedirectView.as_view(url="/custom-web-developer-ireland", permanent=True),
+        name="landing_web_developer_ireland_alias",
+    ),
+    path("quote", react_app, name="quote"),
     ]
 
 serve_media_publicly = _should_serve_media_publicly()
@@ -86,6 +88,6 @@ if serve_media_publicly:
 urlpatterns += [
     re_path(
         r'^(?!static/|admin/|adminportal/|api/|media/|sitemap.*\.xml$|robots\.txt$).*$', 
-        TemplateView.as_view(template_name="index.html")
+        backend_views.react_frontend_entry,
     ),
 ]

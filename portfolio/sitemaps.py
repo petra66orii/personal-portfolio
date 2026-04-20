@@ -1,25 +1,27 @@
 from django.contrib.sitemaps import Sitemap
-from django.urls import reverse
-from .models import BlogPost, Project
+from .models import BlogPost, Service
 
 class StaticViewSitemap(Sitemap):
     priority = 0.8
-    changefreq = "weekly"
+    changefreq = "monthly"
 
     def items(self):
         return [
-            "home",
-            "services",
-            "service_discovery",
-            "service_foundation",
-            "service_commerce",
-            "service_application",
-            "blog_index",
-            "contact",
+            "/",
+            "/about",
+            "/services",
+            "/blog",
+            "/contact",
+            "/custom-web-development-agency",
+            "/custom-web-developer-ireland",
+            "/web-development-agency-galway",
+            "/web-development-agency-dublin",
+            "/django-react-developer",
+            "/international-web-development",
         ]
 
     def location(self, item):
-        return reverse(item)
+        return item
     
 
 class BlogPostSitemap(Sitemap):
@@ -37,12 +39,12 @@ class BlogPostSitemap(Sitemap):
         return f"/blog/{obj.slug}"
 
 
-class ProjectSitemap(Sitemap):
+class ServiceSitemap(Sitemap):
     priority = 0.6
-    changefreq = "monthly"
+    changefreq = "weekly"
 
     def items(self):
-        return Project.objects.all()
+        return Service.objects.filter(active=True)
 
     def location(self, obj):
-        return f"/projects/{obj.id}"
+        return f"/services/{obj.slug}"

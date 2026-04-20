@@ -92,34 +92,11 @@ const Blog = () => {
   const latestPost = posts[0];
   const otherPosts = posts.slice(1);
 
-  if (loading) {
-    return (
-      <main className="min-h-screen p-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="animate-pulse">
-            <div className="h-8 bg-surface rounded w-1/3 mb-12 mx-auto"></div>
-            <div className="space-y-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="glassmorphism rounded-lg p-6">
-                  <div className="h-6 bg-surface rounded w-3/4 mb-2"></div>
-                  <div className="h-4 bg-surface rounded w-1/2 mb-4"></div>
-                  <div className="h-4 bg-surface rounded w-full mb-2"></div>
-                  <div className="h-4 bg-surface rounded w-2/3"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <>
       <SEO
         title={t("blog.seo.title")}
         description={t("blog.seo.description")}
-        keywords={t("blog.seo.keywords")}
         type="website"
       />
       <main className="min-h-screen p-6">
@@ -133,7 +110,18 @@ const Blog = () => {
             </p>
           </header>
 
-          {posts.length > 0 ? (
+          {loading ? (
+            <div className="animate-pulse space-y-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="glassmorphism rounded-lg p-6">
+                  <div className="h-6 bg-surface rounded w-3/4 mb-2"></div>
+                  <div className="h-4 bg-surface rounded w-1/2 mb-4"></div>
+                  <div className="h-4 bg-surface rounded w-full mb-2"></div>
+                  <div className="h-4 bg-surface rounded w-2/3"></div>
+                </div>
+              ))}
+            </div>
+          ) : posts.length > 0 ? (
             <div className="space-y-16">
               {/* Featured Post Section */}
               {latestPost && <FeaturedPostCard post={latestPost} />}

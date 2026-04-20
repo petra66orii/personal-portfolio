@@ -133,14 +133,6 @@ const ServicesSection: React.FC = () => {
     (service) => service.slug !== "strategic-discovery-session",
   );
 
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center py-20">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-400 dark:border-purple-600" />
-      </div>
-    );
-  }
-
   return (
     <section className="py-16 sm:py-20 glassmorphism">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
@@ -155,10 +147,16 @@ const ServicesSection: React.FC = () => {
             <p className="text-base sm:text-lg text-secondary leading-relaxed">
               {copy.hero.summary}
             </p>
+            {loading && (
+              <div className="mt-5 inline-flex items-center gap-2 text-sm text-secondary">
+                <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-primary/40 border-t-primary" />
+                Loading current service stack details...
+              </div>
+            )}
           </div>
         </ScrollAnimator>
 
-        {discoveryService && (
+        {!loading && discoveryService && (
           <ScrollAnimator delay={0.05}>
             <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
               <div className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6 sm:gap-8 items-start">
@@ -224,7 +222,8 @@ const ServicesSection: React.FC = () => {
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-              {stackServices.map((service) => {
+              {!loading &&
+                stackServices.map((service) => {
                 const IconComponent = getIcon(service.icon);
                 const serviceCopy = copy.stack_overrides[service.slug];
                 const isFeatured = Boolean(serviceCopy?.badge);
@@ -298,8 +297,14 @@ const ServicesSection: React.FC = () => {
                     </Link>
                   </article>
                 );
-              })}
+                })}
             </div>
+            {!loading && stackServices.length === 0 && (
+              <p className="text-sm sm:text-base text-secondary text-center mt-4">
+                Service details are being refreshed. You can still start discovery and we will map
+                the right stack for your project.
+              </p>
+            )}
           </section>
         </ScrollAnimator>
 

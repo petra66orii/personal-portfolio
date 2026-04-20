@@ -120,7 +120,6 @@ const BlogDetailPage = () => {
       <SEO
         title={`${post.title} | Miss Bott`}
         description={post.excerpt}
-        keywords={t("blog.seo.keywords")} // You can also add dynamic tags from the post here
         type="article"
         image={getImageUrl(post.featured_image)}
       />

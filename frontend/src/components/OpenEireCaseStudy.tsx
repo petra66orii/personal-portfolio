@@ -46,7 +46,6 @@ interface CallToAction {
 interface SeoCopy {
   title: string;
   description: string;
-  keywords: string;
 }
 
 interface OpenEireCopy {
@@ -129,7 +128,6 @@ const OpenEireCaseStudy = ({ project }: { project: ProjectSummary }) => {
       <SEO
         title={copy.seo.title}
         description={copy.seo.description}
-        keywords={copy.seo.keywords}
         type="article"
         image={getImageUrl(project.image)}
       />
