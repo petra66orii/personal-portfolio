@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Check,
   LayoutTemplate,
-  Search,
   ShieldCheck,
   ShoppingCart,
 } from "lucide-react";
@@ -16,55 +15,76 @@ interface Service {
   id: number;
   name: string;
   slug: string;
-  service_type: string;
-  short_description: string;
+}
+
+type StackSlug = "foundation-stack" | "commerce-stack" | "application-stack";
+
+type StackCardContent = {
+  eyebrow: string;
+  title: string;
   description: string;
-  features_list: string[];
-  starting_price: string;
-  delivery_time: string;
-  icon: string;
-  featured: boolean;
-  active: boolean;
-  order: number;
-}
-
-interface StackOverrideCopy {
-  tier: string;
-  hook: string;
-  ideal: string;
-  support_price: string;
+  price: string;
+  support: string;
+  timeline: string;
+  includes: string[];
+  bestFit: string;
+  cta: string;
   badge?: string;
-}
+};
 
-interface ServicesCopy {
+type ServicesPageCopy = {
   hero: {
     eyebrow: string;
+    title_line_1: string;
+    title_line_2: string;
+    body: string;
+    body_support: string;
+    primary_cta: string;
+    secondary_cta: string;
+  };
+  pain: {
     title: string;
-    summary: string;
+    items: string[];
+    lead_line: string;
+    line_1: string;
+    line_2: string;
+    line_3: string;
   };
   discovery: {
     eyebrow: string;
     required_badge: string;
-    summary: string;
+    title: string;
+    intro: string;
+    leave_with_label: string;
+    outcomes: string[];
+    sales_line_1: string;
+    sales_line_2: string;
+    deliverables: string[];
     price_label: string;
-    credit_note: string;
+    price_value: string;
+    price_note: string;
     cta: string;
   };
   stacks: {
     eyebrow: string;
     title: string;
     intro: string;
-    scope_note: string;
-    timeline_label: string;
-    from_price_label: string;
-    fixed_price_label: string;
-    support_from_label: string;
+    pricing_note: string;
     includes_label: string;
-    ideal_for_label: string;
-    detail_cta: string;
-    featured_badge: string;
+    best_fit_label: string;
+    cards: Record<StackSlug, StackCardContent>;
   };
-  stack_overrides: Record<string, StackOverrideCopy>;
+  why_custom: {
+    eyebrow: string;
+    title: string;
+    lead: string;
+    intro: string;
+    items: string[];
+    turning_point: string;
+    pressure_line: string;
+    design_line: string;
+    summary_line: string;
+  };
   process: {
     eyebrow: string;
     title: string;
@@ -75,25 +95,36 @@ interface ServicesCopy {
   };
   cta: {
     title: string;
-    description: string;
+    line_1: string;
+    body: string;
     primary: string;
     secondary: string;
   };
-}
+};
+
+const STACK_ORDER: StackSlug[] = [
+  "foundation-stack",
+  "commerce-stack",
+  "application-stack",
+];
 
 const iconMap = {
-  search: Search,
   layout: LayoutTemplate,
   "shopping-cart": ShoppingCart,
   server: AppWindow,
+} as const;
+
+const stackIconBySlug: Record<StackSlug, keyof typeof iconMap> = {
+  "foundation-stack": "layout",
+  "commerce-stack": "shopping-cart",
+  "application-stack": "server",
 };
 
 const ServicesSection: React.FC = () => {
   const [services, setServices] = useState<Service[]>([]);
   const [loading, setLoading] = useState(true);
   const { t, i18n } = useTranslation();
-
-  const copy = t("services_page_v2", { returnObjects: true }) as ServicesCopy;
+  const copy = t("services_page_v2", { returnObjects: true }) as ServicesPageCopy;
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -121,16 +152,10 @@ const ServicesSection: React.FC = () => {
     fetchServices();
   }, [i18n.language]);
 
-  const getIcon = (iconName: string) => {
-    const IconComponent = iconMap[iconName as keyof typeof iconMap] || LayoutTemplate;
-    return IconComponent;
-  };
-
-  const discoveryService = services.find(
-    (service) => service.slug === "strategic-discovery-session",
-  );
-  const stackServices = services.filter(
-    (service) => service.slug !== "strategic-discovery-session",
+  const availableSlugSet = new Set(services.map((service) => service.slug));
+  const showAllStacks = loading || availableSlugSet.size === 0;
+  const visibleStacks = STACK_ORDER.filter(
+    (slug) => showAllStacks || availableSlugSet.has(slug),
   );
 
   return (
@@ -142,72 +167,134 @@ const ServicesSection: React.FC = () => {
               {copy.hero.eyebrow}
             </p>
             <h1 className="text-3xl sm:text-5xl font-bold text-primary mb-4">
-              {copy.hero.title}
+              {copy.hero.title_line_1}
+              <br className="hidden sm:block" /> {copy.hero.title_line_2}
             </h1>
             <p className="text-base sm:text-lg text-secondary leading-relaxed">
-              {copy.hero.summary}
+              {copy.hero.body}
             </p>
-            {loading && (
-              <div className="mt-5 inline-flex items-center gap-2 text-sm text-secondary">
-                <span className="inline-block h-3 w-3 animate-spin rounded-full border-2 border-primary/40 border-t-primary" />
-                Loading current service stack details...
-              </div>
-            )}
+            <p className="text-base sm:text-lg text-secondary leading-relaxed mt-3">
+              {copy.hero.body_support}
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 mt-7">
+              <a
+                href="#service-stacks"
+                className="inline-flex items-center justify-center px-6 py-3 button-gradient text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                {copy.hero.primary_cta}
+                <ArrowRight size={16} className="ml-2" />
+              </a>
+              <Link
+                to="/quote"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
+              >
+                {copy.hero.secondary_cta}
+              </Link>
+            </div>
           </div>
         </ScrollAnimator>
 
-        {!loading && discoveryService && (
-          <ScrollAnimator delay={0.05}>
-            <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
-              <div className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6 sm:gap-8 items-start">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">
-                    {copy.discovery.eyebrow}
-                  </p>
-                  <span className="inline-flex items-center rounded-full border border-secondary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4">
-                    {copy.discovery.required_badge}
+        <ScrollAnimator delay={0.05}>
+          <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-5">
+              {copy.pain.title}
+            </h2>
+            <ul className="space-y-3 mb-5">
+              {copy.pain.items.map((point, index) => (
+                <li key={`pain-${index}`} className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
+                  <span className="text-sm sm:text-base text-secondary leading-relaxed">
+                    {point}
                   </span>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3">
-                    {discoveryService.name}
-                  </h2>
-                  <p className="text-sm sm:text-base text-secondary leading-relaxed mb-4">
-                    {copy.discovery.summary}
-                  </p>
-                  <ul className="grid sm:grid-cols-2 gap-3">
-                    {discoveryService.features_list.slice(0, 4).map((feature) => (
-                      <li key={feature} className="flex items-start gap-2">
-                        <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
-                        <span className="text-sm text-secondary leading-relaxed">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="glassmorphism rounded-2xl p-5 sm:p-6 border border-secondary/20">
-                  <p className="text-xs uppercase tracking-[0.16em] text-secondary mb-1">
-                    {copy.discovery.price_label}
-                  </p>
-                  <p className="text-3xl font-bold text-primary mb-2">
-                    {discoveryService.starting_price}
-                  </p>
-                  <p className="text-sm text-secondary mb-5">{copy.discovery.credit_note}</p>
-                  <Link
-                    to="/quote"
-                    className="w-full inline-flex items-center justify-center px-5 py-3 rounded-xl button-gradient text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  >
-                    {copy.discovery.cta}
-                    <ArrowRight size={16} className="ml-2" />
-                  </Link>
-                </div>
-              </div>
-            </section>
-          </ScrollAnimator>
-        )}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm sm:text-base text-primary font-semibold">
+              {copy.pain.lead_line}
+            </p>
+            <p className="text-sm sm:text-base text-primary font-semibold mt-2">
+              {copy.pain.line_1}
+            </p>
+            <p className="text-sm sm:text-base text-primary font-semibold mt-2">
+              {copy.pain.line_2}
+            </p>
+            <p className="text-sm sm:text-base text-primary font-semibold mt-2">
+              {copy.pain.line_3}
+            </p>
+          </section>
+        </ScrollAnimator>
 
         <ScrollAnimator delay={0.1}>
-          <section>
+          <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
+            <div className="grid lg:grid-cols-[1.35fr_0.65fr] gap-6 sm:gap-8 items-start">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-primary font-semibold mb-3">
+                  {copy.discovery.eyebrow}
+                </p>
+                <span className="inline-flex items-center rounded-full border border-secondary/20 bg-primary/10 px-3 py-1 text-xs font-semibold text-primary mb-4">
+                  {copy.discovery.required_badge}
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-bold text-primary mb-3">
+                  {copy.discovery.title}
+                </h2>
+                <p className="text-sm sm:text-base text-secondary leading-relaxed mb-3">
+                  {copy.discovery.intro}
+                </p>
+                <p className="text-sm sm:text-base text-secondary leading-relaxed mb-4">
+                  {copy.discovery.leave_with_label}
+                </p>
+                <ul className="space-y-2 mb-5">
+                  {copy.discovery.outcomes.map((item, index) => (
+                    <li key={`outcome-${index}`} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
+                      <span className="text-sm text-secondary leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm sm:text-base text-secondary leading-relaxed mb-4">
+                  {copy.discovery.sales_line_1}
+                </p>
+                <p className="text-sm sm:text-base text-secondary leading-relaxed mb-4">
+                  {copy.discovery.sales_line_2}
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-3">
+                  {copy.discovery.deliverables.map((item, index) => (
+                    <li key={`deliverable-${index}`} className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
+                      <span className="text-sm text-secondary leading-relaxed">
+                        {item}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="glassmorphism rounded-2xl p-5 sm:p-6 border border-secondary/20">
+                <p className="text-xs uppercase tracking-[0.16em] text-secondary mb-1">
+                  {copy.discovery.price_label}
+                </p>
+                <p className="text-3xl font-bold text-primary mb-2">
+                  {copy.discovery.price_value}
+                </p>
+                <p className="text-sm text-secondary mb-5">
+                  {copy.discovery.price_note}
+                </p>
+                <Link
+                  to="/quote"
+                  className="w-full inline-flex items-center justify-center px-5 py-3 rounded-xl button-gradient text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  {copy.discovery.cta}
+                  <ArrowRight size={16} className="ml-2" />
+                </Link>
+              </div>
+            </div>
+          </section>
+        </ScrollAnimator>
+
+        <ScrollAnimator delay={0.15}>
+          <section id="service-stacks">
             <p className="text-xs sm:text-sm uppercase tracking-[0.2em] secondary font-semibold mb-3 text-center">
               {copy.stacks.eyebrow}
             </p>
@@ -218,24 +305,22 @@ const ServicesSection: React.FC = () => {
               {copy.stacks.intro}
             </p>
             <p className="text-xs sm:text-sm text-secondary/90 text-center max-w-3xl mx-auto mb-6 sm:mb-8">
-              {copy.stacks.scope_note}
+              {copy.stacks.pricing_note}
             </p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6">
-              {!loading &&
-                stackServices.map((service) => {
-                const IconComponent = getIcon(service.icon);
-                const serviceCopy = copy.stack_overrides[service.slug];
-                const isFeatured = Boolean(serviceCopy?.badge);
+              {visibleStacks.map((slug) => {
+                const stack = copy.stacks.cards[slug];
+                const IconComponent = iconMap[stackIconBySlug[slug]];
 
                 return (
                   <article
-                    key={service.id}
+                    key={slug}
                     className="relative glassmorphism rounded-2xl p-5 sm:p-6 border border-secondary/20 flex flex-col"
                   >
-                    {isFeatured && (
+                    {stack.badge && (
                       <span className="absolute top-4 right-4 text-xs font-semibold rounded-full px-3 py-1 bg-primary/10 border border-secondary/20 text-primary">
-                        {serviceCopy.badge || copy.stacks.featured_badge}
+                        {stack.badge}
                       </span>
                     )}
 
@@ -244,71 +329,102 @@ const ServicesSection: React.FC = () => {
                     </div>
 
                     <p className="text-xs uppercase tracking-[0.16em] secondary font-semibold mb-2">
-                      {serviceCopy?.tier || service.name}
+                      {stack.eyebrow}
                     </p>
-                    <h3 className="text-xl font-bold text-primary mb-2">{service.name}</h3>
+                    <h3 className="text-xl font-bold text-primary mb-2">
+                      {stack.title}
+                    </h3>
                     <p className="text-sm text-secondary leading-relaxed mb-4">
-                      {serviceCopy?.hook || service.short_description}
+                      {stack.description}
                     </p>
 
                     <div className="rounded-xl border border-secondary/20 bg-primary/5 p-4 mb-4">
-                      <p className="text-xs uppercase tracking-[0.14em] text-secondary mb-1">
-                        {copy.stacks.from_price_label}
+                      <p className="text-sm font-semibold text-primary mb-2">
+                        {stack.price}
                       </p>
-                      <p className="text-2xl font-bold text-primary mb-3">{service.starting_price}</p>
-                      <p className="text-xs uppercase tracking-[0.14em] text-secondary mb-1">
-                        {copy.stacks.support_from_label}
+                      <p className="text-xs text-secondary mb-2">
+                        {stack.support}
                       </p>
-                      <p className="text-sm font-semibold text-primary">
-                        {serviceCopy?.support_price || "-"}
-                      </p>
-                      <p className="text-xs text-secondary mt-3">
-                        {copy.stacks.timeline_label}: {service.delivery_time}
-                      </p>
+                      <p className="text-xs text-secondary">{stack.timeline}</p>
                     </div>
 
                     <p className="text-xs uppercase tracking-[0.14em] text-secondary mb-2">
                       {copy.stacks.includes_label}
                     </p>
                     <ul className="space-y-2 mb-4">
-                      {service.features_list.slice(0, 6).map((feature) => (
-                        <li key={feature} className="flex items-start gap-2">
+                      {stack.includes.map((feature, index) => (
+                        <li key={`${slug}-feature-${index}`} className="flex items-start gap-2">
                           <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
-                          <span className="text-sm text-secondary leading-relaxed">{feature}</span>
+                          <span className="text-sm text-secondary leading-relaxed">
+                            {feature}
+                          </span>
                         </li>
                       ))}
                     </ul>
 
                     <div className="rounded-xl border border-secondary/20 bg-surface/40 p-3 mb-5">
                       <p className="text-xs uppercase tracking-[0.14em] text-secondary mb-1">
-                        {copy.stacks.ideal_for_label}
+                        {copy.stacks.best_fit_label}
                       </p>
                       <p className="text-sm text-secondary leading-relaxed">
-                        {serviceCopy?.ideal || service.short_description}
+                        {stack.bestFit}
                       </p>
                     </div>
 
                     <Link
-                      to={`/services/${service.slug}`}
+                      to={`/services/${slug}`}
                       className="mt-auto w-full inline-flex items-center justify-center px-5 py-3 rounded-xl border border-secondary/30 text-primary font-semibold hover:bg-surface transition-all duration-300"
                     >
-                      {copy.stacks.detail_cta}
+                      {stack.cta}
                       <ArrowRight size={16} className="ml-2" />
                     </Link>
                   </article>
                 );
-                })}
+              })}
             </div>
-            {!loading && stackServices.length === 0 && (
-              <p className="text-sm sm:text-base text-secondary text-center mt-4">
-                Service details are being refreshed. You can still start discovery and we will map
-                the right stack for your project.
-              </p>
-            )}
           </section>
         </ScrollAnimator>
 
-        <ScrollAnimator delay={0.15}>
+        <ScrollAnimator delay={0.2}>
+          <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
+            <p className="text-xs uppercase tracking-[0.18em] secondary font-semibold mb-3 text-center">
+              {copy.why_custom.eyebrow}
+            </p>
+            <h3 className="text-2xl sm:text-3xl font-bold text-primary text-center mb-5">
+              {copy.why_custom.title}
+            </h3>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed text-center max-w-3xl mx-auto mb-5">
+              {copy.why_custom.lead}
+            </p>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed text-center max-w-3xl mx-auto mb-3">
+              {copy.why_custom.intro}
+            </p>
+            <ul className="space-y-2 w-fit mx-auto mb-6 text-left">
+              {copy.why_custom.items.map((item, index) => (
+                <li key={`why-custom-${index}`} className="flex items-start gap-2">
+                  <Check className="w-4 h-4 text-primary mt-1 shrink-0" />
+                  <span className="text-sm sm:text-base text-secondary leading-relaxed">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm sm:text-base text-primary font-semibold text-center mb-2">
+              {copy.why_custom.turning_point}
+            </p>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed text-center max-w-3xl mx-auto mb-2">
+              {copy.why_custom.pressure_line}
+            </p>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed text-center max-w-3xl mx-auto mb-2">
+              {copy.why_custom.design_line}
+            </p>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed text-center max-w-3xl mx-auto">
+              {copy.why_custom.summary_line}
+            </p>
+          </section>
+        </ScrollAnimator>
+
+        <ScrollAnimator delay={0.25}>
           <section className="glassmorphism rounded-2xl p-5 sm:p-8 border border-secondary/20">
             <p className="text-xs uppercase tracking-[0.18em] secondary font-semibold mb-3 text-center">
               {copy.process.eyebrow}
@@ -325,21 +441,28 @@ const ServicesSection: React.FC = () => {
                   <div className="w-11 h-11 rounded-full bg-gradient-to-br from-primary/25 to-primary/10 border border-primary/30 text-primary text-base font-bold flex items-center justify-center mb-3 shadow-[0_10px_24px_-14px_var(--secondary-light)] dark:shadow-[0_10px_24px_-14px_var(--secondary-dark)] transition-transform duration-300 group-hover:scale-105">
                     {index + 1}
                   </div>
-                  <h4 className="text-base font-semibold text-primary mb-2">{step.title}</h4>
-                  <p className="text-sm text-secondary leading-relaxed">{step.body}</p>
+                  <h4 className="text-base font-semibold text-primary mb-2">
+                    {step.title}
+                  </h4>
+                  <p className="text-sm text-secondary leading-relaxed">
+                    {step.body}
+                  </p>
                 </article>
               ))}
             </div>
           </section>
         </ScrollAnimator>
 
-        <ScrollAnimator delay={0.2}>
+        <ScrollAnimator delay={0.3}>
           <section className="glassmorphism rounded-3xl p-6 sm:p-10 border border-secondary/20 text-center">
             <h3 className="text-2xl sm:text-4xl font-bold text-primary mb-4">
               {copy.cta.title}
             </h3>
+            <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-3xl mx-auto mb-2">
+              {copy.cta.line_1}
+            </p>
             <p className="text-sm sm:text-base text-secondary leading-relaxed max-w-3xl mx-auto mb-6">
-              {copy.cta.description}
+              {copy.cta.body}
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
               <Link
@@ -365,3 +488,4 @@ const ServicesSection: React.FC = () => {
 };
 
 export default ServicesSection;
+

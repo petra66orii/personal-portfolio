@@ -10,145 +10,269 @@
     "contact": "Contact"
   },
 "services_page_v2": {
-  "seo_title": "Custom Services & Pricing | Miss Bott",
-  "seo_description": "Explore Miss Bott service stacks: a fixed-price Strategic Discovery Session plus Foundation, Commerce, and Application builds for businesses that need custom software.",
-  "seo_keywords": "custom web development pricing, strategic discovery session, django react services, custom commerce build, web application development ireland",
+  "seo_title": "Custom Website and Software Services | Miss Bott",
+  "seo_description": "Discovery-first Django and React delivery for businesses that have outgrown templates. Compare Foundation, Commerce, and Application stacks with transparent starting pricing.",
   "hero": {
-    "eyebrow": "Services and Pricing",
-    "title": "Three service stacks built around delivery clarity.",
-    "summary": "Every engagement starts with Strategic Discovery, then moves into the stack that matches your operational complexity. Clear scope, practical architecture, and pricing framed around real implementation."
+    "eyebrow": "SERVICES AND PRICING",
+    "title_line_1": "Your Website Isn't the Problem.",
+    "title_line_2": "Your System Is.",
+    "body": "We design and build custom Django + React platforms for businesses that have outgrown templates, plugins, and patchwork systems.",
+    "body_support": "Faster. Scalable. Built around how your business actually operates.",
+    "primary_cta": "View Service Stacks",
+    "secondary_cta": "Book Strategic Discovery"
+  },
+  "pain": {
+    "title": "If this feels familiar, your setup is already holding you back",
+    "items": [
+      "Your site is slow, fragile, or hard to update",
+      "You rely on plugins just to make basic things work",
+      "Your workflows don't match your platform",
+      "Your team fights the system instead of using it",
+      "Scaling feels risky or breaks things"
+    ],
+    "lead_line": "And every workaround makes it worse.",
+    "line_1": "At this stage, small fixes stop working.",
+    "line_2": "You don't need another patch.",
+    "line_3": "You need a system."
   },
   "discovery": {
-    "eyebrow": "Strategic Discovery Session",
+    "eyebrow": "STRATEGIC DISCOVERY SESSION",
     "required_badge": "Required first step",
-    "summary": "A paid working session that aligns business priorities, user flows, and technical scope before build. You leave with a delivery roadmap and proposal. The fee is credited if we proceed.",
-    "price_label": "Fixed price",
-    "credit_note": "Credited toward implementation when the project moves forward.",
+    "title": "Strategic Discovery Session",
+    "intro": "Before anything is built, we define the system properly.",
+    "leave_with_label": "You leave with:",
+    "outcomes": [
+      "a clear technical direction",
+      "a scoped roadmap",
+      "realistic timelines and pricing"
+    ],
+    "sales_line_1": "This is not a sales call.",
+    "sales_line_2": "It's a focused working session where we turn loose ideas into a clear technical plan.",
+    "deliverables": [
+      "90-minute strategy deep-dive",
+      "Competitor / market review where relevant",
+      "Technical scope definition",
+      "Full project roadmap and proposal"
+    ],
+    "price_label": "FIXED PRICE",
+    "price_value": "€500 (Credited to Build)",
+    "price_note": "Credited toward implementation when the project moves forward.",
     "cta": "Book Strategic Discovery"
   },
   "stacks": {
-    "eyebrow": "Service Stacks",
-    "title": "Choose the stack that matches the system you need",
-    "intro": "Each stack is designed for a different level of product and operational complexity, while keeping the same engineering standards and discovery-first approach.",
-    "scope_note": "Stack prices are starting points. Final proposals are scoped to your requirements, integrations, and delivery complexity.",
-    "timeline_label": "Typical timeline",
-    "from_price_label": "Starting from",
-    "fixed_price_label": "Fixed price",
-    "support_from_label": "Support and maintenance from",
-    "includes_label": "What this stack includes",
-    "ideal_for_label": "Best fit",
-    "detail_cta": "View stack details",
-    "featured_badge": "Most requested"
-  },
-  "stack_overrides": {
-    "foundation-stack": {
-      "tier": "Foundation Stack",
-      "hook": "Custom digital foundation for service businesses that need speed, trust, and maintainability.",
-      "ideal": "Teams that need a serious web presence with structured content workflows and long-term technical stability.",
-      "support_price": "From €200/month"
-    },
-    "commerce-stack": {
-      "tier": "Commerce Stack",
-      "hook": "Custom commerce architecture for businesses that have outgrown standard storefront tooling.",
-      "ideal": "Brands that need tailored checkout, integrations, fulfilment operations, and admin reliability in one system.",
-      "support_price": "From €400/month",
-      "badge": "Most requested"
-    },
-    "application-stack": {
-      "tier": "Application Stack",
-      "hook": "Custom product build for authenticated workflows, dashboards, and business-specific logic.",
-      "ideal": "Businesses building internal or customer-facing applications where permissions, workflows, and scale matter.",
-      "support_price": "From €600/month"
+    "eyebrow": "SERVICE STACKS",
+    "title": "Choose the system that matches your stage of growth",
+    "intro": "Each stack is designed around a different level of complexity, but all follow the same standard: fast, scalable, and built for real operations.",
+    "pricing_note": "Stack prices are starting points. Final proposals are scoped to your requirements, integrations, and delivery complexity.",
+    "includes_label": "What this includes",
+    "best_fit_label": "Best fit",
+    "cards": {
+      "foundation-stack": {
+        "eyebrow": "FOUNDATION STACK",
+        "title": "The Foundation Stack",
+        "description": "Replace fragile template sites with a system built for speed, trust, and long-term control.",
+        "price": "Starting from €7,500",
+        "support": "Support and maintenance from €200/month",
+        "timeline": "Typical timeline: 4-6 weeks",
+        "includes": [
+          "Custom React frontend (no templates)",
+          "Django backend + headless CMS",
+          "Technical SEO + schema setup",
+          "Managed hosting + security"
+        ],
+        "bestFit": "Service businesses that need performance, credibility, and a strong digital foundation.",
+        "cta": "View Foundation Stack"
+      },
+      "commerce-stack": {
+        "eyebrow": "COMMERCE STACK",
+        "title": "The Commerce Stack",
+        "description": "Build a commerce system that fits how your business actually sells, not Shopify's limitations.",
+        "price": "Starting from €12,000",
+        "support": "Support and maintenance from €400/month",
+        "timeline": "Typical timeline: 7-10 weeks",
+        "includes": [
+          "Headless e-commerce architecture",
+          "Custom cart and checkout logic",
+          "Stripe / API integrations",
+          "Inventory and admin workflows"
+        ],
+        "bestFit": "Brands that need custom checkout logic, integrations, or operational control.",
+        "cta": "View Commerce Stack",
+        "badge": "Most requested"
+      },
+      "application-stack": {
+        "eyebrow": "APPLICATION STACK",
+        "title": "The Application Stack",
+        "description": "Build real software, not just a website.",
+        "price": "Starting from €20,000",
+        "support": "Support and maintenance from €600/month",
+        "timeline": "Typical timeline: 10-16+ weeks",
+        "includes": [
+          "Full Django REST API",
+          "Authentication systems and permissions",
+          "Dashboards and data visualisation",
+          "Scalable database architecture"
+        ],
+        "bestFit": "Businesses building internal systems, SaaS tools, or operational platforms.",
+        "cta": "View Application Stack"
+      }
     }
   },
+  "why_custom": {
+    "eyebrow": "WHY CUSTOM / WHY NOW",
+    "title": "Why businesses move to custom",
+    "lead": "Most don't start here.",
+    "intro": "They reach a point where:",
+    "items": [
+      "templates stop scaling",
+      "performance starts affecting revenue",
+      "integrations become messy and unreliable",
+      "simple changes become expensive or slow"
+    ],
+    "turning_point": "That's the turning point.",
+    "pressure_line": "Most businesses wait too long to get here.",
+    "design_line": "Custom isn't about \"better design\".",
+    "summary_line": "It's about control, performance, and building something that supports how your business actually runs."
+  },
   "process": {
-    "eyebrow": "How engagement works",
+    "eyebrow": "HOW ENGAGEMENT WORKS",
     "title": "Discovery-first delivery with clear scope control",
     "steps": [
       {
         "title": "Paid Discovery",
-        "body": "We define goals, constraints, and technical direction in a focused working session."
+        "body": "We define goals, constraints, and technical direction."
       },
       {
-        "title": "Scoped proposal",
-        "body": "You receive a structured implementation plan with delivery phases and pricing."
+        "title": "Scoped Proposal",
+        "body": "You get a structured plan with phases, pricing, and timelines."
       },
       {
-        "title": "Build and reviews",
-        "body": "Implementation follows agreed scope, with milestone reviews and practical communication."
+        "title": "Build and Review",
+        "body": "Implementation follows agreed scope with milestone checkpoints."
       },
       {
-        "title": "Launch and support",
-        "body": "After handover, ongoing support keeps the platform reliable as the business evolves."
+        "title": "Launch and Support",
+        "body": "Stable release, handover, and ongoing support as needed."
       }
     ]
   },
   "cta": {
-    "title": "Need software that fits your real operations?",
-    "description": "Start with Strategic Discovery and get a scope-backed plan before implementation begins.",
-    "primary": "Start with Discovery",
+    "title": "Your system is already limiting your growth.",
+    "line_1": "The longer you wait, the more expensive it becomes to fix.",
+    "body": "Start with Strategic Discovery and get a clear plan before committing to a build.",
+    "primary": "Start Strategic Discovery",
     "secondary": "Talk Through Your Project"
   }
 },
 "service_detail_page_v2": {
+  "seo_title_suffix": " | Miss Bott",
   "back_button": "Back to Services",
-  "error_title": "Error",
+  "error_title": "Service Not Found",
   "error_message": "Failed to fetch service details. Please try again later.",
-  "not_found": "The service could not be found.",
-  "price_label_from": "Starting from",
-  "price_label_fixed": "Fixed price",
-  "timeline_label": "Typical timeline",
-  "fit_label": "Best fit",
-  "includes_title": "What this service includes",
-  "solves_title": "What this solves",
-  "process_title": "How the engagement works",
-  "pricing_title": "Pricing and scope",
-  "support_label": "Support and maintenance",
-  "pricing_scope_note": "Build pricing is scoped per project. Final pricing depends on requirements, integrations, and delivery complexity.",
-  "details_map": {
-    "strategic-discovery-session": {
-      "eyebrow": "Strategic Discovery Session",
-      "fit": "Teams that need clear scope before committing to a build",
-      "includes_intro": "Discovery is a paid strategic workshop, not a generic intro call. It gives you concrete planning outputs you can use immediately.",
-      "solves": [
-        "Prevents vague scope and expensive mid-project changes.",
-        "Aligns business priorities with technical implementation decisions.",
-        "Creates clear delivery direction before contracts and development."
-      ],
-      "process": [
-        {
-          "title": "Preparation",
-          "body": "We collect context on goals, users, constraints, and current systems."
-        },
-        {
-          "title": "Working session",
-          "body": "In 90 minutes we map priorities, workflows, and implementation boundaries."
-        },
-        {
-          "title": "Roadmap",
-          "body": "You receive recommended architecture, phase plan, and delivery priorities."
-        },
-        {
-          "title": "Proposal",
-          "body": "A scoped proposal follows, with the Discovery fee credited if we proceed."
-        }
-      ],
-      "pricing_points": [
-        "Discovery is a fixed paid engagement and a required first step.",
-        "If implementation proceeds, Discovery is credited toward the build budget."
-      ],
-      "support_price": "Not required before build",
-      "cta_primary": "Book Strategic Discovery",
-      "cta_secondary": "View Service Stacks"
-    },
+  "not_found": "The service you requested is unavailable or has been moved.",
+  "summary_labels": {
+    "pricing": "Pricing",
+    "timeline": "Timeline",
+    "best_fit": "Best fit"
+  },
+  "sections": {
+    "includes_title": "What this service includes",
+    "solves_title": "What this solves",
+    "fit_title": "Who this is for / not for",
+    "who_for_title": "Who it is for",
+    "not_for_title": "Not for",
+    "process_title": "How the engagement works",
+    "pricing_title": "Pricing and scope",
+    "pricing_start_label": "Starting from",
+    "pricing_support_label": "Support and maintenance"
+  },
+  "fallback": {
+    "eyebrow": "SERVICE",
+    "heroTitle": "Custom Service",
+    "heroBody": "A scoped engagement designed around business outcomes and delivery clarity.",
+    "heroBodySupport": "If your project needs technical direction before build, Strategic Discovery is the right place to start.",
+    "summaryPrice": "Starting from scoped pricing",
+    "summaryTimeline": "Timeline defined after Discovery",
+    "summaryFit": "Best fit: teams that need custom delivery with long-term maintainability",
+    "includesIntro": "This service is scoped around practical implementation requirements, integrations, and operational constraints.",
+    "includesItems": [
+      "Clear technical scope",
+      "Implementation planning",
+      "Milestone-based delivery",
+      "Launch support options"
+    ],
+    "solvesItems": [
+      "Unclear technical direction before implementation begins",
+      "Misalignment between business requirements and delivery execution",
+      "Need for a maintainable system that can scale with the business"
+    ],
+    "whoFor": [
+      "teams that need structured custom implementation",
+      "businesses that have outgrown patchwork systems",
+      "projects requiring clear scope control before build"
+    ],
+    "notFor": [
+      "template-only builds",
+      "projects without defined ownership or delivery priorities",
+      "teams not ready for scoped implementation work"
+    ],
+    "process": [
+      {
+        "title": "Discovery and scope",
+        "body": "We align goals, constraints, and technical direction before implementation."
+      },
+      {
+        "title": "Architecture planning",
+        "body": "We define system boundaries, priorities, and delivery phases."
+      },
+      {
+        "title": "Implementation",
+        "body": "Build follows approved scope with milestone checkpoints."
+      },
+      {
+        "title": "Launch and support",
+        "body": "Deployment and support are structured around reliability and handover clarity."
+      }
+    ],
+    "pricingStart": "Starting from scoped pricing",
+    "pricingSupport": "Support and maintenance available",
+    "pricingNote": "Build pricing is scoped per project. Final pricing depends on requirements, integrations, and delivery complexity.",
+    "ctaHeading": "Start Strategic Discovery",
+    "ctaSubtext": "Get a scope-backed plan and practical technical direction before implementation begins.",
+    "ctaPrimary": "Start Strategic Discovery",
+    "ctaSecondary": "Compare Service Stacks"
+  },
+  "stacks": {
     "foundation-stack": {
-      "eyebrow": "Foundation Stack",
-      "fit": "Service businesses that need a high-trust custom digital foundation",
-      "includes_intro": "Foundation delivers a custom website architecture that is fast, maintainable, and aligned to business positioning, not template limitations.",
-      "solves": [
-        "Slow and fragile template websites that are hard to maintain.",
-        "Unstructured content workflows that block publishing consistency.",
-        "Weak technical foundations that hurt trust and conversion quality."
+      "eyebrow": "FOUNDATION STACK",
+      "heroTitle": "The Foundation Stack",
+      "heroBody": "A fast, scalable website without template limitations.",
+      "heroBodySupport": "For service businesses that need performance, trust, and long-term flexibility.",
+      "summaryPrice": "Starting from €7,500",
+      "summaryTimeline": "Typical timeline: 4-6 weeks",
+      "summaryFit": "Best fit: service businesses that need a high-trust custom digital foundation",
+      "includesIntro": "Foundation delivers a custom website architecture that is fast, maintainable, and aligned to business positioning, not template limitations.",
+      "includesItems": [
+        "Custom React frontend (no templates)",
+        "Django backend + headless CMS",
+        "90+ Google Lighthouse target",
+        "Technical SEO and schema setup",
+        "Managed hosting and security"
+      ],
+      "solvesItems": [
+        "Slow and fragile template websites that are hard to maintain",
+        "Unstructured content workflows that block publishing consistency",
+        "Weak technical foundations that hurt trust and conversion quality"
+      ],
+      "whoFor": [
+        "service businesses scaling beyond DIY platforms",
+        "businesses needing speed, trust, and clearer technical control",
+        "brands that want a custom site without jumping straight to app complexity"
+      ],
+      "notFor": [
+        "businesses looking for a low-cost template site",
+        "projects that only need a quick brochure build",
+        "teams that do not need long-term scalability"
       ],
       "process": [
         {
@@ -168,22 +292,44 @@
           "body": "Production launch is completed with documentation and support onboarding."
         }
       ],
-      "pricing_points": [
-        "Build starts from €7,500 depending on scope.",
-        "Ongoing support and maintenance starts from €200/month."
-      ],
-      "support_price": "From €200/month",
-      "cta_primary": "Start Foundation Scope",
-      "cta_secondary": "Compare Service Stacks"
+      "pricingStart": "Starting from €7,500",
+      "pricingSupport": "Support and maintenance from €200/month",
+      "pricingNote": "Build pricing is scoped per project. Final pricing depends on requirements, integrations, and delivery complexity.",
+      "ctaHeading": "Start Foundation Scope",
+      "ctaSubtext": "Authority, speed, and trust. A high-performance digital platform for service businesses.",
+      "ctaPrimary": "Start Foundation Scope",
+      "ctaSecondary": "Compare Service Stacks"
     },
     "commerce-stack": {
-      "eyebrow": "Commerce Stack",
-      "fit": "Brands that need tailored commerce flows and operational depth",
-      "includes_intro": "Commerce Stack extends Foundation with custom checkout, operational integrations, and admin workflows built for real sales operations.",
-      "solves": [
-        "Storefront constraints that block custom checkout or fulfilment logic.",
-        "Disconnected product, order, and customer operations.",
-        "Plugin-heavy setups that struggle with reliability at transaction level."
+      "eyebrow": "COMMERCE STACK",
+      "heroTitle": "The Commerce Stack",
+      "heroBody": "Custom commerce built around how your business actually sells.",
+      "heroBodySupport": "For brands that need operational control, tailored checkout logic, and reliable integrations.",
+      "summaryPrice": "Starting from €12,000",
+      "summaryTimeline": "Typical timeline: 7-10 weeks",
+      "summaryFit": "Best fit: brands that need tailored commerce flows and operational depth",
+      "includesIntro": "Commerce Stack extends Foundation with custom checkout, operational integrations, and admin workflows built for real sales operations.",
+      "includesItems": [
+        "Headless e-commerce architecture",
+        "Custom cart and checkout logic",
+        "Stripe / Printful / third-party API integrations",
+        "Inventory management system",
+        "End-to-end purchase funnel testing"
+      ],
+      "solvesItems": [
+        "Storefront constraints that block custom checkout or fulfilment logic",
+        "Disconnected product, order, and customer operations",
+        "Plugin-heavy setups that struggle with reliability at transaction level"
+      ],
+      "whoFor": [
+        "brands that have outgrown standard storefront tooling",
+        "businesses with custom fulfilment, inventory, or checkout requirements",
+        "teams needing tighter control over commerce operations"
+      ],
+      "notFor": [
+        "simple catalogue-only stores",
+        "businesses fully satisfied with off-the-shelf platform constraints",
+        "projects that do not require custom commerce logic"
       ],
       "process": [
         {
@@ -203,22 +349,44 @@
           "body": "Transaction QA, handover, and support setup are completed before go-live."
         }
       ],
-      "pricing_points": [
-        "Build starts from €12,000 depending on catalog, checkout, and integration scope.",
-        "Ongoing support and maintenance starts from €400/month."
-      ],
-      "support_price": "From €400/month",
-      "cta_primary": "Scope Commerce Build",
-      "cta_secondary": "Compare Service Stacks"
+      "pricingStart": "Starting from €12,000",
+      "pricingSupport": "Support and maintenance from €400/month",
+      "pricingNote": "Build pricing is scoped per project. Final pricing depends on catalogue complexity, integrations, and delivery scope.",
+      "ctaHeading": "Scope Commerce Build",
+      "ctaSubtext": "Scalable headless commerce for brands outgrowing Shopify's limitations.",
+      "ctaPrimary": "Scope Commerce Build",
+      "ctaSecondary": "Compare Service Stacks"
     },
     "application-stack": {
-      "eyebrow": "Application Stack",
-      "fit": "Businesses building software products with workflows, permissions, and dashboards",
-      "includes_intro": "Application Stack is for product-level systems where architecture, permissions, and business logic must support sustained operational use.",
-      "solves": [
-        "Manual or fragmented workflows that cannot scale with usage.",
-        "Lack of role-based controls and reliable business-rule enforcement.",
-        "Need for application-grade architecture rather than marketing-site patterns."
+      "eyebrow": "APPLICATION STACK",
+      "heroTitle": "The Application Stack",
+      "heroBody": "Build real software, not just a website.",
+      "heroBodySupport": "For businesses that need user accounts, private dashboards, workflows, permissions, and operational logic.",
+      "summaryPrice": "Starting from €20,000",
+      "summaryTimeline": "Typical timeline: 10-16+ weeks",
+      "summaryFit": "Best fit: businesses building software products, internal systems, or custom platforms",
+      "includesIntro": "Application Stack is for product-level systems where architecture, permissions, and business logic must support sustained operational use.",
+      "includesItems": [
+        "Full custom Django REST API",
+        "User authentication and permissions",
+        "Private dashboards and data visualisation",
+        "Complex state management in React",
+        "Scalable database architecture"
+      ],
+      "solvesItems": [
+        "Manual or fragmented workflows that cannot scale with usage",
+        "Lack of role-based controls and reliable business-rule enforcement",
+        "Need for application-grade architecture rather than marketing-site patterns"
+      ],
+      "whoFor": [
+        "businesses building internal systems or operational tools",
+        "teams launching SaaS-like platforms or authenticated products",
+        "companies that need workflows, permissions, and dashboards"
+      ],
+      "notFor": [
+        "brochure websites",
+        "simple content-managed sites",
+        "projects without application logic or account-based functionality"
       ],
       "process": [
         {
@@ -238,13 +406,13 @@
           "body": "Deployment, monitoring, and support model are put in place for stability."
         }
       ],
-      "pricing_points": [
-        "Build starts from €20,000 depending on workflow complexity and feature depth.",
-        "Ongoing support and maintenance starts from €600/month."
-      ],
-      "support_price": "From €600/month",
-      "cta_primary": "Scope Application Build",
-      "cta_secondary": "Compare Service Stacks"
+      "pricingStart": "Starting from €20,000",
+      "pricingSupport": "Support and maintenance from €600/month",
+      "pricingNote": "Build pricing is scoped per project. Final pricing depends on workflow complexity, feature depth, and delivery scope.",
+      "ctaHeading": "Scope Application Build",
+      "ctaSubtext": "Full-stack software delivery for operational platforms, internal tools, and product systems.",
+      "ctaPrimary": "Scope Application Build",
+      "ctaSecondary": "Compare Service Stacks"
     }
   }
 },

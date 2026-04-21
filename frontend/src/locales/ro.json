@@ -10,241 +10,409 @@
     "contact": "Contact"
   },
 "services_page_v2": {
-  "seo_title": "Servicii custom și prețuri | Miss Bott",
-  "seo_description": "Explorează serviciile Miss Bott: sesiune Strategic Discovery cu preț fix și stack-urile Foundation, Commerce și Application pentru afaceri care au nevoie de software custom.",
-  "seo_keywords": "preț dezvoltare web custom, sesiune descoperire strategică, servicii Django React, dezvoltare ecommerce custom, aplicații web România",
+  "seo_title": "Servicii web si software custom | Miss Bott",
+  "seo_description": "Livrare Django si React, discovery-first, pentru afaceri care au depasit template-urile. Compara stack-urile Foundation, Commerce si Application cu preturi de pornire transparente.",
   "hero": {
-    "eyebrow": "Servicii și prețuri",
-    "title": "Trei stack-uri de servicii construite pentru livrare controlată.",
-    "summary": "Fiecare colaborare începe cu Discovery, apoi continuă cu stack-ul potrivit nivelului tău de complexitate operațională. Scop clar, arhitectură practică și prețuri ancorate în implementare reală."
+    "eyebrow": "SERVICII SI PRETURI",
+    "title_line_1": "Website-ul nu este problema.",
+    "title_line_2": "Sistemul este.",
+    "body": "Proiectam si construim platforme custom Django + React pentru afaceri care au depasit template-uri, plugin-uri si setup-uri improvizate.",
+    "body_support": "Mai rapid. Scalabil. Construit in jurul modului real in care functioneaza business-ul tau.",
+    "primary_cta": "Vezi stack-urile de servicii",
+    "secondary_cta": "Rezerva Strategic Discovery"
+  },
+  "pain": {
+    "title": "Daca iti suna cunoscut, setup-ul actual deja te tine pe loc",
+    "items": [
+      "Site-ul este lent, fragil sau greu de actualizat",
+      "Depinzi de plugin-uri pentru functii de baza",
+      "Fluxurile tale nu se potrivesc cu platforma",
+      "Echipa se lupta cu sistemul in loc sa il foloseasca",
+      "Scalarea pare riscanta sau incepe sa rupa lucruri"
+    ],
+    "lead_line": "Si fiecare workaround agraveaza problema.",
+    "line_1": "In etapa asta, reparatiile mici nu mai functioneaza.",
+    "line_2": "Nu ai nevoie de inca un patch.",
+    "line_3": "Ai nevoie de un sistem."
   },
   "discovery": {
-    "eyebrow": "Sesiune Strategică de Descoperire",
+    "eyebrow": "SESIUNE STRATEGIC DISCOVERY",
     "required_badge": "Primul pas obligatoriu",
-    "summary": "Sesiune de lucru plătită care aliniază prioritățile de business, fluxurile utilizatorilor și scopul tehnic înainte de build. Primești roadmap și propunere clară. Taxa este dedusă dacă proiectul continuă.",
-    "price_label": "Preț fix",
-    "credit_note": "Dedus din implementare dacă proiectul continuă.",
-    "cta": "Rezervă Strategic Discovery"
+    "title": "Sesiune Strategic Discovery",
+    "intro": "Inainte sa construim ceva, definim sistemul corect.",
+    "leave_with_label": "Pleci cu:",
+    "outcomes": [
+      "o directie tehnica clara",
+      "un roadmap cu scop definit",
+      "timelines si preturi realiste"
+    ],
+    "sales_line_1": "Nu este un call de vanzari.",
+    "sales_line_2": "Este o sesiune de lucru focusata in care transformam idei neclare intr-un plan tehnic clar.",
+    "deliverables": [
+      "deep-dive strategic de 90 de minute",
+      "review competitori / piata unde este relevant",
+      "definire de scop tehnic",
+      "roadmap complet de proiect si propunere"
+    ],
+    "price_label": "PRET FIX",
+    "price_value": "€500 (Dedus din Build)",
+    "price_note": "Suma se deduce din implementare daca proiectul merge mai departe.",
+    "cta": "Rezerva Strategic Discovery"
   },
   "stacks": {
-    "eyebrow": "Stack-uri de servicii",
-    "title": "Alege stack-ul potrivit sistemului de care ai nevoie",
-    "intro": "Fiecare stack răspunde unui nivel diferit de complexitate, păstrând aceleași standarde tehnice și același model discovery-first.",
-    "scope_note": "Prețurile stack-urilor sunt puncte de pornire. Oferta finală depinde de scop, integrări și complexitatea livrării.",
-    "timeline_label": "Durată tipică",
-    "from_price_label": "De la",
-    "fixed_price_label": "Preț fix",
-    "support_from_label": "Suport și mentenanță de la",
-    "includes_label": "Ce include acest stack",
-    "ideal_for_label": "Potrivire bună pentru",
-    "detail_cta": "Vezi detalii stack",
-    "featured_badge": "Cel mai cerut"
-  },
-  "stack_overrides": {
-    "foundation-stack": {
-      "tier": "Foundation Stack",
-      "hook": "Fundație digitală custom pentru afaceri de servicii care au nevoie de viteză, încredere și mentenanță.",
-      "ideal": "Echipe care au nevoie de o prezență web solidă, fluxuri clare de conținut și stabilitate tehnică pe termen lung.",
-      "support_price": "De la €200/lună"
-    },
-    "commerce-stack": {
-      "tier": "Commerce Stack",
-      "hook": "Arhitectură de comerț custom pentru afaceri care au depășit limitările unui storefront standard.",
-      "ideal": "Branduri care au nevoie de checkout personalizat, integrări, fulfilment și operațiuni administrative într-un singur sistem.",
-      "support_price": "De la €400/lună",
-      "badge": "Cel mai cerut"
-    },
-    "application-stack": {
-      "tier": "Application Stack",
-      "hook": "Build custom de produs pentru fluxuri autentificate, dashboard-uri și logică de business proprie.",
-      "ideal": "Afaceri care construiesc aplicații interne sau pentru clienți, unde permisiunile, fluxurile și scalarea contează.",
-      "support_price": "De la €600/lună"
+    "eyebrow": "STACK-URI DE SERVICII",
+    "title": "Alege sistemul potrivit pentru etapa ta de crestere",
+    "intro": "Fiecare stack este gandit pentru un nivel diferit de complexitate, dar toate respecta acelasi standard: rapid, scalabil si construit pentru operatiuni reale.",
+    "pricing_note": "Preturile stack-urilor sunt puncte de pornire. Oferta finala este definita in functie de cerinte, integrari si complexitatea livrarii.",
+    "includes_label": "Ce include",
+    "best_fit_label": "Potrivire buna",
+    "cards": {
+      "foundation-stack": {
+        "eyebrow": "FOUNDATION STACK",
+        "title": "Foundation Stack",
+        "description": "Inlocuieste site-urile template fragile cu un sistem construit pentru viteza, incredere si control pe termen lung.",
+        "price": "De la €7,500",
+        "support": "Suport si mentenanta de la €200/luna",
+        "timeline": "Durata tipica: 4-6 saptamani",
+        "includes": [
+          "Frontend React custom (fara template-uri)",
+          "Backend Django + CMS headless",
+          "SEO tehnic + setup schema",
+          "Hosting administrat + securitate"
+        ],
+        "bestFit": "Afaceri de servicii care au nevoie de performanta, credibilitate si o fundatie digitala puternica.",
+        "cta": "Vezi Foundation Stack"
+      },
+      "commerce-stack": {
+        "eyebrow": "COMMERCE STACK",
+        "title": "Commerce Stack",
+        "description": "Construieste un sistem de comert care se potriveste cu felul in care vinzi in realitate, nu cu limitarile Shopify.",
+        "price": "De la €12,000",
+        "support": "Suport si mentenanta de la €400/luna",
+        "timeline": "Durata tipica: 7-10 saptamani",
+        "includes": [
+          "Arhitectura e-commerce headless",
+          "Logica custom pentru cos si checkout",
+          "Integrari Stripe / API",
+          "Fluxuri pentru inventar si admin"
+        ],
+        "bestFit": "Branduri care au nevoie de logica de checkout custom, integrari sau control operational.",
+        "cta": "Vezi Commerce Stack",
+        "badge": "Cel mai solicitat"
+      },
+      "application-stack": {
+        "eyebrow": "APPLICATION STACK",
+        "title": "Application Stack",
+        "description": "Construieste software real, nu doar un website.",
+        "price": "De la €20,000",
+        "support": "Suport si mentenanta de la €600/luna",
+        "timeline": "Durata tipica: 10-16+ saptamani",
+        "includes": [
+          "Django REST API complet",
+          "Sisteme de autentificare si permisiuni",
+          "Dashboard-uri si vizualizare de date",
+          "Arhitectura de baza de date scalabila"
+        ],
+        "bestFit": "Afaceri care construiesc sisteme interne, produse SaaS sau platforme operationale.",
+        "cta": "Vezi Application Stack"
+      }
     }
   },
+  "why_custom": {
+    "eyebrow": "DE CE CUSTOM / DE CE ACUM",
+    "title": "De ce trec afacerile la custom",
+    "lead": "Majoritatea nu pornesc de aici.",
+    "intro": "Ajung la un punct in care:",
+    "items": [
+      "template-urile nu mai scaleaza",
+      "performanta incepe sa afecteze veniturile",
+      "integrarile devin haotice si nesigure",
+      "schimbarile simple devin scumpe sau lente"
+    ],
+    "turning_point": "Acela este punctul de cotitura.",
+    "pressure_line": "Majoritatea afacerilor ajung aici prea tarziu.",
+    "design_line": "Custom nu inseamna doar \"design mai bun\".",
+    "summary_line": "Inseamna control, performanta si un sistem care sustine modul real in care functioneaza business-ul."
+  },
   "process": {
-    "eyebrow": "Cum lucrăm",
+    "eyebrow": "CUM LUCRAM",
     "title": "Livrare discovery-first cu control clar al scopului",
     "steps": [
       {
-        "title": "Discovery plătit",
-        "body": "Definim obiectivele, constrângerile și direcția tehnică într-o sesiune dedicată."
+        "title": "Discovery platit",
+        "body": "Definim obiectivele, constrangerile si directia tehnica."
       },
       {
         "title": "Propunere pe scop",
-        "body": "Primești un plan structurat de implementare, etape de livrare și estimări de cost."
+        "body": "Primesti un plan structurat cu faze, preturi si timeline-uri."
       },
       {
-        "title": "Build și review",
-        "body": "Implementarea urmează scopul agreat, cu review pe milestones și comunicare clară."
+        "title": "Build si review",
+        "body": "Implementarea urmeaza scopul agreat, cu checkpoints pe milestones."
       },
       {
-        "title": "Lansare și suport",
-        "body": "După handover, suportul menține platforma stabilă pe măsură ce afacerea crește."
+        "title": "Lansare si suport",
+        "body": "Release stabil, handover si suport continuu unde este necesar."
       }
     ]
   },
   "cta": {
-    "title": "Ai nevoie de software construit pentru operațiuni reale?",
-    "description": "Începe cu Strategic Discovery și primești un plan clar, validat tehnic, înainte de implementare.",
-    "primary": "Începe cu Discovery",
-    "secondary": "Discută proiectul"
+    "title": "Sistemul actual deja iti limiteaza cresterea.",
+    "line_1": "Cu cat astepti mai mult, cu atat devine mai costisitor de reparat.",
+    "body": "Incepe cu Strategic Discovery si primesti un plan clar inainte sa te angajezi la build.",
+    "primary": "Incepe Strategic Discovery",
+    "secondary": "Discuta proiectul"
   }
 },
 "service_detail_page_v2": {
-  "back_button": "Înapoi la Servicii",
-  "error_title": "Eroare",
-  "error_message": "Nu s-au putut încărca detaliile serviciului. Încearcă din nou.",
-  "not_found": "Serviciul nu a fost găsit.",
-  "price_label_from": "De la",
-  "price_label_fixed": "Preț fix",
-  "timeline_label": "Durată tipică",
-  "fit_label": "Potrivire bună",
-  "includes_title": "Ce include serviciul",
-  "solves_title": "Ce probleme rezolvă",
-  "process_title": "Cum se desfășoară colaborarea",
-  "pricing_title": "Preț și scop",
-  "support_label": "Suport și mentenanță",
-  "pricing_scope_note": "Prețul final de build este definit pe scop. Oferta depinde de cerințe, integrări și complexitatea livrării.",
-  "details_map": {
-    "strategic-discovery-session": {
-      "eyebrow": "Sesiune Strategică de Descoperire",
-      "fit": "Echipe care au nevoie de scop clar înainte de build",
-      "includes_intro": "Discovery este un workshop strategic plătit, nu un call introductiv. Primești livrabile concrete pe care le poți folosi imediat.",
-      "solves": [
-        "Previne definirea vagă a proiectului și schimbările costisitoare în timpul implementării.",
-        "Aliniază prioritățile de business cu deciziile tehnice.",
-        "Oferă direcție clară de livrare înainte de contract și dezvoltare."
-      ],
-      "process": [
-        {
-          "title": "Pregătire",
-          "body": "Colectăm context despre obiective, utilizatori, constrângeri și sisteme existente."
-        },
-        {
-          "title": "Sesiune de lucru",
-          "body": "În 90 de minute mapăm prioritățile, fluxurile și limitele implementării."
-        },
-        {
-          "title": "Roadmap",
-          "body": "Primești recomandare de arhitectură, etape și priorități de livrare."
-        },
-        {
-          "title": "Propunere",
-          "body": "Urmează propunere pe scop, iar taxa Discovery se deduce dacă proiectul continuă."
-        }
-      ],
-      "pricing_points": [
-        "Discovery are preț fix și este primul pas obligatoriu.",
-        "Dacă implementarea continuă, taxa Discovery se deduce din bugetul de build."
-      ],
-      "support_price": "Nu este necesar înainte de build",
-      "cta_primary": "Rezervă Strategic Discovery",
-      "cta_secondary": "Vezi stack-urile"
-    },
+  "seo_title_suffix": " | Miss Bott",
+  "back_button": "Inapoi la Servicii",
+  "error_title": "Serviciu indisponibil",
+  "error_message": "Detaliile serviciului nu au putut fi incarcate. Incearca din nou.",
+  "not_found": "Serviciul cerut nu este disponibil sau a fost mutat.",
+  "summary_labels": {
+    "pricing": "Pret",
+    "timeline": "Timeline",
+    "best_fit": "Potrivire buna"
+  },
+  "sections": {
+    "includes_title": "Ce include acest serviciu",
+    "solves_title": "Ce rezolva",
+    "fit_title": "Pentru cine este / nu este",
+    "who_for_title": "Pentru cine este",
+    "not_for_title": "Nu este pentru",
+    "process_title": "Cum functioneaza colaborarea",
+    "pricing_title": "Pret si scop",
+    "pricing_start_label": "De la",
+    "pricing_support_label": "Suport si mentenanta"
+  },
+  "fallback": {
+    "eyebrow": "SERVICIU",
+    "heroTitle": "Serviciu custom",
+    "heroBody": "Un engagement pe scop, construit pentru rezultate de business si claritate in livrare.",
+    "heroBodySupport": "Daca proiectul tau are nevoie de directie tehnica inainte de build, Strategic Discovery este punctul potrivit de start.",
+    "summaryPrice": "Pret de pornire in functie de scop",
+    "summaryTimeline": "Timeline stabilit dupa Discovery",
+    "summaryFit": "Potrivire buna: echipe care au nevoie de livrare custom mentenabila",
+    "includesIntro": "Acest serviciu este definit in jurul cerintelor reale de implementare, integrari si constrangeri operationale.",
+    "includesItems": [
+      "Scop tehnic clar",
+      "Planificare de implementare",
+      "Livrare pe milestones",
+      "Optiuni de suport la lansare"
+    ],
+    "solvesItems": [
+      "Directie tehnica neclara inainte de implementare",
+      "Lipsa de aliniere intre cerintele de business si executia tehnica",
+      "Nevoia unui sistem mentenabil care poate scala"
+    ],
+    "whoFor": [
+      "echipe care au nevoie de implementare custom structurata",
+      "afaceri care au depasit sisteme patchwork",
+      "proiecte care cer control clar al scopului"
+    ],
+    "notFor": [
+      "build-uri strict pe template",
+      "proiecte fara ownership si prioritati clare",
+      "echipe care nu sunt pregatite pentru implementare pe scop"
+    ],
+    "process": [
+      {
+        "title": "Discovery si scop",
+        "body": "Aliniem obiectivele, constrangerile si directia tehnica inainte de implementare."
+      },
+      {
+        "title": "Plan de arhitectura",
+        "body": "Definim limitele sistemului, prioritatile si fazele de livrare."
+      },
+      {
+        "title": "Implementare",
+        "body": "Build-ul urmeaza scopul aprobat, cu checkpoints pe milestones."
+      },
+      {
+        "title": "Lansare si suport",
+        "body": "Deployment-ul si suportul sunt structurate pentru fiabilitate si handover clar."
+      }
+    ],
+    "pricingStart": "Pret de pornire in functie de scop",
+    "pricingSupport": "Suport si mentenanta disponibile",
+    "pricingNote": "Pretul final de build este definit pe proiect. Valoarea depinde de cerinte, integrari si complexitatea livrarii.",
+    "ctaHeading": "Incepe Strategic Discovery",
+    "ctaSubtext": "Primeste un plan clar, validat tehnic, inainte sa inceapa implementarea.",
+    "ctaPrimary": "Incepe Strategic Discovery",
+    "ctaSecondary": "Compara stack-urile"
+  },
+  "stacks": {
     "foundation-stack": {
-      "eyebrow": "Foundation Stack",
-      "fit": "Afaceri de servicii care au nevoie de o fundație web solidă și credibilă",
-      "includes_intro": "Foundation livrează o arhitectură web custom, rapidă și mentenabilă, construită pentru poziționare de business, nu limitări de template.",
-      "solves": [
-        "Site-uri template lente și fragile, greu de menținut.",
-        "Fluxuri de conținut neclare care blochează publicarea constantă.",
-        "Fundație tehnică slabă care afectează încrederea și conversia."
+      "eyebrow": "FOUNDATION STACK",
+      "heroTitle": "Foundation Stack",
+      "heroBody": "Un website rapid si scalabil, fara limitari de template.",
+      "heroBodySupport": "Pentru afaceri de servicii care au nevoie de performanta, incredere si flexibilitate pe termen lung.",
+      "summaryPrice": "De la €7,500",
+      "summaryTimeline": "Durata tipica: 4-6 saptamani",
+      "summaryFit": "Potrivire buna: afaceri de servicii care au nevoie de o fundatie digitala custom cu nivel ridicat de incredere",
+      "includesIntro": "Foundation livreaza o arhitectura web custom, rapida si mentenabila, aliniata la pozitionarea de business, nu la limitarile template-urilor.",
+      "includesItems": [
+        "Frontend React custom (fara template-uri)",
+        "Backend Django + CMS headless",
+        "Tinta 90+ Google Lighthouse",
+        "SEO tehnic si setup schema",
+        "Hosting administrat si securitate"
+      ],
+      "solvesItems": [
+        "Website-uri template lente si fragile, greu de mentinut",
+        "Fluxuri de continut nestructurate care blocheaza publicarea constanta",
+        "Fundatii tehnice slabe care afecteaza increderea si conversia"
+      ],
+      "whoFor": [
+        "afaceri de servicii care au depasit platformele DIY",
+        "business-uri care au nevoie de viteza, incredere si control tehnic mai bun",
+        "branduri care vor un site custom fara sa intre direct in complexitate de aplicatie"
+      ],
+      "notFor": [
+        "business-uri care cauta un site template low-cost",
+        "proiecte care au nevoie doar de un site de prezentare rapid",
+        "echipe care nu au nevoie de scalabilitate pe termen lung"
       ],
       "process": [
         {
-          "title": "Discovery și scop",
-          "body": "Definim arhitectura, modelul de conținut și scopul tehnic pentru lansare."
+          "title": "Discovery si scop",
+          "body": "Definim arhitectura, modelul de continut si scopul tehnic pentru lansare."
         },
         {
           "title": "Design de sistem",
-          "body": "Structurăm frontend, backend și CMS pentru mentenanță simplă."
+          "body": "Frontend-ul, backend-ul si structura CMS sunt proiectate pentru mentenanta usoara."
         },
         {
-          "title": "Build și QA",
-          "body": "Implementarea și testarea urmăresc performanța și pregătirea pentru conversie."
+          "title": "Build si QA",
+          "body": "Implementarea si testarea se concentreaza pe performanta si pregatire pentru conversie."
         },
         {
-          "title": "Lansare și handover",
-          "body": "Lansăm în producție cu documentație și onboarding pentru suport."
+          "title": "Lansare si handover",
+          "body": "Lansarea in productie se face cu documentatie si onboarding pentru suport."
         }
       ],
-      "pricing_points": [
-        "Build-ul începe de la €7,500, în funcție de scop.",
-        "Suportul și mentenanța încep de la €200/lună."
-      ],
-      "support_price": "De la €200/lună",
-      "cta_primary": "Definește Foundation Scope",
-      "cta_secondary": "Compară stack-urile"
+      "pricingStart": "De la €7,500",
+      "pricingSupport": "Suport si mentenanta de la €200/luna",
+      "pricingNote": "Pretul final de build este definit pe proiect. Valoarea depinde de cerinte, integrari si complexitatea livrarii.",
+      "ctaHeading": "Porneste Foundation Scope",
+      "ctaSubtext": "Autoritate, viteza si incredere. O platforma digitala de performanta pentru afaceri de servicii.",
+      "ctaPrimary": "Porneste Foundation Scope",
+      "ctaSecondary": "Compara stack-urile"
     },
     "commerce-stack": {
-      "eyebrow": "Commerce Stack",
-      "fit": "Branduri care au nevoie de fluxuri comerciale personalizate",
-      "includes_intro": "Commerce Stack extinde Foundation cu checkout custom, integrări operaționale și fluxuri administrative construite pentru vânzări reale.",
-      "solves": [
-        "Limitări de storefront care blochează checkout sau fulfilment personalizat.",
-        "Operațiuni separate între produse, comenzi și clienți.",
-        "Setup-uri bazate pe pluginuri care devin instabile la volum tranzacțional."
+      "eyebrow": "COMMERCE STACK",
+      "heroTitle": "Commerce Stack",
+      "heroBody": "Comert custom construit in jurul modului real in care vinzi.",
+      "heroBodySupport": "Pentru branduri care au nevoie de control operational, logica de checkout personalizata si integrari fiabile.",
+      "summaryPrice": "De la €12,000",
+      "summaryTimeline": "Durata tipica: 7-10 saptamani",
+      "summaryFit": "Potrivire buna: branduri care au nevoie de fluxuri comerciale personalizate si profunzime operationala",
+      "includesIntro": "Commerce Stack extinde Foundation cu checkout custom, integrari operationale si fluxuri administrative construite pentru vanzari reale.",
+      "includesItems": [
+        "Arhitectura e-commerce headless",
+        "Logica custom pentru cos si checkout",
+        "Integrari Stripe / Printful / API third-party",
+        "Sistem de management al inventarului",
+        "Testare end-to-end a funnel-ului de cumparare"
+      ],
+      "solvesItems": [
+        "Limitari de storefront care blocheaza logica de checkout sau fulfilment custom",
+        "Operatiuni de produs, comenzi si clienti deconectate",
+        "Setup-uri bazate pe plugin-uri care devin nesigure la nivel tranzactional"
+      ],
+      "whoFor": [
+        "branduri care au depasit limitarile platformelor standard de storefront",
+        "afaceri cu cerinte custom pentru fulfilment, inventar sau checkout",
+        "echipe care au nevoie de control mai strans asupra operatiunilor de comert"
+      ],
+      "notFor": [
+        "magazine simple, doar de catalog",
+        "afaceri complet multumite de limitarile platformelor off-the-shelf",
+        "proiecte care nu au nevoie de logica de comert custom"
       ],
       "process": [
         {
-          "title": "Discovery și model",
-          "body": "Definim cerințele de produs, checkout, fulfilment și operațiuni administrative."
+          "title": "Discovery si model",
+          "body": "Definim cerintele pentru produs, checkout, fulfilment si fluxurile administrative."
         },
         {
-          "title": "Arhitectură de comerț",
-          "body": "Mapăm plățile, datele și fluxurile operaționale într-un sistem coerent."
+          "title": "Arhitectura de comert",
+          "body": "Mapam plati, date si fluxuri operationale intr-un sistem coerent."
         },
         {
-          "title": "Build integrări",
-          "body": "Implementăm și testăm checkout-ul, catalogul, conturile și operațiunile administrative."
+          "title": "Build de integrari",
+          "body": "Checkout-ul, catalogul, conturile si operatiunile administrative sunt implementate si testate."
         },
         {
-          "title": "Pregătire lansare",
-          "body": "Finalizăm QA tranzacțional, handover și setup-ul de suport."
+          "title": "Pregatire pentru lansare",
+          "body": "QA tranzactional, handover si setup de suport finalizate inainte de go-live."
         }
       ],
-      "pricing_points": [
-        "Build-ul începe de la €12,000, în funcție de catalog, checkout și integrări.",
-        "Suportul și mentenanța încep de la €400/lună."
-      ],
-      "support_price": "De la €400/lună",
-      "cta_primary": "Definește Commerce Build",
-      "cta_secondary": "Compară stack-urile"
+      "pricingStart": "De la €12,000",
+      "pricingSupport": "Suport si mentenanta de la €400/luna",
+      "pricingNote": "Pretul final de build este definit pe proiect. Valoarea depinde de complexitatea catalogului, integrari si scopul livrarii.",
+      "ctaHeading": "Defineste Commerce Build",
+      "ctaSubtext": "Comert headless scalabil pentru branduri care au depasit limitarile Shopify.",
+      "ctaPrimary": "Defineste Commerce Build",
+      "ctaSecondary": "Compara stack-urile"
     },
     "application-stack": {
-      "eyebrow": "Application Stack",
-      "fit": "Afaceri care construiesc produse software cu fluxuri și permisiuni",
-      "includes_intro": "Application Stack este pentru sisteme la nivel de produs, unde arhitectura, permisiunile și logica de business trebuie să susțină operare continuă.",
-      "solves": [
-        "Fluxuri manuale sau fragmentate care nu pot scala.",
-        "Lipsa controlului pe roluri și aplicarea inconsistentă a regulilor de business.",
-        "Nevoia de arhitectură de aplicație, nu de soluții de tip site de prezentare."
+      "eyebrow": "APPLICATION STACK",
+      "heroTitle": "Application Stack",
+      "heroBody": "Construieste software real, nu doar un website.",
+      "heroBodySupport": "Pentru afaceri care au nevoie de conturi de utilizator, dashboard-uri private, workflow-uri, permisiuni si logica operationala.",
+      "summaryPrice": "De la €20,000",
+      "summaryTimeline": "Durata tipica: 10-16+ saptamani",
+      "summaryFit": "Potrivire buna: afaceri care construiesc produse software, sisteme interne sau platforme custom",
+      "includesIntro": "Application Stack este pentru sisteme la nivel de produs, unde arhitectura, permisiunile si logica de business trebuie sa sustina utilizare operationala continua.",
+      "includesItems": [
+        "Django REST API custom complet",
+        "Autentificare utilizatori si permisiuni",
+        "Dashboard-uri private si vizualizare de date",
+        "Management complex de stare in React",
+        "Arhitectura de baza de date scalabila"
+      ],
+      "solvesItems": [
+        "Workflow-uri manuale sau fragmentate care nu pot scala odata cu utilizarea",
+        "Lipsa controlului pe roluri si aplicarea nesigura a regulilor de business",
+        "Nevoia de arhitectura de aplicatie, nu de pattern-uri de site de marketing"
+      ],
+      "whoFor": [
+        "afaceri care construiesc sisteme interne sau tool-uri operationale",
+        "echipe care lanseaza platforme de tip SaaS sau produse autentificate",
+        "companii care au nevoie de workflow-uri, permisiuni si dashboard-uri"
+      ],
+      "notFor": [
+        "website-uri de prezentare",
+        "site-uri simple administrate prin CMS",
+        "proiecte fara logica de aplicatie sau functionalitate bazata pe conturi"
       ],
       "process": [
         {
-          "title": "Discovery și product mapping",
-          "body": "Definim utilizatori, permisiuni, fluxuri cheie și cerințe de sistem."
+          "title": "Discovery si product mapping",
+          "body": "Definim utilizatori, permisiuni, workflow-uri esentiale si cerinte de sistem."
         },
         {
-          "title": "Plan de arhitectură",
-          "body": "Proiectăm modelul de date, structura API și limitele serviciilor."
+          "title": "Planificare de arhitectura",
+          "body": "Modelul de date, structura API si limitele serviciilor sunt proiectate pentru crestere."
         },
         {
-          "title": "Implementare produs",
-          "body": "Construim modulele de dashboard, workflow și logica de business."
+          "title": "Implementare de produs",
+          "body": "Modulele de dashboard, workflow si logica de business sunt construite si validate."
         },
         {
-          "title": "Lansare și optimizare",
-          "body": "Punem în producție cu monitorizare și model de suport pentru stabilitate."
+          "title": "Lansare si optimizare",
+          "body": "Deployment-ul, monitorizarea si modelul de suport sunt puse in place pentru stabilitate."
         }
       ],
-      "pricing_points": [
-        "Build-ul începe de la €20,000, în funcție de complexitate și funcționalități.",
-        "Suportul și mentenanța încep de la €600/lună."
-      ],
-      "support_price": "De la €600/lună",
-      "cta_primary": "Definește Application Build",
-      "cta_secondary": "Compară stack-urile"
+      "pricingStart": "De la €20,000",
+      "pricingSupport": "Suport si mentenanta de la €600/luna",
+      "pricingNote": "Pretul final de build este definit pe proiect. Valoarea depinde de complexitatea workflow-urilor, profunzimea functionalitatilor si scopul livrarii.",
+      "ctaHeading": "Defineste Application Build",
+      "ctaSubtext": "Livrare software full-stack pentru platforme operationale, tool-uri interne si sisteme de produs.",
+      "ctaPrimary": "Defineste Application Build",
+      "ctaSecondary": "Compara stack-urile"
     }
   }
 },
